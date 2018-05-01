@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F063B3FE2098B44A00E2ECDA /* SimpleMDM_API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063B3FD2098B44A00E2ECDA /* SimpleMDM_API.swift */; };
+		F063B3FE2098B44A00E2ECDA /* SimpleMDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +23,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F063B3FA2098B44A00E2ECDA /* libSimpleMDM-API.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSimpleMDM-API.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F063B3FD2098B44A00E2ECDA /* SimpleMDM_API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMDM_API.swift; sourceTree = "<group>"; };
+		F063B3FA2098B44A00E2ECDA /* libSimpleMDM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSimpleMDM.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMDM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +49,7 @@
 		F063B3FB2098B44A00E2ECDA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F063B3FA2098B44A00E2ECDA /* libSimpleMDM-API.a */,
+				F063B3FA2098B44A00E2ECDA /* libSimpleMDM.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,7 +57,7 @@
 		F063B3FC2098B44A00E2ECDA /* SimpleMDM-API */ = {
 			isa = PBXGroup;
 			children = (
-				F063B3FD2098B44A00E2ECDA /* SimpleMDM_API.swift */,
+				F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */,
 			);
 			path = "SimpleMDM-API";
 			sourceTree = "<group>";
@@ -79,7 +79,7 @@
 			);
 			name = "SimpleMDM-API";
 			productName = "SimpleMDM-API";
-			productReference = F063B3FA2098B44A00E2ECDA /* libSimpleMDM-API.a */;
+			productReference = F063B3FA2098B44A00E2ECDA /* libSimpleMDM.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -119,7 +119,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F063B3FE2098B44A00E2ECDA /* SimpleMDM_API.swift in Sources */,
+				F063B3FE2098B44A00E2ECDA /* SimpleMDM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +246,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3SJGAK824V;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SimpleMDM;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -259,7 +259,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3SJGAK824V;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SimpleMDM;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
