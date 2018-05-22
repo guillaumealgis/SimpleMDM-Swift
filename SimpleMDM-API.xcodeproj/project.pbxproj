@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F01FBE6F20B4B39500200CED /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE6E20B4B39500200CED /* Error.swift */; };
+		F01FBE7120B4B6B300200CED /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7020B4B6B300200CED /* Device.swift */; };
+		F01FBE7320B4BEEB00200CED /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7220B4BEEB00200CED /* NetworkController.swift */; };
+		F01FBE7620B4BF1B00200CED /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7520B4BF1B00200CED /* Resource.swift */; };
 		F063B3FE2098B44A00E2ECDA /* SimpleMDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */; };
+		F06CDAC3209DF233000D389E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CDAC2209DF233000D389E /* Account.swift */; };
+		F09488EB209F27AD00CA2CF3 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09488EA209F27AD00CA2CF3 /* Payload.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +29,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F01FBE6E20B4B39500200CED /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		F01FBE7020B4B6B300200CED /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		F01FBE7220B4BEEB00200CED /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		F01FBE7520B4BF1B00200CED /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		F063B3FA2098B44A00E2ECDA /* libSimpleMDM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSimpleMDM.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMDM.swift; sourceTree = "<group>"; };
+		F06CDAC2209DF233000D389E /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		F09488EA209F27AD00CA2CF3 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +50,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F01FBE7420B4BEF400200CED /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F01FBE7520B4BF1B00200CED /* Resource.swift */,
+				F06CDAC2209DF233000D389E /* Account.swift */,
+				F01FBE7020B4B6B300200CED /* Device.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		F063B3F12098B44A00E2ECDA = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +80,10 @@
 			isa = PBXGroup;
 			children = (
 				F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */,
+				F01FBE7220B4BEEB00200CED /* NetworkController.swift */,
+				F09488EA209F27AD00CA2CF3 /* Payload.swift */,
+				F01FBE6E20B4B39500200CED /* Error.swift */,
+				F01FBE7420B4BEF400200CED /* Resources */,
 			);
 			path = "SimpleMDM-API";
 			sourceTree = "<group>";
@@ -119,7 +145,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F01FBE6F20B4B39500200CED /* Error.swift in Sources */,
+				F09488EB209F27AD00CA2CF3 /* Payload.swift in Sources */,
+				F01FBE7320B4BEEB00200CED /* NetworkController.swift in Sources */,
 				F063B3FE2098B44A00E2ECDA /* SimpleMDM.swift in Sources */,
+				F06CDAC3209DF233000D389E /* Account.swift in Sources */,
+				F01FBE7120B4B6B300200CED /* Device.swift in Sources */,
+				F01FBE7620B4BF1B00200CED /* Resource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
