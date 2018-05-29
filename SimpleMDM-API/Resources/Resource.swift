@@ -20,7 +20,7 @@ public protocol SingleResource: Resource {
 
 extension SingleResource {
     public static func get(completion: @escaping CompletionClosure<Self>) {
-        SimpleMDM.shared.networkController.getResource(ofType: Self.self, atEndpoint: endpointName, completion: completion)
+        SimpleMDM.shared.networkController.getResource(ofType: Self.self, completion: completion)
     }
 }
 
@@ -32,7 +32,7 @@ public protocol ResourceCluster: Resource {
 
 extension ResourceCluster {
     public static func get(id: Int, completion: @escaping CompletionClosure<Self>) {
-        SimpleMDM.shared.networkController.getResource(ofType: Self.self, withId: id, atEndpoint: endpointName, completion: completion)
+        SimpleMDM.shared.networkController.getResource(ofType: Self.self, withId: id, completion: completion)
     }
 }
 

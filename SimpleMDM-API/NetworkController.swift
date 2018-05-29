@@ -33,8 +33,8 @@ internal class NetworkController {
 
     // MARK: Exposed API
 
-    internal func getResource<T: Resource>(ofType type: T.Type, withId id: Int? = nil, atEndpoint endpoint: String, completion: @escaping CompletionClosure<T>) {
-        getData(withId: id, atEndpoint: endpoint) { (result) in
+    internal func getResource<T: Resource>(ofType type: T.Type, withId id: Int? = nil, completion: @escaping CompletionClosure<T>) {
+        getData(withId: id, atEndpoint: T.endpointName) { (result) in
             switch result {
             case .failure(let error):
                 completion(.failure(error))
