@@ -8,11 +8,46 @@
 
 import Foundation
 
-internal struct Payload<T: Resource>: Decodable {
-    let data: PayloadData<T>
+// MARK: Errors
+
+internal struct ErrorPayload: Decodable {
+    let errors: [ErrorPayloadEntry]
 }
 
-internal struct PayloadData<T: Resource>: Decodable {
+internal struct ErrorPayloadEntry: Decodable {
+    let title: String
+}
+
+// MARK: Response data
+
+internal protocol Payload: Decodable {
+    associatedtype ResourceType: Decodable
+    associatedtype DataType: Decodable
+
+    var data: DataType { get }
+
+    func extractResource() -> ResourceType
+}
+
+internal struct SimplePayload<R: GenericResource>: Payload {
+    typealias ResourceType = R
+    let data: ResourcePayload<R>
+
+    func extractResource() -> R {
+        return data.attributes
+    }
+}
+
+internal struct ListPayload<R: GenericResource>: Payload {
+    typealias ResourceType = [R]
+    let data: [ResourcePayload<R>]
+
+    func extractResource() -> [R] {
+        return data.map({ $0.attributes })
+    }
+}
+
+internal struct ResourcePayload<R: GenericResource>: Decodable {
     let type: String
-    let attributes: T
+    let attributes: R
 }

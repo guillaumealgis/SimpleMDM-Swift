@@ -46,12 +46,8 @@ enum NetworkError: LocalizedError {
 // SimpleMDM-level errors
 // eg. The requested resource does not exist, the operation failed for some reason, etc.
 enum APIError : LocalizedError {
+    case unknown(code: Int)
     case generic(code: Int, description: String)
     case doesNotExist
 }
 
-// MARK: Decoding the SimpleMDM error payload
-
-internal struct ErrorPayload: Decodable {
-    let title: String
-}

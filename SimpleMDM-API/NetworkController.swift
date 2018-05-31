@@ -13,6 +13,15 @@ public typealias CompletionClosure<T> = (Result<T>) -> Void
 public enum Result<T> {
     case success(T)
     case failure(Error)
+
+    var error: Error? {
+        switch self {
+        case .failure(let error):
+            return error
+        default:
+            return nil
+        }
+    }
 }
 
 internal class NetworkController {
@@ -31,27 +40,52 @@ internal class NetworkController {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
 
-    // MARK: Exposed API
+    // MARK: Getting the resources
 
-    internal func getResource<T: Resource>(ofType type: T.Type, withId id: Int? = nil, completion: @escaping CompletionClosure<T>) {
-        getData(withId: id, atEndpoint: T.endpointName) { (result) in
-            switch result {
-            case .failure(let error):
+    internal func getUniqueResource<R: UniqueResource>(type: R.Type, completion: @escaping CompletionClosure<R>) {
+        let url = buildURL(for: type)
+        getPayloadData(from: SimplePayload<R>.self, atURL: url, completion: completion)
+    }
+
+    internal func getResource<R: Resource>(type: R.Type, withId id: Int, completion: @escaping CompletionClosure<R>) {
+        let url = buildURL(for: type, withId: id)
+        getPayloadData(from: SimplePayload<R>.self, atURL: url, completion: completion)
+    }
+
+    internal func getAllResources<R: Resource>(type: R.Type, completion: @escaping CompletionClosure<[R]>) {
+        let url = buildURL(for: type)
+        getPayloadData(from: ListPayload<R>.self, atURL: url, completion: completion)
+    }
+
+    // MARK: Making the request
+
+    private func getPayloadData<PayloadType: Payload>(from payloadType: PayloadType.Type, atURL url: URL, completion: @escaping CompletionClosure<PayloadType.ResourceType>) {
+        makeRequest(with: url) { (fetchResult) in
+            guard case let .success(code, data) = fetchResult else {
+                completion(.failure(fetchResult.error!))
+                return
+            }
+
+            do {
+                let payload: PayloadType = try self.handleResponse(code: code, data: data)
+                let resource = payload.extractResource()
+                completion(.success(resource))
+            }
+            catch {
                 completion(.failure(error))
-            case let .success(httpCode, data):
-                self.parseResponseData(data, forCode: httpCode, completion: completion)
             }
         }
     }
 
-    // MARK: Getting the data from the server
-
-    private func getData(withId id: Int? = nil, atEndpoint endpoint: String, completion: @escaping CompletionClosure<(Int, Data)>) {
-        var url = baseURL.appendingPathComponent(endpoint)
+    private func buildURL(for type: GenericResource.Type, withId id: Int? = nil) -> URL {
+        var url = baseURL.appendingPathComponent(type.endpointName)
         if let id = id {
             url.appendPathComponent(String(id))
         }
+        return url
+    }
 
+    private func makeRequest(with url: URL, completion: @escaping CompletionClosure<(Int, Data)>) {
         var urlRequest = URLRequest(url: url)
 
         guard let base64APIKey = SimpleMDM.shared.base64APIKey else {
@@ -71,10 +105,6 @@ internal class NetworkController {
                 return completion(.failure(NetworkError.noHTTPResponse))
             }
 
-            guard httpResponse.statusCode != 401 else {
-                return completion(.failure(APIKeyError.invalid))
-            }
-
             guard let mimeType = httpResponse.mimeType, mimeType == "application/json" else {
                 return completion(.failure(NetworkError.unexpectedMimeType(httpResponse.mimeType)))
             }
@@ -84,46 +114,38 @@ internal class NetworkController {
         task.resume()
     }
 
-    // MARK: Handling the HTTP response code and data
-
-    private func parseResponseData<T: Resource>(_ data: Data, forCode httpCode: Int, completion: @escaping CompletionClosure<T>) {
-        switch httpCode {
+    private func handleResponse<PayloadType: Payload>(code: Int, data: Data) throws -> PayloadType {
+        switch code {
         case 200:
-            decodeAndReturnResource(data, completion: completion)
+            return try decodePayload(from: data)
+        case 401:
+            throw APIKeyError.invalid
         case 404:
-            completion(.failure(APIError.doesNotExist))
+            throw APIError.doesNotExist
         default:
-            decodeAndReturnError(code: httpCode, from: data, completion: completion)
+            throw decodeError(from: data, code: code)
         }
     }
 
-    // MARK: Data decoding
+    // MARK: Decoding the response
 
-    private func decodeAndReturnResource<T: Resource>(_ data: Data, completion: @escaping CompletionClosure<T>) {
-        let payload: Payload<T>
-        let result: Result<T>
-        do {
-            payload = try self.decoder.decode(Payload<T>.self, from: data)
-            result = .success(payload.data.attributes)
-        }
-        catch {
-            result = .failure(error)
-        }
-
-        completion(result)
+    private func decodePayload<PayloadType: Payload>(from data: Data) throws -> PayloadType {
+        let payload = try self.decoder.decode(PayloadType.self, from: data)
+        return payload
     }
 
-    private func decodeAndReturnError<T: Resource>(code: Int, from data: Data, completion: @escaping CompletionClosure<T>) {
-        let payload: ErrorPayload
-        let result: Result<T>
+    private func decodeError(from data: Data, code: Int) -> Error {
         do {
-            payload = try self.decoder.decode(ErrorPayload.self, from: data)
-            result = .failure(APIError.generic(code: code, description: payload.title))
+            let payload = try self.decoder.decode(ErrorPayload.self, from: data)
+            // We *may* get more than one error in the response data, but returning multiple error would make the
+            // API much more complex so we only return the first one.
+            if let firstError = payload.errors.first {
+                return APIError.generic(code: code, description: firstError.title)
+            }
+            return APIError.unknown(code: code)
         }
         catch {
-            result = .failure(error)
+            return error
         }
-
-        completion(result)
     }
 }

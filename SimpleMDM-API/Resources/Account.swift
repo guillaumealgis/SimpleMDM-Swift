@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Account : SingleResource {
+public struct Account : UniqueResource {
     public static var endpointName: String {
         return "account"
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Device : ResourceCluster {
+public struct Device : Resource {
     public static var endpointName: String {
         return "devices"
     }

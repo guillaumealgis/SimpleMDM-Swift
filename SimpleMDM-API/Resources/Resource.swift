@@ -8,31 +8,38 @@
 
 import Foundation
 
-public protocol Resource: Decodable {
+public protocol GenericResource: Decodable {
     static var endpointName: String { get }
 }
 
-// MARK: Single Resource
+// MARK: Unique Resource
 
-public protocol SingleResource: Resource {
+// A resource type for which it can only exists one instante of
+public protocol UniqueResource: GenericResource {
     static func get(completion: @escaping CompletionClosure<Self>)
 }
 
-extension SingleResource {
+extension UniqueResource {
     public static func get(completion: @escaping CompletionClosure<Self>) {
-        SimpleMDM.shared.networkController.getResource(ofType: Self.self, completion: completion)
+        SimpleMDM.shared.networkController.getUniqueResource(type: Self.self, completion: completion)
     }
 }
 
 // MARK: Resource Cluster
 
-public protocol ResourceCluster: Resource {
+// A classic resource type, multiple instante of it can coexist
+public protocol Resource: GenericResource {
     static func get(id: Int, completion: @escaping CompletionClosure<Self>)
+    static func getAll(completion: @escaping CompletionClosure<[Self]>)
 }
 
-extension ResourceCluster {
+extension Resource {
     public static func get(id: Int, completion: @escaping CompletionClosure<Self>) {
-        SimpleMDM.shared.networkController.getResource(ofType: Self.self, withId: id, completion: completion)
+        SimpleMDM.shared.networkController.getResource(type: Self.self, withId: id, completion: completion)
+    }
+
+    public static func getAll(completion: @escaping CompletionClosure<[Self]>) {
+        SimpleMDM.shared.networkController.getAllResources(type: Self.self, completion: completion)
     }
 }
 
