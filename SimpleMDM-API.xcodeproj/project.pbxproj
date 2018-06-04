@@ -14,7 +14,22 @@
 		F063B3FE2098B44A00E2ECDA /* SimpleMDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */; };
 		F06CDAC3209DF233000D389E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CDAC2209DF233000D389E /* Account.swift */; };
 		F09488EB209F27AD00CA2CF3 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09488EA209F27AD00CA2CF3 /* Payload.swift */; };
+		F0CD0A9720C5E27C00248134 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9620C5E27C00248134 /* NetworkTests.swift */; };
+		F0CD0A9920C5E27C00248134 /* libSimpleMDM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F063B3FA2098B44A00E2ECDA /* libSimpleMDM.a */; };
+		F0CD0AA020C5E37D00248134 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9F20C5E37D00248134 /* URLSession.swift */; };
+		F0CD0AA220C5E7AF00248134 /* APIKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0AA120C5E7AF00248134 /* APIKeyTests.swift */; };
+		F0CD0AA420C5E9C400248134 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0AA320C5E9C400248134 /* URLSessionMock.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F0CD0A9A20C5E27C00248134 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F063B3F22098B44A00E2ECDA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F063B3F92098B44A00E2ECDA;
+			remoteInfo = "SimpleMDM-API";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		F063B3F82098B44A00E2ECDA /* CopyFiles */ = {
@@ -37,6 +52,12 @@
 		F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMDM.swift; sourceTree = "<group>"; };
 		F06CDAC2209DF233000D389E /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		F09488EA209F27AD00CA2CF3 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
+		F0CD0A9420C5E27C00248134 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0CD0A9620C5E27C00248134 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
+		F0CD0A9820C5E27C00248134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0CD0A9F20C5E37D00248134 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
+		F0CD0AA120C5E7AF00248134 /* APIKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyTests.swift; sourceTree = "<group>"; };
+		F0CD0AA320C5E9C400248134 /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +65,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0CD0A9120C5E27C00248134 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0CD0A9920C5E27C00248134 /* libSimpleMDM.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				F063B3FC2098B44A00E2ECDA /* SimpleMDM-API */,
+				F0CD0A9520C5E27C00248134 /* Tests */,
 				F063B3FB2098B44A00E2ECDA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				F063B3FA2098B44A00E2ECDA /* libSimpleMDM.a */,
+				F0CD0A9420C5E27C00248134 /* Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,9 +114,21 @@
 				F01FBE7220B4BEEB00200CED /* NetworkController.swift */,
 				F09488EA209F27AD00CA2CF3 /* Payload.swift */,
 				F01FBE6E20B4B39500200CED /* Error.swift */,
+				F0CD0A9F20C5E37D00248134 /* URLSession.swift */,
 				F01FBE7420B4BEF400200CED /* Resources */,
 			);
 			path = "SimpleMDM-API";
+			sourceTree = "<group>";
+		};
+		F0CD0A9520C5E27C00248134 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F0CD0AA320C5E9C400248134 /* URLSessionMock.swift */,
+				F0CD0AA120C5E7AF00248134 /* APIKeyTests.swift */,
+				F0CD0A9620C5E27C00248134 /* NetworkTests.swift */,
+				F0CD0A9820C5E27C00248134 /* Info.plist */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,18 +151,39 @@
 			productReference = F063B3FA2098B44A00E2ECDA /* libSimpleMDM.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		F0CD0A9320C5E27C00248134 /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0CD0A9E20C5E27C00248134 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				F0CD0A9020C5E27C00248134 /* Sources */,
+				F0CD0A9120C5E27C00248134 /* Frameworks */,
+				F0CD0A9220C5E27C00248134 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F0CD0A9B20C5E27C00248134 /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = F0CD0A9420C5E27C00248134 /* Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		F063B3F22098B44A00E2ECDA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Guillaume Algis";
 				TargetAttributes = {
 					F063B3F92098B44A00E2ECDA = {
 						CreatedOnToolsVersion = 9.3;
+					};
+					F0CD0A9320C5E27C00248134 = {
+						CreatedOnToolsVersion = 9.4;
 					};
 				};
 			};
@@ -136,9 +200,20 @@
 			projectRoot = "";
 			targets = (
 				F063B3F92098B44A00E2ECDA /* SimpleMDM-API */,
+				F0CD0A9320C5E27C00248134 /* Tests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F0CD0A9220C5E27C00248134 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F063B3F62098B44A00E2ECDA /* Sources */ = {
@@ -147,6 +222,7 @@
 			files = (
 				F01FBE6F20B4B39500200CED /* Error.swift in Sources */,
 				F09488EB209F27AD00CA2CF3 /* Payload.swift in Sources */,
+				F0CD0AA020C5E37D00248134 /* URLSession.swift in Sources */,
 				F01FBE7320B4BEEB00200CED /* NetworkController.swift in Sources */,
 				F063B3FE2098B44A00E2ECDA /* SimpleMDM.swift in Sources */,
 				F06CDAC3209DF233000D389E /* Account.swift in Sources */,
@@ -155,7 +231,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F0CD0A9020C5E27C00248134 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0CD0AA420C5E9C400248134 /* URLSessionMock.swift in Sources */,
+				F0CD0AA220C5E7AF00248134 /* APIKeyTests.swift in Sources */,
+				F0CD0A9720C5E27C00248134 /* NetworkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F0CD0A9B20C5E27C00248134 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F063B3F92098B44A00E2ECDA /* SimpleMDM-API */;
+			targetProxy = F0CD0A9A20C5E27C00248134 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		F063B3FF2098B44A00E2ECDA /* Debug */ = {
@@ -298,6 +392,44 @@
 			};
 			name = Release;
 		};
+		F0CD0A9C20C5E27C00248134 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3SJGAK824V;
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.guillaumealgis.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F0CD0A9D20C5E27C00248134 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3SJGAK824V;
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.guillaumealgis.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -315,6 +447,15 @@
 			buildConfigurations = (
 				F063B4022098B44A00E2ECDA /* Debug */,
 				F063B4032098B44A00E2ECDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0CD0A9E20C5E27C00248134 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0CD0A9C20C5E27C00248134 /* Debug */,
+				F0CD0A9D20C5E27C00248134 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
