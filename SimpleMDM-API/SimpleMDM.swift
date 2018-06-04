@@ -10,23 +10,26 @@ import Foundation
 
 
 public class SimpleMDM: NSObject {
+
+    // MARK: Type properties
+
     public static var APIKey: String? {
         get {
-            return SimpleMDM.shared.APIKey
+            return SimpleMDM.shared.networkController.APIKey
         }
         set {
-            SimpleMDM.shared.APIKey = newValue
+            SimpleMDM.shared.networkController.APIKey = newValue
         }
     }
 
     internal static let shared = SimpleMDM()
-    internal let networkController = NetworkController()
 
-    internal var APIKey: String? {
-        didSet {
-            let utf8Data = APIKey?.data(using: .utf8)
-            base64APIKey = utf8Data?.base64EncodedString()
-        }
+    // MARK: Instance properties
+
+    internal var networkController = NetworkController()
+
+    // Used for internal testing purposes only
+    internal func overrideNetworkController(networkController: NetworkController) {
+        self.networkController = networkController
     }
-    internal var base64APIKey: String?
 }

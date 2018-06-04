@@ -25,6 +25,14 @@ public enum Result<T> {
 }
 
 internal class NetworkController {
+    internal var APIKey: String? {
+        didSet {
+            let utf8Data = APIKey?.data(using: .utf8)
+            base64APIKey = utf8Data?.base64EncodedString()
+        }
+    }
+    private var base64APIKey: String?
+
     private let host = "a.simplemdm.com"
     private let endpoint = "api/v1/"
 
@@ -32,11 +40,16 @@ internal class NetworkController {
         return URL(string: "https://\(host)/\(endpoint)")!
     }
 
-    private var session: URLSession!
+    private var session: URLSessionProtocol!
     private let decoder = JSONDecoder()
 
-    init() {
-        session = URLSession(configuration: .default)
+    convenience init() {
+        let session = URLSession(configuration: .default)
+        self.init(urlSession: session)
+    }
+
+    init(urlSession: URLSessionProtocol) {
+        session = urlSession
         decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
 
@@ -88,7 +101,7 @@ internal class NetworkController {
     private func makeRequest(with url: URL, completion: @escaping CompletionClosure<(Int, Data)>) {
         var urlRequest = URLRequest(url: url)
 
-        guard let base64APIKey = SimpleMDM.shared.base64APIKey else {
+        guard let base64APIKey = base64APIKey else {
             completion(.failure(APIKeyError.notSet))
             return;
         }
