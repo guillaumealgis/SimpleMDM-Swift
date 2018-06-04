@@ -10,8 +10,10 @@ import Foundation
 
 // MARK: Error types
 
+private typealias SimpleMDMError = LocalizedError & Equatable
+
 // Errors related to the SimpleMDM API key
-public enum APIKeyError: LocalizedError {
+public enum APIKeyError: SimpleMDMError {
     case notSet
     case invalid
 
@@ -26,7 +28,7 @@ public enum APIKeyError: LocalizedError {
 }
 
 // Errors occuring during the transport and decoding the HTTP response
-enum NetworkError: LocalizedError {
+public enum NetworkError: SimpleMDMError {
     case unknown
     case noHTTPResponse
     case unexpectedMimeType(String?)
@@ -45,7 +47,7 @@ enum NetworkError: LocalizedError {
 
 // SimpleMDM-level errors
 // eg. The requested resource does not exist, the operation failed for some reason, etc.
-enum APIError : LocalizedError {
+public enum APIError : SimpleMDMError {
     case unknown(code: Int)
     case generic(code: Int, description: String)
     case doesNotExist
