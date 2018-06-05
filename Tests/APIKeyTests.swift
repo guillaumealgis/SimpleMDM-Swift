@@ -12,13 +12,21 @@ import XCTest
 
 class APIKeyTests: XCTestCase {
 
-    func testAPIKeyNotSetError() {
+    func testNotSettingAPIKeyReturnsError() {
+        let session = URLSessionMock()
+        let networkController = NetworkController(urlSession: session)
+
+        networkController.getUniqueResource(type: Account.self) { (result) in
+            XCTAssertEqual(result.error! as! APIKeyError, APIKeyError.notSet)
+        }
+    }
+
+    func testAPIKeyNotSetErrorHasHumanReadableDescription() {
         let session = URLSessionMock()
         let networkController = NetworkController(urlSession: session)
 
         networkController.getUniqueResource(type: Account.self) { (result) in
             let error = result.error! as! APIKeyError
-            XCTAssertEqual(error, APIKeyError.notSet)
             XCTAssertTrue(error.localizedDescription.contains("API key was not set"))
         }
     }
