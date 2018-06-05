@@ -12,29 +12,38 @@ import Foundation
 
 class URLSessionMock: URLSessionProtocol {
     var data: Data?
-    var code: Int?
+    var responseCode: Int?
+    var responseMimeType: String?
     var error: Error?
 
     required init(configuration: URLSessionConfiguration, delegate: URLSessionDelegate?, delegateQueue: OperationQueue?) { }
 
-    convenience init(data: Data?, code: Int?, error:Error?) {
+    convenience init(data: Data? = Data(), responseCode: Int? = nil, responseMimeType: String? = "application/json", error:Error? = nil) {
         self.init(configuration: .default, delegate: nil, delegateQueue: nil)
         self.data = data
-        self.code = code
+        self.responseCode = responseCode
+        self.responseMimeType = responseMimeType
         self.error = error
     }
 
     func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         let response: URLResponse?
-        if let code = code {
-            response = HTTPURLResponse(url: request.url!, statusCode: code, httpVersion: nil, headerFields: nil)
+        if let code = responseCode {
+            var headerFields: [String: String]? = nil
+            if let mimeType = responseMimeType {
+                headerFields = [
+                    "Content-Type": mimeType
+                ]
+            }
+            response = HTTPURLResponse(url: request.url!, statusCode: code, httpVersion: nil, headerFields: headerFields)
         }
         else {
             response = nil
         }
         completionHandler(data, response, error)
-        return URLSessionDataTask()
+        return URLSessionDataTaskMock()
     }
+}
 
 
 }
