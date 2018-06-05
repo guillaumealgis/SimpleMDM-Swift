@@ -45,5 +45,8 @@ class URLSessionMock: URLSessionProtocol {
     }
 }
 
-
+class URLSessionDataTaskMock: URLSessionDataTask {
+    override func cancel() {}
+    override func suspend() {}
+    override func resume() {}
 }
