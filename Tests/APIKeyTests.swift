@@ -31,4 +31,25 @@ class APIKeyTests: XCTestCase {
         }
     }
 
+    func test401ResponseReturnsInvalidAPIKeyError() {
+        let session = URLSessionMock(responseCode: 401)
+        let networkController = NetworkController(urlSession: session)
+        networkController.APIKey = "AVeryRandomTestAPIKey"
+
+        networkController.getUniqueResource(type: Account.self) { (result) in
+            XCTAssertEqual(result.error! as! APIKeyError, APIKeyError.invalid)
+        }
+    }
+
+    func testInvalidAPIKeyErrorHasHumanReadableDescription() {
+        let session = URLSessionMock(responseCode: 401)
+        let networkController = NetworkController(urlSession: session)
+        networkController.APIKey = "AVeryRandomTestAPIKey"
+
+        networkController.getUniqueResource(type: Account.self) { (result) in
+            let error = result.error! as! APIKeyError
+            XCTAssertTrue(error.localizedDescription.contains("server rejected the API key"))
+        }
+    }
+
 }
