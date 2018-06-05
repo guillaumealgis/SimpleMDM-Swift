@@ -13,7 +13,7 @@ import XCTest
 class APIKeyTests: XCTestCase {
 
     func testAPIKeyNotSetError() {
-        let session = URLSessionMock(data: nil, code: nil, error: nil)
+        let session = URLSessionMock()
         let networkController = NetworkController(urlSession: session)
 
         networkController.getUniqueResource(type: Account.self) { (result) in
