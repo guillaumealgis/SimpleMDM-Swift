@@ -7,7 +7,6 @@
 //
 
 import XCTest
-
 @testable import SimpleMDM
 
 class APIKeyTests: XCTestCase {
@@ -26,7 +25,7 @@ class APIKeyTests: XCTestCase {
         let networkController = NetworkController(urlSession: session)
 
         networkController.getUniqueResource(type: Account.self) { (result) in
-            let error = result.error! as! APIKeyError
+            let error = result.error! as! LocalizedError
             XCTAssertTrue(error.localizedDescription.contains("API key was not set"))
         }
     }
@@ -47,7 +46,7 @@ class APIKeyTests: XCTestCase {
         networkController.APIKey = "AVeryRandomTestAPIKey"
 
         networkController.getUniqueResource(type: Account.self) { (result) in
-            let error = result.error! as! APIKeyError
+            let error = result.error! as! LocalizedError
             XCTAssertTrue(error.localizedDescription.contains("server rejected the API key"))
         }
     }
