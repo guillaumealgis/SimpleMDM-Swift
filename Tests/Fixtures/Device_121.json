@@ -1,0 +1,67 @@
+{
+  "data": {
+    "type": "device",
+    "id": 121,
+    "attributes": {
+      "name": "Mike's iPhone",
+      "last_seen_at": "2015-10-01T18:38:47.277-07:00",
+      "status": "enrolled",
+      "device_name": "Mike's iPhone",
+      "os_version": "9.0.2",
+      "build_version": "13A452",
+      "model_name": "iPhone 6",
+      "model": "NG4W2LL",
+      "product_name": "iPhone7,2",
+      "unique_identifier": "4A08359C-1D3A-5D3E-939E-FFA6A561321D",
+      "serial_number": "DNFJE9DNG5MG",
+      "imei": "35 445506 652132 5",
+      "meid": "35404596608032",
+      "device_capacity": 55.62955093383789,
+      "available_device_capacity": 15.19466781616211,
+      "battery_level": "93%",
+      "modem_firmware_version": "4.02.00",
+      "iccid": "8914 8110 0002 8094 4264",
+      "bluetooth_mac": "f0:db:e2:df:e9:11",
+      "wifi_mac": "f0:db:e2:df:e9:2f",
+      "current_carrier_network": "Verizon",
+      "sim_carrier_network": "Verizon",
+      "subscriber_carrier_network": "Verizon",
+      "carrier_settings_version": "21.1",
+      "phone_number": "5035551234",
+      "voice_roaming_enabled": true,
+      "data_roaming_enabled": false,
+      "is_roaming": false,
+      "subscriber_mcc": "311",
+      "simmnc": "480",
+      "current_mcc": "311",
+      "current_mnc": "480",
+      "hardware_encryption_caps": 3,
+      "passcode_present": true,
+      "passcode_compliant": true,
+      "passcode_compliant_with_profiles": true,
+      "subscriber_mnc": "480",
+      "simmcc": "311",
+      "is_supervised": false,
+      "is_device_locator_service_enabled": true,
+      "is_do_not_disturb_in_effect": false,
+      "personal_hotspot_enabled": true,
+      "itunes_store_account_is_active": true,
+      "cellular_technology": 3,
+      "last_cloud_backup_date": "2015-10-01T15:09:12.000-07:00",
+      "is_activation_lock_enabled": true,
+      "is_cloud_backup_enabled": true,
+      "location_latitude": "75.13421212355",
+      "location_longitude": "-14.313565422",
+      "location_accuracy": "60",
+      "location_updated_at": "2015-10-01T15:09:12.000-07:00"
+    },
+    "relationships": {
+      "device_group": {
+        "data": {
+          "type": "device_group",
+          "id": 37
+        }
+      }
+    }
+  }
+}

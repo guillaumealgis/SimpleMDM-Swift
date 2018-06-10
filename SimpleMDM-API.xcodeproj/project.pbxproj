@@ -13,8 +13,11 @@
 		F01FBE7620B4BF1B00200CED /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7520B4BF1B00200CED /* Resource.swift */; };
 		F063B3FE2098B44A00E2ECDA /* SimpleMDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */; };
 		F069B46F20CD76BA00A34F56 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F069B46E20CD76BA00A34F56 /* Utils.swift */; };
+		F069B47220CD7CBA00A34F56 /* Device_121.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47120CD7CBA00A34F56 /* Device_121.json */; };
 		F06CDAC3209DF233000D389E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CDAC2209DF233000D389E /* Account.swift */; };
 		F09488EB209F27AD00CA2CF3 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09488EA209F27AD00CA2CF3 /* Payload.swift */; };
+		F09AADD320CD8646004D8AC4 /* Account.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47320CD7CC900A34F56 /* Account.json */; };
+		F09AADD420CD8646004D8AC4 /* Devices.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47420CD7CD500A34F56 /* Devices.json */; };
 		F0CD0A9720C5E27C00248134 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9620C5E27C00248134 /* NetworkTests.swift */; };
 		F0CD0A9920C5E27C00248134 /* libSimpleMDM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F063B3FA2098B44A00E2ECDA /* libSimpleMDM.a */; };
 		F0CD0AA020C5E37D00248134 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9F20C5E37D00248134 /* URLSession.swift */; };
@@ -52,6 +55,9 @@
 		F063B3FA2098B44A00E2ECDA /* libSimpleMDM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSimpleMDM.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMDM.swift; sourceTree = "<group>"; };
 		F069B46E20CD76BA00A34F56 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		F069B47120CD7CBA00A34F56 /* Device_121.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Device_121.json; sourceTree = "<group>"; };
+		F069B47320CD7CC900A34F56 /* Account.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Account.json; sourceTree = "<group>"; };
+		F069B47420CD7CD500A34F56 /* Devices.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Devices.json; sourceTree = "<group>"; };
 		F06CDAC2209DF233000D389E /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		F09488EA209F27AD00CA2CF3 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		F0CD0A9420C5E27C00248134 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,9 +128,20 @@
 			path = "SimpleMDM-API";
 			sourceTree = "<group>";
 		};
+		F069B47020CD7C9F00A34F56 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				F069B47320CD7CC900A34F56 /* Account.json */,
+				F069B47420CD7CD500A34F56 /* Devices.json */,
+				F069B47120CD7CBA00A34F56 /* Device_121.json */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
 		F0CD0A9520C5E27C00248134 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				F069B47020CD7C9F00A34F56 /* Fixtures */,
 				F069B46E20CD76BA00A34F56 /* Utils.swift */,
 				F0CD0AA320C5E9C400248134 /* URLSessionMock.swift */,
 				F0CD0AA120C5E7AF00248134 /* APIKeyTests.swift */,
@@ -213,6 +230,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F069B47220CD7CBA00A34F56 /* Device_121.json in Resources */,
+				F09AADD420CD8646004D8AC4 /* Devices.json in Resources */,
+				F09AADD320CD8646004D8AC4 /* Account.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

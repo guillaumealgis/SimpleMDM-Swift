@@ -1,0 +1,9 @@
+{
+    "data": {
+        "type": "account",
+        "attributes": {
+            "name": "MyCompany",
+            "apple_store_country_code": "US"
+        }
+    }
+}

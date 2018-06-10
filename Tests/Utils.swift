@@ -10,6 +10,16 @@ import Foundation
 
 @testable import SimpleMDM
 
+func loadFixture(_ name: String) -> Data {
+    let bundle = Bundle(for: ResourcesTests.self)
+    let urlIfFound = bundle.url(forResource: name, withExtension: "json")
+    guard let url = urlIfFound else {
+        fatalError("Fixture \"\(name)\" not found in bundle \(bundle)")
+    }
+    let fixture = try! Data(contentsOf: url)
+    return fixture
+}
+
 extension SimpleMDM {
     class func useSessionMock(_ session: URLSessionMock) {
         let networkController = NetworkController(urlSession: session)
