@@ -5,7 +5,7 @@
       "id": 121,
       "attributes": {
         "name": "Mike's iPhone",
-        "last_seen_at": "2015-10-01T18:38:47.277-07:00",
+        "last_seen_at": "2015-10-01 18:38:47 -0700",
         "status": "enrolled",
         "device_name": "Mike's iPhone",
         "os_version": "9.0.2",
