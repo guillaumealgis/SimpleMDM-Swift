@@ -47,13 +47,16 @@
       "personal_hotspot_enabled": true,
       "itunes_store_account_is_active": true,
       "cellular_technology": 3,
-      "last_cloud_backup_date": "2015-10-01T15:09:12.000-07:00",
+      "last_cloud_backup_date": "2015-10-01 15:09:12 -0700",
       "is_activation_lock_enabled": true,
       "is_cloud_backup_enabled": true,
       "location_latitude": "75.13421212355",
       "location_longitude": "-14.313565422",
-      "location_accuracy": "60",
-      "location_updated_at": "2015-10-01T15:09:12.000-07:00"
+      "location_accuracy": 60,
+      "location_updated_at": "2015-10-01 15:09:12 -0700",
+      "filevault_enabled": false,
+      "firmware_password_enabled": false,
+      "is_dep_enrollment": false
     },
     "relationships": {
       "device_group": {
