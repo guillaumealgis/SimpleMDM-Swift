@@ -59,6 +59,7 @@ internal class NetworkController {
     init(urlSession: URLSessionProtocol) {
         session = urlSession
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .formatted(DateFormatter.simpleMDMFormat)
     }
 
     // MARK: Getting the resources
