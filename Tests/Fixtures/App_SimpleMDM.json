@@ -1,0 +1,12 @@
+{
+  "data": {
+    "attributes": {
+      "app_type": "app_store",
+      "bundle_identifier": "com.unwiredrev.DeviceLink.public",
+      "itunes_store_id": 847612226,
+      "name": "SimpleMDM"
+    },
+    "id": 17635,
+    "type": "app"
+  }
+}

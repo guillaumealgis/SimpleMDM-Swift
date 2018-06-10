@@ -1,0 +1,54 @@
+{
+  "data": [
+    {
+      "attributes": {
+        "app_type": "enterprise",
+        "bundle_identifier": "com.mycompany.Foobar",
+        "name": "EMR",
+        "version": "2018.05.25.11.52"
+      },
+      "id": 18775,
+      "type": "app"
+    },
+    {
+      "attributes": {
+        "app_type": "enterprise",
+        "bundle_identifier": "com.ipsosante.EMR-Beta",
+        "name": "EMR-Beta",
+        "version": "2018.06.06.15.52"
+      },
+      "id": 26000,
+      "type": "app"
+    },
+    {
+      "attributes": {
+        "app_type": "app_store",
+        "bundle_identifier": "com.evernote.iPhone.Evernote",
+        "itunes_store_id": 281796108,
+        "name": "Evernote"
+      },
+      "id": 17851,
+      "type": "app"
+    },
+    {
+      "attributes": {
+        "app_type": "app_store",
+        "bundle_identifier": "com.google.calendar",
+        "itunes_store_id": 909319292,
+        "name": "Google Agenda : Simplifiez votre quotidien"
+      },
+      "id": 32068,
+      "type": "app"
+    },
+    {
+      "attributes": {
+        "app_type": "app_store",
+        "bundle_identifier": "com.google.Drive",
+        "itunes_store_id": 507874739,
+        "name": "Google Drive - Stockage en ligne gratuit par Google"
+      },
+      "id": 17852,
+      "type": "app"
+    }
+  ]
+}

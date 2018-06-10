@@ -14,12 +14,15 @@
 		F063B3FE2098B44A00E2ECDA /* SimpleMDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */; };
 		F069B46D20CD75D900A34F56 /* ResourcesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F069B46C20CD75D900A34F56 /* ResourcesTests.swift */; };
 		F069B46F20CD76BA00A34F56 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F069B46E20CD76BA00A34F56 /* Utils.swift */; };
-		F069B47220CD7CBA00A34F56 /* Device_121.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47120CD7CBA00A34F56 /* Device_121.json */; };
+		F069B47220CD7CBA00A34F56 /* Device_MikesiPhone.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47120CD7CBA00A34F56 /* Device_MikesiPhone.json */; };
 		F06CDAC3209DF233000D389E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CDAC2209DF233000D389E /* Account.swift */; };
+		F06E9E8E20CDE5AB00D02395 /* App_SimpleMDM.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E8C20CDD38F00D02395 /* App_SimpleMDM.json */; };
+		F06E9E8F20CDE5AB00D02395 /* Apps.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E8D20CDD39000D02395 /* Apps.json */; };
 		F09488EB209F27AD00CA2CF3 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09488EA209F27AD00CA2CF3 /* Payload.swift */; };
 		F09AADD320CD8646004D8AC4 /* Account.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47320CD7CC900A34F56 /* Account.json */; };
 		F09AADD420CD8646004D8AC4 /* Devices.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47420CD7CD500A34F56 /* Devices.json */; };
 		F09AADD620CD92CF004D8AC4 /* DateFormatter+ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AADD520CD92CF004D8AC4 /* DateFormatter+ISO8601.swift */; };
+		F09AADD820CDD272004D8AC4 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AADD720CDD272004D8AC4 /* App.swift */; };
 		F0CD0A9720C5E27C00248134 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9620C5E27C00248134 /* NetworkTests.swift */; };
 		F0CD0A9920C5E27C00248134 /* libSimpleMDM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F063B3FA2098B44A00E2ECDA /* libSimpleMDM.a */; };
 		F0CD0AA020C5E37D00248134 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9F20C5E37D00248134 /* URLSession.swift */; };
@@ -58,12 +61,15 @@
 		F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMDM.swift; sourceTree = "<group>"; };
 		F069B46C20CD75D900A34F56 /* ResourcesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesTests.swift; sourceTree = "<group>"; };
 		F069B46E20CD76BA00A34F56 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		F069B47120CD7CBA00A34F56 /* Device_121.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Device_121.json; sourceTree = "<group>"; };
+		F069B47120CD7CBA00A34F56 /* Device_MikesiPhone.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Device_MikesiPhone.json; sourceTree = "<group>"; };
 		F069B47320CD7CC900A34F56 /* Account.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Account.json; sourceTree = "<group>"; };
 		F069B47420CD7CD500A34F56 /* Devices.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Devices.json; sourceTree = "<group>"; };
 		F06CDAC2209DF233000D389E /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		F06E9E8C20CDD38F00D02395 /* App_SimpleMDM.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = App_SimpleMDM.json; sourceTree = "<group>"; };
+		F06E9E8D20CDD39000D02395 /* Apps.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Apps.json; sourceTree = "<group>"; };
 		F09488EA209F27AD00CA2CF3 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		F09AADD520CD92CF004D8AC4 /* DateFormatter+ISO8601.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+ISO8601.swift"; sourceTree = "<group>"; };
+		F09AADD720CDD272004D8AC4 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		F0CD0A9420C5E27C00248134 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0CD0A9620C5E27C00248134 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 		F0CD0A9820C5E27C00248134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -96,6 +102,7 @@
 			children = (
 				F01FBE7520B4BF1B00200CED /* Resource.swift */,
 				F06CDAC2209DF233000D389E /* Account.swift */,
+				F09AADD720CDD272004D8AC4 /* App.swift */,
 				F01FBE7020B4B6B300200CED /* Device.swift */,
 			);
 			path = Resources;
@@ -137,8 +144,10 @@
 			isa = PBXGroup;
 			children = (
 				F069B47320CD7CC900A34F56 /* Account.json */,
+				F06E9E8C20CDD38F00D02395 /* App_SimpleMDM.json */,
 				F069B47420CD7CD500A34F56 /* Devices.json */,
-				F069B47120CD7CBA00A34F56 /* Device_121.json */,
+				F06E9E8D20CDD39000D02395 /* Apps.json */,
+				F069B47120CD7CBA00A34F56 /* Device_MikesiPhone.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -236,8 +245,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F069B47220CD7CBA00A34F56 /* Device_121.json in Resources */,
+				F06E9E8F20CDE5AB00D02395 /* Apps.json in Resources */,
+				F069B47220CD7CBA00A34F56 /* Device_MikesiPhone.json in Resources */,
 				F09AADD420CD8646004D8AC4 /* Devices.json in Resources */,
+				F06E9E8E20CDE5AB00D02395 /* App_SimpleMDM.json in Resources */,
 				F09AADD320CD8646004D8AC4 /* Account.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,6 +263,7 @@
 				F09AADD620CD92CF004D8AC4 /* DateFormatter+ISO8601.swift in Sources */,
 				F01FBE6F20B4B39500200CED /* Error.swift in Sources */,
 				F09488EB209F27AD00CA2CF3 /* Payload.swift in Sources */,
+				F09AADD820CDD272004D8AC4 /* App.swift in Sources */,
 				F0CD0AA020C5E37D00248134 /* URLSession.swift in Sources */,
 				F01FBE7320B4BEEB00200CED /* NetworkController.swift in Sources */,
 				F063B3FE2098B44A00E2ECDA /* SimpleMDM.swift in Sources */,

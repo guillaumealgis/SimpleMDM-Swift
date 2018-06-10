@@ -50,29 +50,7 @@ class ResourcesTests: XCTestCase {
         }
     }
 
-    func testGetAllDevices() {
-        let json = loadFixture("Devices")
-        let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
-
-        Device.getAll { (result) in
-            let devices = result.value!
-            XCTAssertEqual(devices.count, 2)
-        }
-    }
-
-    func testGetADevice() {
-        let json = loadFixture("Device_121")
-        let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
-
-        Device.get(id: 121) { (result) in
-            let device = result.value!
-            XCTAssertEqual(device.name, "Mike's iPhone")
-        }
-    }
-
-    func testGetUnexistentDevice() {
+    func testGetUnexistentResource() {
         let json = """
           {
             "errors": [
@@ -85,8 +63,52 @@ class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 404)
         SimpleMDM.useSessionMock(session)
 
-        Device.getAll { (result) in
+        Device.get(id: 0) { (result) in
             XCTAssertEqual(result.error! as! APIError, APIError.doesNotExist)
+        }
+    }
+
+    func testGetAllDevices() {
+        let json = loadFixture("Devices")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        Device.getAll { (result) in
+            let devices = result.value!
+            XCTAssertEqual(devices.count, 2)
+        }
+    }
+
+    func testGetADevice() {
+        let json = loadFixture("Device_MikesiPhone")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        Device.get(id: 121) { (result) in
+            let device = result.value!
+            XCTAssertEqual(device.name, "Mike's iPhone")
+        }
+    }
+
+    func testGetAllApps() {
+        let json = loadFixture("Apps")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        App.getAll { (result) in
+            let apps = result.value!
+            XCTAssertEqual(apps.count, 5)
+        }
+    }
+
+    func testGetAnApp() {
+        let json = loadFixture("App_SimpleMDM")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        App.get(id: 17635) { (result) in
+            let app = result.value!
+            XCTAssertEqual(app.bundleIdentifier, "com.unwiredrev.DeviceLink.public")
         }
     }
 
