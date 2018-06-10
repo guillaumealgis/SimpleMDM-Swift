@@ -13,6 +13,6 @@ public struct Device : Resource {
         return "devices"
     }
 
-    public let name: String
+    let name: String
 }
 

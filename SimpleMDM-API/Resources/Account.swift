@@ -13,6 +13,6 @@ public struct Account : UniqueResource {
         return "account"
     }
 
-    public let name: String
-    public let appleStoreCountryCode: String
+    let name: String
+    let appleStoreCountryCode: String
 }
