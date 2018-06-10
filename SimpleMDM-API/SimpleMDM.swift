@@ -27,9 +27,4 @@ public class SimpleMDM: NSObject {
     // MARK: Instance properties
 
     internal var networkController = NetworkController()
-
-    // Used for internal testing purposes only
-    internal func overrideNetworkController(networkController: NetworkController) {
-        self.networkController = networkController
-    }
 }
