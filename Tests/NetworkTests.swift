@@ -64,6 +64,17 @@ class NetworkTests: XCTestCase {
         }
     }
 
+    func testReturnErrorForNullMimeType() {
+        let mimeType: String? = nil
+        let session = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
+        let networkController = NetworkController(urlSession: session)
+        networkController.APIKey = "AVeryRandomTestAPIKey"
+
+        networkController.getUniqueResource(type: Account.self) { (result) in
+            XCTAssertEqual(result.error! as! NetworkError, NetworkError.unexpectedMimeType(mimeType))
+        }
+    }
+
     func testInvalidMimeTypeErrorHasHumanReadableDescription() {
         let mimeType = "text/html"
         let session = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
