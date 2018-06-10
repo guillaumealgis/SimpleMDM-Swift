@@ -1,0 +1,44 @@
+{
+  "data": {
+    "type": "app_group",
+    "id": 38,
+    "attributes": {
+      "name": "Productivity Apps",
+      "auto_deploy": false
+    },
+    "relationships": {
+      "apps": {
+        "data": [
+          {
+            "type": "app",
+            "id": 63
+          },
+          {
+            "type": "app",
+            "id": 67
+          }
+        ]
+      },
+      "device_groups": {
+        "data": [
+          {
+            "type": "device_group",
+            "id": 37
+          },
+          {
+            "type": "device_group",
+            "id": 38
+          }
+        ]
+      },
+      "devices": {
+        "data": [
+          {
+            "type": "device",
+            "id": 54
+          }
+        ]
+      }
+    }
+  }
+}

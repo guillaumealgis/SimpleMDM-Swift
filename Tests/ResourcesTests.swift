@@ -112,4 +112,26 @@ class ResourcesTests: XCTestCase {
         }
     }
 
+    func testGetAllAppGroups() {
+        let json = loadFixture("AppGroups")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        AppGroup.getAll { (result) in
+            let apps = result.value!
+            XCTAssertEqual(apps.count, 2)
+        }
+    }
+
+    func testGetAnAppGroup() {
+        let json = loadFixture("AppGroup_ProductivityApps")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        AppGroup.get(id: 38) { (result) in
+            let app = result.value!
+            XCTAssertEqual(app.name, "Productivity Apps")
+        }
+    }
+
 }
