@@ -1,0 +1,19 @@
+{
+  "data": {
+    "type": "custom_configuration_profile",
+    "id": 293814,
+    "attributes": {
+      "name": "Munki Configuration"
+    },
+    "relationships": {
+      "device_groups": {
+        "data": [
+          {
+            "type": "device group",
+            "id": 732444
+          }
+        ]
+      }
+    }
+  }
+}

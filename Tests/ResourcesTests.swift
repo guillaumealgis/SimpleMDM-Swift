@@ -170,4 +170,25 @@ class ResourcesTests: XCTestCase {
         }
     }
 
+    func testGetAllCustomConfigurationProfiles() {
+        let json = loadFixture("CustomConfigurationProfiles")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        CustomConfigurationProfile.getAll { (result) in
+            let customAttributes = result.value!
+            XCTAssertEqual(customAttributes.count, 3)
+        }
+    }
+
+    func testGetACustomConfigurationProfile() {
+        let json = loadFixture("CustomConfigurationProfile_MunkiConfiguration")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        CustomConfigurationProfile.get(id: 293814) { (result) in
+            let customAttribute = result.value!
+            XCTAssertEqual(customAttribute.name, "Munki Configuration")
+        }
+    }
 }

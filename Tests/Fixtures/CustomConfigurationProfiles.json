@@ -1,0 +1,55 @@
+{
+  "data": [
+    {
+      "type": "custom_configuration_profile",
+      "id": 293814,
+      "attributes": {
+        "name": "Munki Configuration"
+      },
+      "relationships": {
+        "device_groups": {
+          "data": [
+            {
+              "type": "device group",
+              "id": 732444
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "custom_configuration_profile",
+      "id": 43057,
+      "attributes": {
+        "name": "Wifi Configuration"
+      },
+      "relationships": {
+        "device_groups": {
+          "data": [
+            {
+              "type": "device group",
+              "id": 84357
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "custom_configuration_profile",
+      "id": 92634,
+      "attributes": {
+        "name": "Shared iPads Restrictions"
+      },
+      "relationships": {
+        "device_groups": {
+          "data": [
+            {
+              "type": "device group",
+              "id": 345963
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
