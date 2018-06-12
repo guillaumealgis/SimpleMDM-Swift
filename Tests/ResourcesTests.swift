@@ -68,6 +68,20 @@ class ResourcesTests: XCTestCase {
         }
     }
 
+    func testGetEmptyResourcesList() {
+        let json = """
+          {
+            "data": []
+          }
+        """.data(using: .utf8)
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        Device.getAll() { (result) in
+            XCTAssertEqual(result.value!.count, 0)
+        }
+    }
+
     func testGetAllDevices() {
         let json = loadFixture("Devices")
         let session = URLSessionMock(data: json, responseCode: 200)
