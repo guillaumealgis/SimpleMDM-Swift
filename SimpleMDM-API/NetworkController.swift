@@ -69,7 +69,7 @@ internal class NetworkController {
         getPayloadData(from: SimplePayload<R>.self, atURL: url, completion: completion)
     }
 
-    internal func getResource<R: Resource>(type: R.Type, withId id: Int, completion: @escaping CompletionClosure<R>) {
+    internal func getResource<R: Resource>(type: R.Type, withId id: R.Identifier, completion: @escaping CompletionClosure<R>) {
         let url = buildURL(for: type, withId: id)
         getPayloadData(from: SimplePayload<R>.self, atURL: url, completion: completion)
     }
@@ -99,11 +99,14 @@ internal class NetworkController {
         }
     }
 
-    private func buildURL(for type: GenericResource.Type, withId id: Int? = nil) -> URL {
-        var url = baseURL.appendingPathComponent(type.endpointName)
-        if let id = id {
-            url.appendPathComponent(String(id))
-        }
+    private func buildURL(for type: GenericResource.Type) -> URL {
+        let url = baseURL.appendingPathComponent(type.endpointName)
+        return url
+    }
+
+    private func buildURL<T: LosslessStringConvertible>(for type: GenericResource.Type, withId id: T) -> URL {
+        var url = buildURL(for: type)
+        url.appendPathComponent(String(id))
         return url
     }
 

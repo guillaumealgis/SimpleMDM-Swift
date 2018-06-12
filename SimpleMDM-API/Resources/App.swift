@@ -9,6 +9,7 @@
 import Foundation
 
 public struct App : Resource {
+    public typealias Identifier = Int
     public static var endpointName: String {
         return "apps"
     }
