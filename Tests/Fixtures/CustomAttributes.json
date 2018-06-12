@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "type": "custom_attribute",
+      "id": "email_address",
+      "attributes": {
+        "name": "email_address"
+      }
+    },
+    {
+      "type": "custom_attribute",
+      "id": "full_name",
+      "attributes": {
+        "name": "full_name"
+      }
+    }
+  ]
+}

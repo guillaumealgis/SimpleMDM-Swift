@@ -21,6 +21,9 @@
 		F06E9E9120CDE74B00D02395 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9E9020CDE74B00D02395 /* AppGroup.swift */; };
 		F06E9E9420CDE88700D02395 /* AppGroup_ProductivityApps.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9320CDE78800D02395 /* AppGroup_ProductivityApps.json */; };
 		F06E9E9520CDE88700D02395 /* AppGroups.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9220CDE78800D02395 /* AppGroups.json */; };
+		F06E9E9720D071FE00D02395 /* CustomAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9E9620D071FE00D02395 /* CustomAttribute.swift */; };
+		F06E9E9A20D076A900D02395 /* CustomAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9820D072B600D02395 /* CustomAttributes.json */; };
+		F06E9E9B20D076A900D02395 /* CustomAttribute_EmailAddress.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9920D072BF00D02395 /* CustomAttribute_EmailAddress.json */; };
 		F09488EB209F27AD00CA2CF3 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09488EA209F27AD00CA2CF3 /* Payload.swift */; };
 		F09AADD320CD8646004D8AC4 /* Account.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47320CD7CC900A34F56 /* Account.json */; };
 		F09AADD420CD8646004D8AC4 /* Devices.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47420CD7CD500A34F56 /* Devices.json */; };
@@ -73,6 +76,9 @@
 		F06E9E9020CDE74B00D02395 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		F06E9E9220CDE78800D02395 /* AppGroups.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AppGroups.json; sourceTree = "<group>"; };
 		F06E9E9320CDE78800D02395 /* AppGroup_ProductivityApps.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AppGroup_ProductivityApps.json; sourceTree = "<group>"; };
+		F06E9E9620D071FE00D02395 /* CustomAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAttribute.swift; sourceTree = "<group>"; };
+		F06E9E9820D072B600D02395 /* CustomAttributes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CustomAttributes.json; sourceTree = "<group>"; };
+		F06E9E9920D072BF00D02395 /* CustomAttribute_EmailAddress.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CustomAttribute_EmailAddress.json; sourceTree = "<group>"; };
 		F09488EA209F27AD00CA2CF3 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		F09AADD520CD92CF004D8AC4 /* DateFormatter+ISO8601.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+ISO8601.swift"; sourceTree = "<group>"; };
 		F09AADD720CDD272004D8AC4 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -110,6 +116,7 @@
 				F06CDAC2209DF233000D389E /* Account.swift */,
 				F09AADD720CDD272004D8AC4 /* App.swift */,
 				F06E9E9020CDE74B00D02395 /* AppGroup.swift */,
+				F06E9E9620D071FE00D02395 /* CustomAttribute.swift */,
 				F01FBE7020B4B6B300200CED /* Device.swift */,
 			);
 			path = Resources;
@@ -156,6 +163,8 @@
 				F06E9E9220CDE78800D02395 /* AppGroups.json */,
 				F06E9E8D20CDD39000D02395 /* Apps.json */,
 				F069B47120CD7CBA00A34F56 /* Device_MikesiPhone.json */,
+				F06E9E9820D072B600D02395 /* CustomAttributes.json */,
+				F06E9E9920D072BF00D02395 /* CustomAttribute_EmailAddress.json */,
 				F069B47420CD7CD500A34F56 /* Devices.json */,
 			);
 			path = Fixtures;
@@ -256,11 +265,13 @@
 			files = (
 				F06E9E8F20CDE5AB00D02395 /* Apps.json in Resources */,
 				F06E9E9420CDE88700D02395 /* AppGroup_ProductivityApps.json in Resources */,
+				F06E9E9B20D076A900D02395 /* CustomAttribute_EmailAddress.json in Resources */,
 				F069B47220CD7CBA00A34F56 /* Device_MikesiPhone.json in Resources */,
 				F06E9E9520CDE88700D02395 /* AppGroups.json in Resources */,
 				F09AADD420CD8646004D8AC4 /* Devices.json in Resources */,
 				F06E9E8E20CDE5AB00D02395 /* App_SimpleMDM.json in Resources */,
 				F09AADD320CD8646004D8AC4 /* Account.json in Resources */,
+				F06E9E9A20D076A900D02395 /* CustomAttributes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +285,7 @@
 				F06E9E9120CDE74B00D02395 /* AppGroup.swift in Sources */,
 				F09AADD620CD92CF004D8AC4 /* DateFormatter+ISO8601.swift in Sources */,
 				F01FBE6F20B4B39500200CED /* Error.swift in Sources */,
+				F06E9E9720D071FE00D02395 /* CustomAttribute.swift in Sources */,
 				F09488EB209F27AD00CA2CF3 /* Payload.swift in Sources */,
 				F09AADD820CDD272004D8AC4 /* App.swift in Sources */,
 				F0CD0AA020C5E37D00248134 /* URLSession.swift in Sources */,

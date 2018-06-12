@@ -148,4 +148,26 @@ class ResourcesTests: XCTestCase {
         }
     }
 
+    func testGetAllCustomAttributes() {
+        let json = loadFixture("CustomAttributes")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        CustomAttribute.getAll { (result) in
+            let customAttributes = result.value!
+            XCTAssertEqual(customAttributes.count, 2)
+        }
+    }
+
+    func testGetACustomAttribute() {
+        let json = loadFixture("CustomAttribute_EmailAddress")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        CustomAttribute.get(id: "email_address") { (result) in
+            let customAttribute = result.value!
+            XCTAssertEqual(customAttribute.name, "email_address")
+        }
+    }
+
 }

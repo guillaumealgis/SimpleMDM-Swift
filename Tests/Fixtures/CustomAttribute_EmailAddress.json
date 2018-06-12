@@ -1,0 +1,9 @@
+{
+  "data": {
+    "type": "custom_attribute",
+    "id": "email_address",
+    "attributes": {
+      "name": "email_address"
+    }
+  }
+}
