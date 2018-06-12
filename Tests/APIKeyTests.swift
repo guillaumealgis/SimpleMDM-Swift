@@ -11,6 +11,14 @@ import XCTest
 
 class APIKeyTests: XCTestCase {
 
+    func testSettingAPIKeyViaSingleton() {
+        let APIKey = "AVeryRandomTestAPIKey"
+        SimpleMDM.APIKey = APIKey
+
+        XCTAssertEqual(SimpleMDM.APIKey, APIKey)
+        XCTAssertEqual(SimpleMDM.shared.networkController.APIKey, APIKey)
+    }
+
     func testNotSettingAPIKeyReturnsError() {
         let session = URLSessionMock()
         let networkController = NetworkController(urlSession: session)
