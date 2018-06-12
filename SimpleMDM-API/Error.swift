@@ -51,5 +51,16 @@ public enum APIError : SimpleMDMError {
     case unknown(code: Int)
     case generic(code: Int, description: String)
     case doesNotExist
+
+    public var errorDescription: String? {
+        switch self {
+        case let .unknown(code):
+            return "Unknown API error (empty payload, HTTP response code was \(code)"
+        case let .generic(code, description):
+            return "Unexpected API error (\(code): \(description))"
+        case .doesNotExist:
+            return "The requested resource does not exist"
+        }
+    }
 }
 
