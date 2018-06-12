@@ -38,18 +38,6 @@ class ResourcesTests: XCTestCase {
         }
     }
 
-    func testGetAccount() {
-        let json = loadFixture("Account")
-        let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
-
-        Account.get { (result) in
-            let account = result.value!
-            XCTAssertEqual(account.name, "MyCompany")
-            XCTAssertEqual(account.appleStoreCountryCode, "US")
-        }
-    }
-
     func testGetUnexistentResource() {
         let json = """
           {
@@ -138,25 +126,15 @@ class ResourcesTests: XCTestCase {
         }
     }
 
-    func testGetAllDevices() {
-        let json = loadFixture("Devices")
+    func testGetAccount() {
+        let json = loadFixture("Account")
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        Device.getAll { (result) in
-            let devices = result.value!
-            XCTAssertEqual(devices.count, 2)
-        }
-    }
-
-    func testGetADevice() {
-        let json = loadFixture("Device_MikesiPhone")
-        let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
-
-        Device.get(id: 121) { (result) in
-            let device = result.value!
-            XCTAssertEqual(device.name, "Mike's iPhone")
+        Account.get { (result) in
+            let account = result.value!
+            XCTAssertEqual(account.name, "MyCompany")
+            XCTAssertEqual(account.appleStoreCountryCode, "US")
         }
     }
 
@@ -245,6 +223,28 @@ class ResourcesTests: XCTestCase {
         CustomConfigurationProfile.get(id: 293814) { (result) in
             let customAttribute = result.value!
             XCTAssertEqual(customAttribute.name, "Munki Configuration")
+        }
+    }
+
+    func testGetAllDevices() {
+        let json = loadFixture("Devices")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        Device.getAll { (result) in
+            let devices = result.value!
+            XCTAssertEqual(devices.count, 2)
+        }
+    }
+
+    func testGetADevice() {
+        let json = loadFixture("Device_MikesiPhone")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        Device.get(id: 121) { (result) in
+            let device = result.value!
+            XCTAssertEqual(device.name, "Mike's iPhone")
         }
     }
 }
