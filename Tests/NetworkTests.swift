@@ -87,4 +87,16 @@ class NetworkTests: XCTestCase {
         }
     }
 
+    func testNullMimeTypeErrorHasHumanReadableDescription() {
+        let mimeType: String? = nil
+        let session = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
+        let networkController = NetworkController(urlSession: session)
+        networkController.APIKey = "AVeryRandomTestAPIKey"
+
+        networkController.getUniqueResource(type: Account.self) { (result) in
+            let error = result.error! as! LocalizedError
+            XCTAssertTrue(error.localizedDescription.contains("null"))
+        }
+    }
+
 }

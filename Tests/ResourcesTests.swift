@@ -64,7 +64,63 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         Device.get(id: 0) { (result) in
-            XCTAssertEqual(result.error! as! APIError, APIError.doesNotExist)
+            let error = result.error! as! APIError
+            XCTAssertEqual(error, APIError.doesNotExist)
+            XCTAssertTrue(error.localizedDescription.contains("does not exist"))
+        }
+    }
+
+    func testUnexpectedServerResponseCodeWithNoErrorDescription() {
+        let errorCode = 500
+        let json = """
+          {
+            "errors": []
+          }
+        """.data(using: .utf8)
+        let session = URLSessionMock(data: json, responseCode: errorCode)
+        SimpleMDM.useSessionMock(session)
+
+        Account.get { (result) in
+            let error = result.error! as! APIError
+            XCTAssertEqual(error, APIError.unknown(code: errorCode))
+            XCTAssertTrue(error.localizedDescription.contains(String(errorCode)))
+        }
+    }
+
+    func testUnexpectedServerResponseCodeWithMalformedBody() {
+        let errorCode = 500
+        let json = """
+          {
+            "data": []
+          }
+        """.data(using: .utf8)
+        let session = URLSessionMock(data: json, responseCode: errorCode)
+        SimpleMDM.useSessionMock(session)
+
+        Account.get { (result) in
+            XCTAssertNoThrow(result.error! as! DecodingError)
+        }
+    }
+
+    func testUnexpectedServerError() {
+        let errorCode = 500
+        let errorMessage = "Internal Server Error"
+        let json = """
+          {
+            "errors": [
+              {
+                "title": "\(errorMessage)"
+              }
+            ]
+          }
+        """.data(using: .utf8)
+        let session = URLSessionMock(data: json, responseCode: errorCode)
+        SimpleMDM.useSessionMock(session)
+
+        Account.get { (result) in
+            let error = result.error! as! APIError
+            XCTAssertEqual(error, APIError.generic(code: errorCode, description: errorMessage))
+            XCTAssertTrue(error.localizedDescription.contains(errorMessage))
         }
     }
 
