@@ -28,6 +28,9 @@
 		F06E9EA020D07C2E00D02395 /* CustomConfigurationProfile_MunkiConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9E20D07B7200D02395 /* CustomConfigurationProfile_MunkiConfiguration.json */; };
 		F06E9EA120D07C2E00D02395 /* CustomConfigurationProfiles.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9F20D07B7200D02395 /* CustomConfigurationProfiles.json */; };
 		F06E9EA620D0829C00D02395 /* ResultTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9EA520D0829C00D02395 /* ResultTypeTests.swift */; };
+		F06E9EA820D085FA00D02395 /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9EA720D085F900D02395 /* DeviceGroup.swift */; };
+		F06E9EAB20D0869D00D02395 /* DeviceGroup_Executives.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9EA920D0862900D02395 /* DeviceGroup_Executives.json */; };
+		F06E9EAC20D0869D00D02395 /* DeviceGroups.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9EAA20D0862900D02395 /* DeviceGroups.json */; };
 		F09488EB209F27AD00CA2CF3 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09488EA209F27AD00CA2CF3 /* Payload.swift */; };
 		F09AADD320CD8646004D8AC4 /* Account.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47320CD7CC900A34F56 /* Account.json */; };
 		F09AADD420CD8646004D8AC4 /* Devices.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47420CD7CD500A34F56 /* Devices.json */; };
@@ -87,6 +90,9 @@
 		F06E9E9E20D07B7200D02395 /* CustomConfigurationProfile_MunkiConfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CustomConfigurationProfile_MunkiConfiguration.json; sourceTree = "<group>"; };
 		F06E9E9F20D07B7200D02395 /* CustomConfigurationProfiles.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CustomConfigurationProfiles.json; sourceTree = "<group>"; };
 		F06E9EA520D0829C00D02395 /* ResultTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTypeTests.swift; sourceTree = "<group>"; };
+		F06E9EA720D085F900D02395 /* DeviceGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceGroup.swift; sourceTree = "<group>"; };
+		F06E9EA920D0862900D02395 /* DeviceGroup_Executives.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DeviceGroup_Executives.json; sourceTree = "<group>"; };
+		F06E9EAA20D0862900D02395 /* DeviceGroups.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DeviceGroups.json; sourceTree = "<group>"; };
 		F09488EA209F27AD00CA2CF3 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		F09AADD520CD92CF004D8AC4 /* DateFormatter+ISO8601.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+ISO8601.swift"; sourceTree = "<group>"; };
 		F09AADD720CDD272004D8AC4 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -127,6 +133,7 @@
 				F06E9E9620D071FE00D02395 /* CustomAttribute.swift */,
 				F06E9E9C20D07B3F00D02395 /* CustomConfigurationProfile.swift */,
 				F01FBE7020B4B6B300200CED /* Device.swift */,
+				F06E9EA720D085F900D02395 /* DeviceGroup.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -177,6 +184,8 @@
 				F06E9E9F20D07B7200D02395 /* CustomConfigurationProfiles.json */,
 				F069B47120CD7CBA00A34F56 /* Device_MikesiPhone.json */,
 				F069B47420CD7CD500A34F56 /* Devices.json */,
+				F06E9EA920D0862900D02395 /* DeviceGroup_Executives.json */,
+				F06E9EAA20D0862900D02395 /* DeviceGroups.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -287,10 +296,12 @@
 				F06E9E9420CDE88700D02395 /* AppGroup_ProductivityApps.json in Resources */,
 				F06E9E9B20D076A900D02395 /* CustomAttribute_EmailAddress.json in Resources */,
 				F069B47220CD7CBA00A34F56 /* Device_MikesiPhone.json in Resources */,
+				F06E9EAB20D0869D00D02395 /* DeviceGroup_Executives.json in Resources */,
 				F06E9E9520CDE88700D02395 /* AppGroups.json in Resources */,
 				F09AADD420CD8646004D8AC4 /* Devices.json in Resources */,
 				F06E9E8E20CDE5AB00D02395 /* App_SimpleMDM.json in Resources */,
 				F09AADD320CD8646004D8AC4 /* Account.json in Resources */,
+				F06E9EAC20D0869D00D02395 /* DeviceGroups.json in Resources */,
 				F06E9E9A20D076A900D02395 /* CustomAttributes.json in Resources */,
 				F06E9EA020D07C2E00D02395 /* CustomConfigurationProfile_MunkiConfiguration.json in Resources */,
 				F06E9EA120D07C2E00D02395 /* CustomConfigurationProfiles.json in Resources */,
@@ -307,6 +318,7 @@
 				F06E9E9D20D07B3F00D02395 /* CustomConfigurationProfile.swift in Sources */,
 				F06E9E9120CDE74B00D02395 /* AppGroup.swift in Sources */,
 				F09AADD620CD92CF004D8AC4 /* DateFormatter+ISO8601.swift in Sources */,
+				F06E9EA820D085FA00D02395 /* DeviceGroup.swift in Sources */,
 				F01FBE6F20B4B39500200CED /* Error.swift in Sources */,
 				F06E9E9720D071FE00D02395 /* CustomAttribute.swift in Sources */,
 				F09488EB209F27AD00CA2CF3 /* Payload.swift in Sources */,

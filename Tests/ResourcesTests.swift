@@ -247,4 +247,26 @@ class ResourcesTests: XCTestCase {
             XCTAssertEqual(device.name, "Mike's iPhone")
         }
     }
+
+    func testGetAllDeviceGroups() {
+        let json = loadFixture("DeviceGroups")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        DeviceGroup.getAll { (result) in
+            let devices = result.value!
+            XCTAssertEqual(devices.count, 2)
+        }
+    }
+
+    func testGetADeviceGroup() {
+        let json = loadFixture("DeviceGroup_Executives")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        DeviceGroup.get(id: 38) { (result) in
+            let device = result.value!
+            XCTAssertEqual(device.name, "Executives")
+        }
+    }
 }
