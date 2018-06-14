@@ -29,7 +29,7 @@ internal protocol Payload: Decodable {
     func extractResource() -> ResourceType
 }
 
-internal struct SimplePayload<R: GenericResource>: Payload {
+internal struct SimplePayload<R: Resource>: Payload {
     typealias ResourceType = R
     let data: ResourcePayload<R>
 
@@ -38,7 +38,7 @@ internal struct SimplePayload<R: GenericResource>: Payload {
     }
 }
 
-internal struct ListPayload<R: GenericResource>: Payload {
+internal struct ListPayload<R: Resource>: Payload {
     typealias ResourceType = [R]
     let data: [ResourcePayload<R>]
 
@@ -47,7 +47,7 @@ internal struct ListPayload<R: GenericResource>: Payload {
     }
 }
 
-internal struct ResourcePayload<R: GenericResource>: Decodable {
+internal struct ResourcePayload<R: Resource>: Decodable {
     let type: String
     let attributes: R
 }

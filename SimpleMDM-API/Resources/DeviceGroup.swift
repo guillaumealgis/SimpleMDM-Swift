@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct DeviceGroup : Resource {
+public struct DeviceGroup : IdentifiableResource, ListableResource {
     public typealias Identifier = Int
     public static var endpointName: String {
         return "device_groups"
