@@ -1,5 +1,5 @@
 //
-//  DateFormatter+ISO8601.swift
+//  DateFormatter+CustomFormat.swift
 //  SimpleMDM-API
 //
 //  Created by Guillaume Algis on 10/06/2018.
