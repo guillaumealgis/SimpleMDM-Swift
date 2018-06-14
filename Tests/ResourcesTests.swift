@@ -280,4 +280,15 @@ class ResourcesTests: XCTestCase {
             XCTAssertEqual(installedApp.name, "Dropbox")
         }
     }
+
+    func testGetPushCertificate() {
+        let json = loadFixture("PushCertificate")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        PushCertificate.get { (result) in
+            let pushCertificate = result.value!
+            XCTAssertEqual(pushCertificate.appleId, "devops@example.org")
+        }
+    }
 }

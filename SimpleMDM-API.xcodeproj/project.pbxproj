@@ -35,6 +35,8 @@
 		F08410ED20D3221B00CE9480 /* DeviceGroup_Executives.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9EA920D0862900D02395 /* DeviceGroup_Executives.json */; };
 		F08410EE20D3221B00CE9480 /* DeviceGroups.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9EAA20D0862900D02395 /* DeviceGroups.json */; };
 		F08410F020D3223E00CE9480 /* InstalledApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410EF20D3223E00CE9480 /* InstalledApp.swift */; };
+		F08410F220D3232B00CE9480 /* PushCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410F120D3232B00CE9480 /* PushCertificate.swift */; };
+		F08410F420D3245200CE9480 /* PushCertificate.json in Resources */ = {isa = PBXBuildFile; fileRef = F08410F320D3238B00CE9480 /* PushCertificate.json */; };
 		F08410F620D325EA00CE9480 /* DateDecodingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410F520D325EA00CE9480 /* DateDecodingStrategy.swift */; };
 		F09488EB209F27AD00CA2CF3 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09488EA209F27AD00CA2CF3 /* Payload.swift */; };
 		F09AADD620CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */; };
@@ -98,6 +100,8 @@
 		F06E9EAA20D0862900D02395 /* DeviceGroups.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DeviceGroups.json; sourceTree = "<group>"; };
 		F08410DF20D3221800CE9480 /* InstalledApp_Dropbox.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InstalledApp_Dropbox.json; sourceTree = "<group>"; };
 		F08410EF20D3223E00CE9480 /* InstalledApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstalledApp.swift; sourceTree = "<group>"; };
+		F08410F120D3232B00CE9480 /* PushCertificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushCertificate.swift; sourceTree = "<group>"; };
+		F08410F320D3238B00CE9480 /* PushCertificate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PushCertificate.json; sourceTree = "<group>"; };
 		F08410F520D325EA00CE9480 /* DateDecodingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDecodingStrategy.swift; sourceTree = "<group>"; };
 		F09488EA209F27AD00CA2CF3 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+CustomFormat.swift"; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 				F01FBE7020B4B6B300200CED /* Device.swift */,
 				F06E9EA720D085F900D02395 /* DeviceGroup.swift */,
 				F08410EF20D3223E00CE9480 /* InstalledApp.swift */,
+				F08410F120D3232B00CE9480 /* PushCertificate.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 				F06E9EAA20D0862900D02395 /* DeviceGroups.json */,
 				F069B47420CD7CD500A34F56 /* Devices.json */,
 				F08410DF20D3221800CE9480 /* InstalledApp_Dropbox.json */,
+				F08410F320D3238B00CE9480 /* PushCertificate.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -306,6 +312,7 @@
 				F08410E420D3221B00CE9480 /* AppGroup_ProductivityApps.json in Resources */,
 				F08410EB20D3221B00CE9480 /* Device_MikesiPhone.json in Resources */,
 				F08410ED20D3221B00CE9480 /* DeviceGroup_Executives.json in Resources */,
+				F08410F420D3245200CE9480 /* PushCertificate.json in Resources */,
 				F08410E620D3221B00CE9480 /* Apps.json in Resources */,
 				F08410EA20D3221B00CE9480 /* CustomConfigurationProfiles.json in Resources */,
 				F08410E920D3221B00CE9480 /* CustomConfigurationProfile_MunkiConfiguration.json in Resources */,
@@ -328,6 +335,7 @@
 				F06E9E9D20D07B3F00D02395 /* CustomConfigurationProfile.swift in Sources */,
 				F06E9E9120CDE74B00D02395 /* AppGroup.swift in Sources */,
 				F09AADD620CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift in Sources */,
+				F08410F220D3232B00CE9480 /* PushCertificate.swift in Sources */,
 				F08410F620D325EA00CE9480 /* DateDecodingStrategy.swift in Sources */,
 				F06E9EA820D085FA00D02395 /* DeviceGroup.swift in Sources */,
 				F01FBE6F20B4B39500200CED /* Error.swift in Sources */,

@@ -1,0 +1,9 @@
+{
+  "data": {
+    "type": "push_certificate",
+    "attributes": {
+      "apple_id": "devops@example.org",
+      "expires_at": "2019-05-22T15:12:23+00:00"
+    }
+  }
+}
