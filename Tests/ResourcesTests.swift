@@ -269,4 +269,15 @@ class ResourcesTests: XCTestCase {
             XCTAssertEqual(device.name, "Executives")
         }
     }
+
+    func testGetAnInstalledApp() {
+        let json = loadFixture("InstalledApp_Dropbox")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        InstalledApp.get(id: 10446659) { (result) in
+            let installedApp = result.value!
+            XCTAssertEqual(installedApp.name, "Dropbox")
+        }
+    }
 }

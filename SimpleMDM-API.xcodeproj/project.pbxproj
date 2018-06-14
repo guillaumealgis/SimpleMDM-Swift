@@ -14,26 +14,28 @@
 		F063B3FE2098B44A00E2ECDA /* SimpleMDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */; };
 		F069B46D20CD75D900A34F56 /* ResourcesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F069B46C20CD75D900A34F56 /* ResourcesTests.swift */; };
 		F069B46F20CD76BA00A34F56 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F069B46E20CD76BA00A34F56 /* Utils.swift */; };
-		F069B47220CD7CBA00A34F56 /* Device_MikesiPhone.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47120CD7CBA00A34F56 /* Device_MikesiPhone.json */; };
 		F06CDAC3209DF233000D389E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CDAC2209DF233000D389E /* Account.swift */; };
-		F06E9E8E20CDE5AB00D02395 /* App_SimpleMDM.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E8C20CDD38F00D02395 /* App_SimpleMDM.json */; };
-		F06E9E8F20CDE5AB00D02395 /* Apps.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E8D20CDD39000D02395 /* Apps.json */; };
 		F06E9E9120CDE74B00D02395 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9E9020CDE74B00D02395 /* AppGroup.swift */; };
-		F06E9E9420CDE88700D02395 /* AppGroup_ProductivityApps.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9320CDE78800D02395 /* AppGroup_ProductivityApps.json */; };
-		F06E9E9520CDE88700D02395 /* AppGroups.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9220CDE78800D02395 /* AppGroups.json */; };
 		F06E9E9720D071FE00D02395 /* CustomAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9E9620D071FE00D02395 /* CustomAttribute.swift */; };
-		F06E9E9A20D076A900D02395 /* CustomAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9820D072B600D02395 /* CustomAttributes.json */; };
-		F06E9E9B20D076A900D02395 /* CustomAttribute_EmailAddress.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9920D072BF00D02395 /* CustomAttribute_EmailAddress.json */; };
 		F06E9E9D20D07B3F00D02395 /* CustomConfigurationProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9E9C20D07B3F00D02395 /* CustomConfigurationProfile.swift */; };
-		F06E9EA020D07C2E00D02395 /* CustomConfigurationProfile_MunkiConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9E20D07B7200D02395 /* CustomConfigurationProfile_MunkiConfiguration.json */; };
-		F06E9EA120D07C2E00D02395 /* CustomConfigurationProfiles.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9F20D07B7200D02395 /* CustomConfigurationProfiles.json */; };
 		F06E9EA620D0829C00D02395 /* ResultTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9EA520D0829C00D02395 /* ResultTypeTests.swift */; };
 		F06E9EA820D085FA00D02395 /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9EA720D085F900D02395 /* DeviceGroup.swift */; };
-		F06E9EAB20D0869D00D02395 /* DeviceGroup_Executives.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9EA920D0862900D02395 /* DeviceGroup_Executives.json */; };
-		F06E9EAC20D0869D00D02395 /* DeviceGroups.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9EAA20D0862900D02395 /* DeviceGroups.json */; };
+		F08410E120D3221B00CE9480 /* InstalledApp_Dropbox.json in Resources */ = {isa = PBXBuildFile; fileRef = F08410DF20D3221800CE9480 /* InstalledApp_Dropbox.json */; };
+		F08410E220D3221B00CE9480 /* Account.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47320CD7CC900A34F56 /* Account.json */; };
+		F08410E320D3221B00CE9480 /* App_SimpleMDM.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E8C20CDD38F00D02395 /* App_SimpleMDM.json */; };
+		F08410E420D3221B00CE9480 /* AppGroup_ProductivityApps.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9320CDE78800D02395 /* AppGroup_ProductivityApps.json */; };
+		F08410E520D3221B00CE9480 /* AppGroups.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9220CDE78800D02395 /* AppGroups.json */; };
+		F08410E620D3221B00CE9480 /* Apps.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E8D20CDD39000D02395 /* Apps.json */; };
+		F08410E720D3221B00CE9480 /* CustomAttribute_EmailAddress.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9920D072BF00D02395 /* CustomAttribute_EmailAddress.json */; };
+		F08410E820D3221B00CE9480 /* CustomAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9820D072B600D02395 /* CustomAttributes.json */; };
+		F08410E920D3221B00CE9480 /* CustomConfigurationProfile_MunkiConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9E20D07B7200D02395 /* CustomConfigurationProfile_MunkiConfiguration.json */; };
+		F08410EA20D3221B00CE9480 /* CustomConfigurationProfiles.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9F20D07B7200D02395 /* CustomConfigurationProfiles.json */; };
+		F08410EB20D3221B00CE9480 /* Device_MikesiPhone.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47120CD7CBA00A34F56 /* Device_MikesiPhone.json */; };
+		F08410EC20D3221B00CE9480 /* Devices.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47420CD7CD500A34F56 /* Devices.json */; };
+		F08410ED20D3221B00CE9480 /* DeviceGroup_Executives.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9EA920D0862900D02395 /* DeviceGroup_Executives.json */; };
+		F08410EE20D3221B00CE9480 /* DeviceGroups.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9EAA20D0862900D02395 /* DeviceGroups.json */; };
+		F08410F020D3223E00CE9480 /* InstalledApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410EF20D3223E00CE9480 /* InstalledApp.swift */; };
 		F09488EB209F27AD00CA2CF3 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09488EA209F27AD00CA2CF3 /* Payload.swift */; };
-		F09AADD320CD8646004D8AC4 /* Account.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47320CD7CC900A34F56 /* Account.json */; };
-		F09AADD420CD8646004D8AC4 /* Devices.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47420CD7CD500A34F56 /* Devices.json */; };
 		F09AADD620CD92CF004D8AC4 /* DateFormatter+ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AADD520CD92CF004D8AC4 /* DateFormatter+ISO8601.swift */; };
 		F09AADD820CDD272004D8AC4 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AADD720CDD272004D8AC4 /* App.swift */; };
 		F0CD0A9720C5E27C00248134 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9620C5E27C00248134 /* NetworkTests.swift */; };
@@ -93,6 +95,8 @@
 		F06E9EA720D085F900D02395 /* DeviceGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceGroup.swift; sourceTree = "<group>"; };
 		F06E9EA920D0862900D02395 /* DeviceGroup_Executives.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DeviceGroup_Executives.json; sourceTree = "<group>"; };
 		F06E9EAA20D0862900D02395 /* DeviceGroups.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DeviceGroups.json; sourceTree = "<group>"; };
+		F08410DF20D3221800CE9480 /* InstalledApp_Dropbox.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InstalledApp_Dropbox.json; sourceTree = "<group>"; };
+		F08410EF20D3223E00CE9480 /* InstalledApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstalledApp.swift; sourceTree = "<group>"; };
 		F09488EA209F27AD00CA2CF3 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		F09AADD520CD92CF004D8AC4 /* DateFormatter+ISO8601.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+ISO8601.swift"; sourceTree = "<group>"; };
 		F09AADD720CDD272004D8AC4 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 				F06E9E9C20D07B3F00D02395 /* CustomConfigurationProfile.swift */,
 				F01FBE7020B4B6B300200CED /* Device.swift */,
 				F06E9EA720D085F900D02395 /* DeviceGroup.swift */,
+				F08410EF20D3223E00CE9480 /* InstalledApp.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -183,9 +188,10 @@
 				F06E9E9E20D07B7200D02395 /* CustomConfigurationProfile_MunkiConfiguration.json */,
 				F06E9E9F20D07B7200D02395 /* CustomConfigurationProfiles.json */,
 				F069B47120CD7CBA00A34F56 /* Device_MikesiPhone.json */,
-				F069B47420CD7CD500A34F56 /* Devices.json */,
 				F06E9EA920D0862900D02395 /* DeviceGroup_Executives.json */,
 				F06E9EAA20D0862900D02395 /* DeviceGroups.json */,
+				F069B47420CD7CD500A34F56 /* Devices.json */,
+				F08410DF20D3221800CE9480 /* InstalledApp_Dropbox.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -292,19 +298,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F06E9E8F20CDE5AB00D02395 /* Apps.json in Resources */,
-				F06E9E9420CDE88700D02395 /* AppGroup_ProductivityApps.json in Resources */,
-				F06E9E9B20D076A900D02395 /* CustomAttribute_EmailAddress.json in Resources */,
-				F069B47220CD7CBA00A34F56 /* Device_MikesiPhone.json in Resources */,
-				F06E9EAB20D0869D00D02395 /* DeviceGroup_Executives.json in Resources */,
-				F06E9E9520CDE88700D02395 /* AppGroups.json in Resources */,
-				F09AADD420CD8646004D8AC4 /* Devices.json in Resources */,
-				F06E9E8E20CDE5AB00D02395 /* App_SimpleMDM.json in Resources */,
-				F09AADD320CD8646004D8AC4 /* Account.json in Resources */,
-				F06E9EAC20D0869D00D02395 /* DeviceGroups.json in Resources */,
-				F06E9E9A20D076A900D02395 /* CustomAttributes.json in Resources */,
-				F06E9EA020D07C2E00D02395 /* CustomConfigurationProfile_MunkiConfiguration.json in Resources */,
-				F06E9EA120D07C2E00D02395 /* CustomConfigurationProfiles.json in Resources */,
+				F08410E520D3221B00CE9480 /* AppGroups.json in Resources */,
+				F08410E320D3221B00CE9480 /* App_SimpleMDM.json in Resources */,
+				F08410E420D3221B00CE9480 /* AppGroup_ProductivityApps.json in Resources */,
+				F08410EB20D3221B00CE9480 /* Device_MikesiPhone.json in Resources */,
+				F08410ED20D3221B00CE9480 /* DeviceGroup_Executives.json in Resources */,
+				F08410E620D3221B00CE9480 /* Apps.json in Resources */,
+				F08410EA20D3221B00CE9480 /* CustomConfigurationProfiles.json in Resources */,
+				F08410E920D3221B00CE9480 /* CustomConfigurationProfile_MunkiConfiguration.json in Resources */,
+				F08410EC20D3221B00CE9480 /* Devices.json in Resources */,
+				F08410E120D3221B00CE9480 /* InstalledApp_Dropbox.json in Resources */,
+				F08410E720D3221B00CE9480 /* CustomAttribute_EmailAddress.json in Resources */,
+				F08410E220D3221B00CE9480 /* Account.json in Resources */,
+				F08410E820D3221B00CE9480 /* CustomAttributes.json in Resources */,
+				F08410EE20D3221B00CE9480 /* DeviceGroups.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +336,7 @@
 				F06CDAC3209DF233000D389E /* Account.swift in Sources */,
 				F01FBE7120B4B6B300200CED /* Device.swift in Sources */,
 				F01FBE7620B4BF1B00200CED /* Resource.swift in Sources */,
+				F08410F020D3223E00CE9480 /* InstalledApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

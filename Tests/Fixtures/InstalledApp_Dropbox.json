@@ -1,0 +1,16 @@
+{
+  "data": {
+    "type": "installed_app",
+    "id": 10446659,
+    "attributes": {
+      "name": "Dropbox",
+      "identifier": "com.getdropbox.Dropbox",
+      "version": "100.2.2",
+      "short_version": "100.2",
+      "bundle_size": 209227776,
+      "dynamic_size": 532480,
+      "managed": true,
+      "discovered_at": "2016-11-17 16:57:16 +0100"
+    }
+  }
+}
