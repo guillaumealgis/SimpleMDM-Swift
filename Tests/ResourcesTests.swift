@@ -126,6 +126,26 @@ class ResourcesTests: XCTestCase {
         }
     }
 
+    func testInvalidDateFormat() {
+        let json = """
+          {
+            "data": {
+              "type": "push_certificate",
+              "attributes": {
+                "apple_id": "invalid-date@example.org",
+                "expires_at": "2019-05-22T15:12:23.344+00:00"
+              }
+            }
+          }
+        """.data(using: .utf8)
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        PushCertificate.get { (result) in
+            XCTAssertNoThrow(result.error! as! DecodingError)
+        }
+    }
+
     func testGetAccount() {
         let json = loadFixture("Account")
         let session = URLSessionMock(data: json, responseCode: 200)
