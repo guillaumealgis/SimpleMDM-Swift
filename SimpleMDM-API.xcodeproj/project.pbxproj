@@ -106,7 +106,7 @@
 		F09488EA209F27AD00CA2CF3 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+CustomFormat.swift"; sourceTree = "<group>"; };
 		F09AADD720CDD272004D8AC4 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		F0CD0A9420C5E27C00248134 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0CD0A9420C5E27C00248134 /* libSimpleMDM-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "libSimpleMDM-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0CD0A9620C5E27C00248134 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 		F0CD0A9820C5E27C00248134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0CD0A9F20C5E37D00248134 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				F063B3FA2098B44A00E2ECDA /* libSimpleMDM.a */,
-				F0CD0A9420C5E27C00248134 /* Tests.xctest */,
+				F0CD0A9420C5E27C00248134 /* libSimpleMDM-iOS-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -231,9 +231,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F063B3F92098B44A00E2ECDA /* SimpleMDM-API */ = {
+		F063B3F92098B44A00E2ECDA /* libSimpleMDM-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F063B4012098B44A00E2ECDA /* Build configuration list for PBXNativeTarget "SimpleMDM-API" */;
+			buildConfigurationList = F063B4012098B44A00E2ECDA /* Build configuration list for PBXNativeTarget "libSimpleMDM-iOS" */;
 			buildPhases = (
 				F063B3F62098B44A00E2ECDA /* Sources */,
 				F063B3F72098B44A00E2ECDA /* Frameworks */,
@@ -243,14 +243,14 @@
 			);
 			dependencies = (
 			);
-			name = "SimpleMDM-API";
+			name = "libSimpleMDM-iOS";
 			productName = "SimpleMDM-API";
 			productReference = F063B3FA2098B44A00E2ECDA /* libSimpleMDM.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		F0CD0A9320C5E27C00248134 /* Tests */ = {
+		F0CD0A9320C5E27C00248134 /* libSimpleMDM-iOS-Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F0CD0A9E20C5E27C00248134 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildConfigurationList = F0CD0A9E20C5E27C00248134 /* Build configuration list for PBXNativeTarget "libSimpleMDM-iOS-Tests" */;
 			buildPhases = (
 				F0CD0A9020C5E27C00248134 /* Sources */,
 				F0CD0A9120C5E27C00248134 /* Frameworks */,
@@ -261,9 +261,9 @@
 			dependencies = (
 				F0CD0A9B20C5E27C00248134 /* PBXTargetDependency */,
 			);
-			name = Tests;
+			name = "libSimpleMDM-iOS-Tests";
 			productName = Tests;
-			productReference = F0CD0A9420C5E27C00248134 /* Tests.xctest */;
+			productReference = F0CD0A9420C5E27C00248134 /* libSimpleMDM-iOS-Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -296,8 +296,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F063B3F92098B44A00E2ECDA /* SimpleMDM-API */,
-				F0CD0A9320C5E27C00248134 /* Tests */,
+				F063B3F92098B44A00E2ECDA /* libSimpleMDM-iOS */,
+				F0CD0A9320C5E27C00248134 /* libSimpleMDM-iOS-Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -370,7 +370,7 @@
 /* Begin PBXTargetDependency section */
 		F0CD0A9B20C5E27C00248134 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F063B3F92098B44A00E2ECDA /* SimpleMDM-API */;
+			target = F063B3F92098B44A00E2ECDA /* libSimpleMDM-iOS */;
 			targetProxy = F0CD0A9A20C5E27C00248134 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -566,7 +566,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F063B4012098B44A00E2ECDA /* Build configuration list for PBXNativeTarget "SimpleMDM-API" */ = {
+		F063B4012098B44A00E2ECDA /* Build configuration list for PBXNativeTarget "libSimpleMDM-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F063B4022098B44A00E2ECDA /* Debug */,
@@ -575,7 +575,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F0CD0A9E20C5E27C00248134 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+		F0CD0A9E20C5E27C00248134 /* Build configuration list for PBXNativeTarget "libSimpleMDM-iOS-Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F0CD0A9C20C5E27C00248134 /* Debug */,
