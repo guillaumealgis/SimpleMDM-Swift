@@ -153,7 +153,7 @@
 		F063B3F12098B44A00E2ECDA = {
 			isa = PBXGroup;
 			children = (
-				F063B3FC2098B44A00E2ECDA /* SimpleMDM-API */,
+				F063B3FC2098B44A00E2ECDA /* Sources */,
 				F0CD0A9520C5E27C00248134 /* Tests */,
 				F063B3FB2098B44A00E2ECDA /* Products */,
 			);
@@ -168,7 +168,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F063B3FC2098B44A00E2ECDA /* SimpleMDM-API */ = {
+		F063B3FC2098B44A00E2ECDA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */,
@@ -180,7 +180,7 @@
 				F08410F520D325EA00CE9480 /* DateDecodingStrategy.swift */,
 				F01FBE7420B4BEF400200CED /* Resources */,
 			);
-			path = "SimpleMDM-API";
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		F069B47020CD7C9F00A34F56 /* Fixtures */ = {
