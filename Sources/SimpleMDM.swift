@@ -26,5 +26,7 @@ public class SimpleMDM: NSObject {
 
     // MARK: Instance properties
 
+    private override init() {}
+
     internal var networkController = NetworkController()
 }
