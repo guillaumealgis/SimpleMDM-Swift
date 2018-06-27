@@ -7,123 +7,63 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F01FBE6F20B4B39500200CED /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE6E20B4B39500200CED /* Error.swift */; };
-		F01FBE7120B4B6B300200CED /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7020B4B6B300200CED /* Device.swift */; };
-		F01FBE7320B4BEEB00200CED /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7220B4BEEB00200CED /* NetworkController.swift */; };
-		F01FBE7620B4BF1B00200CED /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7520B4BF1B00200CED /* Resource.swift */; };
-		F062C3C320D9BF5500ABA853 /* SimpleMDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */; };
-		F062C3C420D9BF5500ABA853 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7220B4BEEB00200CED /* NetworkController.swift */; };
-		F062C3C520D9BF5500ABA853 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09488EA209F27AD00CA2CF3 /* Payload.swift */; };
-		F062C3C620D9BF5500ABA853 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE6E20B4B39500200CED /* Error.swift */; };
-		F062C3C720D9BF5500ABA853 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9F20C5E37D00248134 /* URLSession.swift */; };
-		F062C3C820D9BF5500ABA853 /* DateFormatter+CustomFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */; };
-		F062C3C920D9BF5500ABA853 /* DateDecodingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410F520D325EA00CE9480 /* DateDecodingStrategy.swift */; };
-		F062C3CA20D9BF5500ABA853 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7520B4BF1B00200CED /* Resource.swift */; };
-		F062C3CB20D9BF5500ABA853 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CDAC2209DF233000D389E /* Account.swift */; };
-		F062C3CC20D9BF5500ABA853 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AADD720CDD272004D8AC4 /* App.swift */; };
-		F062C3CD20D9BF5500ABA853 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9E9020CDE74B00D02395 /* AppGroup.swift */; };
-		F062C3CE20D9BF5500ABA853 /* CustomAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9E9620D071FE00D02395 /* CustomAttribute.swift */; };
-		F062C3CF20D9BF5500ABA853 /* CustomConfigurationProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9E9C20D07B3F00D02395 /* CustomConfigurationProfile.swift */; };
-		F062C3D020D9BF5500ABA853 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7020B4B6B300200CED /* Device.swift */; };
-		F062C3D120D9BF5500ABA853 /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9EA720D085F900D02395 /* DeviceGroup.swift */; };
-		F062C3D220D9BF5500ABA853 /* InstalledApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410EF20D3223E00CE9480 /* InstalledApp.swift */; };
-		F062C3D320D9BF5500ABA853 /* PushCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410F120D3232B00CE9480 /* PushCertificate.swift */; };
-		F062C3DE20D9C3AC00ABA853 /* libSimpleMDM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F062C39520D9BE3000ABA853 /* libSimpleMDM.a */; };
-		F062C3E420D9C41000ABA853 /* ResultTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9EA520D0829C00D02395 /* ResultTypeTests.swift */; };
-		F062C3E520D9C41000ABA853 /* APIKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0AA120C5E7AF00248134 /* APIKeyTests.swift */; };
-		F062C3E620D9C41000ABA853 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9620C5E27C00248134 /* NetworkTests.swift */; };
-		F062C3E720D9C41000ABA853 /* ResourcesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F069B46C20CD75D900A34F56 /* ResourcesTests.swift */; };
-		F062C3E820D9C41400ABA853 /* Account.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47320CD7CC900A34F56 /* Account.json */; };
-		F062C3E920D9C41400ABA853 /* App_SimpleMDM.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E8C20CDD38F00D02395 /* App_SimpleMDM.json */; };
-		F062C3EA20D9C41500ABA853 /* AppGroup_ProductivityApps.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9320CDE78800D02395 /* AppGroup_ProductivityApps.json */; };
-		F062C3EB20D9C41500ABA853 /* AppGroups.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9220CDE78800D02395 /* AppGroups.json */; };
-		F062C3EC20D9C41500ABA853 /* Apps.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E8D20CDD39000D02395 /* Apps.json */; };
-		F062C3ED20D9C41500ABA853 /* CustomAttribute_EmailAddress.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9920D072BF00D02395 /* CustomAttribute_EmailAddress.json */; };
-		F062C3EE20D9C41500ABA853 /* CustomAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9820D072B600D02395 /* CustomAttributes.json */; };
-		F062C3EF20D9C41500ABA853 /* CustomConfigurationProfile_MunkiConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9E20D07B7200D02395 /* CustomConfigurationProfile_MunkiConfiguration.json */; };
-		F062C3F020D9C41500ABA853 /* CustomConfigurationProfiles.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9F20D07B7200D02395 /* CustomConfigurationProfiles.json */; };
-		F062C3F120D9C41500ABA853 /* Device_MikesiPhone.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47120CD7CBA00A34F56 /* Device_MikesiPhone.json */; };
-		F062C3F220D9C41500ABA853 /* DeviceGroup_Executives.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9EA920D0862900D02395 /* DeviceGroup_Executives.json */; };
-		F062C3F320D9C41500ABA853 /* DeviceGroups.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9EAA20D0862900D02395 /* DeviceGroups.json */; };
-		F062C3F420D9C41500ABA853 /* Devices.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47420CD7CD500A34F56 /* Devices.json */; };
-		F062C3F520D9C41500ABA853 /* InstalledApp_Dropbox.json in Resources */ = {isa = PBXBuildFile; fileRef = F08410DF20D3221800CE9480 /* InstalledApp_Dropbox.json */; };
-		F062C3F620D9C41500ABA853 /* PushCertificate.json in Resources */ = {isa = PBXBuildFile; fileRef = F08410F320D3238B00CE9480 /* PushCertificate.json */; };
-		F062C3F720D9C41700ABA853 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F069B46E20CD76BA00A34F56 /* Utils.swift */; };
-		F062C3F820D9C41700ABA853 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0AA320C5E9C400248134 /* URLSessionMock.swift */; };
-		F063B3FE2098B44A00E2ECDA /* SimpleMDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */; };
-		F069B46D20CD75D900A34F56 /* ResourcesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F069B46C20CD75D900A34F56 /* ResourcesTests.swift */; };
-		F069B46F20CD76BA00A34F56 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F069B46E20CD76BA00A34F56 /* Utils.swift */; };
-		F06CDAC3209DF233000D389E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CDAC2209DF233000D389E /* Account.swift */; };
-		F06E9E9120CDE74B00D02395 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9E9020CDE74B00D02395 /* AppGroup.swift */; };
-		F06E9E9720D071FE00D02395 /* CustomAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9E9620D071FE00D02395 /* CustomAttribute.swift */; };
-		F06E9E9D20D07B3F00D02395 /* CustomConfigurationProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9E9C20D07B3F00D02395 /* CustomConfigurationProfile.swift */; };
-		F06E9EA620D0829C00D02395 /* ResultTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9EA520D0829C00D02395 /* ResultTypeTests.swift */; };
-		F06E9EA820D085FA00D02395 /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9EA720D085F900D02395 /* DeviceGroup.swift */; };
-		F08410E120D3221B00CE9480 /* InstalledApp_Dropbox.json in Resources */ = {isa = PBXBuildFile; fileRef = F08410DF20D3221800CE9480 /* InstalledApp_Dropbox.json */; };
-		F08410E220D3221B00CE9480 /* Account.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47320CD7CC900A34F56 /* Account.json */; };
-		F08410E320D3221B00CE9480 /* App_SimpleMDM.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E8C20CDD38F00D02395 /* App_SimpleMDM.json */; };
-		F08410E420D3221B00CE9480 /* AppGroup_ProductivityApps.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9320CDE78800D02395 /* AppGroup_ProductivityApps.json */; };
-		F08410E520D3221B00CE9480 /* AppGroups.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9220CDE78800D02395 /* AppGroups.json */; };
-		F08410E620D3221B00CE9480 /* Apps.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E8D20CDD39000D02395 /* Apps.json */; };
-		F08410E720D3221B00CE9480 /* CustomAttribute_EmailAddress.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9920D072BF00D02395 /* CustomAttribute_EmailAddress.json */; };
-		F08410E820D3221B00CE9480 /* CustomAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9820D072B600D02395 /* CustomAttributes.json */; };
-		F08410E920D3221B00CE9480 /* CustomConfigurationProfile_MunkiConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9E20D07B7200D02395 /* CustomConfigurationProfile_MunkiConfiguration.json */; };
-		F08410EA20D3221B00CE9480 /* CustomConfigurationProfiles.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9F20D07B7200D02395 /* CustomConfigurationProfiles.json */; };
-		F08410EB20D3221B00CE9480 /* Device_MikesiPhone.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47120CD7CBA00A34F56 /* Device_MikesiPhone.json */; };
-		F08410EC20D3221B00CE9480 /* Devices.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47420CD7CD500A34F56 /* Devices.json */; };
-		F08410ED20D3221B00CE9480 /* DeviceGroup_Executives.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9EA920D0862900D02395 /* DeviceGroup_Executives.json */; };
-		F08410EE20D3221B00CE9480 /* DeviceGroups.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9EAA20D0862900D02395 /* DeviceGroups.json */; };
-		F08410F020D3223E00CE9480 /* InstalledApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410EF20D3223E00CE9480 /* InstalledApp.swift */; };
-		F08410F220D3232B00CE9480 /* PushCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410F120D3232B00CE9480 /* PushCertificate.swift */; };
-		F08410F420D3245200CE9480 /* PushCertificate.json in Resources */ = {isa = PBXBuildFile; fileRef = F08410F320D3238B00CE9480 /* PushCertificate.json */; };
-		F08410F620D325EA00CE9480 /* DateDecodingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410F520D325EA00CE9480 /* DateDecodingStrategy.swift */; };
-		F09488EB209F27AD00CA2CF3 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09488EA209F27AD00CA2CF3 /* Payload.swift */; };
-		F09AADD620CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */; };
-		F09AADD820CDD272004D8AC4 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AADD720CDD272004D8AC4 /* App.swift */; };
-		F0CD0A9720C5E27C00248134 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9620C5E27C00248134 /* NetworkTests.swift */; };
-		F0CD0A9920C5E27C00248134 /* libSimpleMDM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F063B3FA2098B44A00E2ECDA /* libSimpleMDM.a */; };
-		F0CD0AA020C5E37D00248134 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9F20C5E37D00248134 /* URLSession.swift */; };
-		F0CD0AA220C5E7AF00248134 /* APIKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0AA120C5E7AF00248134 /* APIKeyTests.swift */; };
-		F0CD0AA420C5E9C400248134 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0AA320C5E9C400248134 /* URLSessionMock.swift */; };
+		F0AA1FC320DEEFB6003781DF /* SimpleMDM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AA1FBA20DEEFB5003781DF /* SimpleMDM.framework */; };
+		F0AA1FCA20DEEFB6003781DF /* SimpleMDM.h in Headers */ = {isa = PBXBuildFile; fileRef = F0AA1FBC20DEEFB5003781DF /* SimpleMDM.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F0D9F2AA20DEF3C10081081C /* Account.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47320CD7CC900A34F56 /* Account.json */; };
+		F0D9F2AB20DEF3C10081081C /* App_SimpleMDM.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E8C20CDD38F00D02395 /* App_SimpleMDM.json */; };
+		F0D9F2AC20DEF3C10081081C /* AppGroup_ProductivityApps.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9320CDE78800D02395 /* AppGroup_ProductivityApps.json */; };
+		F0D9F2AD20DEF3C10081081C /* AppGroups.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9220CDE78800D02395 /* AppGroups.json */; };
+		F0D9F2AE20DEF3C10081081C /* Apps.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E8D20CDD39000D02395 /* Apps.json */; };
+		F0D9F2AF20DEF3C10081081C /* CustomAttribute_EmailAddress.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9920D072BF00D02395 /* CustomAttribute_EmailAddress.json */; };
+		F0D9F2B020DEF3C10081081C /* CustomAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9820D072B600D02395 /* CustomAttributes.json */; };
+		F0D9F2B120DEF3C10081081C /* CustomConfigurationProfile_MunkiConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9E20D07B7200D02395 /* CustomConfigurationProfile_MunkiConfiguration.json */; };
+		F0D9F2B220DEF3C10081081C /* CustomConfigurationProfiles.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9F20D07B7200D02395 /* CustomConfigurationProfiles.json */; };
+		F0D9F2B320DEF3C10081081C /* Device_MikesiPhone.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47120CD7CBA00A34F56 /* Device_MikesiPhone.json */; };
+		F0D9F2B420DEF3C10081081C /* DeviceGroup_Executives.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9EA920D0862900D02395 /* DeviceGroup_Executives.json */; };
+		F0D9F2B520DEF3C10081081C /* DeviceGroups.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9EAA20D0862900D02395 /* DeviceGroups.json */; };
+		F0D9F2B620DEF3C10081081C /* Devices.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47420CD7CD500A34F56 /* Devices.json */; };
+		F0D9F2B720DEF3C10081081C /* InstalledApp_Dropbox.json in Resources */ = {isa = PBXBuildFile; fileRef = F08410DF20D3221800CE9480 /* InstalledApp_Dropbox.json */; };
+		F0D9F2B820DEF3C10081081C /* PushCertificate.json in Resources */ = {isa = PBXBuildFile; fileRef = F08410F320D3238B00CE9480 /* PushCertificate.json */; };
+		F0D9F2B920DEF3CB0081081C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F069B46E20CD76BA00A34F56 /* Utils.swift */; };
+		F0D9F2BA20DEF3CB0081081C /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0AA320C5E9C400248134 /* URLSessionMock.swift */; };
+		F0D9F2BB20DEF3CB0081081C /* ResultTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9EA520D0829C00D02395 /* ResultTypeTests.swift */; };
+		F0D9F2BC20DEF3CB0081081C /* APIKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0AA120C5E7AF00248134 /* APIKeyTests.swift */; };
+		F0D9F2BD20DEF3CB0081081C /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9620C5E27C00248134 /* NetworkTests.swift */; };
+		F0D9F2BE20DEF3CB0081081C /* ResourcesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F069B46C20CD75D900A34F56 /* ResourcesTests.swift */; };
+		F0D9F2BF20DEF3D00081081C /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7520B4BF1B00200CED /* Resource.swift */; };
+		F0D9F2C020DEF3D00081081C /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CDAC2209DF233000D389E /* Account.swift */; };
+		F0D9F2C120DEF3D00081081C /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AADD720CDD272004D8AC4 /* App.swift */; };
+		F0D9F2C220DEF3D00081081C /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9E9020CDE74B00D02395 /* AppGroup.swift */; };
+		F0D9F2C320DEF3D00081081C /* CustomAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9E9620D071FE00D02395 /* CustomAttribute.swift */; };
+		F0D9F2C420DEF3D00081081C /* CustomConfigurationProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9E9C20D07B3F00D02395 /* CustomConfigurationProfile.swift */; };
+		F0D9F2C520DEF3D00081081C /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7020B4B6B300200CED /* Device.swift */; };
+		F0D9F2C620DEF3D00081081C /* DeviceGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9EA720D085F900D02395 /* DeviceGroup.swift */; };
+		F0D9F2C720DEF3D00081081C /* InstalledApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410EF20D3223E00CE9480 /* InstalledApp.swift */; };
+		F0D9F2C820DEF3D00081081C /* PushCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410F120D3232B00CE9480 /* PushCertificate.swift */; };
+		F0D9F2C920DEF3D50081081C /* SimpleMDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */; };
+		F0D9F2CA20DEF3D50081081C /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7220B4BEEB00200CED /* NetworkController.swift */; };
+		F0D9F2CB20DEF3D50081081C /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09488EA209F27AD00CA2CF3 /* Payload.swift */; };
+		F0D9F2CC20DEF3D50081081C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE6E20B4B39500200CED /* Error.swift */; };
+		F0D9F2CD20DEF3D50081081C /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9F20C5E37D00248134 /* URLSession.swift */; };
+		F0D9F2CE20DEF3D50081081C /* DateFormatter+CustomFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */; };
+		F0D9F2CF20DEF3D50081081C /* DateDecodingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410F520D325EA00CE9480 /* DateDecodingStrategy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F062C3DF20D9C3AC00ABA853 /* PBXContainerItemProxy */ = {
+		F0AA1FC420DEEFB6003781DF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F063B3F22098B44A00E2ECDA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F062C39420D9BE3000ABA853;
-			remoteInfo = "libSimpleMDM-macOS";
-		};
-		F0CD0A9A20C5E27C00248134 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F063B3F22098B44A00E2ECDA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F063B3F92098B44A00E2ECDA;
-			remoteInfo = "SimpleMDM-API";
+			remoteGlobalIDString = F0AA1FB920DEEFB5003781DF;
+			remoteInfo = SimpleMDM;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		F063B3F82098B44A00E2ECDA /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F01FBE6E20B4B39500200CED /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		F01FBE7020B4B6B300200CED /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		F01FBE7220B4BEEB00200CED /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		F01FBE7520B4BF1B00200CED /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
-		F062C39520D9BE3000ABA853 /* libSimpleMDM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSimpleMDM.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F062C3D920D9C3AC00ABA853 /* libSimpleMDM-macOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "libSimpleMDM-macOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F063B3FA2098B44A00E2ECDA /* libSimpleMDM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSimpleMDM.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMDM.swift; sourceTree = "<group>"; };
 		F069B46C20CD75D900A34F56 /* ResourcesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesTests.swift; sourceTree = "<group>"; };
 		F069B46E20CD76BA00A34F56 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -151,10 +91,14 @@
 		F08410F120D3232B00CE9480 /* PushCertificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushCertificate.swift; sourceTree = "<group>"; };
 		F08410F320D3238B00CE9480 /* PushCertificate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PushCertificate.json; sourceTree = "<group>"; };
 		F08410F520D325EA00CE9480 /* DateDecodingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDecodingStrategy.swift; sourceTree = "<group>"; };
+		F0888ABC20DEFDFE00CF5906 /* SimpleMDM.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SimpleMDM.xcconfig; sourceTree = "<group>"; };
 		F09488EA209F27AD00CA2CF3 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+CustomFormat.swift"; sourceTree = "<group>"; };
 		F09AADD720CDD272004D8AC4 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		F0CD0A9420C5E27C00248134 /* libSimpleMDM-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "libSimpleMDM-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0AA1FBA20DEEFB5003781DF /* SimpleMDM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleMDM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0AA1FBC20DEEFB5003781DF /* SimpleMDM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleMDM.h; sourceTree = "<group>"; };
+		F0AA1FBD20DEEFB5003781DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0AA1FC220DEEFB6003781DF /* SimpleMDMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleMDMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0CD0A9620C5E27C00248134 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 		F0CD0A9820C5E27C00248134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0CD0A9F20C5E37D00248134 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
@@ -163,33 +107,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F062C39220D9BE3000ABA853 /* Frameworks */ = {
+		F0AA1FB720DEEFB5003781DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F062C3D620D9C3AC00ABA853 /* Frameworks */ = {
+		F0AA1FBF20DEEFB6003781DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F062C3DE20D9C3AC00ABA853 /* libSimpleMDM.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F063B3F72098B44A00E2ECDA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F0CD0A9120C5E27C00248134 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F0CD0A9920C5E27C00248134 /* libSimpleMDM.a in Frameworks */,
+				F0AA1FC320DEEFB6003781DF /* SimpleMDM.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +152,7 @@
 		F063B3F12098B44A00E2ECDA = {
 			isa = PBXGroup;
 			children = (
+				F0888ABC20DEFDFE00CF5906 /* SimpleMDM.xcconfig */,
 				F063B3FC2098B44A00E2ECDA /* Sources */,
 				F0CD0A9520C5E27C00248134 /* Tests */,
 				F063B3FB2098B44A00E2ECDA /* Products */,
@@ -233,10 +163,8 @@
 		F063B3FB2098B44A00E2ECDA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F063B3FA2098B44A00E2ECDA /* libSimpleMDM.a */,
-				F0CD0A9420C5E27C00248134 /* libSimpleMDM-iOS-Tests.xctest */,
-				F062C39520D9BE3000ABA853 /* libSimpleMDM.a */,
-				F062C3D920D9C3AC00ABA853 /* libSimpleMDM-macOS-Tests.xctest */,
+				F0AA1FBA20DEEFB5003781DF /* SimpleMDM.framework */,
+				F0AA1FC220DEEFB6003781DF /* SimpleMDMTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,6 +172,7 @@
 		F063B3FC2098B44A00E2ECDA /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				F0AA1FBC20DEEFB5003781DF /* SimpleMDM.h */,
 				F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */,
 				F01FBE7220B4BEEB00200CED /* NetworkController.swift */,
 				F09488EA209F27AD00CA2CF3 /* Payload.swift */,
@@ -252,6 +181,7 @@
 				F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */,
 				F08410F520D325EA00CE9480 /* DateDecodingStrategy.swift */,
 				F01FBE7420B4BEF400200CED /* Resources */,
+				F0AA1FBD20DEEFB5003781DF /* Info.plist */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -304,84 +234,51 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		F062C39320D9BE3000ABA853 /* Headers */ = {
+		F0AA1FB520DEEFB5003781DF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0AA1FCA20DEEFB6003781DF /* SimpleMDM.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		F062C39420D9BE3000ABA853 /* libSimpleMDM-macOS */ = {
+		F0AA1FB920DEEFB5003781DF /* SimpleMDM */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F062C39B20D9BE3100ABA853 /* Build configuration list for PBXNativeTarget "libSimpleMDM-macOS" */;
+			buildConfigurationList = F0AA1FCF20DEEFB6003781DF /* Build configuration list for PBXNativeTarget "SimpleMDM" */;
 			buildPhases = (
-				F062C39120D9BE3000ABA853 /* Sources */,
-				F062C39220D9BE3000ABA853 /* Frameworks */,
-				F062C39320D9BE3000ABA853 /* Headers */,
+				F0AA1FB520DEEFB5003781DF /* Headers */,
+				F0AA1FB620DEEFB5003781DF /* Sources */,
+				F0AA1FB720DEEFB5003781DF /* Frameworks */,
+				F0AA1FB820DEEFB5003781DF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "libSimpleMDM-macOS";
-			productName = "libSimpleMDM-macOS";
-			productReference = F062C39520D9BE3000ABA853 /* libSimpleMDM.a */;
-			productType = "com.apple.product-type.library.static";
+			name = SimpleMDM;
+			productName = SimpleMDM;
+			productReference = F0AA1FBA20DEEFB5003781DF /* SimpleMDM.framework */;
+			productType = "com.apple.product-type.framework";
 		};
-		F062C3D820D9C3AC00ABA853 /* libSimpleMDM-macOS-Tests */ = {
+		F0AA1FC120DEEFB6003781DF /* SimpleMDMTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F062C3E120D9C3AC00ABA853 /* Build configuration list for PBXNativeTarget "libSimpleMDM-macOS-Tests" */;
+			buildConfigurationList = F0AA1FD020DEEFB6003781DF /* Build configuration list for PBXNativeTarget "SimpleMDMTests" */;
 			buildPhases = (
-				F062C3D520D9C3AC00ABA853 /* Sources */,
-				F062C3D620D9C3AC00ABA853 /* Frameworks */,
-				F062C3D720D9C3AC00ABA853 /* Resources */,
+				F0AA1FBE20DEEFB6003781DF /* Sources */,
+				F0AA1FBF20DEEFB6003781DF /* Frameworks */,
+				F0AA1FC020DEEFB6003781DF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F062C3E020D9C3AC00ABA853 /* PBXTargetDependency */,
+				F0AA1FC520DEEFB6003781DF /* PBXTargetDependency */,
 			);
-			name = "libSimpleMDM-macOS-Tests";
-			productName = "libSimpleMDM-macOS-Tests";
-			productReference = F062C3D920D9C3AC00ABA853 /* libSimpleMDM-macOS-Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		F063B3F92098B44A00E2ECDA /* libSimpleMDM-iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F063B4012098B44A00E2ECDA /* Build configuration list for PBXNativeTarget "libSimpleMDM-iOS" */;
-			buildPhases = (
-				F063B3F62098B44A00E2ECDA /* Sources */,
-				F063B3F72098B44A00E2ECDA /* Frameworks */,
-				F063B3F82098B44A00E2ECDA /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "libSimpleMDM-iOS";
-			productName = "SimpleMDM-API";
-			productReference = F063B3FA2098B44A00E2ECDA /* libSimpleMDM.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		F0CD0A9320C5E27C00248134 /* libSimpleMDM-iOS-Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F0CD0A9E20C5E27C00248134 /* Build configuration list for PBXNativeTarget "libSimpleMDM-iOS-Tests" */;
-			buildPhases = (
-				F0CD0A9020C5E27C00248134 /* Sources */,
-				F0CD0A9120C5E27C00248134 /* Frameworks */,
-				F0CD0A9220C5E27C00248134 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F0CD0A9B20C5E27C00248134 /* PBXTargetDependency */,
-			);
-			name = "libSimpleMDM-iOS-Tests";
-			productName = Tests;
-			productReference = F0CD0A9420C5E27C00248134 /* libSimpleMDM-iOS-Tests.xctest */;
+			name = SimpleMDMTests;
+			productName = SimpleMDMTests;
+			productReference = F0AA1FC220DEEFB6003781DF /* SimpleMDMTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -390,21 +287,15 @@
 		F063B3F22098B44A00E2ECDA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Guillaume Algis";
 				TargetAttributes = {
-					F062C39420D9BE3000ABA853 = {
-						CreatedOnToolsVersion = 9.4;
+					F0AA1FB920DEEFB5003781DF = {
+						CreatedOnToolsVersion = 10.0;
 					};
-					F062C3D820D9C3AC00ABA853 = {
-						CreatedOnToolsVersion = 9.4;
-					};
-					F063B3F92098B44A00E2ECDA = {
-						CreatedOnToolsVersion = 9.3;
-					};
-					F0CD0A9320C5E27C00248134 = {
-						CreatedOnToolsVersion = 9.4;
+					F0AA1FC120DEEFB6003781DF = {
+						CreatedOnToolsVersion = 10.0;
 					};
 				};
 			};
@@ -420,210 +311,93 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F063B3F92098B44A00E2ECDA /* libSimpleMDM-iOS */,
-				F0CD0A9320C5E27C00248134 /* libSimpleMDM-iOS-Tests */,
-				F062C39420D9BE3000ABA853 /* libSimpleMDM-macOS */,
-				F062C3D820D9C3AC00ABA853 /* libSimpleMDM-macOS-Tests */,
+				F0AA1FB920DEEFB5003781DF /* SimpleMDM */,
+				F0AA1FC120DEEFB6003781DF /* SimpleMDMTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F062C3D720D9C3AC00ABA853 /* Resources */ = {
+		F0AA1FB820DEEFB5003781DF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F062C3F120D9C41500ABA853 /* Device_MikesiPhone.json in Resources */,
-				F062C3F320D9C41500ABA853 /* DeviceGroups.json in Resources */,
-				F062C3EC20D9C41500ABA853 /* Apps.json in Resources */,
-				F062C3F020D9C41500ABA853 /* CustomConfigurationProfiles.json in Resources */,
-				F062C3EF20D9C41500ABA853 /* CustomConfigurationProfile_MunkiConfiguration.json in Resources */,
-				F062C3F620D9C41500ABA853 /* PushCertificate.json in Resources */,
-				F062C3E920D9C41400ABA853 /* App_SimpleMDM.json in Resources */,
-				F062C3EA20D9C41500ABA853 /* AppGroup_ProductivityApps.json in Resources */,
-				F062C3F520D9C41500ABA853 /* InstalledApp_Dropbox.json in Resources */,
-				F062C3F420D9C41500ABA853 /* Devices.json in Resources */,
-				F062C3EE20D9C41500ABA853 /* CustomAttributes.json in Resources */,
-				F062C3E820D9C41400ABA853 /* Account.json in Resources */,
-				F062C3F220D9C41500ABA853 /* DeviceGroup_Executives.json in Resources */,
-				F062C3EB20D9C41500ABA853 /* AppGroups.json in Resources */,
-				F062C3ED20D9C41500ABA853 /* CustomAttribute_EmailAddress.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F0CD0A9220C5E27C00248134 /* Resources */ = {
+		F0AA1FC020DEEFB6003781DF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F08410E520D3221B00CE9480 /* AppGroups.json in Resources */,
-				F08410E320D3221B00CE9480 /* App_SimpleMDM.json in Resources */,
-				F08410E420D3221B00CE9480 /* AppGroup_ProductivityApps.json in Resources */,
-				F08410EB20D3221B00CE9480 /* Device_MikesiPhone.json in Resources */,
-				F08410ED20D3221B00CE9480 /* DeviceGroup_Executives.json in Resources */,
-				F08410F420D3245200CE9480 /* PushCertificate.json in Resources */,
-				F08410E620D3221B00CE9480 /* Apps.json in Resources */,
-				F08410EA20D3221B00CE9480 /* CustomConfigurationProfiles.json in Resources */,
-				F08410E920D3221B00CE9480 /* CustomConfigurationProfile_MunkiConfiguration.json in Resources */,
-				F08410EC20D3221B00CE9480 /* Devices.json in Resources */,
-				F08410E120D3221B00CE9480 /* InstalledApp_Dropbox.json in Resources */,
-				F08410E720D3221B00CE9480 /* CustomAttribute_EmailAddress.json in Resources */,
-				F08410E220D3221B00CE9480 /* Account.json in Resources */,
-				F08410E820D3221B00CE9480 /* CustomAttributes.json in Resources */,
-				F08410EE20D3221B00CE9480 /* DeviceGroups.json in Resources */,
+				F0D9F2B320DEF3C10081081C /* Device_MikesiPhone.json in Resources */,
+				F0D9F2B520DEF3C10081081C /* DeviceGroups.json in Resources */,
+				F0D9F2AE20DEF3C10081081C /* Apps.json in Resources */,
+				F0D9F2B220DEF3C10081081C /* CustomConfigurationProfiles.json in Resources */,
+				F0D9F2B120DEF3C10081081C /* CustomConfigurationProfile_MunkiConfiguration.json in Resources */,
+				F0D9F2B820DEF3C10081081C /* PushCertificate.json in Resources */,
+				F0D9F2AB20DEF3C10081081C /* App_SimpleMDM.json in Resources */,
+				F0D9F2AC20DEF3C10081081C /* AppGroup_ProductivityApps.json in Resources */,
+				F0D9F2B720DEF3C10081081C /* InstalledApp_Dropbox.json in Resources */,
+				F0D9F2B620DEF3C10081081C /* Devices.json in Resources */,
+				F0D9F2B020DEF3C10081081C /* CustomAttributes.json in Resources */,
+				F0D9F2AA20DEF3C10081081C /* Account.json in Resources */,
+				F0D9F2B420DEF3C10081081C /* DeviceGroup_Executives.json in Resources */,
+				F0D9F2AD20DEF3C10081081C /* AppGroups.json in Resources */,
+				F0D9F2AF20DEF3C10081081C /* CustomAttribute_EmailAddress.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F062C39120D9BE3000ABA853 /* Sources */ = {
+		F0AA1FB620DEEFB5003781DF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F062C3D320D9BF5500ABA853 /* PushCertificate.swift in Sources */,
-				F062C3CD20D9BF5500ABA853 /* AppGroup.swift in Sources */,
-				F062C3C620D9BF5500ABA853 /* Error.swift in Sources */,
-				F062C3CA20D9BF5500ABA853 /* Resource.swift in Sources */,
-				F062C3C520D9BF5500ABA853 /* Payload.swift in Sources */,
-				F062C3CC20D9BF5500ABA853 /* App.swift in Sources */,
-				F062C3D020D9BF5500ABA853 /* Device.swift in Sources */,
-				F062C3C820D9BF5500ABA853 /* DateFormatter+CustomFormat.swift in Sources */,
-				F062C3C920D9BF5500ABA853 /* DateDecodingStrategy.swift in Sources */,
-				F062C3CE20D9BF5500ABA853 /* CustomAttribute.swift in Sources */,
-				F062C3CB20D9BF5500ABA853 /* Account.swift in Sources */,
-				F062C3C720D9BF5500ABA853 /* URLSession.swift in Sources */,
-				F062C3C420D9BF5500ABA853 /* NetworkController.swift in Sources */,
-				F062C3C320D9BF5500ABA853 /* SimpleMDM.swift in Sources */,
-				F062C3D120D9BF5500ABA853 /* DeviceGroup.swift in Sources */,
-				F062C3D220D9BF5500ABA853 /* InstalledApp.swift in Sources */,
-				F062C3CF20D9BF5500ABA853 /* CustomConfigurationProfile.swift in Sources */,
+				F0D9F2C420DEF3D00081081C /* CustomConfigurationProfile.swift in Sources */,
+				F0D9F2C820DEF3D00081081C /* PushCertificate.swift in Sources */,
+				F0D9F2CD20DEF3D50081081C /* URLSession.swift in Sources */,
+				F0D9F2CB20DEF3D50081081C /* Payload.swift in Sources */,
+				F0D9F2CF20DEF3D50081081C /* DateDecodingStrategy.swift in Sources */,
+				F0D9F2C620DEF3D00081081C /* DeviceGroup.swift in Sources */,
+				F0D9F2C720DEF3D00081081C /* InstalledApp.swift in Sources */,
+				F0D9F2C120DEF3D00081081C /* App.swift in Sources */,
+				F0D9F2BF20DEF3D00081081C /* Resource.swift in Sources */,
+				F0D9F2CE20DEF3D50081081C /* DateFormatter+CustomFormat.swift in Sources */,
+				F0D9F2C020DEF3D00081081C /* Account.swift in Sources */,
+				F0D9F2C320DEF3D00081081C /* CustomAttribute.swift in Sources */,
+				F0D9F2CA20DEF3D50081081C /* NetworkController.swift in Sources */,
+				F0D9F2C520DEF3D00081081C /* Device.swift in Sources */,
+				F0D9F2C220DEF3D00081081C /* AppGroup.swift in Sources */,
+				F0D9F2CC20DEF3D50081081C /* Error.swift in Sources */,
+				F0D9F2C920DEF3D50081081C /* SimpleMDM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F062C3D520D9C3AC00ABA853 /* Sources */ = {
+		F0AA1FBE20DEEFB6003781DF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F062C3F820D9C41700ABA853 /* URLSessionMock.swift in Sources */,
-				F062C3F720D9C41700ABA853 /* Utils.swift in Sources */,
-				F062C3E620D9C41000ABA853 /* NetworkTests.swift in Sources */,
-				F062C3E720D9C41000ABA853 /* ResourcesTests.swift in Sources */,
-				F062C3E520D9C41000ABA853 /* APIKeyTests.swift in Sources */,
-				F062C3E420D9C41000ABA853 /* ResultTypeTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F063B3F62098B44A00E2ECDA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F06E9E9D20D07B3F00D02395 /* CustomConfigurationProfile.swift in Sources */,
-				F06E9E9120CDE74B00D02395 /* AppGroup.swift in Sources */,
-				F09AADD620CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift in Sources */,
-				F08410F220D3232B00CE9480 /* PushCertificate.swift in Sources */,
-				F08410F620D325EA00CE9480 /* DateDecodingStrategy.swift in Sources */,
-				F06E9EA820D085FA00D02395 /* DeviceGroup.swift in Sources */,
-				F01FBE6F20B4B39500200CED /* Error.swift in Sources */,
-				F06E9E9720D071FE00D02395 /* CustomAttribute.swift in Sources */,
-				F09488EB209F27AD00CA2CF3 /* Payload.swift in Sources */,
-				F09AADD820CDD272004D8AC4 /* App.swift in Sources */,
-				F0CD0AA020C5E37D00248134 /* URLSession.swift in Sources */,
-				F01FBE7320B4BEEB00200CED /* NetworkController.swift in Sources */,
-				F063B3FE2098B44A00E2ECDA /* SimpleMDM.swift in Sources */,
-				F06CDAC3209DF233000D389E /* Account.swift in Sources */,
-				F01FBE7120B4B6B300200CED /* Device.swift in Sources */,
-				F01FBE7620B4BF1B00200CED /* Resource.swift in Sources */,
-				F08410F020D3223E00CE9480 /* InstalledApp.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F0CD0A9020C5E27C00248134 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F069B46F20CD76BA00A34F56 /* Utils.swift in Sources */,
-				F0CD0AA420C5E9C400248134 /* URLSessionMock.swift in Sources */,
-				F06E9EA620D0829C00D02395 /* ResultTypeTests.swift in Sources */,
-				F0CD0AA220C5E7AF00248134 /* APIKeyTests.swift in Sources */,
-				F069B46D20CD75D900A34F56 /* ResourcesTests.swift in Sources */,
-				F0CD0A9720C5E27C00248134 /* NetworkTests.swift in Sources */,
+				F0D9F2BA20DEF3CB0081081C /* URLSessionMock.swift in Sources */,
+				F0D9F2BE20DEF3CB0081081C /* ResourcesTests.swift in Sources */,
+				F0D9F2B920DEF3CB0081081C /* Utils.swift in Sources */,
+				F0D9F2BD20DEF3CB0081081C /* NetworkTests.swift in Sources */,
+				F0D9F2BC20DEF3CB0081081C /* APIKeyTests.swift in Sources */,
+				F0D9F2BB20DEF3CB0081081C /* ResultTypeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F062C3E020D9C3AC00ABA853 /* PBXTargetDependency */ = {
+		F0AA1FC520DEEFB6003781DF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F062C39420D9BE3000ABA853 /* libSimpleMDM-macOS */;
-			targetProxy = F062C3DF20D9C3AC00ABA853 /* PBXContainerItemProxy */;
-		};
-		F0CD0A9B20C5E27C00248134 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F063B3F92098B44A00E2ECDA /* libSimpleMDM-iOS */;
-			targetProxy = F0CD0A9A20C5E27C00248134 /* PBXContainerItemProxy */;
+			target = F0AA1FB920DEEFB5003781DF /* SimpleMDM */;
+			targetProxy = F0AA1FC420DEEFB6003781DF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		F062C39C20D9BE3100ABA853 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				EXECUTABLE_PREFIX = lib;
-				PRODUCT_NAME = SimpleMDM;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		F062C39D20D9BE3100ABA853 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				EXECUTABLE_PREFIX = lib;
-				PRODUCT_NAME = SimpleMDM;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		F062C3E220D9C3AC00ABA853 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.guillaumealgis.${PRODUCT_NAME}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 4.0;
-			};
-			name = Debug;
-		};
-		F062C3E320D9C3AC00ABA853 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.guillaumealgis.${PRODUCT_NAME}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
 		F063B3FF2098B44A00E2ECDA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -674,8 +448,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -728,8 +500,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -738,85 +508,77 @@
 			};
 			name = Release;
 		};
-		F063B4022098B44A00E2ECDA /* Debug */ = {
+		F0AA1FCB20DEEFB6003781DF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0888ABC20DEFDFE00CF5906 /* SimpleMDM.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = SimpleMDM;
-				SDKROOT = iphoneos;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Sources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.guillaumealgis.SimpleMDM;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
-		F063B4032098B44A00E2ECDA /* Release */ = {
+		F0AA1FCC20DEEFB6003781DF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0888ABC20DEFDFE00CF5906 /* SimpleMDM.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = SimpleMDM;
-				SDKROOT = iphoneos;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Sources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.guillaumealgis.SimpleMDM;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
-		F0CD0A9C20C5E27C00248134 /* Debug */ = {
+		F0AA1FCD20DEEFB6003781DF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0888ABC20DEFDFE00CF5906 /* SimpleMDM.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.guillaumealgis.${PRODUCT_NAME}";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.guillaumealgis.SimpleMDMTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		F0CD0A9D20C5E27C00248134 /* Release */ = {
+		F0AA1FCE20DEEFB6003781DF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0888ABC20DEFDFE00CF5906 /* SimpleMDM.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.guillaumealgis.${PRODUCT_NAME}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.guillaumealgis.SimpleMDMTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F062C39B20D9BE3100ABA853 /* Build configuration list for PBXNativeTarget "libSimpleMDM-macOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F062C39C20D9BE3100ABA853 /* Debug */,
-				F062C39D20D9BE3100ABA853 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F062C3E120D9C3AC00ABA853 /* Build configuration list for PBXNativeTarget "libSimpleMDM-macOS-Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F062C3E220D9C3AC00ABA853 /* Debug */,
-				F062C3E320D9C3AC00ABA853 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		F063B3F52098B44A00E2ECDA /* Build configuration list for PBXProject "SimpleMDM-API" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -826,20 +588,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F063B4012098B44A00E2ECDA /* Build configuration list for PBXNativeTarget "libSimpleMDM-iOS" */ = {
+		F0AA1FCF20DEEFB6003781DF /* Build configuration list for PBXNativeTarget "SimpleMDM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F063B4022098B44A00E2ECDA /* Debug */,
-				F063B4032098B44A00E2ECDA /* Release */,
+				F0AA1FCB20DEEFB6003781DF /* Debug */,
+				F0AA1FCC20DEEFB6003781DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F0CD0A9E20C5E27C00248134 /* Build configuration list for PBXNativeTarget "libSimpleMDM-iOS-Tests" */ = {
+		F0AA1FD020DEEFB6003781DF /* Build configuration list for PBXNativeTarget "SimpleMDMTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F0CD0A9C20C5E27C00248134 /* Debug */,
-				F0CD0A9D20C5E27C00248134 /* Release */,
+				F0AA1FCD20DEEFB6003781DF /* Debug */,
+				F0AA1FCE20DEEFB6003781DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
