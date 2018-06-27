@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F010683920E444E600C7D616 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F010683820E444E600C7D616 /* Result.swift */; };
 		F0AA1FC320DEEFB6003781DF /* SimpleMDM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AA1FBA20DEEFB5003781DF /* SimpleMDM.framework */; };
 		F0AA1FCA20DEEFB6003781DF /* SimpleMDM.h in Headers */ = {isa = PBXBuildFile; fileRef = F0AA1FBC20DEEFB5003781DF /* SimpleMDM.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F0D9F2AA20DEF3C10081081C /* Account.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47320CD7CC900A34F56 /* Account.json */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F010683820E444E600C7D616 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		F01FBE6E20B4B39500200CED /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		F01FBE7020B4B6B300200CED /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		F01FBE7220B4BEEB00200CED /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */,
 				F01FBE7220B4BEEB00200CED /* NetworkController.swift */,
 				F09488EA209F27AD00CA2CF3 /* Payload.swift */,
+				F010683820E444E600C7D616 /* Result.swift */,
 				F01FBE6E20B4B39500200CED /* Error.swift */,
 				F0CD0A9F20C5E37D00248134 /* URLSession.swift */,
 				F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */,
@@ -354,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F010683920E444E600C7D616 /* Result.swift in Sources */,
 				F0D9F2C420DEF3D00081081C /* CustomConfigurationProfile.swift in Sources */,
 				F0D9F2C820DEF3D00081081C /* PushCertificate.swift in Sources */,
 				F0D9F2CD20DEF3D50081081C /* URLSession.swift in Sources */,

@@ -8,29 +8,7 @@
 
 import Foundation
 
-public typealias CompletionClosure<T> = (Result<T>) -> Void
-
-public enum Result<T> {
-    case success(T)
-    case failure(Error)
-
-    var value: T? {
-        switch self {
-        case .success(let value):
-            return value
-        default:
-            return nil
-        }
-    }
-    var error: Error? {
-        switch self {
-        case .failure(let error):
-            return error
-        default:
-            return nil
-        }
-    }
-}
+public typealias CompletionClosure<Value> = (Result<Value>) -> Void
 
 internal class NetworkController {
     internal var APIKey: String? {
