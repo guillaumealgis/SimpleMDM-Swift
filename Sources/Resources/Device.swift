@@ -9,7 +9,6 @@
 import Foundation
 
 public struct Device : ListableResource {
-    public typealias Identifier = Int
     public static var endpointName: String {
         return "devices"
     }

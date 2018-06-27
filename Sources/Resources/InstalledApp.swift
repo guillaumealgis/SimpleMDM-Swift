@@ -9,7 +9,6 @@
 import Foundation
 
 public struct InstalledApp : IdentifiableResource {
-    public typealias Identifier = Int
     public static var endpointName: String {
         return "installed_apps"
     }
