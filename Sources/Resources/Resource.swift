@@ -43,7 +43,7 @@ extension IdentifiableResource {
 // MARK: Listable Resource
 
 // A resource for which multiple instance of can coexists, and we can get a list of
-public protocol ListableResource: Resource {
+public protocol ListableResource: IdentifiableResource {
     static func getAll(completion: @escaping CompletionClosure<[Self]>)
 }
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct CustomAttribute : IdentifiableResource, ListableResource {
+public struct CustomAttribute : ListableResource {
     public typealias Identifier = String
     public static var endpointName: String {
         return "custom_attributes"
