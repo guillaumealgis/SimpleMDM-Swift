@@ -9,10 +9,10 @@
 import Foundation
 
 public struct InstalledApp : IdentifiableResource {
-    public static var endpointName: String {
-        return "installed_apps"
-    }
-
+    // sourcery:inline:auto:InstalledApp.Identifiable
+    public let id: Int
+    // sourcery:end
+    
     let name: String
     let identifier: String
     let version: String

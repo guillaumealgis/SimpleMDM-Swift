@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		F010683920E444E600C7D616 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F010683820E444E600C7D616 /* Result.swift */; };
+		F05EAB6D21309C8F0076F5FC /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB6C21309C8F0076F5FC /* DecodingTests.swift */; };
+		F05EAB6E2130A9DA0076F5FC /* NetworkingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB6A21304DA00076F5FC /* NetworkingResult.swift */; };
+		F05F743B211A3870003F1594 /* Resource.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05F743A211A3870003F1594 /* Resource.generated.swift */; };
+		F065C51F211CE26D00784545 /* DecodingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F065C51E211CE26D00784545 /* DecodingService.swift */; };
 		F0AA1FC320DEEFB6003781DF /* SimpleMDM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AA1FBA20DEEFB5003781DF /* SimpleMDM.framework */; };
 		F0AA1FCA20DEEFB6003781DF /* SimpleMDM.h in Headers */ = {isa = PBXBuildFile; fileRef = F0AA1FBC20DEEFB5003781DF /* SimpleMDM.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F0D9F2AA20DEF3C10081081C /* Account.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47320CD7CC900A34F56 /* Account.json */; };
@@ -29,7 +33,7 @@
 		F0D9F2BA20DEF3CB0081081C /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0AA320C5E9C400248134 /* URLSessionMock.swift */; };
 		F0D9F2BB20DEF3CB0081081C /* ResultTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06E9EA520D0829C00D02395 /* ResultTypeTests.swift */; };
 		F0D9F2BC20DEF3CB0081081C /* APIKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0AA120C5E7AF00248134 /* APIKeyTests.swift */; };
-		F0D9F2BD20DEF3CB0081081C /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9620C5E27C00248134 /* NetworkTests.swift */; };
+		F0D9F2BD20DEF3CB0081081C /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9620C5E27C00248134 /* NetworkingTests.swift */; };
 		F0D9F2BE20DEF3CB0081081C /* ResourcesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F069B46C20CD75D900A34F56 /* ResourcesTests.swift */; };
 		F0D9F2BF20DEF3D00081081C /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7520B4BF1B00200CED /* Resource.swift */; };
 		F0D9F2C020DEF3D00081081C /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06CDAC2209DF233000D389E /* Account.swift */; };
@@ -42,7 +46,7 @@
 		F0D9F2C720DEF3D00081081C /* InstalledApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410EF20D3223E00CE9480 /* InstalledApp.swift */; };
 		F0D9F2C820DEF3D00081081C /* PushCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410F120D3232B00CE9480 /* PushCertificate.swift */; };
 		F0D9F2C920DEF3D50081081C /* SimpleMDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */; };
-		F0D9F2CA20DEF3D50081081C /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7220B4BEEB00200CED /* NetworkController.swift */; };
+		F0D9F2CA20DEF3D50081081C /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7220B4BEEB00200CED /* NetworkingService.swift */; };
 		F0D9F2CB20DEF3D50081081C /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09488EA209F27AD00CA2CF3 /* Payload.swift */; };
 		F0D9F2CC20DEF3D50081081C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE6E20B4B39500200CED /* Error.swift */; };
 		F0D9F2CD20DEF3D50081081C /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9F20C5E37D00248134 /* URLSession.swift */; };
@@ -64,9 +68,14 @@
 		F010683820E444E600C7D616 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		F01FBE6E20B4B39500200CED /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		F01FBE7020B4B6B300200CED /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		F01FBE7220B4BEEB00200CED /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
+		F01FBE7220B4BEEB00200CED /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		F01FBE7520B4BF1B00200CED /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		F05EAB6A21304DA00076F5FC /* NetworkingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingResult.swift; sourceTree = "<group>"; };
+		F05EAB6C21309C8F0076F5FC /* DecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
+		F05F7438211A3578003F1594 /* Resource.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = Resource.stencil; sourceTree = "<group>"; };
+		F05F743A211A3870003F1594 /* Resource.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.generated.swift; sourceTree = "<group>"; };
 		F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMDM.swift; sourceTree = "<group>"; };
+		F065C51E211CE26D00784545 /* DecodingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingService.swift; sourceTree = "<group>"; };
 		F069B46C20CD75D900A34F56 /* ResourcesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesTests.swift; sourceTree = "<group>"; };
 		F069B46E20CD76BA00A34F56 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		F069B47120CD7CBA00A34F56 /* Device_MikesiPhone.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Device_MikesiPhone.json; sourceTree = "<group>"; };
@@ -101,7 +110,7 @@
 		F0AA1FBC20DEEFB5003781DF /* SimpleMDM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleMDM.h; sourceTree = "<group>"; };
 		F0AA1FBD20DEEFB5003781DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0AA1FC220DEEFB6003781DF /* SimpleMDMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleMDMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F0CD0A9620C5E27C00248134 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
+		F0CD0A9620C5E27C00248134 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		F0CD0A9820C5E27C00248134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0CD0A9F20C5E37D00248134 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		F0CD0AA120C5E7AF00248134 /* APIKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyTests.swift; sourceTree = "<group>"; };
@@ -131,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				F01FBE7520B4BF1B00200CED /* Resource.swift */,
+				F05F743A211A3870003F1594 /* Resource.generated.swift */,
 				F06CDAC2209DF233000D389E /* Account.swift */,
 				F09AADD720CDD272004D8AC4 /* App.swift */,
 				F06E9E9020CDE74B00D02395 /* AppGroup.swift */,
@@ -142,6 +152,14 @@
 				F08410F120D3232B00CE9480 /* PushCertificate.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		F05F7437211A34D4003F1594 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				F05F7438211A3578003F1594 /* Resource.stencil */,
+			);
+			path = Templates;
 			sourceTree = "<group>";
 		};
 		F062C3C120D9BEFB00ABA853 /* Frameworks */ = {
@@ -176,14 +194,16 @@
 			children = (
 				F0AA1FBC20DEEFB5003781DF /* SimpleMDM.h */,
 				F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */,
-				F01FBE7220B4BEEB00200CED /* NetworkController.swift */,
+				F01FBE7220B4BEEB00200CED /* NetworkingService.swift */,
+				F065C51E211CE26D00784545 /* DecodingService.swift */,
+				F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */,
+				F08410F520D325EA00CE9480 /* DateDecodingStrategy.swift */,
 				F09488EA209F27AD00CA2CF3 /* Payload.swift */,
 				F010683820E444E600C7D616 /* Result.swift */,
 				F01FBE6E20B4B39500200CED /* Error.swift */,
 				F0CD0A9F20C5E37D00248134 /* URLSession.swift */,
-				F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */,
-				F08410F520D325EA00CE9480 /* DateDecodingStrategy.swift */,
 				F01FBE7420B4BEF400200CED /* Resources */,
+				F05F7437211A34D4003F1594 /* Templates */,
 				F0AA1FBD20DEEFB5003781DF /* Info.plist */,
 			);
 			path = Sources;
@@ -216,6 +236,7 @@
 			children = (
 				F069B46E20CD76BA00A34F56 /* Utils.swift */,
 				F0CD0AA320C5E9C400248134 /* URLSessionMock.swift */,
+				F05EAB6A21304DA00076F5FC /* NetworkingResult.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -227,7 +248,8 @@
 				F069B47020CD7C9F00A34F56 /* Fixtures */,
 				F06E9EA520D0829C00D02395 /* ResultTypeTests.swift */,
 				F0CD0AA120C5E7AF00248134 /* APIKeyTests.swift */,
-				F0CD0A9620C5E27C00248134 /* NetworkTests.swift */,
+				F0CD0A9620C5E27C00248134 /* NetworkingTests.swift */,
+				F05EAB6C21309C8F0076F5FC /* DecodingTests.swift */,
 				F069B46C20CD75D900A34F56 /* ResourcesTests.swift */,
 				F0CD0A9820C5E27C00248134 /* Info.plist */,
 			);
@@ -361,8 +383,10 @@
 				F0D9F2C420DEF3D00081081C /* CustomConfigurationProfile.swift in Sources */,
 				F0D9F2C820DEF3D00081081C /* PushCertificate.swift in Sources */,
 				F0D9F2CD20DEF3D50081081C /* URLSession.swift in Sources */,
+				F05F743B211A3870003F1594 /* Resource.generated.swift in Sources */,
 				F0D9F2CB20DEF3D50081081C /* Payload.swift in Sources */,
 				F0D9F2CF20DEF3D50081081C /* DateDecodingStrategy.swift in Sources */,
+				F065C51F211CE26D00784545 /* DecodingService.swift in Sources */,
 				F0D9F2C620DEF3D00081081C /* DeviceGroup.swift in Sources */,
 				F0D9F2C720DEF3D00081081C /* InstalledApp.swift in Sources */,
 				F0D9F2C120DEF3D00081081C /* App.swift in Sources */,
@@ -370,7 +394,7 @@
 				F0D9F2CE20DEF3D50081081C /* DateFormatter+CustomFormat.swift in Sources */,
 				F0D9F2C020DEF3D00081081C /* Account.swift in Sources */,
 				F0D9F2C320DEF3D00081081C /* CustomAttribute.swift in Sources */,
-				F0D9F2CA20DEF3D50081081C /* NetworkController.swift in Sources */,
+				F0D9F2CA20DEF3D50081081C /* NetworkingService.swift in Sources */,
 				F0D9F2C520DEF3D00081081C /* Device.swift in Sources */,
 				F0D9F2C220DEF3D00081081C /* AppGroup.swift in Sources */,
 				F0D9F2CC20DEF3D50081081C /* Error.swift in Sources */,
@@ -382,12 +406,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F05EAB6E2130A9DA0076F5FC /* NetworkingResult.swift in Sources */,
 				F0D9F2BA20DEF3CB0081081C /* URLSessionMock.swift in Sources */,
 				F0D9F2BE20DEF3CB0081081C /* ResourcesTests.swift in Sources */,
 				F0D9F2B920DEF3CB0081081C /* Utils.swift in Sources */,
-				F0D9F2BD20DEF3CB0081081C /* NetworkTests.swift in Sources */,
+				F0D9F2BD20DEF3CB0081081C /* NetworkingTests.swift in Sources */,
 				F0D9F2BC20DEF3CB0081081C /* APIKeyTests.swift in Sources */,
 				F0D9F2BB20DEF3CB0081081C /* ResultTypeTests.swift in Sources */,
+				F05EAB6D21309C8F0076F5FC /* DecodingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

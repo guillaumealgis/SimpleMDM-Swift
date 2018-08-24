@@ -8,11 +8,11 @@
 
 import Foundation
 
+// sourcery: identifierType = String
 public struct CustomAttribute : ListableResource {
-    public typealias Identifier = String
-    public static var endpointName: String {
-        return "custom_attributes"
-    }
+    // sourcery:inline:auto:CustomAttribute.Identifiable
+    public let id: String
+    // sourcery:end
 
     let name: String
 }

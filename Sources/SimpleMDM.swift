@@ -15,10 +15,10 @@ public class SimpleMDM: NSObject {
 
     public static var APIKey: String? {
         get {
-            return SimpleMDM.shared.networkController.APIKey
+            return SimpleMDM.shared.networkingService.APIKey
         }
         set {
-            SimpleMDM.shared.networkController.APIKey = newValue
+            SimpleMDM.shared.networkingService.APIKey = newValue
         }
     }
 
@@ -28,5 +28,6 @@ public class SimpleMDM: NSObject {
 
     private override init() {}
 
-    internal var networkController = NetworkController()
+    internal var networkingService = NetworkingService()
+    internal var decodingService = DecodingService()
 }

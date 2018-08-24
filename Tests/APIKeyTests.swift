@@ -16,23 +16,23 @@ class APIKeyTests: XCTestCase {
         SimpleMDM.APIKey = APIKey
 
         XCTAssertEqual(SimpleMDM.APIKey, APIKey)
-        XCTAssertEqual(SimpleMDM.shared.networkController.APIKey, APIKey)
+        XCTAssertEqual(SimpleMDM.shared.networkingService.APIKey, APIKey)
     }
 
     func testNotSettingAPIKeyReturnsError() {
         let session = URLSessionMock()
-        let networkController = NetworkController(urlSession: session)
+        let networkingService = NetworkingService(urlSession: session)
 
-        networkController.getUniqueResource(type: Account.self) { (result) in
+        networkingService.getDataForAllResources(ofType: Account.self) { (result) in
             XCTAssertEqual(result.error! as! APIKeyError, APIKeyError.notSet)
         }
     }
 
     func testAPIKeyNotSetErrorHasHumanReadableDescription() {
         let session = URLSessionMock()
-        let networkController = NetworkController(urlSession: session)
+        let networkingService = NetworkingService(urlSession: session)
 
-        networkController.getUniqueResource(type: Account.self) { (result) in
+        networkingService.getDataForAllResources(ofType: Account.self) { (result) in
             let error = result.error! as! LocalizedError
             XCTAssertTrue(error.localizedDescription.contains("API key was not set"))
         }
@@ -40,20 +40,20 @@ class APIKeyTests: XCTestCase {
 
     func test401ResponseReturnsInvalidAPIKeyError() {
         let session = URLSessionMock(responseCode: 401)
-        let networkController = NetworkController(urlSession: session)
-        networkController.APIKey = "AVeryRandomTestAPIKey"
+        let networkingService = NetworkingService(urlSession: session)
+        networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkController.getUniqueResource(type: Account.self) { (result) in
+        networkingService.getDataForAllResources(ofType: Account.self) { (result) in
             XCTAssertEqual(result.error! as! APIKeyError, APIKeyError.invalid)
         }
     }
 
     func testInvalidAPIKeyErrorHasHumanReadableDescription() {
         let session = URLSessionMock(responseCode: 401)
-        let networkController = NetworkController(urlSession: session)
-        networkController.APIKey = "AVeryRandomTestAPIKey"
+        let networkingService = NetworkingService(urlSession: session)
+        networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkController.getUniqueResource(type: Account.self) { (result) in
+        networkingService.getDataForAllResources(ofType: Account.self) { (result) in
             let error = result.error! as! LocalizedError
             XCTAssertTrue(error.localizedDescription.contains("server rejected the API key"))
         }

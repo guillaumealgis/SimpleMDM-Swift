@@ -9,10 +9,10 @@
 import Foundation
 
 public struct Device : ListableResource {
-    public static var endpointName: String {
-        return "devices"
-    }
-
+    // sourcery:inline:auto:Device.Identifiable
+    public let id: Int
+    // sourcery:end
+    
     let uniqueIdentifier: String
     let serialNumber: String
     let imei: String?

@@ -1,0 +1,52 @@
+{% for type in types.structs.implementing.AutoDecodable %}
+// MARK: {{ type.name }}
+{% if type.implements.IdentifiableResource %}
+// sourcery:inline:auto:{{ type.name }}.Identifiable
+    public let id: {{ type.annotations.identifierType|default:"Int" }}
+// sourcery:end
+{% endif %}
+extension {{ type.name }}: Resource {
+    public static var endpointName: String {
+        return "{{ type.name|camelToSnakeCase }}"
+    }
+}
+
+extension {{ type.name }}: Decodable {
+    private enum CodingKeys: String, CodingKey {
+        case type
+        {% if type.implements.IdentifiableResource %}case id{% endif %}
+        case attributes
+        case relationships
+    }
+
+    private enum AttributesKeys: String, CodingKey {
+        {% for variable in type.instanceVariables %}
+        case {{ variable.name }}
+        {% endfor %}
+    }
+
+    public init(from decoder: Decoder) throws {
+        let payload = try decoder.container(keyedBy: CodingKeys.self)
+
+        let type = try payload.decode(String.self, forKey: .type)
+        let expectedType = "{{ type.name|camelToSnakeCase }}"
+        guard (type == expectedType) else {
+            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\"")
+        }
+
+        {% if type.implements.IdentifiableResource %}
+        id = try payload.decode(Identifier.self, forKey: .id)
+
+        {% endif %}
+        let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
+        {% for variable in type.instanceVariables %}
+            {% if variable.typeName.isOptional %}
+                {{ variable.name }} = try attributes.decodeIfPresent({{ variable.typeName.unwrappedTypeName }}.self, forKey: .{{ variable.name }})
+            {% else %}
+                {{ variable.name }} = try attributes.decode({{ variable.typeName }}.self, forKey: .{{ variable.name }})
+            {% endif %}
+        {% endfor %}
+    }
+}
+
+{% endfor %}

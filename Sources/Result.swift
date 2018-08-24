@@ -14,18 +14,15 @@ public enum Result<Value> {
 
     var value: Value? {
         switch self {
-        case .success(let value):
-            return value
-        default:
-            return nil
+        case let .success(value): return value
+        case .failure: return nil
         }
     }
+
     var error: Error? {
         switch self {
-        case .failure(let error):
-            return error
-        default:
-            return nil
+        case let .failure(error): return error
+        case .success: return nil
         }
     }
 }

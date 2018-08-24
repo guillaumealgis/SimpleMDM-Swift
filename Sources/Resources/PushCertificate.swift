@@ -9,10 +9,6 @@
 import Foundation
 
 public struct PushCertificate : UniqueResource {
-    public static var endpointName: String {
-        return "push_certificate"
-    }
-
     let appleId: String
     let expiresAt: Date
 }

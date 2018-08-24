@@ -9,9 +9,9 @@
 import Foundation
 
 public struct CustomConfigurationProfile : ListableResource {
-    public static var endpointName: String {
-        return "custom_configuration_profiles"
-    }
-
+    // sourcery:inline:auto:CustomConfigurationProfile.Identifiable
+    public let id: Int
+    // sourcery:end
+    
     let name: String
 }

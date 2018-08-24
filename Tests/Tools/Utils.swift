@@ -21,13 +21,14 @@ func loadFixture(_ name: String) -> Data {
 }
 
 extension SimpleMDM {
-    class func useSessionMock(_ session: URLSessionMock) {
-        let networkController = NetworkController(urlSession: session)
-        shared.overrideNetworkController(networkController: networkController)
-        SimpleMDM.APIKey = "AVeryRandomTestAPIKey"
+    class func useSessionMock(_ sessionMock: URLSessionMock? = nil) {
+        let session = sessionMock ?? URLSessionMock()
+        let networkingService = NetworkingService(urlSession: session)
+        networkingService.APIKey = "AVeryRandomAPIKey"
+        shared.overrideNetworkingService(networkingService)
     }
 
-    func overrideNetworkController(networkController: NetworkController) {
-        self.networkController = networkController
+    func overrideNetworkingService(_ networkingService: NetworkingService) {
+        self.networkingService = networkingService
     }
 }

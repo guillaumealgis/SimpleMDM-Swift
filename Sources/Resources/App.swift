@@ -9,9 +9,9 @@
 import Foundation
 
 public struct App : ListableResource {
-    public static var endpointName: String {
-        return "apps"
-    }
+    // sourcery:inline:auto:App.Identifiable
+    public let id: Int
+    // sourcery:end
 
     let name: String
     let appType: String

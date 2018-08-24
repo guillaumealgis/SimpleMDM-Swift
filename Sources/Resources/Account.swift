@@ -9,10 +9,6 @@
 import Foundation
 
 public struct Account : UniqueResource {
-    public static var endpointName: String {
-        return "account"
-    }
-
     let name: String
     let appleStoreCountryCode: String
 }

@@ -9,9 +9,9 @@
 import Foundation
 
 public struct DeviceGroup : ListableResource {
-    public static var endpointName: String {
-        return "device_groups"
-    }
-
+    // sourcery:inline:auto:DeviceGroup.Identifiable
+    public let id: Int
+    // sourcery:end
+    
     let name: String
 }

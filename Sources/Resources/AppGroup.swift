@@ -9,9 +9,9 @@
 import Foundation
 
 public struct AppGroup : ListableResource {
-    public static var endpointName: String {
-        return "app_groups"
-    }
+    // sourcery:inline:auto:AppGroup.Identifiable
+    public let id: Int
+    // sourcery:end
 
     let name: String
     let autoDeploy: Bool

@@ -70,7 +70,7 @@ class ResourcesTests: XCTestCase {
 
         Account.get { (result) in
             let error = result.error! as! APIError
-            XCTAssertEqual(error, APIError.unknown(code: errorCode))
+            XCTAssertEqual(error, APIError.unknown(httpCode: errorCode))
             XCTAssertTrue(error.localizedDescription.contains(String(errorCode)))
         }
     }
@@ -107,7 +107,7 @@ class ResourcesTests: XCTestCase {
 
         Account.get { (result) in
             let error = result.error! as! APIError
-            XCTAssertEqual(error, APIError.generic(code: errorCode, description: errorMessage))
+            XCTAssertEqual(error, APIError.generic(httpCode: errorCode, description: errorMessage))
             XCTAssertTrue(error.localizedDescription.contains(errorMessage))
         }
     }
@@ -142,6 +142,26 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         PushCertificate.get { (result) in
+            XCTAssertNoThrow(result.error! as! DecodingError)
+        }
+    }
+
+    func testInvalidResourceType() {
+        let json = """
+          {
+            "data": {
+              "type": "nonexistant_type",
+              "attributes": {
+                "name": "MyCompany",
+                "apple_store_country_code": "US"
+              }
+            }
+          }
+        """.data(using: .utf8)
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        Account.get { (result) in
             XCTAssertNoThrow(result.error! as! DecodingError)
         }
     }
