@@ -11,6 +11,14 @@ import XCTest
 
 class ResourcesTests: XCTestCase {
 
+    func testUniqueResourceEndpointIsSingular() {
+        XCTAssertEqual(Account.endpointName, "account")
+    }
+
+    func testNonUniqueResourceEndpointIsPlural() {
+        XCTAssertEqual(Device.endpointName, "devices")
+    }
+
     func testEmptyJSONResponse() {
         let json = "{}".data(using: .utf8)
         let session = URLSessionMock(data: json, responseCode: 200)

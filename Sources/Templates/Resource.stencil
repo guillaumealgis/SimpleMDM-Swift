@@ -7,7 +7,7 @@
 {% endif %}
 extension {{ type.name }}: Resource {
     public static var endpointName: String {
-        return "{{ type.name|camelToSnakeCase }}"
+        return "{{ type.name|camelToSnakeCase }}{% ifnot type.implements.UniqueResource %}s{% endif %}"
     }
 }
 
