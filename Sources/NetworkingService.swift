@@ -89,7 +89,6 @@ internal class NetworkingService {
             return completion(.failure(error))
         }
 
-        // FIXME: weak self
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
             guard let data = data else {
                 let error = error ?? NetworkError.unknown
