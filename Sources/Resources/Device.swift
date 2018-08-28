@@ -81,5 +81,7 @@ public struct Device : ListableResource {
     let locationLongitude: String?
     let locationAccuracy: Int?
     let locationUpdatedAt: Date?
+
+    let deviceGroup: RelatedToOne<DeviceGroup>
 }
 

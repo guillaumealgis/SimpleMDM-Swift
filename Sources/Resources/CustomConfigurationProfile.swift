@@ -14,4 +14,6 @@ public struct CustomConfigurationProfile : ListableResource {
     // sourcery:end
     
     let name: String
+
+    let deviceGroups: RelatedToMany<DeviceGroup>
 }

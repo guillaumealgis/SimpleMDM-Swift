@@ -4,8 +4,8 @@
       "attributes": {
         "app_type": "enterprise",
         "bundle_identifier": "com.mycompany.Foobar",
-        "name": "EMR",
-        "version": "2018.05.25.11.52"
+        "name": "MyApp",
+        "version": "2018.05.11.03.52"
       },
       "id": 18775,
       "type": "app"
@@ -13,9 +13,9 @@
     {
       "attributes": {
         "app_type": "enterprise",
-        "bundle_identifier": "com.ipsosante.EMR-Beta",
-        "name": "EMR-Beta",
-        "version": "2018.06.06.15.52"
+        "bundle_identifier": "com.mycompany.Foobar",
+        "name": "MyApp-Beta",
+        "version": "2018.06.03.13.14"
       },
       "id": 26000,
       "type": "app"

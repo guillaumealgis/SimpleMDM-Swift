@@ -10,38 +10,76 @@ import Foundation
 
 @testable import SimpleMDM
 
-class URLSessionMock: URLSessionProtocol {
-    var data: Data?
-    var responseCode: Int?
-    var responseMimeType: String?
-    var error: Error?
+enum URLSessionMockError: Error {
+    case noMatchingRoute
+}
 
-    required init(configuration: URLSessionConfiguration, delegate: URLSessionDelegate?, delegateQueue: OperationQueue?) { }
+struct Response {
+    let data: Data?
+    let code: Int?
+    let mimeType: String?
+    let delay: DispatchTimeInterval?
 
-    convenience init(data: Data? = Data(), responseCode: Int? = nil, responseMimeType: String? = "application/json", error:Error? = nil) {
-        self.init(configuration: .default, delegate: nil, delegateQueue: nil)
+    init(data: Data?, code: Int? = 200, mimeType: String? = "application/json", delay: DispatchTimeInterval? = nil) {
         self.data = data
-        self.responseCode = responseCode
-        self.responseMimeType = responseMimeType
-        self.error = error
+        self.code = code
+        self.mimeType = mimeType
+        self.delay = delay
+    }
+}
+
+let wildcardRoute = "*"
+
+class URLSessionMock: URLSessionProtocol {
+    let routes: [String: Response]
+
+    init(routes: [String: Response]) {
+        self.routes = routes
+    }
+
+    convenience init(data: Data? = Data(), responseCode: Int? = nil, responseMimeType: String? = "application/json") {
+        let routes = [wildcardRoute: Response(data: data, code: responseCode, mimeType: responseMimeType)]
+        self.init(routes: routes)
     }
 
     func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        let response: URLResponse?
-        if let code = responseCode {
+        let response = try! matchingResponseForRequest(request)
+
+        let urlResponse: URLResponse?
+        if let code = response.code {
             var headerFields: [String: String]? = nil
-            if let mimeType = responseMimeType {
+            if let mimeType = response.mimeType {
                 headerFields = [
                     "Content-Type": mimeType
                 ]
             }
-            response = HTTPURLResponse(url: request.url!, statusCode: code, httpVersion: nil, headerFields: headerFields)
+            urlResponse = HTTPURLResponse(url: request.url!, statusCode: code, httpVersion: nil, headerFields: headerFields)
         }
         else {
-            response = nil
+            urlResponse = nil
         }
-        completionHandler(data, response, error)
+
+        if let delay = response.delay {
+            // Simulate a delay in the request
+            let deadline = DispatchTime.now() + delay
+            DispatchQueue.global().asyncAfter(deadline: deadline, execute: {
+                completionHandler(response.data, urlResponse, nil)
+            })
+        }
+        else {
+            completionHandler(response.data, urlResponse, nil)
+        }
+
         return URLSessionDataTaskMock()
+    }
+
+    func matchingResponseForRequest(_ request: URLRequest) throws -> Response {
+        for (path, response) in routes {
+            if path == wildcardRoute || request.url?.path == path {
+                return response
+            }
+        }
+        throw URLSessionMockError.noMatchingRoute
     }
 }
 

@@ -36,7 +36,7 @@ extension UniqueResource {
 
 // A resource for which multiple instance of can coexists, and is identifiable by an id
 public protocol IdentifiableResource: Resource {
-    associatedtype Identifier: LosslessStringConvertible & Comparable
+    associatedtype Identifier: LosslessStringConvertible & Comparable & Decodable
 
     var id: Identifier { get }
 

@@ -1,4 +1,4 @@
-{% for type in types.structs.implementing.AutoDecodable %}
+{% for type in types.structs where type.implements.AutoDecodable %}
 // MARK: {{ type.name }}
 {% if type.implements.IdentifiableResource %}
 // sourcery:inline:auto:{{ type.name }}.Identifiable
@@ -12,6 +12,8 @@ extension {{ type.name }}: Resource {
 }
 
 extension {{ type.name }}: Decodable {
+    {# Hackish but works #}
+    {% set hasRelationships %}{% for variable in type.instanceVariables where variable.type.implements.RelatedToResource %}1{% endfor %}{% endset %}
     private enum CodingKeys: String, CodingKey {
         case type
         {% if type.implements.IdentifiableResource %}case id{% endif %}
@@ -20,10 +22,18 @@ extension {{ type.name }}: Decodable {
     }
 
     private enum AttributesKeys: String, CodingKey {
-        {% for variable in type.instanceVariables %}
+        {% for variable in type.instanceVariables where not variable.type.implements.RelatedToResource %}
         case {{ variable.name }}
         {% endfor %}
     }
+    {% if hasRelationships %}
+
+    private enum RelationshipKeys: String, CodingKey {
+        {% for variable in type.instanceVariables where variable.type.implements.RelatedToResource %}
+        case {{ variable.name }}
+        {% endfor %}
+    }
+    {% endif %}
 
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
@@ -31,7 +41,7 @@ extension {{ type.name }}: Decodable {
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "{{ type.name|camelToSnakeCase }}"
         guard (type == expectedType) else {
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\"")
+            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
         }
 
         {% if type.implements.IdentifiableResource %}
@@ -39,13 +49,20 @@ extension {{ type.name }}: Decodable {
 
         {% endif %}
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
-        {% for variable in type.instanceVariables %}
-            {% if variable.typeName.isOptional %}
-                {{ variable.name }} = try attributes.decodeIfPresent({{ variable.typeName.unwrappedTypeName }}.self, forKey: .{{ variable.name }})
-            {% else %}
-                {{ variable.name }} = try attributes.decode({{ variable.typeName }}.self, forKey: .{{ variable.name }})
-            {% endif %}
+        {% for variable in type.instanceVariables where not variable.type.implements.RelatedToResource %}
+        {% if variable.typeName.isOptional %}
+        {{ variable.name }} = try attributes.decodeIfPresent({{ variable.typeName.unwrappedTypeName }}.self, forKey: .{{ variable.name }})
+        {% else %}
+        {{ variable.name }} = try attributes.decode({{ variable.typeName }}.self, forKey: .{{ variable.name }})
+        {% endif %}
         {% endfor %}
+        {% if hasRelationships %}
+
+        let relationships = try payload.nestedContainer(keyedBy: RelationshipKeys.self, forKey: .relationships)
+        {% for variable in type.instanceVariables where variable.type.implements.RelatedToResource %}
+        {{ variable.name }} = try relationships.decode({{ variable.typeName.unwrappedTypeName }}.self, forKey: .{{ variable.name }})
+        {% endfor %}
+        {% endif %}
     }
 }
 

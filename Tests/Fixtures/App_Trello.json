@@ -1,0 +1,12 @@
+{
+  "data": {
+    "attributes": {
+      "app_type": "app_store",
+      "bundle_identifier": "com.fogcreek.trello",
+      "itunes_store_id": 461504587,
+      "name": "Trello"
+    },
+    "id": 63,
+    "type": "app"
+  }
+}

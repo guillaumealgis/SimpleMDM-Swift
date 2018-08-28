@@ -214,8 +214,8 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         AppGroup.getAll { (result) in
-            let apps = result.value!
-            XCTAssertEqual(apps.count, 2)
+            let appGroups = result.value!
+            XCTAssertEqual(appGroups.count, 2)
         }
     }
 
@@ -225,8 +225,120 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         AppGroup.get(id: 38) { (result) in
-            let app = result.value!
-            XCTAssertEqual(app.name, "Productivity Apps")
+            let appGroup = result.value!
+            XCTAssertEqual(appGroup.name, "Productivity Apps")
+        }
+    }
+
+    func testErrorWhileFetchingRelatedToMany() {
+        let session = URLSessionMock(routes: [
+            "/api/v1/app_groups/38": Response(data: loadFixture("AppGroup_ProductivityApps")),
+            "/api/v1/apps/63": Response(data: loadFixture("App_Trello")),
+            "/api/v1/apps/67": Response(data: Data(), code: 404),
+            ])
+        SimpleMDM.useSessionMock(session)
+
+        AppGroup.get(id: 38) { (appGroupResult) in
+            let appGroup = appGroupResult.value!
+
+            XCTAssertEqual(appGroup.apps.relatedIds, [63, 67])
+
+            appGroup.apps.getAll(completion: { (appsResult) in
+                let error = appsResult.error! as! APIError
+                XCTAssertEqual(error, APIError.doesNotExist)
+            })
+        }
+    }
+
+    func testFetchingRelatedToManyAsynchronouslyWithDelay() {
+        let expectation = XCTestExpectation(description: "testFetchingRelatedToManyAsynchronouslyWithDelay expectation")
+        let session = URLSessionMock(routes: [
+            "/api/v1/app_groups/38": Response(data: loadFixture("AppGroup_ProductivityApps")),
+            "/api/v1/apps/63": Response(data: loadFixture("App_Trello"), delay: .milliseconds(50)),
+            "/api/v1/apps/67": Response(data: loadFixture("App_Evernote"), delay: .milliseconds(10)),
+            ])
+        SimpleMDM.useSessionMock(session)
+
+        AppGroup.get(id: 38) { (appGroupResult) in
+            let appGroup = appGroupResult.value!
+
+            XCTAssertEqual(appGroup.apps.relatedIds, [63, 67])
+
+            appGroup.apps.getAll(completion: { (appsResult) in
+                let apps = appsResult.value!
+                XCTAssertEqual(apps.map({ $0.id }), [63, 67])
+                XCTAssertEqual(apps[0].name, "Trello")
+                XCTAssertEqual(apps[1].name, "Evernote")
+
+                expectation.fulfill()
+            })
+        }
+
+        let result = XCTWaiter.wait(for: [expectation], timeout: 1.0)
+        XCTAssertEqual(result, .completed)
+    }
+
+    func testGetAnAppGroupRelatedApps() {
+        let session = URLSessionMock(routes: [
+            "/api/v1/app_groups/38": Response(data: loadFixture("AppGroup_ProductivityApps")),
+            "/api/v1/apps/63": Response(data: loadFixture("App_Trello")),
+            "/api/v1/apps/67": Response(data: loadFixture("App_Evernote")),
+            ])
+        SimpleMDM.useSessionMock(session)
+
+        AppGroup.get(id: 38) { (appGroupResult) in
+            let appGroup = appGroupResult.value!
+
+            XCTAssertEqual(appGroup.apps.relatedIds, [63, 67])
+
+            appGroup.apps.getAll(completion: { (appsResult) in
+                let apps = appsResult.value!
+                XCTAssertEqual(apps.map({ $0.id }), [63, 67])
+                XCTAssertEqual(apps[0].name, "Trello")
+                XCTAssertEqual(apps[1].name, "Evernote")
+            })
+        }
+    }
+
+    func testGetAnAppGroupRelatedDeviceGroups() {
+        let session = URLSessionMock(routes: [
+            "/api/v1/app_groups/38": Response(data: loadFixture("AppGroup_ProductivityApps")),
+            "/api/v1/device_groups/37": Response(data: loadFixture("DeviceGroup_Interns")),
+            "/api/v1/device_groups/38": Response(data: loadFixture("DeviceGroup_Executives")),
+            ])
+        SimpleMDM.useSessionMock(session)
+
+        AppGroup.get(id: 38) { (appGroupResult) in
+            let appGroup = appGroupResult.value!
+
+            XCTAssertEqual(appGroup.deviceGroups.relatedIds, [37, 38])
+
+            appGroup.deviceGroups.getAll(completion: { (deviceGroupsResult) in
+                let deviceGroups = deviceGroupsResult.value!
+                XCTAssertEqual(deviceGroups.map({ $0.id }), [37, 38])
+                XCTAssertEqual(deviceGroups[0].name, "Interns")
+                XCTAssertEqual(deviceGroups[1].name, "Executives")
+            })
+        }
+    }
+
+    func testGetAnAppGroupRelatedDevices() {
+        let session = URLSessionMock(routes: [
+            "/api/v1/app_groups/38": Response(data: loadFixture("AppGroup_ProductivityApps")),
+            "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone")),
+            ])
+        SimpleMDM.useSessionMock(session)
+
+        AppGroup.get(id: 38) { (appGroupResult) in
+            let appGroup = appGroupResult.value!
+
+            XCTAssertEqual(appGroup.devices.relatedIds, [121])
+
+            appGroup.devices.getAll(completion: { (devicesResult) in
+                let devices = devicesResult.value!
+                XCTAssertEqual(devices.map({ $0.id }), [121])
+                XCTAssertEqual(devices[0].name, "Mike's iPhone")
+            })
         }
     }
 
@@ -274,6 +386,26 @@ class ResourcesTests: XCTestCase {
         }
     }
 
+    func testGetACustomConfigurationProfileRelatedDeviceGroups() {
+        let session = URLSessionMock(routes: [
+            "/api/v1/custom_configuration_profiles/293814": Response(data: loadFixture("CustomConfigurationProfile_MunkiConfiguration")),
+            "/api/v1/device_groups/38": Response(data: loadFixture("DeviceGroup_Executives")),
+            ])
+        SimpleMDM.useSessionMock(session)
+
+        CustomConfigurationProfile.get(id: 293814) { (ccpResult) in
+            let customConfigurationProfile = ccpResult.value!
+
+            XCTAssertEqual(customConfigurationProfile.deviceGroups.relatedIds, [38])
+
+            customConfigurationProfile.deviceGroups.getAll(completion: { (deviceGroupsResult) in
+                let deviceGroups = deviceGroupsResult.value!
+                XCTAssertEqual(deviceGroups.map({ $0.id }), [38])
+                XCTAssertEqual(deviceGroups[0].name, "Executives")
+            })
+        }
+    }
+
     func testGetAllDevices() {
         let json = loadFixture("Devices")
         let session = URLSessionMock(data: json, responseCode: 200)
@@ -293,6 +425,44 @@ class ResourcesTests: XCTestCase {
         Device.get(id: 121) { (result) in
             let device = result.value!
             XCTAssertEqual(device.name, "Mike's iPhone")
+        }
+    }
+
+    func testGetADeviceRelatedDeviceGroup() {
+        let session = URLSessionMock(routes: [
+            "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone")),
+            "/api/v1/device_groups/37": Response(data: loadFixture("DeviceGroup_Interns")),
+            ])
+        SimpleMDM.useSessionMock(session)
+
+        Device.get(id: 121) { (deviceResult) in
+            let device = deviceResult.value!
+
+            XCTAssertEqual(device.deviceGroup.relatedId, 37)
+
+            device.deviceGroup.get(completion: { (deviceGroupResult) in
+                let deviceGroup = deviceGroupResult.value!
+                XCTAssertEqual(deviceGroup.name, "Interns")
+            })
+        }
+    }
+
+    func testErrorWhileFetchingRelatedToOne() {
+        let session = URLSessionMock(routes: [
+            "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone")),
+            "/api/v1/device_groups/37": Response(data: Data(), code: 404),
+            ])
+        SimpleMDM.useSessionMock(session)
+
+        Device.get(id: 121) { (deviceResult) in
+            let device = deviceResult.value!
+
+            XCTAssertEqual(device.deviceGroup.relatedId, 37)
+
+            device.deviceGroup.get(completion: { (deviceGroupResult) in
+                let error = deviceGroupResult.error! as! APIError
+                XCTAssertEqual(error, APIError.doesNotExist)
+            })
         }
     }
 

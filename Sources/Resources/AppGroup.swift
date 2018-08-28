@@ -15,4 +15,8 @@ public struct AppGroup : ListableResource {
 
     let name: String
     let autoDeploy: Bool
+
+    let apps: RelatedToMany<App>
+    let deviceGroups: RelatedToMany<DeviceGroup>
+    let devices: RelatedToMany<Device>
 }

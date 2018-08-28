@@ -1,0 +1,12 @@
+{
+  "data": {
+    "attributes": {
+      "app_type": "app_store",
+      "bundle_identifier": "com.evernote.iPhone.Evernote",
+      "itunes_store_id": 281796108,
+      "name": "Evernote"
+    },
+    "id": 67,
+    "type": "app"
+  }
+}
