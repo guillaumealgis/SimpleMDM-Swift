@@ -1,0 +1,12 @@
+{
+  "data": {
+    "attributes": {
+      "app_type": "app_store",
+      "bundle_identifier": "com.google.calendar",
+      "itunes_store_id": 909319292,
+      "name": "Google Agenda : Simplifiez votre quotidien"
+    },
+    "id": 32068,
+    "type": "app"
+  }
+}

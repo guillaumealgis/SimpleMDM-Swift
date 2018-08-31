@@ -16,6 +16,7 @@
 		F09F55092132FA9700D4FE8D /* App_Trello.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F55072132F8F500D4FE8D /* App_Trello.json */; };
 		F09F550A2132FA9700D4FE8D /* App_Evernote.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F55082132F96B00D4FE8D /* App_Evernote.json */; };
 		F09F551D2135D53A00D4FE8D /* DeviceGroup_Interns.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F551C2135D53A00D4FE8D /* DeviceGroup_Interns.json */; };
+		F09F551F2139E31600D4FE8D /* App_GoogleCalendar.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F551E2139E31500D4FE8D /* App_GoogleCalendar.json */; };
 		F0AA1FC320DEEFB6003781DF /* SimpleMDM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AA1FBA20DEEFB5003781DF /* SimpleMDM.framework */; };
 		F0AA1FCA20DEEFB6003781DF /* SimpleMDM.h in Headers */ = {isa = PBXBuildFile; fileRef = F0AA1FBC20DEEFB5003781DF /* SimpleMDM.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F0D9F2AA20DEF3C10081081C /* Account.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47320CD7CC900A34F56 /* Account.json */; };
@@ -114,6 +115,7 @@
 		F09F55072132F8F500D4FE8D /* App_Trello.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = App_Trello.json; sourceTree = "<group>"; };
 		F09F55082132F96B00D4FE8D /* App_Evernote.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = App_Evernote.json; sourceTree = "<group>"; };
 		F09F551C2135D53A00D4FE8D /* DeviceGroup_Interns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DeviceGroup_Interns.json; sourceTree = "<group>"; };
+		F09F551E2139E31500D4FE8D /* App_GoogleCalendar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = App_GoogleCalendar.json; sourceTree = "<group>"; };
 		F0AA1FBA20DEEFB5003781DF /* SimpleMDM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleMDM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AA1FBC20DEEFB5003781DF /* SimpleMDM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleMDM.h; sourceTree = "<group>"; };
 		F0AA1FBD20DEEFB5003781DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				F06E9E8C20CDD38F00D02395 /* App_SimpleMDM.json */,
 				F09F55072132F8F500D4FE8D /* App_Trello.json */,
 				F09F55082132F96B00D4FE8D /* App_Evernote.json */,
+				F09F551E2139E31500D4FE8D /* App_GoogleCalendar.json */,
 				F06E9E8D20CDD39000D02395 /* Apps.json */,
 				F06E9E9920D072BF00D02395 /* CustomAttribute_EmailAddress.json */,
 				F06E9E9820D072B600D02395 /* CustomAttributes.json */,
@@ -380,6 +383,7 @@
 				F0D9F2B620DEF3C10081081C /* Devices.json in Resources */,
 				F0D9F2B020DEF3C10081081C /* CustomAttributes.json in Resources */,
 				F09F550A2132FA9700D4FE8D /* App_Evernote.json in Resources */,
+				F09F551F2139E31600D4FE8D /* App_GoogleCalendar.json in Resources */,
 				F0D9F2AA20DEF3C10081081C /* Account.json in Resources */,
 				F0D9F2B420DEF3C10081081C /* DeviceGroup_Executives.json in Resources */,
 				F0D9F2AD20DEF3C10081081C /* AppGroups.json in Resources */,

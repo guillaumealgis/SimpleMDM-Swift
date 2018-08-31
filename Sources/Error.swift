@@ -51,6 +51,7 @@ public enum APIError : SimpleMDMError {
     case unknown(httpCode: Int)
     case generic(httpCode: Int, description: String)
     case doesNotExist
+    case unexpectedResourceId
 
     public var errorDescription: String? {
         switch self {
@@ -60,6 +61,8 @@ public enum APIError : SimpleMDMError {
             return "Unexpected API error (\(httpCode): \(description))"
         case .doesNotExist:
             return "The requested resource does not exist"
+        case .unexpectedResourceId:
+            return "A fetched resources had an unexpected id"
         }
     }
 }

@@ -174,6 +174,18 @@ class ResourcesTests: XCTestCase {
         }
     }
 
+    func testFetchResourceWithUnexpectedId() {
+        let json = loadFixture("App_GoogleCalendar")
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        App.get(id: 63) { (result) in
+            let error = result.error! as! APIError
+            XCTAssertEqual(error, APIError.unexpectedResourceId)
+            XCTAssertTrue(error.localizedDescription.contains("unexpected id"))
+        }
+    }
+
     func testGetAccount() {
         let json = loadFixture("Account")
         let session = URLSessionMock(data: json, responseCode: 200)
