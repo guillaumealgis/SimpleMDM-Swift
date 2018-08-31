@@ -39,7 +39,7 @@ public enum NetworkError: SimpleMDMError {
             return "Unknown network error"
         case .noHTTPResponse:
             return "Did not receive a HTTP response"
-        case .unexpectedMimeType(let mimeType):
+        case let .unexpectedMimeType(mimeType):
             return "Received a response with an unexpected MIME type \"\(mimeType ?? "null")\""
         }
     }
@@ -47,7 +47,7 @@ public enum NetworkError: SimpleMDMError {
 
 // SimpleMDM-level errors
 // eg. The requested resource does not exist, the operation failed for some reason, etc.
-public enum APIError : SimpleMDMError {
+public enum APIError: SimpleMDMError {
     case unknown(httpCode: Int)
     case generic(httpCode: Int, description: String)
     case doesNotExist
@@ -66,4 +66,3 @@ public enum APIError : SimpleMDMError {
         }
     }
 }
-

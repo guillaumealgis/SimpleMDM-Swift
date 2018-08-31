@@ -21,6 +21,7 @@ internal class NetworkingService {
             base64APIKey = utf8Data?.base64EncodedString()
         }
     }
+
     private var base64APIKey: String?
 
     private let host = "a.simplemdm.com"
@@ -84,12 +85,11 @@ internal class NetworkingService {
         let urlRequest: URLRequest
         do {
             urlRequest = try buildURLRequest(withURL: url)
-        }
-        catch let error {
+        } catch let error {
             return completion(.failure(error))
         }
 
-        let task = session.dataTask(with: urlRequest) { (data, response, error) in
+        let task = session.dataTask(with: urlRequest) { data, response, error in
             guard let data = data else {
                 let error = error ?? NetworkError.unknown
                 return completion(.failure(error))

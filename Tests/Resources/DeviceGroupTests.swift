@@ -6,17 +6,16 @@
 //  Copyright © 2018 Guillaume Algis. All rights reserved.
 //
 
-import XCTest
 @testable import SimpleMDM
+import XCTest
 
 class DeviceGroupTests: XCTestCase {
-
     func testGetAllDeviceGroups() {
         let json = loadFixture("DeviceGroups")
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        DeviceGroup.getAll { (result) in
+        DeviceGroup.getAll { result in
             guard case let .success(devices) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -29,12 +28,11 @@ class DeviceGroupTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        DeviceGroup.get(id: 38) { (result) in
+        DeviceGroup.get(id: 38) { result in
             guard case let .success(device) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
             XCTAssertEqual(device.name, "Executives")
         }
     }
-
 }

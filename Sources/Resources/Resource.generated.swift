@@ -1,8 +1,8 @@
 // Generated using Sourcery 0.13.1 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
-
 // MARK: Account
+
 extension Account: Resource {
     public static var endpointName: String {
         return "account"
@@ -26,7 +26,7 @@ extension Account: Decodable {
 
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "account"
-        guard (type == expectedType) else {
+        guard type == expectedType else {
             throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
         }
 
@@ -65,7 +65,7 @@ extension App: Decodable {
 
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "app"
-        guard (type == expectedType) else {
+        guard type == expectedType else {
             throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
         }
 
@@ -112,7 +112,7 @@ extension AppGroup: Decodable {
 
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "app_group"
-        guard (type == expectedType) else {
+        guard type == expectedType else {
             throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
         }
 
@@ -154,7 +154,7 @@ extension CustomAttribute: Decodable {
 
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "custom_attribute"
-        guard (type == expectedType) else {
+        guard type == expectedType else {
             throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
         }
 
@@ -194,7 +194,7 @@ extension CustomConfigurationProfile: Decodable {
 
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "custom_configuration_profile"
-        guard (type == expectedType) else {
+        guard type == expectedType else {
             throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
         }
 
@@ -293,7 +293,7 @@ extension Device: Decodable {
 
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "device"
-        guard (type == expectedType) else {
+        guard type == expectedType else {
             throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
         }
 
@@ -388,7 +388,7 @@ extension DeviceGroup: Decodable {
 
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "device_group"
-        guard (type == expectedType) else {
+        guard type == expectedType else {
             throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
         }
 
@@ -431,7 +431,7 @@ extension InstalledApp: Decodable {
 
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "installed_app"
-        guard (type == expectedType) else {
+        guard type == expectedType else {
             throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
         }
 
@@ -450,6 +450,7 @@ extension InstalledApp: Decodable {
 }
 
 // MARK: PushCertificate
+
 extension PushCertificate: Resource {
     public static var endpointName: String {
         return "push_certificate"
@@ -473,7 +474,7 @@ extension PushCertificate: Decodable {
 
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "push_certificate"
-        guard (type == expectedType) else {
+        guard type == expectedType else {
             throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
         }
 
@@ -482,4 +483,3 @@ extension PushCertificate: Decodable {
         expiresAt = try attributes.decode(Date.self, forKey: .expiresAt)
     }
 }
-

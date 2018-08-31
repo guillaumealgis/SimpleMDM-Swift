@@ -40,7 +40,7 @@ extension {{ type.name }}: Decodable {
 
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "{{ type.name|camelToSnakeCase }}"
-        guard (type == expectedType) else {
+        guard type == expectedType else {
             throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
         }
 

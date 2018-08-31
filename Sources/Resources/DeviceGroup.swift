@@ -8,10 +8,10 @@
 
 import Foundation
 
-public struct DeviceGroup : ListableResource {
+public struct DeviceGroup: ListableResource {
     // sourcery:inline:auto:DeviceGroup.Identifiable
     public let id: Int
     // sourcery:end
-    
+
     let name: String
 }

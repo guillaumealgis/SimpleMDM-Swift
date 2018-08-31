@@ -6,17 +6,16 @@
 //  Copyright © 2018 Guillaume Algis. All rights reserved.
 //
 
-import XCTest
 @testable import SimpleMDM
+import XCTest
 
 class AppGroupTests: XCTestCase {
-
     func testGetAllAppGroups() {
         let json = loadFixture("AppGroups")
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        AppGroup.getAll { (result) in
+        AppGroup.getAll { result in
             guard case let .success(appGroups) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -29,7 +28,7 @@ class AppGroupTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        AppGroup.get(id: 38) { (result) in
+        AppGroup.get(id: 38) { result in
             guard case let .success(appGroup) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -41,17 +40,17 @@ class AppGroupTests: XCTestCase {
         let session = URLSessionMock(routes: [
             "/api/v1/app_groups/38": Response(data: loadFixture("AppGroup_ProductivityApps")),
             "/api/v1/apps/63": Response(data: loadFixture("App_Trello")),
-            "/api/v1/apps/67": Response(data: Data(), code: 404),
-            ])
+            "/api/v1/apps/67": Response(data: Data(), code: 404)
+        ])
         SimpleMDM.useSessionMock(session)
 
-        AppGroup.get(id: 38) { (appGroupResult) in
+        AppGroup.get(id: 38) { appGroupResult in
             guard case let .success(appGroup) = appGroupResult else {
                 return XCTFail("Expected .success, got \(appGroupResult)")
             }
             XCTAssertEqual(appGroup.apps.relatedIds, [63, 67])
 
-            appGroup.apps.getAll(completion: { (appsResult) in
+            appGroup.apps.getAll(completion: { appsResult in
                 guard case let .failure(error) = appsResult else {
                     return XCTFail("Expected .failure, got \(appsResult)")
                 }
@@ -68,17 +67,17 @@ class AppGroupTests: XCTestCase {
         let session = URLSessionMock(routes: [
             "/api/v1/app_groups/38": Response(data: loadFixture("AppGroup_ProductivityApps")),
             "/api/v1/apps/63": Response(data: loadFixture("App_Trello"), delay: .milliseconds(50)),
-            "/api/v1/apps/67": Response(data: loadFixture("App_Evernote"), delay: .milliseconds(10)),
-            ])
+            "/api/v1/apps/67": Response(data: loadFixture("App_Evernote"), delay: .milliseconds(10))
+        ])
         SimpleMDM.useSessionMock(session)
 
-        AppGroup.get(id: 38) { (appGroupResult) in
+        AppGroup.get(id: 38) { appGroupResult in
             guard case let .success(appGroup) = appGroupResult else {
                 return XCTFail("Expected .success, got \(appGroupResult)")
             }
             XCTAssertEqual(appGroup.apps.relatedIds, [63, 67])
 
-            appGroup.apps.getAll(completion: { (appsResult) in
+            appGroup.apps.getAll(completion: { appsResult in
                 guard case let .success(apps) = appsResult else {
                     return XCTFail("Expected .success, got \(appsResult)")
                 }
@@ -98,17 +97,17 @@ class AppGroupTests: XCTestCase {
         let session = URLSessionMock(routes: [
             "/api/v1/app_groups/38": Response(data: loadFixture("AppGroup_ProductivityApps")),
             "/api/v1/apps/63": Response(data: loadFixture("App_Trello")),
-            "/api/v1/apps/67": Response(data: loadFixture("App_Evernote")),
-            ])
+            "/api/v1/apps/67": Response(data: loadFixture("App_Evernote"))
+        ])
         SimpleMDM.useSessionMock(session)
 
-        AppGroup.get(id: 38) { (appGroupResult) in
+        AppGroup.get(id: 38) { appGroupResult in
             guard case let .success(appGroup) = appGroupResult else {
                 return XCTFail("Expected .success, got \(appGroupResult)")
             }
             XCTAssertEqual(appGroup.apps.relatedIds, [63, 67])
 
-            appGroup.apps.getAll(completion: { (appsResult) in
+            appGroup.apps.getAll(completion: { appsResult in
                 guard case let .success(apps) = appsResult else {
                     return XCTFail("Expected .success, got \(appsResult)")
                 }
@@ -123,17 +122,17 @@ class AppGroupTests: XCTestCase {
         let session = URLSessionMock(routes: [
             "/api/v1/app_groups/38": Response(data: loadFixture("AppGroup_ProductivityApps")),
             "/api/v1/device_groups/37": Response(data: loadFixture("DeviceGroup_Interns")),
-            "/api/v1/device_groups/38": Response(data: loadFixture("DeviceGroup_Executives")),
-            ])
+            "/api/v1/device_groups/38": Response(data: loadFixture("DeviceGroup_Executives"))
+        ])
         SimpleMDM.useSessionMock(session)
 
-        AppGroup.get(id: 38) { (appGroupResult) in
+        AppGroup.get(id: 38) { appGroupResult in
             guard case let .success(appGroup) = appGroupResult else {
                 return XCTFail("Expected .success, got \(appGroupResult)")
             }
             XCTAssertEqual(appGroup.deviceGroups.relatedIds, [37, 38])
 
-            appGroup.deviceGroups.getAll(completion: { (deviceGroupsResult) in
+            appGroup.deviceGroups.getAll(completion: { deviceGroupsResult in
                 guard case let .success(deviceGroups) = deviceGroupsResult else {
                     return XCTFail("Expected .success, got \(deviceGroupsResult)")
                 }
@@ -147,17 +146,17 @@ class AppGroupTests: XCTestCase {
     func testGetAnAppGroupRelatedDevices() {
         let session = URLSessionMock(routes: [
             "/api/v1/app_groups/38": Response(data: loadFixture("AppGroup_ProductivityApps")),
-            "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone")),
-            ])
+            "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone"))
+        ])
         SimpleMDM.useSessionMock(session)
 
-        AppGroup.get(id: 38) { (appGroupResult) in
+        AppGroup.get(id: 38) { appGroupResult in
             guard case let .success(appGroup) = appGroupResult else {
                 return XCTFail("Expected .success, got \(appGroupResult)")
             }
             XCTAssertEqual(appGroup.devices.relatedIds, [121])
 
-            appGroup.devices.getAll(completion: { (devicesResult) in
+            appGroup.devices.getAll(completion: { devicesResult in
                 guard case let .success(devices) = devicesResult else {
                     return XCTFail("Expected .success, got \(devicesResult)")
                 }
@@ -166,5 +165,4 @@ class AppGroupTests: XCTestCase {
             })
         }
     }
-
 }

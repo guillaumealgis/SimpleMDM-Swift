@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct PushCertificate : UniqueResource {
+public struct PushCertificate: UniqueResource {
     let appleId: String
     let expiresAt: Date
 }

@@ -8,11 +8,11 @@
 
 import Foundation
 
-public struct CustomConfigurationProfile : ListableResource {
+public struct CustomConfigurationProfile: ListableResource {
     // sourcery:inline:auto:CustomConfigurationProfile.Identifiable
     public let id: Int
     // sourcery:end
-    
+
     let name: String
 
     let deviceGroups: RelatedToMany<DeviceGroup>

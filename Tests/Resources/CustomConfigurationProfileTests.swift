@@ -6,17 +6,16 @@
 //  Copyright © 2018 Guillaume Algis. All rights reserved.
 //
 
-import XCTest
 @testable import SimpleMDM
+import XCTest
 
 class CustomConfigurationProfileTests: XCTestCase {
-
     func testGetAllCustomConfigurationProfiles() {
         let json = loadFixture("CustomConfigurationProfiles")
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        CustomConfigurationProfile.getAll { (result) in
+        CustomConfigurationProfile.getAll { result in
             guard case let .success(customAttributes) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -29,7 +28,8 @@ class CustomConfigurationProfileTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        CustomConfigurationProfile.get(id: 293814) { (result) in
+        // swiftformat:disable:next numberFormatting
+        CustomConfigurationProfile.get(id: 293814) { result in
             guard case let .success(customConfigurationProfile) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -40,17 +40,18 @@ class CustomConfigurationProfileTests: XCTestCase {
     func testGetACustomConfigurationProfileRelatedDeviceGroups() {
         let session = URLSessionMock(routes: [
             "/api/v1/custom_configuration_profiles/293814": Response(data: loadFixture("CustomConfigurationProfile_MunkiConfiguration")),
-            "/api/v1/device_groups/38": Response(data: loadFixture("DeviceGroup_Executives")),
-            ])
+            "/api/v1/device_groups/38": Response(data: loadFixture("DeviceGroup_Executives"))
+        ])
         SimpleMDM.useSessionMock(session)
 
-        CustomConfigurationProfile.get(id: 293814) { (ccpResult) in
+        // swiftformat:disable:next numberFormatting
+        CustomConfigurationProfile.get(id: 293814) { ccpResult in
             guard case let .success(customConfigurationProfile) = ccpResult else {
                 return XCTFail("Expected .success, got \(ccpResult)")
             }
             XCTAssertEqual(customConfigurationProfile.deviceGroups.relatedIds, [38])
 
-            customConfigurationProfile.deviceGroups.getAll(completion: { (deviceGroupsResult) in
+            customConfigurationProfile.deviceGroups.getAll(completion: { deviceGroupsResult in
                 guard case let .success(deviceGroups) = deviceGroupsResult else {
                     return XCTFail("Expected .success, got \(deviceGroupsResult)")
                 }
@@ -59,5 +60,4 @@ class CustomConfigurationProfileTests: XCTestCase {
             })
         }
     }
-
 }

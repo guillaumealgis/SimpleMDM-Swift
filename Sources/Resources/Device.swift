@@ -8,11 +8,11 @@
 
 import Foundation
 
-public struct Device : ListableResource {
+public struct Device: ListableResource {
     // sourcery:inline:auto:Device.Identifiable
     public let id: Int
     // sourcery:end
-    
+
     let uniqueIdentifier: String
     let serialNumber: String
     let imei: String?
@@ -84,4 +84,3 @@ public struct Device : ListableResource {
 
     let deviceGroup: RelatedToOne<DeviceGroup>
 }
-

@@ -6,17 +6,16 @@
 //  Copyright © 2018 Guillaume Algis. All rights reserved.
 //
 
-import XCTest
 @testable import SimpleMDM
+import XCTest
 
 class DeviceTests: XCTestCase {
-
     func testGetAllDevices() {
         let json = loadFixture("Devices")
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        Device.getAll { (result) in
+        Device.getAll { result in
             guard case let .success(devices) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -29,7 +28,7 @@ class DeviceTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        Device.get(id: 121) { (result) in
+        Device.get(id: 121) { result in
             guard case let .success(device) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -40,17 +39,17 @@ class DeviceTests: XCTestCase {
     func testGetADeviceRelatedDeviceGroup() {
         let session = URLSessionMock(routes: [
             "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone")),
-            "/api/v1/device_groups/37": Response(data: loadFixture("DeviceGroup_Interns")),
-            ])
+            "/api/v1/device_groups/37": Response(data: loadFixture("DeviceGroup_Interns"))
+        ])
         SimpleMDM.useSessionMock(session)
 
-        Device.get(id: 121) { (deviceResult) in
+        Device.get(id: 121) { deviceResult in
             guard case let .success(device) = deviceResult else {
                 return XCTFail("Expected .success, got \(deviceResult)")
             }
             XCTAssertEqual(device.deviceGroup.relatedId, 37)
 
-            device.deviceGroup.get(completion: { (deviceGroupResult) in
+            device.deviceGroup.get(completion: { deviceGroupResult in
                 guard case let .success(deviceGroup) = deviceGroupResult else {
                     return XCTFail("Expected .success, got \(deviceGroupResult)")
                 }
@@ -62,17 +61,17 @@ class DeviceTests: XCTestCase {
     func testErrorWhileFetchingRelatedToOne() {
         let session = URLSessionMock(routes: [
             "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone")),
-            "/api/v1/device_groups/37": Response(data: Data(), code: 404),
-            ])
+            "/api/v1/device_groups/37": Response(data: Data(), code: 404)
+        ])
         SimpleMDM.useSessionMock(session)
 
-        Device.get(id: 121) { (deviceResult) in
+        Device.get(id: 121) { deviceResult in
             guard case let .success(device) = deviceResult else {
                 return XCTFail("Expected .success, got \(deviceResult)")
             }
             XCTAssertEqual(device.deviceGroup.relatedId, 37)
 
-            device.deviceGroup.get(completion: { (deviceGroupResult) in
+            device.deviceGroup.get(completion: { deviceGroupResult in
                 guard case let .failure(error) = deviceGroupResult else {
                     return XCTFail("Expected .failure, got \(deviceGroupResult)")
                 }
@@ -83,5 +82,4 @@ class DeviceTests: XCTestCase {
             })
         }
     }
-
 }

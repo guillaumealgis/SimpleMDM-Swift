@@ -6,11 +6,10 @@
 //  Copyright © 2018 Guillaume Algis. All rights reserved.
 //
 
-import XCTest
 @testable import SimpleMDM
+import XCTest
 
 class ResourcesTests: XCTestCase {
-
     func testUniqueResourceEndpointIsSingular() {
         XCTAssertEqual(Account.endpointName, "account")
     }
@@ -24,7 +23,7 @@ class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        Account.get { (result) in
+        Account.get { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -44,7 +43,7 @@ class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        Account.get { (result) in
+        Account.get { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -65,7 +64,7 @@ class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 404)
         SimpleMDM.useSessionMock(session)
 
-        Device.get(id: 0) { (result) in
+        Device.get(id: 0) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -87,7 +86,7 @@ class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: errorCode)
         SimpleMDM.useSessionMock(session)
 
-        Account.get { (result) in
+        Account.get { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -109,7 +108,7 @@ class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: errorCode)
         SimpleMDM.useSessionMock(session)
 
-        Account.get { (result) in
+        Account.get { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -132,7 +131,7 @@ class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: errorCode)
         SimpleMDM.useSessionMock(session)
 
-        Account.get { (result) in
+        Account.get { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -153,7 +152,7 @@ class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        Device.getAll() { (result) in
+        Device.getAll { result in
             guard case let .success(resources) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -176,7 +175,7 @@ class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        PushCertificate.get { (result) in
+        PushCertificate.get { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -199,7 +198,7 @@ class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        Account.get { (result) in
+        Account.get { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -212,7 +211,7 @@ class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        App.get(id: 63) { (result) in
+        App.get(id: 63) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -223,5 +222,4 @@ class ResourcesTests: XCTestCase {
             XCTAssertTrue(apiError.localizedDescription.contains("unexpected id"))
         }
     }
-
 }

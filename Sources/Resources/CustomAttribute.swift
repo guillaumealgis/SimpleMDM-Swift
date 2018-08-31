@@ -9,7 +9,7 @@
 import Foundation
 
 // sourcery: identifierType = String
-public struct CustomAttribute : ListableResource {
+public struct CustomAttribute: ListableResource {
     // sourcery:inline:auto:CustomAttribute.Identifiable
     public let id: String
     // sourcery:end

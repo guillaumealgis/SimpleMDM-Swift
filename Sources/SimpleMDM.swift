@@ -8,9 +8,7 @@
 
 import Foundation
 
-
 public class SimpleMDM: NSObject {
-
     // MARK: Type properties
 
     public static var APIKey: String? {

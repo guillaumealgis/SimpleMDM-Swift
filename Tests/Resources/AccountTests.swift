@@ -6,17 +6,16 @@
 //  Copyright © 2018 Guillaume Algis. All rights reserved.
 //
 
-import XCTest
 @testable import SimpleMDM
+import XCTest
 
 class AccountTests: XCTestCase {
-
     func testGetAccount() {
         let json = loadFixture("Account")
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        Account.get { (result) in
+        Account.get { result in
             guard case let .success(account) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -24,5 +23,4 @@ class AccountTests: XCTestCase {
             XCTAssertEqual(account.appleStoreCountryCode, "US")
         }
     }
-
 }

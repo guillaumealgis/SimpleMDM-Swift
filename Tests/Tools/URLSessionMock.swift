@@ -45,15 +45,14 @@ class URLSessionMock: URLSessionProtocol {
 
         let urlResponse: URLResponse?
         if let code = response.code {
-            var headerFields: [String: String]? = nil
+            var headerFields: [String: String]?
             if let mimeType = response.mimeType {
                 headerFields = [
                     "Content-Type": mimeType
                 ]
             }
             urlResponse = HTTPURLResponse(url: request.url!, statusCode: code, httpVersion: nil, headerFields: headerFields)
-        }
-        else {
+        } else {
             urlResponse = nil
         }
 
@@ -63,8 +62,7 @@ class URLSessionMock: URLSessionProtocol {
             DispatchQueue.global().asyncAfter(deadline: deadline, execute: {
                 completionHandler(response.data, urlResponse, nil)
             })
-        }
-        else {
+        } else {
             completionHandler(response.data, urlResponse, nil)
         }
 

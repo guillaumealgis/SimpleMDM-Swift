@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct AppGroup : ListableResource {
+public struct AppGroup: ListableResource {
     // sourcery:inline:auto:AppGroup.Identifiable
     public let id: Int
     // sourcery:end

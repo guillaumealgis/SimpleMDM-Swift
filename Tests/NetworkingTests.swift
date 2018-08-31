@@ -6,17 +6,16 @@
 //  Copyright © 2018 Guillaume Algis. All rights reserved.
 //
 
-import XCTest
 @testable import SimpleMDM
+import XCTest
 
 class NetworkingTests: XCTestCase {
-
     func testReturnUnknownErrorIfRequestFails() {
         let session = URLSessionMock(data: nil)
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { (result) in
+        networkingService.getDataForAllResources(ofType: Account.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -32,7 +31,7 @@ class NetworkingTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { (result) in
+        networkingService.getDataForAllResources(ofType: Account.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -48,7 +47,7 @@ class NetworkingTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { (result) in
+        networkingService.getDataForAllResources(ofType: Account.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -64,7 +63,7 @@ class NetworkingTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { (result) in
+        networkingService.getDataForAllResources(ofType: Account.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -81,7 +80,7 @@ class NetworkingTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { (result) in
+        networkingService.getDataForAllResources(ofType: Account.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -98,7 +97,7 @@ class NetworkingTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { (result) in
+        networkingService.getDataForAllResources(ofType: Account.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -115,7 +114,7 @@ class NetworkingTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { (result) in
+        networkingService.getDataForAllResources(ofType: Account.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -132,7 +131,7 @@ class NetworkingTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { (result) in
+        networkingService.getDataForAllResources(ofType: Account.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -142,5 +141,4 @@ class NetworkingTests: XCTestCase {
             XCTAssertTrue(networkError.localizedDescription.contains("null"))
         }
     }
-
 }

@@ -6,11 +6,10 @@
 //  Copyright © 2018 Guillaume Algis. All rights reserved.
 //
 
-import XCTest
 @testable import SimpleMDM
+import XCTest
 
 class APIKeyTests: XCTestCase {
-
     func testSettingAPIKeyViaSingleton() {
         let APIKey = "AVeryRandomTestAPIKey"
         SimpleMDM.APIKey = APIKey
@@ -23,7 +22,7 @@ class APIKeyTests: XCTestCase {
         let session = URLSessionMock()
         let networkingService = NetworkingService(urlSession: session)
 
-        networkingService.getDataForAllResources(ofType: Account.self) { (result) in
+        networkingService.getDataForAllResources(ofType: Account.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -38,7 +37,7 @@ class APIKeyTests: XCTestCase {
         let session = URLSessionMock()
         let networkingService = NetworkingService(urlSession: session)
 
-        networkingService.getDataForAllResources(ofType: Account.self) { (result) in
+        networkingService.getDataForAllResources(ofType: Account.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -54,7 +53,7 @@ class APIKeyTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { (result) in
+        networkingService.getDataForAllResources(ofType: Account.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -70,7 +69,7 @@ class APIKeyTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { (result) in
+        networkingService.getDataForAllResources(ofType: Account.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -80,5 +79,4 @@ class APIKeyTests: XCTestCase {
             XCTAssertTrue(apiKeyError.localizedDescription.contains("server rejected the API key"))
         }
     }
-
 }

@@ -69,9 +69,9 @@ public struct RelatedToMany<T: IdentifiableResource>: RelatedToResource {
         let semaphore = DispatchSemaphore(value: 1)
         let group = DispatchGroup()
 
-        for i in 0..<relations.count {
+        for i in 0 ..< relations.count {
             group.enter()
-            get(at: i) { (result) in
+            get(at: i) { result in
                 semaphore.wait()
                 switch result {
                 case let .success(resource): resources.append(resource)
@@ -86,8 +86,7 @@ public struct RelatedToMany<T: IdentifiableResource>: RelatedToResource {
             let result: Result<[T]>
             if let error = error {
                 result = .failure(error)
-            }
-            else {
+            } else {
                 // Because the resources will not necessarily arrive in the right order, we need to sort them
                 // according to their id position in relatedIds
                 resources.sort { self.relatedIds.index(of: $0.id)! < self.relatedIds.index(of: $1.id)! }

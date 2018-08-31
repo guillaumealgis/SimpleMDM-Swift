@@ -6,11 +6,10 @@
 //  Copyright © 2018 Guillaume Algis. All rights reserved.
 //
 
-import XCTest
 @testable import SimpleMDM
+import XCTest
 
 class DecodingTests: XCTestCase {
-
     func testDecodeInvalidErrorPayload() {
         let json = """
           {
@@ -29,10 +28,10 @@ class DecodingTests: XCTestCase {
 
     func testDecodeErrorPayloadWithoutError() {
         let json = """
-            {
-              "errors": []
-            }
-            """.data(using: .utf8)!
+        {
+          "errors": []
+        }
+        """.data(using: .utf8)!
         let decodingService = DecodingService()
 
         let error = decodingService.decodeError(from: json, httpCode: 400)
@@ -63,17 +62,17 @@ class DecodingTests: XCTestCase {
 
     func testDecodeErrorPayloadWithMultipleErrors() {
         let json = """
+        {
+          "errors": [
             {
-              "errors": [
-                {
-                  "title": "this is the first test error message"
-                },
-                {
-                  "title": "this is the second test error message"
-                }
-              ]
+              "title": "this is the first test error message"
+            },
+            {
+              "title": "this is the second test error message"
             }
-            """.data(using: .utf8)!
+          ]
+        }
+        """.data(using: .utf8)!
         let decodingService = DecodingService()
 
         let error = decodingService.decodeError(from: json, httpCode: 400)

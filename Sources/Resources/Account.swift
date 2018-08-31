@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Account : UniqueResource {
+public struct Account: UniqueResource {
     let name: String
     let appleStoreCountryCode: String
 }
