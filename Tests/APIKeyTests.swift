@@ -24,7 +24,13 @@ class APIKeyTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
 
         networkingService.getDataForAllResources(ofType: Account.self) { (result) in
-            XCTAssertEqual(result.error! as! APIKeyError, APIKeyError.notSet)
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let apiKeyError = error as? APIKeyError else {
+                return XCTFail("Expected error to be an APIKeyError, got \(error)")
+            }
+            XCTAssertEqual(apiKeyError, APIKeyError.notSet)
         }
     }
 
@@ -33,8 +39,13 @@ class APIKeyTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
 
         networkingService.getDataForAllResources(ofType: Account.self) { (result) in
-            let error = result.error! as! LocalizedError
-            XCTAssertTrue(error.localizedDescription.contains("API key was not set"))
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let apiKeyError = error as? APIKeyError else {
+                return XCTFail("Expected error to be an APIKeyError, got \(error)")
+            }
+            XCTAssertTrue(apiKeyError.localizedDescription.contains("API key was not set"))
         }
     }
 
@@ -44,7 +55,13 @@ class APIKeyTests: XCTestCase {
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
         networkingService.getDataForAllResources(ofType: Account.self) { (result) in
-            XCTAssertEqual(result.error! as! APIKeyError, APIKeyError.invalid)
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let apiKeyError = error as? APIKeyError else {
+                return XCTFail("Expected error to be an APIKeyError, got \(error)")
+            }
+            XCTAssertEqual(apiKeyError, APIKeyError.invalid)
         }
     }
 
@@ -54,8 +71,13 @@ class APIKeyTests: XCTestCase {
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
         networkingService.getDataForAllResources(ofType: Account.self) { (result) in
-            let error = result.error! as! LocalizedError
-            XCTAssertTrue(error.localizedDescription.contains("server rejected the API key"))
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let apiKeyError = error as? APIKeyError else {
+                return XCTFail("Expected error to be an APIKeyError, got \(error)")
+            }
+            XCTAssertTrue(apiKeyError.localizedDescription.contains("server rejected the API key"))
         }
     }
 

@@ -17,7 +17,13 @@ class NetworkingTests: XCTestCase {
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
         networkingService.getDataForAllResources(ofType: Account.self) { (result) in
-            XCTAssertEqual(result.error! as! NetworkError, NetworkError.unknown)
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let networkError = error as? NetworkError else {
+                return XCTFail("Expected error to be a NetworkError, got \(error)")
+            }
+            XCTAssertEqual(networkError, NetworkError.unknown)
         }
     }
 
@@ -27,8 +33,13 @@ class NetworkingTests: XCTestCase {
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
         networkingService.getDataForAllResources(ofType: Account.self) { (result) in
-            let error = result.error! as! LocalizedError
-            XCTAssertEqual(error.localizedDescription, "Unknown network error")
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let networkError = error as? NetworkError else {
+                return XCTFail("Expected error to be a NetworkError, got \(error)")
+            }
+            XCTAssertEqual(networkError.localizedDescription, "Unknown network error")
         }
     }
 
@@ -38,7 +49,13 @@ class NetworkingTests: XCTestCase {
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
         networkingService.getDataForAllResources(ofType: Account.self) { (result) in
-            XCTAssertEqual(result.error! as! NetworkError, NetworkError.noHTTPResponse)
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let networkError = error as? NetworkError else {
+                return XCTFail("Expected error to be a NetworkError, got \(error)")
+            }
+            XCTAssertEqual(networkError, NetworkError.noHTTPResponse)
         }
     }
 
@@ -48,8 +65,13 @@ class NetworkingTests: XCTestCase {
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
         networkingService.getDataForAllResources(ofType: Account.self) { (result) in
-            let error = result.error! as! LocalizedError
-            XCTAssertEqual(error.localizedDescription, "Did not receive a HTTP response")
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let networkError = error as? NetworkError else {
+                return XCTFail("Expected error to be a NetworkError, got \(error)")
+            }
+            XCTAssertEqual(networkError.localizedDescription, "Did not receive a HTTP response")
         }
     }
 
@@ -60,7 +82,13 @@ class NetworkingTests: XCTestCase {
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
         networkingService.getDataForAllResources(ofType: Account.self) { (result) in
-            XCTAssertEqual(result.error! as! NetworkError, NetworkError.unexpectedMimeType(mimeType))
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let networkError = error as? NetworkError else {
+                return XCTFail("Expected error to be a NetworkError, got \(error)")
+            }
+            XCTAssertEqual(networkError, NetworkError.unexpectedMimeType(mimeType))
         }
     }
 
@@ -71,7 +99,13 @@ class NetworkingTests: XCTestCase {
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
         networkingService.getDataForAllResources(ofType: Account.self) { (result) in
-            XCTAssertEqual(result.error! as! NetworkError, NetworkError.unexpectedMimeType(mimeType))
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let networkError = error as? NetworkError else {
+                return XCTFail("Expected error to be a NetworkError, got \(error)")
+            }
+            XCTAssertEqual(networkError, NetworkError.unexpectedMimeType(mimeType))
         }
     }
 
@@ -82,8 +116,13 @@ class NetworkingTests: XCTestCase {
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
         networkingService.getDataForAllResources(ofType: Account.self) { (result) in
-            let error = result.error! as! LocalizedError
-            XCTAssertTrue(error.localizedDescription.contains(mimeType))
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let networkError = error as? NetworkError else {
+                return XCTFail("Expected error to be a NetworkError, got \(error)")
+            }
+            XCTAssertTrue(networkError.localizedDescription.contains(mimeType))
         }
     }
 
@@ -94,8 +133,13 @@ class NetworkingTests: XCTestCase {
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
         networkingService.getDataForAllResources(ofType: Account.self) { (result) in
-            let error = result.error! as! LocalizedError
-            XCTAssertTrue(error.localizedDescription.contains("null"))
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let networkError = error as? NetworkError else {
+                return XCTFail("Expected error to be a NetworkError, got \(error)")
+            }
+            XCTAssertTrue(networkError.localizedDescription.contains("null"))
         }
     }
 

@@ -25,7 +25,10 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         Account.get { (result) in
-            XCTAssertNoThrow(result.error! as! DecodingError)
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .error, got \(result)")
+            }
+            XCTAssertTrue(error is DecodingError)
         }
     }
 
@@ -42,7 +45,10 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         Account.get { (result) in
-            XCTAssertNoThrow(result.error! as! DecodingError)
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .error, got \(result)")
+            }
+            XCTAssertTrue(error is DecodingError)
         }
     }
 
@@ -60,9 +66,14 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         Device.get(id: 0) { (result) in
-            let error = result.error! as! APIError
-            XCTAssertEqual(error, APIError.doesNotExist)
-            XCTAssertTrue(error.localizedDescription.contains("does not exist"))
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .error, got \(result)")
+            }
+            guard let apiError = error as? APIError else {
+                return XCTFail("Expected error to be an APIError, got \(error)")
+            }
+            XCTAssertEqual(apiError, APIError.doesNotExist)
+            XCTAssertTrue(apiError.localizedDescription.contains("does not exist"))
         }
     }
 
@@ -77,9 +88,14 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         Account.get { (result) in
-            let error = result.error! as! APIError
-            XCTAssertEqual(error, APIError.unknown(httpCode: errorCode))
-            XCTAssertTrue(error.localizedDescription.contains(String(errorCode)))
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .error, got \(result)")
+            }
+            guard let apiError = error as? APIError else {
+                return XCTFail("Expected error to be an APIError, got \(error)")
+            }
+            XCTAssertEqual(apiError, APIError.unknown(httpCode: errorCode))
+            XCTAssertTrue(apiError.localizedDescription.contains(String(errorCode)))
         }
     }
 
@@ -94,7 +110,10 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         Account.get { (result) in
-            XCTAssertNoThrow(result.error! as! DecodingError)
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .error, got \(result)")
+            }
+            XCTAssertTrue(error is DecodingError)
         }
     }
 
@@ -114,9 +133,14 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         Account.get { (result) in
-            let error = result.error! as! APIError
-            XCTAssertEqual(error, APIError.generic(httpCode: errorCode, description: errorMessage))
-            XCTAssertTrue(error.localizedDescription.contains(errorMessage))
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .error, got \(result)")
+            }
+            guard let apiError = error as? APIError else {
+                return XCTFail("Expected error to be an APIError, got \(error)")
+            }
+            XCTAssertEqual(apiError, APIError.generic(httpCode: errorCode, description: errorMessage))
+            XCTAssertTrue(apiError.localizedDescription.contains(errorMessage))
         }
     }
 
@@ -130,7 +154,10 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         Device.getAll() { (result) in
-            XCTAssertEqual(result.value!.count, 0)
+            guard case let .success(resources) = result else {
+                return XCTFail("Expected .success, got \(result)")
+            }
+            XCTAssertEqual(resources.count, 0)
         }
     }
 
@@ -150,7 +177,10 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         PushCertificate.get { (result) in
-            XCTAssertNoThrow(result.error! as! DecodingError)
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .error, got \(result)")
+            }
+            XCTAssertTrue(error is DecodingError)
         }
     }
 
@@ -170,7 +200,10 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         Account.get { (result) in
-            XCTAssertNoThrow(result.error! as! DecodingError)
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .error, got \(result)")
+            }
+            XCTAssertTrue(error is DecodingError)
         }
     }
 
@@ -180,9 +213,14 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         App.get(id: 63) { (result) in
-            let error = result.error! as! APIError
-            XCTAssertEqual(error, APIError.unexpectedResourceId)
-            XCTAssertTrue(error.localizedDescription.contains("unexpected id"))
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .error, got \(result)")
+            }
+            guard let apiError = error as? APIError else {
+                return XCTFail("Expected error to be an APIError, got \(error)")
+            }
+            XCTAssertEqual(apiError, APIError.unexpectedResourceId)
+            XCTAssertTrue(apiError.localizedDescription.contains("unexpected id"))
         }
     }
 
@@ -192,7 +230,9 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         Account.get { (result) in
-            let account = result.value!
+            guard case let .success(account) = result else {
+                return XCTFail("Expected .success, got \(result)")
+            }
             XCTAssertEqual(account.name, "MyCompany")
             XCTAssertEqual(account.appleStoreCountryCode, "US")
         }
@@ -204,7 +244,9 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         App.getAll { (result) in
-            let apps = result.value!
+            guard case let .success(apps) = result else {
+                return XCTFail("Expected .success, got \(result)")
+            }
             XCTAssertEqual(apps.count, 5)
         }
     }
@@ -215,7 +257,9 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         App.get(id: 17635) { (result) in
-            let app = result.value!
+            guard case let .success(app) = result else {
+                return XCTFail("Expected .success, got \(result)")
+            }
             XCTAssertEqual(app.bundleIdentifier, "com.unwiredrev.DeviceLink.public")
         }
     }
@@ -226,7 +270,9 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         AppGroup.getAll { (result) in
-            let appGroups = result.value!
+            guard case let .success(appGroups) = result else {
+                return XCTFail("Expected .success, got \(result)")
+            }
             XCTAssertEqual(appGroups.count, 2)
         }
     }
@@ -237,7 +283,9 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         AppGroup.get(id: 38) { (result) in
-            let appGroup = result.value!
+            guard case let .success(appGroup) = result else {
+                return XCTFail("Expected .success, got \(result)")
+            }
             XCTAssertEqual(appGroup.name, "Productivity Apps")
         }
     }
@@ -251,13 +299,19 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         AppGroup.get(id: 38) { (appGroupResult) in
-            let appGroup = appGroupResult.value!
-
+            guard case let .success(appGroup) = appGroupResult else {
+                return XCTFail("Expected .success, got \(appGroupResult)")
+            }
             XCTAssertEqual(appGroup.apps.relatedIds, [63, 67])
 
             appGroup.apps.getAll(completion: { (appsResult) in
-                let error = appsResult.error! as! APIError
-                XCTAssertEqual(error, APIError.doesNotExist)
+                guard case let .failure(error) = appsResult else {
+                    return XCTFail("Expected .failure, got \(appsResult)")
+                }
+                guard let apiError = error as? APIError else {
+                    return XCTFail("Expected error to be an APIError, got \(error)")
+                }
+                XCTAssertEqual(apiError, APIError.doesNotExist)
             })
         }
     }
@@ -272,12 +326,15 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         AppGroup.get(id: 38) { (appGroupResult) in
-            let appGroup = appGroupResult.value!
-
+            guard case let .success(appGroup) = appGroupResult else {
+                return XCTFail("Expected .success, got \(appGroupResult)")
+            }
             XCTAssertEqual(appGroup.apps.relatedIds, [63, 67])
 
             appGroup.apps.getAll(completion: { (appsResult) in
-                let apps = appsResult.value!
+                guard case let .success(apps) = appsResult else {
+                    return XCTFail("Expected .success, got \(appsResult)")
+                }
                 XCTAssertEqual(apps.map({ $0.id }), [63, 67])
                 XCTAssertEqual(apps[0].name, "Trello")
                 XCTAssertEqual(apps[1].name, "Evernote")
@@ -299,12 +356,15 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         AppGroup.get(id: 38) { (appGroupResult) in
-            let appGroup = appGroupResult.value!
-
+            guard case let .success(appGroup) = appGroupResult else {
+                return XCTFail("Expected .success, got \(appGroupResult)")
+            }
             XCTAssertEqual(appGroup.apps.relatedIds, [63, 67])
 
             appGroup.apps.getAll(completion: { (appsResult) in
-                let apps = appsResult.value!
+                guard case let .success(apps) = appsResult else {
+                    return XCTFail("Expected .success, got \(appsResult)")
+                }
                 XCTAssertEqual(apps.map({ $0.id }), [63, 67])
                 XCTAssertEqual(apps[0].name, "Trello")
                 XCTAssertEqual(apps[1].name, "Evernote")
@@ -321,12 +381,15 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         AppGroup.get(id: 38) { (appGroupResult) in
-            let appGroup = appGroupResult.value!
-
+            guard case let .success(appGroup) = appGroupResult else {
+                return XCTFail("Expected .success, got \(appGroupResult)")
+            }
             XCTAssertEqual(appGroup.deviceGroups.relatedIds, [37, 38])
 
             appGroup.deviceGroups.getAll(completion: { (deviceGroupsResult) in
-                let deviceGroups = deviceGroupsResult.value!
+                guard case let .success(deviceGroups) = deviceGroupsResult else {
+                    return XCTFail("Expected .success, got \(deviceGroupsResult)")
+                }
                 XCTAssertEqual(deviceGroups.map({ $0.id }), [37, 38])
                 XCTAssertEqual(deviceGroups[0].name, "Interns")
                 XCTAssertEqual(deviceGroups[1].name, "Executives")
@@ -342,12 +405,15 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         AppGroup.get(id: 38) { (appGroupResult) in
-            let appGroup = appGroupResult.value!
-
+            guard case let .success(appGroup) = appGroupResult else {
+                return XCTFail("Expected .success, got \(appGroupResult)")
+            }
             XCTAssertEqual(appGroup.devices.relatedIds, [121])
 
             appGroup.devices.getAll(completion: { (devicesResult) in
-                let devices = devicesResult.value!
+                guard case let .success(devices) = devicesResult else {
+                    return XCTFail("Expected .success, got \(devicesResult)")
+                }
                 XCTAssertEqual(devices.map({ $0.id }), [121])
                 XCTAssertEqual(devices[0].name, "Mike's iPhone")
             })
@@ -360,7 +426,9 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         CustomAttribute.getAll { (result) in
-            let customAttributes = result.value!
+            guard case let .success(customAttributes) = result else {
+                return XCTFail("Expected .success, got \(result)")
+            }
             XCTAssertEqual(customAttributes.count, 2)
         }
     }
@@ -371,7 +439,9 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         CustomAttribute.get(id: "email_address") { (result) in
-            let customAttribute = result.value!
+            guard case let .success(customAttribute) = result else {
+                return XCTFail("Expected .success, got \(result)")
+            }
             XCTAssertEqual(customAttribute.name, "email_address")
         }
     }
@@ -382,7 +452,9 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         CustomConfigurationProfile.getAll { (result) in
-            let customAttributes = result.value!
+            guard case let .success(customAttributes) = result else {
+                return XCTFail("Expected .success, got \(result)")
+            }
             XCTAssertEqual(customAttributes.count, 3)
         }
     }
@@ -393,8 +465,10 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         CustomConfigurationProfile.get(id: 293814) { (result) in
-            let customAttribute = result.value!
-            XCTAssertEqual(customAttribute.name, "Munki Configuration")
+            guard case let .success(customConfigurationProfile) = result else {
+                return XCTFail("Expected .success, got \(result)")
+            }
+            XCTAssertEqual(customConfigurationProfile.name, "Munki Configuration")
         }
     }
 
@@ -406,12 +480,15 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         CustomConfigurationProfile.get(id: 293814) { (ccpResult) in
-            let customConfigurationProfile = ccpResult.value!
-
+            guard case let .success(customConfigurationProfile) = ccpResult else {
+                return XCTFail("Expected .success, got \(ccpResult)")
+            }
             XCTAssertEqual(customConfigurationProfile.deviceGroups.relatedIds, [38])
 
             customConfigurationProfile.deviceGroups.getAll(completion: { (deviceGroupsResult) in
-                let deviceGroups = deviceGroupsResult.value!
+                guard case let .success(deviceGroups) = deviceGroupsResult else {
+                    return XCTFail("Expected .success, got \(deviceGroupsResult)")
+                }
                 XCTAssertEqual(deviceGroups.map({ $0.id }), [38])
                 XCTAssertEqual(deviceGroups[0].name, "Executives")
             })
@@ -424,7 +501,9 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         Device.getAll { (result) in
-            let devices = result.value!
+            guard case let .success(devices) = result else {
+                return XCTFail("Expected .success, got \(result)")
+            }
             XCTAssertEqual(devices.count, 2)
         }
     }
@@ -435,7 +514,9 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         Device.get(id: 121) { (result) in
-            let device = result.value!
+            guard case let .success(device) = result else {
+                return XCTFail("Expected .success, got \(result)")
+            }
             XCTAssertEqual(device.name, "Mike's iPhone")
         }
     }
@@ -448,12 +529,15 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         Device.get(id: 121) { (deviceResult) in
-            let device = deviceResult.value!
-
+            guard case let .success(device) = deviceResult else {
+                return XCTFail("Expected .success, got \(deviceResult)")
+            }
             XCTAssertEqual(device.deviceGroup.relatedId, 37)
 
             device.deviceGroup.get(completion: { (deviceGroupResult) in
-                let deviceGroup = deviceGroupResult.value!
+                guard case let .success(deviceGroup) = deviceGroupResult else {
+                    return XCTFail("Expected .success, got \(deviceGroupResult)")
+                }
                 XCTAssertEqual(deviceGroup.name, "Interns")
             })
         }
@@ -467,13 +551,19 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         Device.get(id: 121) { (deviceResult) in
-            let device = deviceResult.value!
-
+            guard case let .success(device) = deviceResult else {
+                return XCTFail("Expected .success, got \(deviceResult)")
+            }
             XCTAssertEqual(device.deviceGroup.relatedId, 37)
 
             device.deviceGroup.get(completion: { (deviceGroupResult) in
-                let error = deviceGroupResult.error! as! APIError
-                XCTAssertEqual(error, APIError.doesNotExist)
+                guard case let .failure(error) = deviceGroupResult else {
+                    return XCTFail("Expected .failure, got \(deviceGroupResult)")
+                }
+                guard let apiError = error as? APIError else {
+                    return XCTFail("Expected error to be an APIError, got \(error)")
+                }
+                XCTAssertEqual(apiError, APIError.doesNotExist)
             })
         }
     }
@@ -484,7 +574,9 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         DeviceGroup.getAll { (result) in
-            let devices = result.value!
+            guard case let .success(devices) = result else {
+                return XCTFail("Expected .success, got \(result)")
+            }
             XCTAssertEqual(devices.count, 2)
         }
     }
@@ -495,7 +587,9 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         DeviceGroup.get(id: 38) { (result) in
-            let device = result.value!
+            guard case let .success(device) = result else {
+                return XCTFail("Expected .success, got \(result)")
+            }
             XCTAssertEqual(device.name, "Executives")
         }
     }
@@ -506,7 +600,9 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         InstalledApp.get(id: 10446659) { (result) in
-            let installedApp = result.value!
+            guard case let .success(installedApp) = result else {
+                return XCTFail("Expected .success, got \(result)")
+            }
             XCTAssertEqual(installedApp.name, "Dropbox")
         }
     }
@@ -517,7 +613,9 @@ class ResourcesTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         PushCertificate.get { (result) in
-            let pushCertificate = result.value!
+            guard case let .success(pushCertificate) = result else {
+                return XCTFail("Expected .success, got \(result)")
+            }
             XCTAssertEqual(pushCertificate.appleId, "devops@example.org")
         }
     }
