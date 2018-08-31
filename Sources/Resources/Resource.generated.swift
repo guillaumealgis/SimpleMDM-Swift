@@ -1,8 +1,9 @@
 // Generated using Sourcery 0.13.1 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
-// MARK: Account
+// swiftlint:disable file_length function_body_length
 
+// MARK: Account
 extension Account: Resource {
     public static var endpointName: String {
         return "account"
@@ -27,7 +28,8 @@ extension Account: Decodable {
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "account"
         guard type == expectedType else {
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
+            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
+            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
         }
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
@@ -35,7 +37,6 @@ extension Account: Decodable {
         appleStoreCountryCode = try attributes.decode(String.self, forKey: .appleStoreCountryCode)
     }
 }
-
 // MARK: App
 
 extension App: Resource {
@@ -66,7 +67,8 @@ extension App: Decodable {
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "app"
         guard type == expectedType else {
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
+            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
+            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
         }
 
         id = try payload.decode(Identifier.self, forKey: .id)
@@ -79,7 +81,6 @@ extension App: Decodable {
         version = try attributes.decodeIfPresent(String.self, forKey: .version)
     }
 }
-
 // MARK: AppGroup
 
 extension AppGroup: Resource {
@@ -113,7 +114,8 @@ extension AppGroup: Decodable {
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "app_group"
         guard type == expectedType else {
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
+            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
+            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
         }
 
         id = try payload.decode(Identifier.self, forKey: .id)
@@ -128,7 +130,6 @@ extension AppGroup: Decodable {
         devices = try relationships.decode(RelatedToMany<Device>.self, forKey: .devices)
     }
 }
-
 // MARK: CustomAttribute
 
 extension CustomAttribute: Resource {
@@ -155,7 +156,8 @@ extension CustomAttribute: Decodable {
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "custom_attribute"
         guard type == expectedType else {
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
+            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
+            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
         }
 
         id = try payload.decode(Identifier.self, forKey: .id)
@@ -164,7 +166,6 @@ extension CustomAttribute: Decodable {
         name = try attributes.decode(String.self, forKey: .name)
     }
 }
-
 // MARK: CustomConfigurationProfile
 
 extension CustomConfigurationProfile: Resource {
@@ -195,7 +196,8 @@ extension CustomConfigurationProfile: Decodable {
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "custom_configuration_profile"
         guard type == expectedType else {
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
+            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
+            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
         }
 
         id = try payload.decode(Identifier.self, forKey: .id)
@@ -207,7 +209,6 @@ extension CustomConfigurationProfile: Decodable {
         deviceGroups = try relationships.decode(RelatedToMany<DeviceGroup>.self, forKey: .deviceGroups)
     }
 }
-
 // MARK: Device
 
 extension Device: Resource {
@@ -294,7 +295,8 @@ extension Device: Decodable {
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "device"
         guard type == expectedType else {
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
+            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
+            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
         }
 
         id = try payload.decode(Identifier.self, forKey: .id)
@@ -362,7 +364,6 @@ extension Device: Decodable {
         deviceGroup = try relationships.decode(RelatedToOne<DeviceGroup>.self, forKey: .deviceGroup)
     }
 }
-
 // MARK: DeviceGroup
 
 extension DeviceGroup: Resource {
@@ -389,7 +390,8 @@ extension DeviceGroup: Decodable {
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "device_group"
         guard type == expectedType else {
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
+            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
+            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
         }
 
         id = try payload.decode(Identifier.self, forKey: .id)
@@ -398,7 +400,6 @@ extension DeviceGroup: Decodable {
         name = try attributes.decode(String.self, forKey: .name)
     }
 }
-
 // MARK: InstalledApp
 
 extension InstalledApp: Resource {
@@ -432,7 +433,8 @@ extension InstalledApp: Decodable {
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "installed_app"
         guard type == expectedType else {
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
+            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
+            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
         }
 
         id = try payload.decode(Identifier.self, forKey: .id)
@@ -448,9 +450,7 @@ extension InstalledApp: Decodable {
         discoveredAt = try attributes.decode(Date.self, forKey: .discoveredAt)
     }
 }
-
 // MARK: PushCertificate
-
 extension PushCertificate: Resource {
     public static var endpointName: String {
         return "push_certificate"
@@ -475,7 +475,8 @@ extension PushCertificate: Decodable {
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "push_certificate"
         guard type == expectedType else {
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
+            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
+            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
         }
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)

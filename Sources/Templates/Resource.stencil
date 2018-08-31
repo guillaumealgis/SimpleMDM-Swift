@@ -1,3 +1,5 @@
+// swiftlint:disable file_length function_body_length
+
 {% for type in types.structs where type.implements.AutoDecodable %}
 // MARK: {{ type.name }}
 {% if type.implements.IdentifiableResource %}
@@ -41,7 +43,8 @@ extension {{ type.name }}: Decodable {
         let type = try payload.decode(String.self, forKey: .type)
         let expectedType = "{{ type.name|camelToSnakeCase }}"
         guard type == expectedType else {
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\"")
+            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
+            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
         }
 
         {% if type.implements.IdentifiableResource %}
@@ -65,5 +68,4 @@ extension {{ type.name }}: Decodable {
         {% endif %}
     }
 }
-
 {% endfor %}
