@@ -10,10 +10,6 @@ import Foundation
 
 @testable import SimpleMDM
 
-enum URLSessionMockError: Error {
-    case noMatchingRoute
-}
-
 struct Response {
     let data: Data?
     let code: Int?
@@ -43,7 +39,9 @@ class URLSessionMock: URLSessionProtocol {
     }
 
     func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        let response = try! matchingResponseForRequest(request)
+        guard let response = matchingResponseForRequest(request) else {
+            fatalError("Found no matching route for URL \"\(request.url?.absoluteString ?? "<empty URL>")\"")
+        }
 
         let urlResponse: URLResponse?
         if let code = response.code {
@@ -73,13 +71,13 @@ class URLSessionMock: URLSessionProtocol {
         return URLSessionDataTaskMock()
     }
 
-    func matchingResponseForRequest(_ request: URLRequest) throws -> Response {
+    func matchingResponseForRequest(_ request: URLRequest) -> Response? {
         for (path, response) in routes {
             if path == wildcardRoute || request.url?.path == path {
                 return response
             }
         }
-        throw URLSessionMockError.noMatchingRoute
+        return nil
     }
 }
 

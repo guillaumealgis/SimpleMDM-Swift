@@ -24,7 +24,7 @@ class DecodingTests: XCTestCase {
         let decodingService = DecodingService()
 
         let error = decodingService.decodeError(from: json, httpCode: 400)
-        XCTAssertNoThrow(error as! DecodingError)
+        XCTAssertTrue(error is DecodingError)
     }
 
     func testDecodeErrorPayloadWithoutError() {
@@ -35,8 +35,11 @@ class DecodingTests: XCTestCase {
             """.data(using: .utf8)!
         let decodingService = DecodingService()
 
-        let error = decodingService.decodeError(from: json, httpCode: 400) as! APIError
-        XCTAssertEqual(error, APIError.unknown(httpCode: 400))
+        let error = decodingService.decodeError(from: json, httpCode: 400)
+        guard let apiError = error as? APIError else {
+            return XCTFail("Expected error to be an APIError, got \(error)")
+        }
+        XCTAssertEqual(apiError, APIError.unknown(httpCode: 400))
     }
 
     func testDecodeErrorPayload() {
@@ -51,8 +54,11 @@ class DecodingTests: XCTestCase {
         """.data(using: .utf8)!
         let decodingService = DecodingService()
 
-        let error = decodingService.decodeError(from: json, httpCode: 400) as! APIError
-        XCTAssertEqual(error, APIError.generic(httpCode: 400, description: "this is a test error message"))
+        let error = decodingService.decodeError(from: json, httpCode: 400)
+        guard let apiError = error as? APIError else {
+            return XCTFail("Expected error to be an APIError, got \(error)")
+        }
+        XCTAssertEqual(apiError, APIError.generic(httpCode: 400, description: "this is a test error message"))
     }
 
     func testDecodeErrorPayloadWithMultipleErrors() {
@@ -70,7 +76,10 @@ class DecodingTests: XCTestCase {
             """.data(using: .utf8)!
         let decodingService = DecodingService()
 
-        let error = decodingService.decodeError(from: json, httpCode: 400) as! APIError
-        XCTAssertEqual(error, APIError.generic(httpCode: 400, description: "this is the first test error message"))
+        let error = decodingService.decodeError(from: json, httpCode: 400)
+        guard let apiError = error as? APIError else {
+            return XCTFail("Expected error to be an APIError, got \(error)")
+        }
+        XCTAssertEqual(apiError, APIError.generic(httpCode: 400, description: "this is the first test error message"))
     }
 }
