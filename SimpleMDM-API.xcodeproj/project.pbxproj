@@ -283,6 +283,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0AA1FCF20DEEFB6003781DF /* Build configuration list for PBXNativeTarget "SimpleMDM" */;
 			buildPhases = (
+				F09F55202139F3C100D4FE8D /* SwiftLint */,
 				F0AA1FB520DEEFB5003781DF /* Headers */,
 				F0AA1FB620DEEFB5003781DF /* Sources */,
 				F0AA1FB720DEEFB5003781DF /* Frameworks */,
@@ -386,6 +387,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F09F55202139F3C100D4FE8D /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if command -v swiftlint > /dev/null; then\n    swiftlint --quiet\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F0AA1FB620DEEFB5003781DF /* Sources */ = {
