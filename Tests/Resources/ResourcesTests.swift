@@ -143,7 +143,8 @@ class ResourcesTests: XCTestCase {
     func testGetEmptyResourcesList() {
         let json = """
           {
-            "data": []
+            "data": [],
+            "has_more": false
           }
         """.data(using: .utf8)
         let session = URLSessionMock(data: json, responseCode: 200)
@@ -154,6 +155,29 @@ class ResourcesTests: XCTestCase {
                 return XCTFail("Expected .success, got \(result)")
             }
             XCTAssertEqual(resources.count, 0)
+        }
+    }
+
+    func testGetResourcesListWithMissingHasMoreAttribute() {
+        let json = """
+          {
+            "data": []
+          }
+        """.data(using: .utf8)
+        let session = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.useSessionMock(session)
+
+        Device.getAll { result in
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let decodingError = error as? DecodingError else {
+                return XCTFail("Expected error to be a DecodingError, got \(error)")
+            }
+            guard case let .keyNotFound(codingKey, _) = decodingError else {
+                return XCTFail("Expected .keyNotFound, got \(decodingError)")
+            }
+            XCTAssertEqual(codingKey.stringValue, "hasMore")
         }
     }
 

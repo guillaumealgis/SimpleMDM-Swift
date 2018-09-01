@@ -28,4 +28,5 @@ struct SinglePayload<R: Resource>: Payload {
 
 struct ListPayload<R: Resource>: Payload {
     let data: [R]
+    let hasMore: Bool
 }
