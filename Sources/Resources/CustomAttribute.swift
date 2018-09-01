@@ -1,9 +1,6 @@
 //
-//  Device.swift
-//  SimpleMDM-API
-//
-//  Created by Guillaume Algis on 22/05/2018.
-//  Copyright © 2018 Guillaume Algis. All rights reserved.
+//  Copyright 2018 Guillaume Algis.
+//  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
 import Foundation

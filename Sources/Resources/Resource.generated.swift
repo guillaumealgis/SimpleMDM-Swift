@@ -1,6 +1,11 @@
 // Generated using Sourcery 0.13.1 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
+//
+//  Copyright 2018 Guillaume Algis.
+//  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
+//
+
 // swiftlint:disable file_length function_body_length
 
 // MARK: Account

@@ -1,3 +1,8 @@
+//
+//  Copyright 2018 Guillaume Algis.
+//  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
+//
+
 // swiftlint:disable file_length function_body_length
 
 {% for type in types.structs where type.implements.AutoDecodable %}
