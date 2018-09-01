@@ -20,7 +20,13 @@ class DecodingTests: XCTestCase {
         let decodingService = DecodingService()
 
         let error = decodingService.decodeError(from: json, httpCode: 400)
-        XCTAssertTrue(error is DecodingError)
+        guard let decodingError = error as? DecodingError else {
+            return XCTFail("Expected error to be a DecodingError, got \(error)")
+        }
+        guard case let .keyNotFound(codingKey, _) = decodingError else {
+            return XCTFail("Expected .keyNotFound, got \(decodingError)")
+        }
+        XCTAssertEqual(codingKey.stringValue, "errors")
     }
 
     func testDecodeErrorPayloadWithoutError() {

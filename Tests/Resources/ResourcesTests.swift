@@ -24,7 +24,13 @@ class ResourcesTests: XCTestCase {
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
-            XCTAssertTrue(error is DecodingError)
+            guard let decodingError = error as? DecodingError else {
+                return XCTFail("Expected error to be a DecodingError, got \(error)")
+            }
+            guard case let .keyNotFound(codingKey, _) = decodingError else {
+                return XCTFail("Expected .keyNotFound, got \(decodingError)")
+            }
+            XCTAssertEqual(codingKey.stringValue, "data")
         }
     }
 
@@ -44,7 +50,13 @@ class ResourcesTests: XCTestCase {
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
-            XCTAssertTrue(error is DecodingError)
+            guard let decodingError = error as? DecodingError else {
+                return XCTFail("Expected error to be a DecodingError, got \(error)")
+            }
+            guard case let .keyNotFound(codingKey, _) = decodingError else {
+                return XCTFail("Expected .keyNotFound, got \(decodingError)")
+            }
+            XCTAssertEqual(codingKey.stringValue, "data")
         }
     }
 
@@ -99,7 +111,8 @@ class ResourcesTests: XCTestCase {
         let errorCode = 500
         let json = """
           {
-            "data": []
+            "data": [],
+            "has_more": false
           }
         """.data(using: .utf8)
         let session = URLSessionMock(data: json, responseCode: errorCode)
@@ -109,7 +122,13 @@ class ResourcesTests: XCTestCase {
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
-            XCTAssertTrue(error is DecodingError)
+            guard let decodingError = error as? DecodingError else {
+                return XCTFail("Expected error to be a DecodingError, got \(error)")
+            }
+            guard case let .keyNotFound(codingKey, _) = decodingError else {
+                return XCTFail("Expected .keyNotFound, got \(decodingError)")
+            }
+            XCTAssertEqual(codingKey.stringValue, "errors")
         }
     }
 
@@ -200,7 +219,13 @@ class ResourcesTests: XCTestCase {
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
-            XCTAssertTrue(error is DecodingError)
+            guard let decodingError = error as? DecodingError else {
+                return XCTFail("Expected error to be a DecodingError, got \(error)")
+            }
+            guard case let .dataCorrupted(context) = decodingError else {
+                return XCTFail("Expected .dataCorrupted, got \(decodingError)")
+            }
+            XCTAssertEqual(context.debugDescription, "Date string does not match any expected format")
         }
     }
 
@@ -223,7 +248,13 @@ class ResourcesTests: XCTestCase {
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
-            XCTAssertTrue(error is DecodingError)
+            guard let decodingError = error as? DecodingError else {
+                return XCTFail("Expected error to be a DecodingError, got \(error)")
+            }
+            guard case let .dataCorrupted(context) = decodingError else {
+                return XCTFail("Expected .dataCorrupted, got \(decodingError)")
+            }
+            XCTAssertEqual(context.debugDescription, "Expected type of resource to be \"account\" but got \"nonexistant_type\"")
         }
     }
 
