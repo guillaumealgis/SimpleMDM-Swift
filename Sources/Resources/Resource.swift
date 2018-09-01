@@ -22,7 +22,7 @@ public protocol UniqueResource: Resource {
 
 extension UniqueResource {
     public static func get(completion: @escaping CompletionClosure<Self>) {
-        SimpleMDM.shared.networkingService.getDataForAllResources(ofType: Self.self) { networkResult in
+        SimpleMDM.shared.networkingService.getDataForUniqueResource(ofType: Self.self) { networkResult in
             let result = processNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
             completion(result)
         }
@@ -42,7 +42,7 @@ public protocol IdentifiableResource: Resource {
 
 extension IdentifiableResource {
     public static func get(id: Identifier, completion: @escaping CompletionClosure<Self>) {
-        SimpleMDM.shared.networkingService.getDataForSingleResource(ofType: Self.self, withId: id) { networkResult in
+        SimpleMDM.shared.networkingService.getDataForResource(ofType: Self.self, withId: id) { networkResult in
             let result = processNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
             if case let .success(resource) = result, resource.id != id {
                 completion(.failure(SimpleMDMError.unexpectedResourceId))
@@ -63,7 +63,7 @@ public protocol ListableResource: IdentifiableResource {
 
 extension ListableResource {
     public static func getAll(completion: @escaping CompletionClosure<[Self]>) {
-        SimpleMDM.shared.networkingService.getDataForAllResources(ofType: Self.self) { networkResult in
+        SimpleMDM.shared.networkingService.getDataForResources(ofType: Self.self) { networkResult in
             let result = processNetworkingResult(networkResult, expectedPayloadType: ListPayload<Self>.self)
             completion(result)
         }

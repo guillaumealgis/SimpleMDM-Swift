@@ -9,6 +9,11 @@ import Foundation
 
 private typealias BaseSimpleMDMError = LocalizedError & Equatable
 
+// Internal errors of the SimpleMDM-Swift library
+public enum InternalError: BaseSimpleMDMError {
+    case malformedURL
+}
+
 // Errors occuring during the transport and decoding the HTTP response
 public enum NetworkError: BaseSimpleMDMError {
     case unknown

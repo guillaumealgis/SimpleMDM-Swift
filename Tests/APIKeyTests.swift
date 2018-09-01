@@ -19,7 +19,7 @@ class APIKeyTests: XCTestCase {
         let session = URLSessionMock()
         let networkingService = NetworkingService(urlSession: session)
 
-        networkingService.getDataForAllResources(ofType: Account.self) { result in
+        networkingService.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -34,7 +34,7 @@ class APIKeyTests: XCTestCase {
         let session = URLSessionMock()
         let networkingService = NetworkingService(urlSession: session)
 
-        networkingService.getDataForAllResources(ofType: Account.self) { result in
+        networkingService.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -50,7 +50,7 @@ class APIKeyTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { result in
+        networkingService.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -66,7 +66,7 @@ class APIKeyTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { result in
+        networkingService.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }

@@ -41,28 +41,31 @@ class NetworkingService {
 
     // MARK: Getting the resources
 
-    internal func getDataForAllResources<R: Resource>(ofType type: R.Type, completion: @escaping (NetworkingResult) -> Void) {
-        let url = buildURL(for: type)
+    internal func getDataForUniqueResource<R: UniqueResource>(ofType type: R.Type, completion: @escaping (NetworkingResult) -> Void) {
+        guard let url = URL(resourceType: type, relativeTo: baseURL) else {
+            completion(.failure(InternalError.malformedURL))
+            return
+        }
         getData(atURL: url, completion: completion)
     }
 
-    internal func getDataForSingleResource<R: IdentifiableResource>(ofType type: R.Type, withId id: R.Identifier, completion: @escaping (NetworkingResult) -> Void) {
-        let url = buildURL(for: type, withId: id)
+    internal func getDataForResources<R: ListableResource>(ofType type: R.Type, startingAfter: R.Identifier? = nil, limit: Int? = nil, completion: @escaping (NetworkingResult) -> Void) {
+        guard let url = URL(resourceType: type, startingAfter: startingAfter, limit: limit, relativeTo: baseURL) else {
+            completion(.failure(InternalError.malformedURL))
+            return
+        }
         getData(atURL: url, completion: completion)
     }
 
-    // MARK: Building the URL
-
-    private func buildURL(for type: Resource.Type) -> URL {
-        let url = baseURL.appendingPathComponent(type.endpointName)
-        return url
+    internal func getDataForResource<R: IdentifiableResource>(ofType type: R.Type, withId id: R.Identifier, completion: @escaping (NetworkingResult) -> Void) {
+        guard let url = URL(resourceType: type, withId: id, relativeTo: baseURL) else {
+            completion(.failure(InternalError.malformedURL))
+            return
+        }
+        getData(atURL: url, completion: completion)
     }
 
-    private func buildURL<T: LosslessStringConvertible>(for type: Resource.Type, withId id: T) -> URL {
-        var url = buildURL(for: type)
-        url.appendPathComponent(String(id))
-        return url
-    }
+    // MARK: Building the URLRequest
 
     private func buildURLRequest(withURL url: URL) throws -> URLRequest {
         var urlRequest = URLRequest(url: url)

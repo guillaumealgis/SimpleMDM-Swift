@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F010683920E444E600C7D616 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F010683820E444E600C7D616 /* Result.swift */; };
+		F033EF5E213B490E00AFDC1C /* URL+CustomInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033EF5D213B490E00AFDC1C /* URL+CustomInit.swift */; };
 		F05EAB6D21309C8F0076F5FC /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB6C21309C8F0076F5FC /* DecodingTests.swift */; };
 		F05EAB9C2131AC7D0076F5FC /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB9B2131AC7D0076F5FC /* Relation.swift */; };
 		F05EAB9E21320B030076F5FC /* Resource.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB9D21320B020076F5FC /* Resource.generated.swift */; };
@@ -82,6 +83,7 @@
 		F01FBE7020B4B6B300200CED /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		F01FBE7220B4BEEB00200CED /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		F01FBE7520B4BF1B00200CED /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		F033EF5D213B490E00AFDC1C /* URL+CustomInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+CustomInit.swift"; sourceTree = "<group>"; };
 		F05EAB6C21309C8F0076F5FC /* DecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
 		F05EAB9B2131AC7D0076F5FC /* Relation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relation.swift; sourceTree = "<group>"; };
 		F05EAB9D21320B020076F5FC /* Resource.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.generated.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				F0AA1FBC20DEEFB5003781DF /* SimpleMDM.h */,
 				F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */,
 				F01FBE7220B4BEEB00200CED /* NetworkingService.swift */,
+				F033EF5D213B490E00AFDC1C /* URL+CustomInit.swift */,
 				F065C51E211CE26D00784545 /* DecodingService.swift */,
 				F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */,
 				F08410F520D325EA00CE9480 /* DateDecodingStrategy.swift */,
@@ -456,6 +459,7 @@
 				F0D9F2CD20DEF3D50081081C /* URLSession.swift in Sources */,
 				F0D9F2CB20DEF3D50081081C /* Payload.swift in Sources */,
 				F0D9F2CF20DEF3D50081081C /* DateDecodingStrategy.swift in Sources */,
+				F033EF5E213B490E00AFDC1C /* URL+CustomInit.swift in Sources */,
 				F065C51F211CE26D00784545 /* DecodingService.swift in Sources */,
 				F0D9F2C620DEF3D00081081C /* DeviceGroup.swift in Sources */,
 				F0D9F2C720DEF3D00081081C /* InstalledApp.swift in Sources */,

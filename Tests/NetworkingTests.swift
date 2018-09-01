@@ -12,7 +12,7 @@ class NetworkingTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { result in
+        networkingService.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -28,7 +28,7 @@ class NetworkingTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { result in
+        networkingService.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -44,7 +44,7 @@ class NetworkingTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { result in
+        networkingService.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -60,7 +60,7 @@ class NetworkingTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { result in
+        networkingService.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -77,7 +77,7 @@ class NetworkingTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { result in
+        networkingService.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -94,7 +94,7 @@ class NetworkingTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { result in
+        networkingService.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -111,7 +111,7 @@ class NetworkingTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { result in
+        networkingService.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -128,7 +128,7 @@ class NetworkingTests: XCTestCase {
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForAllResources(ofType: Account.self) { result in
+        networkingService.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -138,4 +138,67 @@ class NetworkingTests: XCTestCase {
             XCTAssertTrue(networkError.localizedDescription.contains("null"))
         }
     }
+
+    // swiftlint:disable nesting
+    func testMalformedUniqueResourceURL() {
+        struct FakeResource: UniqueResource {
+            static var endpointName: String { return "💩" }
+        }
+
+        let session = URLSessionMock()
+        SimpleMDM.useSessionMock(session)
+
+        FakeResource.get { result in
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let internalError = error as? InternalError else {
+                return XCTFail("Expected error to be a InternalError, got \(error)")
+            }
+            XCTAssertEqual(internalError, InternalError.malformedURL)
+        }
+    }
+
+    func testMalformedResourceListURL() {
+        struct FakeResource: ListableResource {
+            typealias Identifier = String
+            var id: String
+            static var endpointName: String { return "💩" }
+        }
+
+        let session = URLSessionMock()
+        SimpleMDM.useSessionMock(session)
+
+        FakeResource.getAll { result in
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let internalError = error as? InternalError else {
+                return XCTFail("Expected error to be a InternalError, got \(error)")
+            }
+            XCTAssertEqual(internalError, InternalError.malformedURL)
+        }
+    }
+
+    func testMalformedResourceWithIdURL() {
+        struct FakeResource: IdentifiableResource {
+            typealias Identifier = String
+            var id: String
+            static var endpointName: String { return "💩" }
+        }
+
+        let session = URLSessionMock()
+        SimpleMDM.useSessionMock(session)
+
+        FakeResource.get(id: "anID") { result in
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let internalError = error as? InternalError else {
+                return XCTFail("Expected error to be a InternalError, got \(error)")
+            }
+            XCTAssertEqual(internalError, InternalError.malformedURL)
+        }
+    }
+    // swiftlint:enable nesting
 }
