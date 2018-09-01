@@ -77,11 +77,11 @@ class ResourcesTests: XCTestCase {
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
-            guard let apiError = error as? APIError else {
-                return XCTFail("Expected error to be an APIError, got \(error)")
+            guard let simpleMDMError = error as? SimpleMDMError else {
+                return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
             }
-            XCTAssertEqual(apiError, APIError.doesNotExist)
-            XCTAssertTrue(apiError.localizedDescription.contains("does not exist"))
+            XCTAssertEqual(simpleMDMError, SimpleMDMError.doesNotExist)
+            XCTAssertTrue(simpleMDMError.localizedDescription.contains("does not exist"))
         }
     }
 
@@ -99,11 +99,11 @@ class ResourcesTests: XCTestCase {
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
-            guard let apiError = error as? APIError else {
-                return XCTFail("Expected error to be an APIError, got \(error)")
+            guard let simpleMDMError = error as? SimpleMDMError else {
+                return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
             }
-            XCTAssertEqual(apiError, APIError.unknown(httpCode: errorCode))
-            XCTAssertTrue(apiError.localizedDescription.contains(String(errorCode)))
+            XCTAssertEqual(simpleMDMError, SimpleMDMError.unknown(httpCode: errorCode))
+            XCTAssertTrue(simpleMDMError.localizedDescription.contains(String(errorCode)))
         }
     }
 
@@ -151,11 +151,11 @@ class ResourcesTests: XCTestCase {
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
-            guard let apiError = error as? APIError else {
-                return XCTFail("Expected error to be an APIError, got \(error)")
+            guard let simpleMDMError = error as? SimpleMDMError else {
+                return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
             }
-            XCTAssertEqual(apiError, APIError.generic(httpCode: errorCode, description: errorMessage))
-            XCTAssertTrue(apiError.localizedDescription.contains(errorMessage))
+            XCTAssertEqual(simpleMDMError, SimpleMDMError.generic(httpCode: errorCode, description: errorMessage))
+            XCTAssertTrue(simpleMDMError.localizedDescription.contains(errorMessage))
         }
     }
 
@@ -267,11 +267,11 @@ class ResourcesTests: XCTestCase {
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
-            guard let apiError = error as? APIError else {
-                return XCTFail("Expected error to be an APIError, got \(error)")
+            guard let simpleMDMError = error as? SimpleMDMError else {
+                return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
             }
-            XCTAssertEqual(apiError, APIError.unexpectedResourceId)
-            XCTAssertTrue(apiError.localizedDescription.contains("unexpected id"))
+            XCTAssertEqual(simpleMDMError, SimpleMDMError.unexpectedResourceId)
+            XCTAssertTrue(simpleMDMError.localizedDescription.contains("unexpected id"))
         }
     }
 }

@@ -51,10 +51,10 @@ class AppGroupTests: XCTestCase {
                 guard case let .failure(error) = appsResult else {
                     return XCTFail("Expected .failure, got \(appsResult)")
                 }
-                guard let apiError = error as? APIError else {
-                    return XCTFail("Expected error to be an APIError, got \(error)")
+                guard let simpleMDMError = error as? SimpleMDMError else {
+                    return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
                 }
-                XCTAssertEqual(apiError, APIError.doesNotExist)
+                XCTAssertEqual(simpleMDMError, SimpleMDMError.doesNotExist)
             })
         }
     }

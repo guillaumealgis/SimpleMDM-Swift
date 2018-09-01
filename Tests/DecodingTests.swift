@@ -38,10 +38,10 @@ class DecodingTests: XCTestCase {
         let decodingService = DecodingService()
 
         let error = decodingService.decodeError(from: json, httpCode: 400)
-        guard let apiError = error as? APIError else {
-            return XCTFail("Expected error to be an APIError, got \(error)")
+        guard let simpleMDMError = error as? SimpleMDMError else {
+            return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
         }
-        XCTAssertEqual(apiError, APIError.unknown(httpCode: 400))
+        XCTAssertEqual(simpleMDMError, SimpleMDMError.unknown(httpCode: 400))
     }
 
     func testDecodeErrorPayload() {
@@ -57,10 +57,10 @@ class DecodingTests: XCTestCase {
         let decodingService = DecodingService()
 
         let error = decodingService.decodeError(from: json, httpCode: 400)
-        guard let apiError = error as? APIError else {
-            return XCTFail("Expected error to be an APIError, got \(error)")
+        guard let simpleMDMError = error as? SimpleMDMError else {
+            return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
         }
-        XCTAssertEqual(apiError, APIError.generic(httpCode: 400, description: "this is a test error message"))
+        XCTAssertEqual(simpleMDMError, SimpleMDMError.generic(httpCode: 400, description: "this is a test error message"))
     }
 
     func testDecodeErrorPayloadWithMultipleErrors() {
@@ -79,9 +79,9 @@ class DecodingTests: XCTestCase {
         let decodingService = DecodingService()
 
         let error = decodingService.decodeError(from: json, httpCode: 400)
-        guard let apiError = error as? APIError else {
-            return XCTFail("Expected error to be an APIError, got \(error)")
+        guard let simpleMDMError = error as? SimpleMDMError else {
+            return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
         }
-        XCTAssertEqual(apiError, APIError.generic(httpCode: 400, description: "this is the first test error message"))
+        XCTAssertEqual(simpleMDMError, SimpleMDMError.generic(httpCode: 400, description: "this is the first test error message"))
     }
 }

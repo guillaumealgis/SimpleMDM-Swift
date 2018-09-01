@@ -23,10 +23,10 @@ class APIKeyTests: XCTestCase {
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
-            guard let apiKeyError = error as? APIKeyError else {
-                return XCTFail("Expected error to be an APIKeyError, got \(error)")
+            guard let simpleMDMError = error as? SimpleMDMError else {
+                return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
             }
-            XCTAssertEqual(apiKeyError, APIKeyError.notSet)
+            XCTAssertEqual(simpleMDMError, SimpleMDMError.APIKeyNotSet)
         }
     }
 
@@ -38,14 +38,14 @@ class APIKeyTests: XCTestCase {
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
-            guard let apiKeyError = error as? APIKeyError else {
-                return XCTFail("Expected error to be an APIKeyError, got \(error)")
+            guard let simpleMDMError = error as? SimpleMDMError else {
+                return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
             }
-            XCTAssertTrue(apiKeyError.localizedDescription.contains("API key was not set"))
+            XCTAssertTrue(simpleMDMError.localizedDescription.contains("API key was not set"))
         }
     }
 
-    func test401ResponseReturnsInvalidAPIKeyError() {
+    func test401ResponseReturnsInvalidSimpleMDMError() {
         let session = URLSessionMock(responseCode: 401)
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
@@ -54,14 +54,14 @@ class APIKeyTests: XCTestCase {
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
-            guard let apiKeyError = error as? APIKeyError else {
-                return XCTFail("Expected error to be an APIKeyError, got \(error)")
+            guard let simpleMDMError = error as? SimpleMDMError else {
+                return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
             }
-            XCTAssertEqual(apiKeyError, APIKeyError.invalid)
+            XCTAssertEqual(simpleMDMError, SimpleMDMError.APIKeyInvalid)
         }
     }
 
-    func testInvalidAPIKeyErrorHasHumanReadableDescription() {
+    func testInvalidSimpleMDMErrorHasHumanReadableDescription() {
         let session = URLSessionMock(responseCode: 401)
         let networkingService = NetworkingService(urlSession: session)
         networkingService.APIKey = "AVeryRandomTestAPIKey"
@@ -70,10 +70,10 @@ class APIKeyTests: XCTestCase {
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
-            guard let apiKeyError = error as? APIKeyError else {
-                return XCTFail("Expected error to be an APIKeyError, got \(error)")
+            guard let simpleMDMError = error as? SimpleMDMError else {
+                return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
             }
-            XCTAssertTrue(apiKeyError.localizedDescription.contains("server rejected the API key"))
+            XCTAssertTrue(simpleMDMError.localizedDescription.contains("server rejected the API key"))
         }
     }
 }

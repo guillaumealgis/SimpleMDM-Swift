@@ -68,7 +68,7 @@ class NetworkingService {
         var urlRequest = URLRequest(url: url)
 
         guard let base64APIKey = base64APIKey else {
-            throw APIKeyError.notSet
+            throw SimpleMDMError.APIKeyNotSet
         }
 
         urlRequest.setValue("Basic \(base64APIKey)", forHTTPHeaderField: "Authorization")
@@ -111,9 +111,9 @@ class NetworkingService {
         case 200:
             return .success(data)
         case 401:
-            return .failure(APIKeyError.invalid)
+            return .failure(SimpleMDMError.APIKeyInvalid)
         case 404:
-            return .failure(APIError.doesNotExist)
+            return .failure(SimpleMDMError.doesNotExist)
         default:
             return .decodableDataFailure(httpCode: httpResponse.statusCode, data: data)
         }

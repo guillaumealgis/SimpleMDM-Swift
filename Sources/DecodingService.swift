@@ -26,9 +26,9 @@ class DecodingService {
             // We *may* get more than one error in the response data, but returning multiple error would make the
             // API much more complex so we only return the first one.
             if let firstError = payload.errors.first {
-                return APIError.generic(httpCode: httpCode, description: firstError.title)
+                return SimpleMDMError.generic(httpCode: httpCode, description: firstError.title)
             }
-            return APIError.unknown(httpCode: httpCode)
+            return SimpleMDMError.unknown(httpCode: httpCode)
         } catch {
             return error
         }

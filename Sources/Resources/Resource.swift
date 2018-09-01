@@ -45,7 +45,7 @@ extension IdentifiableResource {
         SimpleMDM.shared.networkingService.getDataForSingleResource(ofType: Self.self, withId: id) { networkResult in
             let result = processNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
             if case let .success(resource) = result, resource.id != id {
-                completion(.failure(APIError.unexpectedResourceId))
+                completion(.failure(SimpleMDMError.unexpectedResourceId))
                 return
             } else {
                 completion(result)

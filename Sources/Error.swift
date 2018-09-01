@@ -7,25 +7,10 @@ import Foundation
 
 // MARK: Error types
 
-private typealias SimpleMDMError = LocalizedError & Equatable
-
-// Errors related to the SimpleMDM API key
-public enum APIKeyError: SimpleMDMError {
-    case notSet
-    case invalid
-
-    public var errorDescription: String? {
-        switch self {
-        case .notSet:
-            return "The SimpleMDM API key was not set"
-        case .invalid:
-            return "The SimpleMDM server rejected the API key"
-        }
-    }
-}
+private typealias BaseSimpleMDMError = LocalizedError & Equatable
 
 // Errors occuring during the transport and decoding the HTTP response
-public enum NetworkError: SimpleMDMError {
+public enum NetworkError: BaseSimpleMDMError {
     case unknown
     case noHTTPResponse
     case unexpectedMimeType(String?)
@@ -44,7 +29,9 @@ public enum NetworkError: SimpleMDMError {
 
 // SimpleMDM-level errors
 // eg. The requested resource does not exist, the operation failed for some reason, etc.
-public enum APIError: SimpleMDMError {
+public enum SimpleMDMError: BaseSimpleMDMError {
+    case APIKeyNotSet
+    case APIKeyInvalid
     case unknown(httpCode: Int)
     case generic(httpCode: Int, description: String)
     case doesNotExist
@@ -52,6 +39,10 @@ public enum APIError: SimpleMDMError {
 
     public var errorDescription: String? {
         switch self {
+        case .APIKeyNotSet:
+            return "The SimpleMDM API key was not set"
+        case .APIKeyInvalid:
+            return "The SimpleMDM server rejected the API key"
         case let .unknown(httpCode):
             return "Unknown API error (empty payload, HTTP response code was \(httpCode)"
         case let .generic(httpCode, description):
