@@ -8,6 +8,6 @@ MACOSX_DEPLOYMENT_TARGET = 10.12
 TVOS_DEPLOYMENT_TARGET = 10.0
 WATCHOS_DEPLOYMENT_TARGET = 3.0
 
-SWIFT_VERSION = 4.0
+SWIFT_VERSION = 4.2
 
 LD_RUNPATH_SEARCH_PATHS = $(inherited) @loader_path/Frameworks @executable_path/Frameworks @loader_path/../Frameworks @executable_path/../Frameworks
