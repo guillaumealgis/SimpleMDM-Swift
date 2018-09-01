@@ -14,7 +14,7 @@ private struct Relation<T: IdentifiableResource>: Decodable {
 
 // MARK: RelatedToOne
 
-protocol RelatedToResource: Decodable {}
+private protocol RelatedToResource: Decodable {}
 
 public struct RelatedToOne<T: IdentifiableResource>: RelatedToResource {
     private enum CodingKeys: String, CodingKey {
@@ -23,7 +23,7 @@ public struct RelatedToOne<T: IdentifiableResource>: RelatedToResource {
 
     private let relation: Relation<T>
 
-    var relatedId: T.Identifier {
+    public var relatedId: T.Identifier {
         return relation.id
     }
 
@@ -32,7 +32,7 @@ public struct RelatedToOne<T: IdentifiableResource>: RelatedToResource {
         relation = try payload.decode(Relation.self, forKey: .data)
     }
 
-    func get(completion: @escaping CompletionClosure<T>) {
+    public func get(completion: @escaping CompletionClosure<T>) {
         T.get(id: relation.id, completion: completion)
     }
 }
@@ -46,7 +46,7 @@ public struct RelatedToMany<T: IdentifiableResource>: RelatedToResource {
 
     private let relations: [Relation<T>]
 
-    var relatedIds: [T.Identifier] {
+    public var relatedIds: [T.Identifier] {
         return relations.map({ $0.id })
     }
 
@@ -55,11 +55,11 @@ public struct RelatedToMany<T: IdentifiableResource>: RelatedToResource {
         relations = try payload.decode([Relation].self, forKey: .data)
     }
 
-    func get(at index: Int, completion: @escaping CompletionClosure<T>) {
+    public func get(at index: Int, completion: @escaping CompletionClosure<T>) {
         T.get(id: relations[index].id, completion: completion)
     }
 
-    func getAll(completion: @escaping CompletionClosure<[T]>) {
+    public func getAll(completion: @escaping CompletionClosure<[T]>) {
         var resources = [T]()
         var error: Error?
 

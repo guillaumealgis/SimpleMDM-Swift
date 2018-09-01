@@ -5,13 +5,13 @@
 
 import Foundation
 
-internal enum NetworkingResult {
+enum NetworkingResult {
     case success(Data)
     case decodableDataFailure(httpCode: Int, data: Data)
     case failure(Error)
 }
 
-internal class NetworkingService {
+class NetworkingService {
     var APIKey: String? {
         didSet {
             let utf8Data = APIKey?.data(using: .utf8)
