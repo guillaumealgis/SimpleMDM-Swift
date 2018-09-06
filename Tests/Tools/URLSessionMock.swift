@@ -23,6 +23,10 @@ struct Response {
 
 let wildcardRoute = "*"
 
+enum URLSessionMockError: Swift.Error {
+    case noMatchingRoute(URL?)
+}
+
 class URLSessionMock: URLSessionProtocol {
     let routes: [String: Response]
 
@@ -37,7 +41,8 @@ class URLSessionMock: URLSessionProtocol {
 
     func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         guard let response = matchingResponseForRequest(request) else {
-            fatalError("Found no matching route for URL \"\(request.url?.absoluteString ?? "<empty URL>")\"")
+            completionHandler(nil, nil, URLSessionMockError.noMatchingRoute(request.url))
+            return URLSessionDataTaskMock()
         }
 
         let urlResponse: URLResponse?
