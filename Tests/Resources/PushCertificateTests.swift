@@ -6,7 +6,7 @@
 @testable import SimpleMDM
 import XCTest
 
-class PushCertificateTests: XCTestCase {
+internal class PushCertificateTests: XCTestCase {
     func testGetPushCertificate() {
         let json = loadFixture("PushCertificate")
         let session = URLSessionMock(data: json, responseCode: 200)

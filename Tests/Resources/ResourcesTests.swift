@@ -6,7 +6,7 @@
 @testable import SimpleMDM
 import XCTest
 
-class ResourcesTests: XCTestCase {
+internal class ResourcesTests: XCTestCase {
     func testUniqueResourceEndpointIsSingular() {
         XCTAssertEqual(Account.endpointName, "account")
     }

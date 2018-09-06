@@ -6,7 +6,7 @@
 @testable import SimpleMDM
 import XCTest
 
-class DeviceGroupTests: XCTestCase {
+internal class DeviceGroupTests: XCTestCase {
     func testGetAllDeviceGroups() {
         let json = loadFixture("DeviceGroups")
         let session = URLSessionMock(data: json, responseCode: 200)

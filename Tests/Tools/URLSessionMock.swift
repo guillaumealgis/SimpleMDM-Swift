@@ -7,7 +7,7 @@ import Foundation
 
 @testable import SimpleMDM
 
-struct Response {
+internal struct Response {
     let data: Data?
     let code: Int?
     let mimeType: String?
@@ -21,13 +21,12 @@ struct Response {
     }
 }
 
-let wildcardRoute = "*"
-
-enum URLSessionMockError: Swift.Error {
+internal enum URLSessionMockError: Swift.Error {
     case noMatchingRoute(URL?)
 }
 
-class URLSessionMock: URLSessionProtocol {
+internal class URLSessionMock: URLSessionProtocol {
+    static let wildcardRoute = "*"
     let routes: [String: Response]
 
     init(routes: [String: Response]) {
@@ -35,7 +34,7 @@ class URLSessionMock: URLSessionProtocol {
     }
 
     convenience init(data: Data? = Data(), responseCode: Int? = nil, responseMimeType: String? = "application/json") {
-        let routes = [wildcardRoute: Response(data: data, code: responseCode, mimeType: responseMimeType)]
+        let routes = [URLSessionMock.wildcardRoute: Response(data: data, code: responseCode, mimeType: responseMimeType)]
         self.init(routes: routes)
     }
 
@@ -46,14 +45,16 @@ class URLSessionMock: URLSessionProtocol {
         }
 
         let urlResponse: URLResponse?
-        if let code = response.code {
-            var headerFields: [String: String]?
+        if let code = response.code, let url = request.url {
+            var headerFields: [String: String]
             if let mimeType = response.mimeType {
                 headerFields = [
                     "Content-Type": mimeType
                 ]
+            } else {
+                headerFields = [:]
             }
-            urlResponse = HTTPURLResponse(url: request.url!, statusCode: code, httpVersion: nil, headerFields: headerFields)
+            urlResponse = HTTPURLResponse(url: url, statusCode: code, httpVersion: nil, headerFields: headerFields)
         } else {
             urlResponse = nil
         }
@@ -61,9 +62,9 @@ class URLSessionMock: URLSessionProtocol {
         if let delay = response.delay {
             // Simulate a delay in the request
             let deadline = DispatchTime.now() + delay
-            DispatchQueue.global().asyncAfter(deadline: deadline, execute: {
+            DispatchQueue.global().asyncAfter(deadline: deadline) {
                 completionHandler(response.data, urlResponse, nil)
-            })
+            }
         } else {
             completionHandler(response.data, urlResponse, nil)
         }
@@ -84,7 +85,7 @@ class URLSessionMock: URLSessionProtocol {
         }
 
         for (route, response) in routes {
-            if route == wildcardRoute || route == requestURL {
+            if route == URLSessionMock.wildcardRoute || route == requestURL {
                 return response
             }
         }
@@ -92,7 +93,7 @@ class URLSessionMock: URLSessionProtocol {
     }
 }
 
-class URLSessionDataTaskMock: URLSessionDataTask {
+internal class URLSessionDataTaskMock: URLSessionDataTask {
     override func cancel() {}
     override func suspend() {}
     override func resume() {}

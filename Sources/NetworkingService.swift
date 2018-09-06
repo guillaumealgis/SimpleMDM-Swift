@@ -5,13 +5,13 @@
 
 import Foundation
 
-enum NetworkingResult {
+internal enum NetworkingResult {
     case success(Data)
     case decodableDataFailure(httpCode: Int, data: Data)
     case failure(Error)
 }
 
-class NetworkingService {
+internal class NetworkingService {
     var APIKey: String? {
         didSet {
             let utf8Data = APIKey?.data(using: .utf8)
@@ -20,15 +20,9 @@ class NetworkingService {
     }
 
     private var base64APIKey: String?
-
-    private let host = "a.simplemdm.com"
-    private let endpoint = "api/v1/"
-
-    private var baseURL: URL {
-        return URL(string: "https://\(host)/\(endpoint)")!
-    }
-
-    private var session: URLSessionProtocol!
+    // swiftlint:disable:next force_unwrapping
+    private var baseURL = URL(string: "https://a.simplemdm.com/api/v1/")!
+    private var session: URLSessionProtocol
 
     convenience init() {
         let session = URLSession(configuration: .default)
@@ -85,7 +79,7 @@ class NetworkingService {
         let urlRequest: URLRequest
         do {
             urlRequest = try buildURLRequest(withURL: url)
-        } catch let error {
+        } catch {
             return completion(.failure(error))
         }
 

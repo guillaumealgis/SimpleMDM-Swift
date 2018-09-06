@@ -7,7 +7,7 @@ import Foundation
 
 // MARK: Errors
 
-struct ErrorPayload: Decodable {
+internal struct ErrorPayload: Decodable {
     struct ErrorPayloadEntry: Decodable {
         let title: String
     }
@@ -17,16 +17,17 @@ struct ErrorPayload: Decodable {
 
 // MARK: Response data
 
-protocol Payload: Decodable {
+internal protocol Payload: Decodable {
     associatedtype DataType: Decodable
+
     var data: DataType { get }
 }
 
-struct SinglePayload<R: Resource>: Payload {
+internal struct SinglePayload<R: Resource>: Payload {
     var data: R
 }
 
-struct ListPayload<R: Resource>: Payload {
+internal struct ListPayload<R: Resource>: Payload {
     let data: [R]
     let hasMore: Bool
 }

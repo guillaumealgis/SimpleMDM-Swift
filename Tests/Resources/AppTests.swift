@@ -6,7 +6,7 @@
 @testable import SimpleMDM
 import XCTest
 
-class AppTests: XCTestCase {
+internal class AppTests: XCTestCase {
     func testGetAllApps() {
         let json = loadFixture("Apps")
         let session = URLSessionMock(data: json, responseCode: 200)
@@ -25,6 +25,8 @@ class AppTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
+        // swiftformat:disable:next numberFormatting
+        // swiftlint:disable:next number_separator
         App.get(id: 17635) { result in
             guard case let .success(app) = result else {
                 return XCTFail("Expected .success, got \(result)")

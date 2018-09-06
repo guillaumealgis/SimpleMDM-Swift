@@ -47,7 +47,7 @@ public struct RelatedToMany<T: IdentifiableResource>: RelatedToResource {
     private let relations: [Relation<T>]
 
     public var relatedIds: [T.Identifier] {
-        return relations.map({ $0.id })
+        return relations.map { $0.id }
     }
 
     public init(from decoder: Decoder) throws {
@@ -71,8 +71,10 @@ public struct RelatedToMany<T: IdentifiableResource>: RelatedToResource {
             get(at: i) { result in
                 semaphore.wait()
                 switch result {
-                case let .success(resource): resources.append(resource)
-                case let .failure(err): error = err
+                case let .success(resource):
+                    resources.append(resource)
+                case let .failure(err):
+                    error = err
                 }
                 semaphore.signal()
                 group.leave()
@@ -86,7 +88,11 @@ public struct RelatedToMany<T: IdentifiableResource>: RelatedToResource {
             } else {
                 // Because the resources will not necessarily arrive in the right order, we need to sort them
                 // according to their id position in relatedIds
-                resources.sort { self.relatedIds.index(of: $0.id)! < self.relatedIds.index(of: $1.id)! }
+                resources.sort {
+                    let firstResourcePosition = self.relatedIds.index(of: $0.id) ?? 0
+                    let secondResourcePosition = self.relatedIds.index(of: $1.id) ?? 0
+                    return firstResourcePosition < secondResourcePosition
+                }
                 result = .success(resources)
             }
             completion(result)

@@ -6,7 +6,7 @@
 @testable import SimpleMDM
 import XCTest
 
-class AccountTests: XCTestCase {
+internal class AccountTests: XCTestCase {
     func testGetAccount() {
         let json = loadFixture("Account")
         let session = URLSessionMock(data: json, responseCode: 200)

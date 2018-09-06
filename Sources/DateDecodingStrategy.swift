@@ -5,7 +5,7 @@
 
 import Foundation
 
-func decodeSimpleMDMDate(decoder: Decoder) throws -> Date {
+internal func decodeSimpleMDMDate(decoder: Decoder) throws -> Date {
     let container = try decoder.singleValueContainer()
     let dateString = try container.decode(String.self)
 

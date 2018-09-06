@@ -7,7 +7,7 @@ import Foundation
 
 @testable import SimpleMDM
 
-func loadFixture(_ name: String) -> Data {
+internal func loadFixture(_ name: String) -> Data {
     let bundle = Bundle(for: ResourcesTests.self)
     let urlIfFound = bundle.url(forResource: name, withExtension: "json")
     guard let url = urlIfFound else {
@@ -19,7 +19,7 @@ func loadFixture(_ name: String) -> Data {
     return fixture
 }
 
-extension SimpleMDM {
+internal extension SimpleMDM {
     class func useSessionMock(_ sessionMock: URLSessionMock? = nil) {
         let session = sessionMock ?? URLSessionMock()
         let networkingService = NetworkingService(urlSession: session)

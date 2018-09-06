@@ -5,7 +5,7 @@
 
 import Foundation
 
-class DecodingService {
+internal class DecodingService {
     private let decoder = JSONDecoder()
 
     init() {

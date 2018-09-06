@@ -6,7 +6,7 @@
 @testable import SimpleMDM
 import XCTest
 
-class CursorTests: XCTestCase {
+internal class CursorTests: XCTestCase {
     func testCursorAtInitHasMoreData() {
         let cursor = Cursor<Device>()
         XCTAssertTrue(cursor.hasMore)
@@ -70,12 +70,12 @@ class CursorTests: XCTestCase {
     }
 
     func testCursorFetchedNothingButAdvertisedMore() {
-        let json = """
+        let json = Data("""
           {
             "data": [],
             "has_more": true
           }
-        """.data(using: .utf8)
+        """.utf8)
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
@@ -93,7 +93,7 @@ class CursorTests: XCTestCase {
     }
 
     func testCursorFetchWithLimit() {
-        let json = """
+        let json = Data("""
           {
             "data": [
               {
@@ -109,7 +109,7 @@ class CursorTests: XCTestCase {
             ],
             "has_more": true
           }
-        """.data(using: .utf8)
+        """.utf8)
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
@@ -125,7 +125,7 @@ class CursorTests: XCTestCase {
 
     func testCursorFetchWithLimitMultipleTimes() {
         func appFixture(name: String, itunesId: Int, id: Int, hasMore: Bool) -> Data {
-            let json = """
+            let json = Data("""
               {
                 "data": [
                   {
@@ -141,7 +141,7 @@ class CursorTests: XCTestCase {
                 ],
                 "has_more": \(hasMore)
               }
-            """.data(using: .utf8)!
+            """.utf8)
             return json
         }
 

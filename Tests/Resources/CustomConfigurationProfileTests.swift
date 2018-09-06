@@ -6,7 +6,7 @@
 @testable import SimpleMDM
 import XCTest
 
-class CustomConfigurationProfileTests: XCTestCase {
+internal class CustomConfigurationProfileTests: XCTestCase {
     func testGetAllCustomConfigurationProfiles() {
         let json = loadFixture("CustomConfigurationProfiles")
         let session = URLSessionMock(data: json, responseCode: 200)
@@ -25,8 +25,7 @@ class CustomConfigurationProfileTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         SimpleMDM.useSessionMock(session)
 
-        // swiftformat:disable:next numberFormatting
-        CustomConfigurationProfile.get(id: 293814) { result in
+        CustomConfigurationProfile.get(id: 293_814) { result in
             guard case let .success(customConfigurationProfile) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -41,20 +40,19 @@ class CustomConfigurationProfileTests: XCTestCase {
         ])
         SimpleMDM.useSessionMock(session)
 
-        // swiftformat:disable:next numberFormatting
-        CustomConfigurationProfile.get(id: 293814) { ccpResult in
+        CustomConfigurationProfile.get(id: 293_814) { ccpResult in
             guard case let .success(customConfigurationProfile) = ccpResult else {
                 return XCTFail("Expected .success, got \(ccpResult)")
             }
             XCTAssertEqual(customConfigurationProfile.deviceGroups.relatedIds, [38])
 
-            customConfigurationProfile.deviceGroups.getAll(completion: { deviceGroupsResult in
+            customConfigurationProfile.deviceGroups.getAll { deviceGroupsResult in
                 guard case let .success(deviceGroups) = deviceGroupsResult else {
                     return XCTFail("Expected .success, got \(deviceGroupsResult)")
                 }
-                XCTAssertEqual(deviceGroups.map({ $0.id }), [38])
+                XCTAssertEqual(deviceGroups.map { $0.id }, [38])
                 XCTAssertEqual(deviceGroups[0].name, "Executives")
-            })
+            }
         }
     }
 }

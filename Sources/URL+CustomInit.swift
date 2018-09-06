@@ -15,6 +15,7 @@ extension URL {
         self.init(string: path, relativeTo: baseURL)
     }
 
+    // swiftlint:disable:next function_default_parameter_at_end
     init?<R: ListableResource>(resourceType: R.Type, startingAfter: R.Identifier? = nil, limit: Int? = nil, relativeTo baseURL: URL) {
         var urlComponents = URLComponents()
 

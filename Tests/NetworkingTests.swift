@@ -6,7 +6,7 @@
 @testable import SimpleMDM
 import XCTest
 
-class NetworkingTests: XCTestCase {
+internal class NetworkingTests: XCTestCase {
     func testReturnUnknownErrorIfRequestFails() {
         let session = URLSessionMock(data: nil)
         let networkingService = NetworkingService(urlSession: session)
@@ -162,6 +162,7 @@ class NetworkingTests: XCTestCase {
     func testMalformedResourceListURL() {
         struct FakeResource: ListableResource {
             typealias Identifier = String
+
             var id: String
             static var endpointName: String { return "💩" }
         }
@@ -183,6 +184,7 @@ class NetworkingTests: XCTestCase {
     func testMalformedResourceWithIdURL() {
         struct FakeResource: IdentifiableResource {
             typealias Identifier = String
+
             var id: String
             static var endpointName: String { return "💩" }
         }

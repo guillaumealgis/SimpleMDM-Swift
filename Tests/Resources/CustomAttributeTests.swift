@@ -6,7 +6,7 @@
 @testable import SimpleMDM
 import XCTest
 
-class CustomAttributeTests: XCTestCase {
+internal class CustomAttributeTests: XCTestCase {
     func testGetAllCustomAttributes() {
         let json = loadFixture("CustomAttributes")
         let session = URLSessionMock(data: json, responseCode: 200)

@@ -20,8 +20,8 @@ public protocol UniqueResource: Resource {
     static func get(completion: @escaping CompletionClosure<Self>)
 }
 
-extension UniqueResource {
-    public static func get(completion: @escaping CompletionClosure<Self>) {
+public extension UniqueResource {
+    static func get(completion: @escaping CompletionClosure<Self>) {
         SimpleMDM.shared.networkingService.getDataForUniqueResource(ofType: Self.self) { networkResult in
             let decodingService = DecodingService()
             let result = decodingService.decodeNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
@@ -41,8 +41,8 @@ public protocol IdentifiableResource: Resource {
     static func get(id: Identifier, completion: @escaping CompletionClosure<Self>)
 }
 
-extension IdentifiableResource {
-    public static func get(id: Identifier, completion: @escaping CompletionClosure<Self>) {
+public extension IdentifiableResource {
+    static func get(id: Identifier, completion: @escaping CompletionClosure<Self>) {
         SimpleMDM.shared.networkingService.getDataForResource(ofType: Self.self, withId: id) { networkResult in
             let decodingService = DecodingService()
             let result = decodingService.decodeNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
@@ -63,8 +63,8 @@ public protocol ListableResource: IdentifiableResource {
     static func getAll(completion: @escaping CompletionClosure<[Self]>)
 }
 
-extension ListableResource {
-    public static func getAll(completion: @escaping CompletionClosure<[Self]>) {
+public extension ListableResource {
+    static func getAll(completion: @escaping CompletionClosure<[Self]>) {
         let accumulator = [Self]()
         let cursor = Cursor<Self>()
         getNext(accumulator: accumulator, cursor: cursor, completion: completion)

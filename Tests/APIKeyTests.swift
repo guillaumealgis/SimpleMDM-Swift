@@ -6,7 +6,7 @@
 @testable import SimpleMDM
 import XCTest
 
-class APIKeyTests: XCTestCase {
+internal class APIKeyTests: XCTestCase {
     func testSettingAPIKeyViaSingleton() {
         let APIKey = "AVeryRandomTestAPIKey"
         SimpleMDM.APIKey = APIKey

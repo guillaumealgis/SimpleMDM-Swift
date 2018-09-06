@@ -6,9 +6,9 @@
 @testable import SimpleMDM
 import XCTest
 
-class DecodingTests: XCTestCase {
+internal class DecodingTests: XCTestCase {
     func testDecodeInvalidErrorPayload() {
-        let json = """
+        let json = Data("""
           {
             "unexpected_field": [
               {
@@ -16,7 +16,7 @@ class DecodingTests: XCTestCase {
               }
             ]
           }
-        """.data(using: .utf8)!
+        """.utf8)
         let decodingService = DecodingService()
 
         let networkingResult = NetworkingResult.decodableDataFailure(httpCode: 400, data: json)
@@ -34,11 +34,11 @@ class DecodingTests: XCTestCase {
     }
 
     func testDecodeErrorPayloadWithoutError() {
-        let json = """
+        let json = Data("""
         {
           "errors": []
         }
-        """.data(using: .utf8)!
+        """.utf8)
         let decodingService = DecodingService()
 
         let networkingResult = NetworkingResult.decodableDataFailure(httpCode: 400, data: json)
@@ -53,7 +53,7 @@ class DecodingTests: XCTestCase {
     }
 
     func testDecodeErrorPayload() {
-        let json = """
+        let json = Data("""
           {
             "errors": [
               {
@@ -61,7 +61,7 @@ class DecodingTests: XCTestCase {
               }
             ]
           }
-        """.data(using: .utf8)!
+        """.utf8)
         let decodingService = DecodingService()
 
         let networkingResult = NetworkingResult.decodableDataFailure(httpCode: 400, data: json)
@@ -76,7 +76,7 @@ class DecodingTests: XCTestCase {
     }
 
     func testDecodeErrorPayloadWithMultipleErrors() {
-        let json = """
+        let json = Data("""
         {
           "errors": [
             {
@@ -87,7 +87,7 @@ class DecodingTests: XCTestCase {
             }
           ]
         }
-        """.data(using: .utf8)!
+        """.utf8)
         let decodingService = DecodingService()
 
         let networkingResult = NetworkingResult.decodableDataFailure(httpCode: 400, data: json)

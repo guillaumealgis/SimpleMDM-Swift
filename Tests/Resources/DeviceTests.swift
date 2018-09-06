@@ -6,7 +6,7 @@
 @testable import SimpleMDM
 import XCTest
 
-class DeviceTests: XCTestCase {
+internal class DeviceTests: XCTestCase {
     func testGetAllDevices() {
         let json = loadFixture("Devices")
         let session = URLSessionMock(data: json, responseCode: 200)
@@ -46,12 +46,12 @@ class DeviceTests: XCTestCase {
             }
             XCTAssertEqual(device.deviceGroup.relatedId, 37)
 
-            device.deviceGroup.get(completion: { deviceGroupResult in
+            device.deviceGroup.get { deviceGroupResult in
                 guard case let .success(deviceGroup) = deviceGroupResult else {
                     return XCTFail("Expected .success, got \(deviceGroupResult)")
                 }
                 XCTAssertEqual(deviceGroup.name, "Interns")
-            })
+            }
         }
     }
 
@@ -68,7 +68,7 @@ class DeviceTests: XCTestCase {
             }
             XCTAssertEqual(device.deviceGroup.relatedId, 37)
 
-            device.deviceGroup.get(completion: { deviceGroupResult in
+            device.deviceGroup.get { deviceGroupResult in
                 guard case let .failure(error) = deviceGroupResult else {
                     return XCTFail("Expected .failure, got \(deviceGroupResult)")
                 }
@@ -76,7 +76,7 @@ class DeviceTests: XCTestCase {
                     return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
                 }
                 XCTAssertEqual(simpleMDMError, SimpleMDMError.doesNotExist)
-            })
+            }
         }
     }
 }

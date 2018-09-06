@@ -6,7 +6,7 @@
 @testable import SimpleMDM
 import XCTest
 
-class AppGroupTests: XCTestCase {
+internal class AppGroupTests: XCTestCase {
     func testGetAllAppGroups() {
         let json = loadFixture("AppGroups")
         let session = URLSessionMock(data: json, responseCode: 200)
@@ -47,7 +47,7 @@ class AppGroupTests: XCTestCase {
             }
             XCTAssertEqual(appGroup.apps.relatedIds, [63, 67])
 
-            appGroup.apps.getAll(completion: { appsResult in
+            appGroup.apps.getAll { appsResult in
                 guard case let .failure(error) = appsResult else {
                     return XCTFail("Expected .failure, got \(appsResult)")
                 }
@@ -55,7 +55,7 @@ class AppGroupTests: XCTestCase {
                     return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
                 }
                 XCTAssertEqual(simpleMDMError, SimpleMDMError.doesNotExist)
-            })
+            }
         }
     }
 
@@ -74,16 +74,16 @@ class AppGroupTests: XCTestCase {
             }
             XCTAssertEqual(appGroup.apps.relatedIds, [63, 67])
 
-            appGroup.apps.getAll(completion: { appsResult in
+            appGroup.apps.getAll { appsResult in
                 guard case let .success(apps) = appsResult else {
                     return XCTFail("Expected .success, got \(appsResult)")
                 }
-                XCTAssertEqual(apps.map({ $0.id }), [63, 67])
+                XCTAssertEqual(apps.map { $0.id }, [63, 67])
                 XCTAssertEqual(apps[0].name, "Trello")
                 XCTAssertEqual(apps[1].name, "Evernote")
 
                 expectation.fulfill()
-            })
+            }
         }
 
         let result = XCTWaiter.wait(for: [expectation], timeout: 1.0)
@@ -104,14 +104,14 @@ class AppGroupTests: XCTestCase {
             }
             XCTAssertEqual(appGroup.apps.relatedIds, [63, 67])
 
-            appGroup.apps.getAll(completion: { appsResult in
+            appGroup.apps.getAll { appsResult in
                 guard case let .success(apps) = appsResult else {
                     return XCTFail("Expected .success, got \(appsResult)")
                 }
-                XCTAssertEqual(apps.map({ $0.id }), [63, 67])
+                XCTAssertEqual(apps.map { $0.id }, [63, 67])
                 XCTAssertEqual(apps[0].name, "Trello")
                 XCTAssertEqual(apps[1].name, "Evernote")
-            })
+            }
         }
     }
 
@@ -129,14 +129,14 @@ class AppGroupTests: XCTestCase {
             }
             XCTAssertEqual(appGroup.deviceGroups.relatedIds, [37, 38])
 
-            appGroup.deviceGroups.getAll(completion: { deviceGroupsResult in
+            appGroup.deviceGroups.getAll { deviceGroupsResult in
                 guard case let .success(deviceGroups) = deviceGroupsResult else {
                     return XCTFail("Expected .success, got \(deviceGroupsResult)")
                 }
-                XCTAssertEqual(deviceGroups.map({ $0.id }), [37, 38])
+                XCTAssertEqual(deviceGroups.map { $0.id }, [37, 38])
                 XCTAssertEqual(deviceGroups[0].name, "Interns")
                 XCTAssertEqual(deviceGroups[1].name, "Executives")
-            })
+            }
         }
     }
 
@@ -153,13 +153,13 @@ class AppGroupTests: XCTestCase {
             }
             XCTAssertEqual(appGroup.devices.relatedIds, [121])
 
-            appGroup.devices.getAll(completion: { devicesResult in
+            appGroup.devices.getAll { devicesResult in
                 guard case let .success(devices) = devicesResult else {
                     return XCTFail("Expected .success, got \(devicesResult)")
                 }
-                XCTAssertEqual(devices.map({ $0.id }), [121])
+                XCTAssertEqual(devices.map { $0.id }, [121])
                 XCTAssertEqual(devices[0].name, "Mike's iPhone")
-            })
+            }
         }
     }
 }
