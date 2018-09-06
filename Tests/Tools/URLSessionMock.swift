@@ -72,8 +72,19 @@ class URLSessionMock: URLSessionProtocol {
     }
 
     func matchingResponseForRequest(_ request: URLRequest) -> Response? {
-        for (path, response) in routes {
-            if path == wildcardRoute || request.url?.path == path {
+        guard let url = request.url else {
+            return nil
+        }
+
+        let requestURL: String
+        if let query = url.query {
+            requestURL = "\(url.path)?\(query)"
+        } else {
+            requestURL = url.path
+        }
+
+        for (route, response) in routes {
+            if route == wildcardRoute || route == requestURL {
                 return response
             }
         }
