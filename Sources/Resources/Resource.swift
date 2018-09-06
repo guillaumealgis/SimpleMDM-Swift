@@ -23,7 +23,8 @@ public protocol UniqueResource: Resource {
 extension UniqueResource {
     public static func get(completion: @escaping CompletionClosure<Self>) {
         SimpleMDM.shared.networkingService.getDataForUniqueResource(ofType: Self.self) { networkResult in
-            let result = processNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
+            let decodingService = DecodingService()
+            let result = decodingService.decodeNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
             completion(result)
         }
     }
@@ -43,7 +44,8 @@ public protocol IdentifiableResource: Resource {
 extension IdentifiableResource {
     public static func get(id: Identifier, completion: @escaping CompletionClosure<Self>) {
         SimpleMDM.shared.networkingService.getDataForResource(ofType: Self.self, withId: id) { networkResult in
-            let result = processNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
+            let decodingService = DecodingService()
+            let result = decodingService.decodeNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
             if case let .success(resource) = result, resource.id != id {
                 completion(.failure(SimpleMDMError.unexpectedResourceId))
                 return
@@ -63,27 +65,25 @@ public protocol ListableResource: IdentifiableResource {
 
 extension ListableResource {
     public static func getAll(completion: @escaping CompletionClosure<[Self]>) {
-        SimpleMDM.shared.networkingService.getDataForResources(ofType: Self.self) { networkResult in
-            let result = processNetworkingResult(networkResult, expectedPayloadType: ListPayload<Self>.self)
-            completion(result)
-        }
+        let accumulator = [Self]()
+        let cursor = Cursor<Self>()
+        getNext(accumulator: accumulator, cursor: cursor, completion: completion)
     }
-}
 
-// MARK: Processing API response
-
-private func processNetworkingResult<P: Payload>(_ result: NetworkingResult, expectedPayloadType _: P.Type) -> Result<P.DataType> {
-    let decodingService = SimpleMDM.shared.decodingService
-    switch result {
-    case let .success(data):
-        do {
-            return .success(try decodingService.decodePayload(ofType: P.self, from: data))
-        } catch {
-            return .failure(error)
+    private static func getNext(accumulator: [Self], cursor: Cursor<Self>, completion: @escaping CompletionClosure<[Self]>) {
+        if !cursor.hasMore {
+            completion(.success(accumulator))
+            return
         }
-    case let .decodableDataFailure(httpCode, data):
-        return .failure(decodingService.decodeError(from: data, httpCode: httpCode))
-    case let .failure(error):
-        return .failure(error)
+
+        cursor.next(CursorLimit.max.rawValue) { result in
+            switch result {
+            case let .failure(error):
+                completion(.failure(error))
+            case let .success(resources):
+                let accumulator = accumulator + resources
+                getNext(accumulator: accumulator, cursor: cursor, completion: completion)
+            }
+        }
     }
 }

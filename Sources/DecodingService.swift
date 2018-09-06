@@ -15,12 +15,37 @@ class DecodingService {
 
     // MARK: Decoding the response
 
-    func decodePayload<P: Payload>(ofType type: P.Type, from data: Data) throws -> P.DataType {
-        let payload = try decoder.decode(type.self, from: data)
-        return payload.data
+    func decodeNetworkingResultPayload<P: Payload>(_ result: NetworkingResult, expectedPayloadType _: P.Type) -> Result<P> {
+        switch result {
+        case let .success(data):
+            do {
+                return .success(try decodePayload(ofType: P.self, from: data))
+            } catch {
+                return .failure(error)
+            }
+        case let .decodableDataFailure(httpCode, data):
+            return .failure(decodeError(from: data, httpCode: httpCode))
+        case let .failure(error):
+            return .failure(error)
+        }
     }
 
-    func decodeError(from data: Data, httpCode: Int) -> Error {
+    func decodeNetworkingResult<P: Payload>(_ result: NetworkingResult, expectedPayloadType: P.Type) -> Result<P.DataType> {
+        let payloadResult = decodeNetworkingResultPayload(result, expectedPayloadType: expectedPayloadType)
+        switch payloadResult {
+        case let .success(payload):
+            return .success(payload.data)
+        case let .failure(error):
+            return .failure(error)
+        }
+    }
+
+    private func decodePayload<P: Payload>(ofType type: P.Type, from data: Data) throws -> P {
+        let payload = try decoder.decode(type.self, from: data)
+        return payload
+    }
+
+    private func decodeError(from data: Data, httpCode: Int) -> Error {
         do {
             let payload = try decoder.decode(ErrorPayload.self, from: data)
             // We *may* get more than one error in the response data, but returning multiple error would make the

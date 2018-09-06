@@ -19,7 +19,11 @@ class DecodingTests: XCTestCase {
         """.data(using: .utf8)!
         let decodingService = DecodingService()
 
-        let error = decodingService.decodeError(from: json, httpCode: 400)
+        let networkingResult = NetworkingResult.decodableDataFailure(httpCode: 400, data: json)
+        let result = decodingService.decodeNetworkingResult(networkingResult, expectedPayloadType: SinglePayload<Device>.self)
+        guard case let .failure(error) = result else {
+            return XCTFail("Expected .failure, got \(result)")
+        }
         guard let decodingError = error as? DecodingError else {
             return XCTFail("Expected error to be a DecodingError, got \(error)")
         }
@@ -37,7 +41,11 @@ class DecodingTests: XCTestCase {
         """.data(using: .utf8)!
         let decodingService = DecodingService()
 
-        let error = decodingService.decodeError(from: json, httpCode: 400)
+        let networkingResult = NetworkingResult.decodableDataFailure(httpCode: 400, data: json)
+        let result = decodingService.decodeNetworkingResult(networkingResult, expectedPayloadType: SinglePayload<Device>.self)
+        guard case let .failure(error) = result else {
+            return XCTFail("Expected .failure, got \(result)")
+        }
         guard let simpleMDMError = error as? SimpleMDMError else {
             return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
         }
@@ -56,7 +64,11 @@ class DecodingTests: XCTestCase {
         """.data(using: .utf8)!
         let decodingService = DecodingService()
 
-        let error = decodingService.decodeError(from: json, httpCode: 400)
+        let networkingResult = NetworkingResult.decodableDataFailure(httpCode: 400, data: json)
+        let result = decodingService.decodeNetworkingResult(networkingResult, expectedPayloadType: SinglePayload<Device>.self)
+        guard case let .failure(error) = result else {
+            return XCTFail("Expected .failure, got \(result)")
+        }
         guard let simpleMDMError = error as? SimpleMDMError else {
             return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
         }
@@ -78,7 +90,11 @@ class DecodingTests: XCTestCase {
         """.data(using: .utf8)!
         let decodingService = DecodingService()
 
-        let error = decodingService.decodeError(from: json, httpCode: 400)
+        let networkingResult = NetworkingResult.decodableDataFailure(httpCode: 400, data: json)
+        let result = decodingService.decodeNetworkingResult(networkingResult, expectedPayloadType: SinglePayload<Device>.self)
+        guard case let .failure(error) = result else {
+            return XCTFail("Expected .failure, got \(result)")
+        }
         guard let simpleMDMError = error as? SimpleMDMError else {
             return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
         }

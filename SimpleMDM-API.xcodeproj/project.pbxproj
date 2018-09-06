@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F010683920E444E600C7D616 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F010683820E444E600C7D616 /* Result.swift */; };
+		F01E2E5F213DECA400292E12 /* CursorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E2E5E213DECA400292E12 /* CursorTests.swift */; };
+		F033EF5A213B38E400AFDC1C /* Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033EF59213B38E400AFDC1C /* Cursor.swift */; };
 		F033EF5E213B490E00AFDC1C /* URL+CustomInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033EF5D213B490E00AFDC1C /* URL+CustomInit.swift */; };
 		F05EAB6D21309C8F0076F5FC /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB6C21309C8F0076F5FC /* DecodingTests.swift */; };
 		F05EAB9C2131AC7D0076F5FC /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB9B2131AC7D0076F5FC /* Relation.swift */; };
@@ -79,10 +81,12 @@
 
 /* Begin PBXFileReference section */
 		F010683820E444E600C7D616 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		F01E2E5E213DECA400292E12 /* CursorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorTests.swift; sourceTree = "<group>"; };
 		F01FBE6E20B4B39500200CED /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		F01FBE7020B4B6B300200CED /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		F01FBE7220B4BEEB00200CED /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		F01FBE7520B4BF1B00200CED /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		F033EF59213B38E400AFDC1C /* Cursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cursor.swift; sourceTree = "<group>"; };
 		F033EF5D213B490E00AFDC1C /* URL+CustomInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+CustomInit.swift"; sourceTree = "<group>"; };
 		F05EAB6C21309C8F0076F5FC /* DecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
 		F05EAB9B2131AC7D0076F5FC /* Relation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relation.swift; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 				F010683820E444E600C7D616 /* Result.swift */,
 				F01FBE6E20B4B39500200CED /* Error.swift */,
 				F0CD0A9F20C5E37D00248134 /* URLSession.swift */,
+				F033EF59213B38E400AFDC1C /* Cursor.swift */,
 				F01FBE7420B4BEF400200CED /* Resources */,
 				F05F7437211A34D4003F1594 /* Templates */,
 				F0AA1FBD20DEEFB5003781DF /* Info.plist */,
@@ -297,6 +302,7 @@
 				F09F55212139FDF300D4FE8D /* Resources */,
 				F0CD0AA120C5E7AF00248134 /* APIKeyTests.swift */,
 				F0CD0A9620C5E27C00248134 /* NetworkingTests.swift */,
+				F01E2E5E213DECA400292E12 /* CursorTests.swift */,
 				F05EAB6C21309C8F0076F5FC /* DecodingTests.swift */,
 				F0CD0A9820C5E27C00248134 /* Info.plist */,
 			);
@@ -467,6 +473,7 @@
 				F0D9F2C120DEF3D00081081C /* App.swift in Sources */,
 				F0D9F2BF20DEF3D00081081C /* Resource.swift in Sources */,
 				F0D9F2CE20DEF3D50081081C /* DateFormatter+CustomFormat.swift in Sources */,
+				F033EF5A213B38E400AFDC1C /* Cursor.swift in Sources */,
 				F0D9F2C020DEF3D00081081C /* Account.swift in Sources */,
 				F0D9F2C320DEF3D00081081C /* CustomAttribute.swift in Sources */,
 				F0D9F2CA20DEF3D50081081C /* NetworkingService.swift in Sources */,
@@ -493,6 +500,7 @@
 				F09F55412139FE2700D4FE8D /* AccountTests.swift in Sources */,
 				F09F55432139FE2700D4FE8D /* AppTests.swift in Sources */,
 				F09F55492139FE2700D4FE8D /* PushCertificateTests.swift in Sources */,
+				F01E2E5F213DECA400292E12 /* CursorTests.swift in Sources */,
 				F09F55452139FE2700D4FE8D /* CustomConfigurationProfileTests.swift in Sources */,
 				F0D9F2BC20DEF3CB0081081C /* APIKeyTests.swift in Sources */,
 				F05EAB6D21309C8F0076F5FC /* DecodingTests.swift in Sources */,

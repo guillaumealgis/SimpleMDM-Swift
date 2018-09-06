@@ -41,6 +41,8 @@ public enum SimpleMDMError: BaseSimpleMDMError {
     case generic(httpCode: Int, description: String)
     case doesNotExist
     case unexpectedResourceId
+    case doesNotExpectMoreResources
+    case invalidLimit(Int)
 
     public var errorDescription: String? {
         switch self {
@@ -56,6 +58,10 @@ public enum SimpleMDMError: BaseSimpleMDMError {
             return "The requested resource does not exist"
         case .unexpectedResourceId:
             return "A fetched resources had an unexpected id"
+        case .doesNotExpectMoreResources:
+            return "No resource was fetched, but the server advertised for more resources"
+        case let .invalidLimit(limit):
+            return "Limit \"\(limit)\" is invalid. Expected a number between \(CursorLimit.min) and \(CursorLimit.max)"
         }
     }
 }
