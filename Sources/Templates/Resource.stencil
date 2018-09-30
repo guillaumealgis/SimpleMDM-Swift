@@ -4,8 +4,8 @@
 //
 
 // swiftlint:disable file_length function_body_length
-
 {% for type in types.structs where type.implements.AutoDecodable %}
+
 // MARK: {{ type.name }}
 {% if type.implements.IdentifiableResource %}
 // sourcery:inline:auto:{{ type.name }}.Identifiable
@@ -25,7 +25,7 @@ extension {{ type.name }}: Decodable {
         case type
         {% if type.implements.IdentifiableResource %}case id{% endif %}
         case attributes
-        case relationships
+        {% if hasRelationships %}case relationships{% endif %}
     }
 
     private enum AttributesKeys: String, CodingKey {

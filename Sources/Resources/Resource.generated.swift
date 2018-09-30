@@ -1,4 +1,4 @@
-// Generated using Sourcery 0.13.1 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 0.14.0 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
 //
@@ -19,7 +19,6 @@ extension Account: Decodable {
     private enum CodingKeys: String, CodingKey {
         case type
         case attributes
-        case relationships
     }
 
     private enum AttributesKeys: String, CodingKey {
@@ -42,6 +41,7 @@ extension Account: Decodable {
         appleStoreCountryCode = try attributes.decode(String.self, forKey: .appleStoreCountryCode)
     }
 }
+
 // MARK: App
 
 extension App: Resource {
@@ -55,7 +55,6 @@ extension App: Decodable {
         case type
         case id
         case attributes
-        case relationships
     }
 
     private enum AttributesKeys: String, CodingKey {
@@ -86,6 +85,7 @@ extension App: Decodable {
         version = try attributes.decodeIfPresent(String.self, forKey: .version)
     }
 }
+
 // MARK: AppGroup
 
 extension AppGroup: Resource {
@@ -135,6 +135,7 @@ extension AppGroup: Decodable {
         devices = try relationships.decode(RelatedToMany<Device>.self, forKey: .devices)
     }
 }
+
 // MARK: CustomAttribute
 
 extension CustomAttribute: Resource {
@@ -148,7 +149,6 @@ extension CustomAttribute: Decodable {
         case type
         case id
         case attributes
-        case relationships
     }
 
     private enum AttributesKeys: String, CodingKey {
@@ -171,6 +171,7 @@ extension CustomAttribute: Decodable {
         name = try attributes.decode(String.self, forKey: .name)
     }
 }
+
 // MARK: CustomConfigurationProfile
 
 extension CustomConfigurationProfile: Resource {
@@ -214,6 +215,7 @@ extension CustomConfigurationProfile: Decodable {
         deviceGroups = try relationships.decode(RelatedToMany<DeviceGroup>.self, forKey: .deviceGroups)
     }
 }
+
 // MARK: Device
 
 extension Device: Resource {
@@ -369,6 +371,7 @@ extension Device: Decodable {
         deviceGroup = try relationships.decode(RelatedToOne<DeviceGroup>.self, forKey: .deviceGroup)
     }
 }
+
 // MARK: DeviceGroup
 
 extension DeviceGroup: Resource {
@@ -382,7 +385,6 @@ extension DeviceGroup: Decodable {
         case type
         case id
         case attributes
-        case relationships
     }
 
     private enum AttributesKeys: String, CodingKey {
@@ -405,6 +407,7 @@ extension DeviceGroup: Decodable {
         name = try attributes.decode(String.self, forKey: .name)
     }
 }
+
 // MARK: InstalledApp
 
 extension InstalledApp: Resource {
@@ -418,7 +421,6 @@ extension InstalledApp: Decodable {
         case type
         case id
         case attributes
-        case relationships
     }
 
     private enum AttributesKeys: String, CodingKey {
@@ -455,6 +457,7 @@ extension InstalledApp: Decodable {
         discoveredAt = try attributes.decode(Date.self, forKey: .discoveredAt)
     }
 }
+
 // MARK: PushCertificate
 extension PushCertificate: Resource {
     public static var endpointName: String {
@@ -466,7 +469,6 @@ extension PushCertificate: Decodable {
     private enum CodingKeys: String, CodingKey {
         case type
         case attributes
-        case relationships
     }
 
     private enum AttributesKeys: String, CodingKey {
