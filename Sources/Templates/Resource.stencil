@@ -14,13 +14,13 @@
 {% endif %}
 extension {{ type.name }}: Resource {
     public static var endpointName: String {
-        return "{{ type.name|camelToSnakeCase }}{% ifnot type.implements.UniqueResource %}s{% endif %}"
+        return "{{ type.localName|camelToSnakeCase }}{% ifnot type.implements.UniqueResource %}s{% endif %}"
     }
 }
 
 extension {{ type.name }}: Decodable {
     {# Hackish but works #}
-    {% set hasRelationships %}{% for variable in type.instanceVariables where variable.type.implements.RelatedToResource %}1{% endfor %}{% endset %}
+    {% set hasRelationships %}{% for variable in type.instanceVariables where variable.type.implements.Relationship %}1{% endfor %}{% endset %}
     private enum CodingKeys: String, CodingKey {
         case type
         {% if type.implements.IdentifiableResource %}case id{% endif %}
@@ -36,7 +36,7 @@ extension {{ type.name }}: Decodable {
     {% if hasRelationships %}
 
     private enum RelationshipKeys: String, CodingKey {
-        {% for variable in type.instanceVariables where variable.type.implements.RelatedToResource %}
+        {% for variable in type.instanceVariables where variable.type.implements.Relationship %}
         case {{ variable.name }}
         {% endfor %}
     }
@@ -46,7 +46,7 @@ extension {{ type.name }}: Decodable {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
         let type = try payload.decode(String.self, forKey: .type)
-        let expectedType = "{{ type.name|camelToSnakeCase }}"
+        let expectedType = "{{ type.localName|camelToSnakeCase }}"
         guard type == expectedType else {
             let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
             throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
@@ -67,8 +67,12 @@ extension {{ type.name }}: Decodable {
         {% if hasRelationships %}
 
         let relationships = try payload.nestedContainer(keyedBy: RelationshipKeys.self, forKey: .relationships)
-        {% for variable in type.instanceVariables where variable.type.implements.RelatedToResource %}
+        {% for variable in type.instanceVariables where variable.type.implements.Relationship %}
         {{ variable.name }} = try relationships.decode({{ variable.typeName.unwrappedTypeName }}.self, forKey: .{{ variable.name }})
+        {% endfor %}
+
+        {% for variable in type.instanceVariables where variable.type.implements.RelatedToResource and not variable.type.implements.Relationship %}
+        {{ variable.name }} = {{ variable.typeName.unwrappedTypeName }}(parentId: id)
         {% endfor %}
         {% endif %}
     }

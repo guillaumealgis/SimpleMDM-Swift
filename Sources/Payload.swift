@@ -29,5 +29,9 @@ internal struct SinglePayload<R: Resource>: Payload {
 
 internal struct ListPayload<R: Resource>: Payload {
     let data: [R]
+}
+
+internal struct PaginatedListPayload<R: Resource>: Payload {
+    let data: [R]
     let hasMore: Bool
 }

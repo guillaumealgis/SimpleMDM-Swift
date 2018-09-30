@@ -36,7 +36,7 @@ public class Cursor<T: ListableResource> {
 
     private func handleNetworkingResult(_ networkingResult: NetworkingResult, completion: @escaping CompletionClosure<[T]>) {
         let decoding = Decoding()
-        let payloadResult = decoding.decodeNetworkingResultPayload(networkingResult, expectedPayloadType: ListPayload<T>.self)
+        let payloadResult = decoding.decodeNetworkingResultPayload(networkingResult, expectedPayloadType: PaginatedListPayload<T>.self)
 
         switch payloadResult {
         case let .success(payload):
@@ -46,7 +46,7 @@ public class Cursor<T: ListableResource> {
         }
     }
 
-    private func handleRequestSuccess(payload: ListPayload<T>, completion: @escaping CompletionClosure<[T]>) {
+    private func handleRequestSuccess(payload: PaginatedListPayload<T>, completion: @escaping CompletionClosure<[T]>) {
         let resources = payload.data
 
         guard !(payload.hasMore && resources.isEmpty) else {

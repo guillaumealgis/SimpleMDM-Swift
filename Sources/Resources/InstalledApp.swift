@@ -5,7 +5,7 @@
 
 import Foundation
 
-public struct InstalledApp: IdentifiableResource {
+public struct InstalledApp: GettableResource {
     // sourcery:inline:auto:InstalledApp.Identifiable
     public let id: Int
     // sourcery:end

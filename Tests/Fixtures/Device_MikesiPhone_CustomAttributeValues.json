@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "attributes": {
+        "value": "space gray"
+      },
+      "id": "device_color",
+      "type": "custom_attribute_value"
+    },
+    {
+      "attributes": {
+        "value": "2018"
+      },
+      "id": "year_purchased",
+      "type": "custom_attribute_value"
+    }
+  ]
+}

@@ -37,11 +37,13 @@ public protocol IdentifiableResource: Resource {
     associatedtype Identifier: LosslessStringConvertible & Comparable & Decodable
 
     var id: Identifier { get }
+}
 
+public protocol GettableResource: IdentifiableResource {
     static func get(id: Identifier, completion: @escaping CompletionClosure<Self>)
 }
 
-public extension IdentifiableResource {
+public extension GettableResource {
     static func get(id: Identifier, completion: @escaping CompletionClosure<Self>) {
         SimpleMDM.shared.networking.getDataForResource(ofType: Self.self, withId: id) { networkResult in
             let decoding = Decoding()
@@ -59,7 +61,7 @@ public extension IdentifiableResource {
 // MARK: Listable Resource
 
 // A resource for which multiple instance of can coexists, and we can get a list of
-public protocol ListableResource: IdentifiableResource {
+public protocol ListableResource: GettableResource {
     static func getAll(completion: @escaping CompletionClosure<[Self]>)
 }
 

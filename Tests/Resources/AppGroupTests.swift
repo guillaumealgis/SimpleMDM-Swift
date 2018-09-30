@@ -162,4 +162,48 @@ internal class AppGroupTests: XCTestCase {
             }
         }
     }
+
+    func testGetAnAppGroupRelatedDeviceAtPosition() {
+        let session = URLSessionMock(routes: [
+            "/api/v1/app_groups/38": Response(data: loadFixture("AppGroup_ProductivityApps")),
+            "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone"))
+        ])
+        SimpleMDM.useSessionMock(session)
+
+        AppGroup.get(id: 38) { appGroupResult in
+            guard case let .success(appGroup) = appGroupResult else {
+                return XCTFail("Expected .success, got \(appGroupResult)")
+            }
+            XCTAssertEqual(appGroup.devices.relatedIds, [121])
+
+            appGroup.devices.get(at: 0) { deviceResult in
+                guard case let .success(device) = deviceResult else {
+                    return XCTFail("Expected .success, got \(deviceResult)")
+                }
+                XCTAssertEqual(device.name, "Mike's iPhone")
+            }
+        }
+    }
+
+    func testGetAnAppGroupRelatedDeviceById() {
+        let session = URLSessionMock(routes: [
+            "/api/v1/app_groups/38": Response(data: loadFixture("AppGroup_ProductivityApps")),
+            "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone"))
+        ])
+        SimpleMDM.useSessionMock(session)
+
+        AppGroup.get(id: 38) { appGroupResult in
+            guard case let .success(appGroup) = appGroupResult else {
+                return XCTFail("Expected .success, got \(appGroupResult)")
+            }
+            XCTAssertEqual(appGroup.devices.relatedIds, [121])
+
+            appGroup.devices.get(121) { deviceResult in
+                guard case let .success(device) = deviceResult else {
+                    return XCTFail("Expected .success, got \(deviceResult)")
+                }
+                XCTAssertEqual(device.name, "Mike's iPhone")
+            }
+        }
+    }
 }

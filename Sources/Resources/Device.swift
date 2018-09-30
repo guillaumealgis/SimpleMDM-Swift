@@ -80,4 +80,5 @@ public struct Device: ListableResource {
     let locationUpdatedAt: Date?
 
     let deviceGroup: RelatedToOne<DeviceGroup>
+    let customAttributes: RelatedToManyNested<Device, CustomAttributeValue>
 }

@@ -182,7 +182,7 @@ internal class NetworkingTests: XCTestCase {
     }
 
     func testMalformedResourceWithIdURL() {
-        struct FakeResource: IdentifiableResource {
+        struct FakeResource: GettableResource {
             typealias Identifier = String
 
             var id: String
@@ -193,6 +193,37 @@ internal class NetworkingTests: XCTestCase {
         SimpleMDM.useSessionMock(session)
 
         FakeResource.get(id: "anID") { result in
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let internalError = error as? InternalError else {
+                return XCTFail("Expected error to be a InternalError, got \(error)")
+            }
+            XCTAssertEqual(internalError, InternalError.malformedURL)
+        }
+    }
+
+    func testMalformedNestedResourceURL() {
+        struct FakeResource: IdentifiableResource {
+            typealias Identifier = String
+
+            var id: String
+            static var endpointName: String { return "fake_endpoint" }
+        }
+
+        struct FakeNestedResource: IdentifiableResource {
+            typealias Identifier = String
+
+            var id: String
+            static var endpointName: String { return "💩" }
+        }
+
+        let nestedResources = RelatedToManyNested<FakeResource, FakeNestedResource>(parentId: "fakeId")
+
+        let session = URLSessionMock()
+        SimpleMDM.useSessionMock(session)
+
+        nestedResources.getAll { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }

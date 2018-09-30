@@ -35,4 +35,9 @@ extension URL {
 
         self.init(string: url, relativeTo: baseURL)
     }
+
+    init?<R: IdentifiableResource, P: IdentifiableResource>(resourceType: R.Type, inParent parentType: P.Type, withId parentId: P.Identifier, relativeTo baseURL: URL) {
+        let path = "\(parentType.endpointName)/\(parentId)/\(resourceType.endpointName)"
+        self.init(string: path, relativeTo: baseURL)
+    }
 }

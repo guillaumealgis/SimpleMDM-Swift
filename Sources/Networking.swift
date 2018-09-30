@@ -51,6 +51,17 @@ internal class Networking {
         getData(atURL: url, completion: completion)
     }
 
+    internal func getDataForNestedResources<R: IdentifiableResource, P: IdentifiableResource>(ofType type: R.Type,
+                                                                                              inParent parentType: P.Type,
+                                                                                              withId parentId: P.Identifier,
+                                                                                              completion: @escaping (NetworkingResult) -> Void) {
+        guard let url = URL(resourceType: type, inParent: parentType, withId: parentId, relativeTo: baseURL) else {
+            completion(.failure(InternalError.malformedURL))
+            return
+        }
+        getData(atURL: url, completion: completion)
+    }
+
     internal func getDataForResource<R: IdentifiableResource>(ofType type: R.Type, withId id: R.Identifier, completion: @escaping (NetworkingResult) -> Void) {
         guard let url = URL(resourceType: type, withId: id, relativeTo: baseURL) else {
             completion(.failure(InternalError.malformedURL))
