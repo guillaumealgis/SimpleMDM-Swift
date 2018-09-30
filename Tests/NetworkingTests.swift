@@ -9,10 +9,10 @@ import XCTest
 internal class NetworkingTests: XCTestCase {
     func testReturnUnknownErrorIfRequestFails() {
         let session = URLSessionMock(data: nil)
-        let networkingService = NetworkingService(urlSession: session)
-        networkingService.APIKey = "AVeryRandomTestAPIKey"
+        let networking = Networking(urlSession: session)
+        networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -25,10 +25,10 @@ internal class NetworkingTests: XCTestCase {
 
     func testUnknownErrorHasHumanReadableDescription() {
         let session = URLSessionMock(data: nil)
-        let networkingService = NetworkingService(urlSession: session)
-        networkingService.APIKey = "AVeryRandomTestAPIKey"
+        let networking = Networking(urlSession: session)
+        networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -41,10 +41,10 @@ internal class NetworkingTests: XCTestCase {
 
     func testReturnNoHTTPResponseIfNoResponseReturned() {
         let session = URLSessionMock()
-        let networkingService = NetworkingService(urlSession: session)
-        networkingService.APIKey = "AVeryRandomTestAPIKey"
+        let networking = Networking(urlSession: session)
+        networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -57,10 +57,10 @@ internal class NetworkingTests: XCTestCase {
 
     func testNoHTTPResponseErrorHasHumanReadableDescription() {
         let session = URLSessionMock()
-        let networkingService = NetworkingService(urlSession: session)
-        networkingService.APIKey = "AVeryRandomTestAPIKey"
+        let networking = Networking(urlSession: session)
+        networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -74,10 +74,10 @@ internal class NetworkingTests: XCTestCase {
     func testReturnErrorForHTMLMimeType() {
         let mimeType = "text/html"
         let session = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
-        let networkingService = NetworkingService(urlSession: session)
-        networkingService.APIKey = "AVeryRandomTestAPIKey"
+        let networking = Networking(urlSession: session)
+        networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -91,10 +91,10 @@ internal class NetworkingTests: XCTestCase {
     func testReturnErrorForNullMimeType() {
         let mimeType: String? = nil
         let session = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
-        let networkingService = NetworkingService(urlSession: session)
-        networkingService.APIKey = "AVeryRandomTestAPIKey"
+        let networking = Networking(urlSession: session)
+        networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -108,10 +108,10 @@ internal class NetworkingTests: XCTestCase {
     func testInvalidMimeTypeErrorHasHumanReadableDescription() {
         let mimeType = "text/html"
         let session = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
-        let networkingService = NetworkingService(urlSession: session)
-        networkingService.APIKey = "AVeryRandomTestAPIKey"
+        let networking = Networking(urlSession: session)
+        networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -125,10 +125,10 @@ internal class NetworkingTests: XCTestCase {
     func testNullMimeTypeErrorHasHumanReadableDescription() {
         let mimeType: String? = nil
         let session = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
-        let networkingService = NetworkingService(urlSession: session)
-        networkingService.APIKey = "AVeryRandomTestAPIKey"
+        let networking = Networking(urlSession: session)
+        networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }

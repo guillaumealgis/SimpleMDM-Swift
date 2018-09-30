@@ -61,7 +61,7 @@
 		F0D9F2C720DEF3D00081081C /* InstalledApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410EF20D3223E00CE9480 /* InstalledApp.swift */; };
 		F0D9F2C820DEF3D00081081C /* PushCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410F120D3232B00CE9480 /* PushCertificate.swift */; };
 		F0D9F2C920DEF3D50081081C /* SimpleMDM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */; };
-		F0D9F2CA20DEF3D50081081C /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7220B4BEEB00200CED /* NetworkingService.swift */; };
+		F0D9F2CA20DEF3D50081081C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE7220B4BEEB00200CED /* Networking.swift */; };
 		F0D9F2CB20DEF3D50081081C /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09488EA209F27AD00CA2CF3 /* Payload.swift */; };
 		F0D9F2CC20DEF3D50081081C /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FBE6E20B4B39500200CED /* Error.swift */; };
 		F0D9F2CD20DEF3D50081081C /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9F20C5E37D00248134 /* URLSession.swift */; };
@@ -84,7 +84,7 @@
 		F01E2E5E213DECA400292E12 /* CursorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorTests.swift; sourceTree = "<group>"; };
 		F01FBE6E20B4B39500200CED /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		F01FBE7020B4B6B300200CED /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		F01FBE7220B4BEEB00200CED /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		F01FBE7220B4BEEB00200CED /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		F01FBE7520B4BF1B00200CED /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		F033EF59213B38E400AFDC1C /* Cursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cursor.swift; sourceTree = "<group>"; };
 		F033EF5D213B490E00AFDC1C /* URL+CustomInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+CustomInit.swift"; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 			children = (
 				F0AA1FBC20DEEFB5003781DF /* SimpleMDM.h */,
 				F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */,
-				F01FBE7220B4BEEB00200CED /* NetworkingService.swift */,
+				F01FBE7220B4BEEB00200CED /* Networking.swift */,
 				F033EF5D213B490E00AFDC1C /* URL+CustomInit.swift */,
 				F065C51E211CE26D00784545 /* DecodingService.swift */,
 				F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */,
@@ -478,7 +478,7 @@
 				F033EF5A213B38E400AFDC1C /* Cursor.swift in Sources */,
 				F0D9F2C020DEF3D00081081C /* Account.swift in Sources */,
 				F0D9F2C320DEF3D00081081C /* CustomAttribute.swift in Sources */,
-				F0D9F2CA20DEF3D50081081C /* NetworkingService.swift in Sources */,
+				F0D9F2CA20DEF3D50081081C /* Networking.swift in Sources */,
 				F0D9F2C520DEF3D00081081C /* Device.swift in Sources */,
 				F05EAB9E21320B030076F5FC /* Resource.generated.swift in Sources */,
 				F0D9F2C220DEF3D00081081C /* AppGroup.swift in Sources */,

@@ -11,7 +11,7 @@ internal enum NetworkingResult {
     case failure(Error)
 }
 
-internal class NetworkingService {
+internal class Networking {
     var APIKey: String? {
         didSet {
             let utf8Data = APIKey?.data(using: .utf8)

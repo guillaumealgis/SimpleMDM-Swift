@@ -12,14 +12,14 @@ internal class APIKeyTests: XCTestCase {
         SimpleMDM.APIKey = APIKey
 
         XCTAssertEqual(SimpleMDM.APIKey, APIKey)
-        XCTAssertEqual(SimpleMDM.shared.networkingService.APIKey, APIKey)
+        XCTAssertEqual(SimpleMDM.shared.networking.APIKey, APIKey)
     }
 
     func testNotSettingAPIKeyReturnsError() {
         let session = URLSessionMock()
-        let networkingService = NetworkingService(urlSession: session)
+        let networking = Networking(urlSession: session)
 
-        networkingService.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -32,9 +32,9 @@ internal class APIKeyTests: XCTestCase {
 
     func testAPIKeyNotSetErrorHasHumanReadableDescription() {
         let session = URLSessionMock()
-        let networkingService = NetworkingService(urlSession: session)
+        let networking = Networking(urlSession: session)
 
-        networkingService.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -47,10 +47,10 @@ internal class APIKeyTests: XCTestCase {
 
     func test401ResponseReturnsInvalidSimpleMDMError() {
         let session = URLSessionMock(responseCode: 401)
-        let networkingService = NetworkingService(urlSession: session)
-        networkingService.APIKey = "AVeryRandomTestAPIKey"
+        let networking = Networking(urlSession: session)
+        networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -63,10 +63,10 @@ internal class APIKeyTests: XCTestCase {
 
     func testInvalidSimpleMDMErrorHasHumanReadableDescription() {
         let session = URLSessionMock(responseCode: 401)
-        let networkingService = NetworkingService(urlSession: session)
-        networkingService.APIKey = "AVeryRandomTestAPIKey"
+        let networking = Networking(urlSession: session)
+        networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networkingService.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }

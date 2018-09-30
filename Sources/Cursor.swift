@@ -29,7 +29,7 @@ public class Cursor<T: ListableResource> {
     }
 
     private func fetchNextData(startingAfter _: T.Identifier?, limit: Int?, completion: @escaping CompletionClosure<[T]>) {
-        SimpleMDM.shared.networkingService.getDataForResources(ofType: T.self, startingAfter: lastFetchedId, limit: limit) { networkingResult in
+        SimpleMDM.shared.networking.getDataForResources(ofType: T.self, startingAfter: lastFetchedId, limit: limit) { networkingResult in
             self.handleNetworkingResult(networkingResult, completion: completion)
         }
     }
