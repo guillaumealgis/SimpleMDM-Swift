@@ -14,7 +14,7 @@
 		F05EAB6D21309C8F0076F5FC /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB6C21309C8F0076F5FC /* DecodingTests.swift */; };
 		F05EAB9C2131AC7D0076F5FC /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB9B2131AC7D0076F5FC /* Relation.swift */; };
 		F05EAB9E21320B030076F5FC /* Resource.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB9D21320B020076F5FC /* Resource.generated.swift */; };
-		F065C51F211CE26D00784545 /* DecodingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F065C51E211CE26D00784545 /* DecodingService.swift */; };
+		F065C51F211CE26D00784545 /* Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F065C51E211CE26D00784545 /* Decoding.swift */; };
 		F09F55092132FA9700D4FE8D /* App_Trello.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F55072132F8F500D4FE8D /* App_Trello.json */; };
 		F09F550A2132FA9700D4FE8D /* App_Evernote.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F55082132F96B00D4FE8D /* App_Evernote.json */; };
 		F09F551D2135D53A00D4FE8D /* DeviceGroup_Interns.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F551C2135D53A00D4FE8D /* DeviceGroup_Interns.json */; };
@@ -93,7 +93,7 @@
 		F05EAB9D21320B020076F5FC /* Resource.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.generated.swift; sourceTree = "<group>"; };
 		F05F7438211A3578003F1594 /* Resource.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = Resource.stencil; sourceTree = "<group>"; };
 		F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMDM.swift; sourceTree = "<group>"; };
-		F065C51E211CE26D00784545 /* DecodingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingService.swift; sourceTree = "<group>"; };
+		F065C51E211CE26D00784545 /* Decoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoding.swift; sourceTree = "<group>"; };
 		F069B46E20CD76BA00A34F56 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		F069B47120CD7CBA00A34F56 /* Device_MikesiPhone.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Device_MikesiPhone.json; sourceTree = "<group>"; };
 		F069B47320CD7CC900A34F56 /* Account.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Account.json; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 				F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */,
 				F01FBE7220B4BEEB00200CED /* Networking.swift */,
 				F033EF5D213B490E00AFDC1C /* URL+CustomInit.swift */,
-				F065C51E211CE26D00784545 /* DecodingService.swift */,
+				F065C51E211CE26D00784545 /* Decoding.swift */,
 				F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */,
 				F08410F520D325EA00CE9480 /* DateDecodingStrategy.swift */,
 				F09488EA209F27AD00CA2CF3 /* Payload.swift */,
@@ -468,7 +468,7 @@
 				F0D9F2CB20DEF3D50081081C /* Payload.swift in Sources */,
 				F0D9F2CF20DEF3D50081081C /* DateDecodingStrategy.swift in Sources */,
 				F033EF5E213B490E00AFDC1C /* URL+CustomInit.swift in Sources */,
-				F065C51F211CE26D00784545 /* DecodingService.swift in Sources */,
+				F065C51F211CE26D00784545 /* Decoding.swift in Sources */,
 				F0D9F2C620DEF3D00081081C /* DeviceGroup.swift in Sources */,
 				F0D9F2C720DEF3D00081081C /* InstalledApp.swift in Sources */,
 				F05EAB9C2131AC7D0076F5FC /* Relation.swift in Sources */,

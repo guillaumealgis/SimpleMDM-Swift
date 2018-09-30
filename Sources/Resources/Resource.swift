@@ -23,8 +23,8 @@ public protocol UniqueResource: Resource {
 public extension UniqueResource {
     static func get(completion: @escaping CompletionClosure<Self>) {
         SimpleMDM.shared.networking.getDataForUniqueResource(ofType: Self.self) { networkResult in
-            let decodingService = DecodingService()
-            let result = decodingService.decodeNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
+            let decoding = Decoding()
+            let result = decoding.decodeNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
             completion(result)
         }
     }
@@ -44,8 +44,8 @@ public protocol IdentifiableResource: Resource {
 public extension IdentifiableResource {
     static func get(id: Identifier, completion: @escaping CompletionClosure<Self>) {
         SimpleMDM.shared.networking.getDataForResource(ofType: Self.self, withId: id) { networkResult in
-            let decodingService = DecodingService()
-            let result = decodingService.decodeNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
+            let decoding = Decoding()
+            let result = decoding.decodeNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
             if case let .success(resource) = result, resource.id != id {
                 completion(.failure(SimpleMDMError.unexpectedResourceId))
                 return

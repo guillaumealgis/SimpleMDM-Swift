@@ -35,8 +35,8 @@ public class Cursor<T: ListableResource> {
     }
 
     private func handleNetworkingResult(_ networkingResult: NetworkingResult, completion: @escaping CompletionClosure<[T]>) {
-        let decodingService = DecodingService()
-        let payloadResult = decodingService.decodeNetworkingResultPayload(networkingResult, expectedPayloadType: ListPayload<T>.self)
+        let decoding = Decoding()
+        let payloadResult = decoding.decodeNetworkingResultPayload(networkingResult, expectedPayloadType: ListPayload<T>.self)
 
         switch payloadResult {
         case let .success(payload):

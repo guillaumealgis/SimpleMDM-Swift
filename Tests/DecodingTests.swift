@@ -17,10 +17,10 @@ internal class DecodingTests: XCTestCase {
             ]
           }
         """.utf8)
-        let decodingService = DecodingService()
+        let decoding = Decoding()
 
         let networkingResult = NetworkingResult.decodableDataFailure(httpCode: 400, data: json)
-        let result = decodingService.decodeNetworkingResult(networkingResult, expectedPayloadType: SinglePayload<Device>.self)
+        let result = decoding.decodeNetworkingResult(networkingResult, expectedPayloadType: SinglePayload<Device>.self)
         guard case let .failure(error) = result else {
             return XCTFail("Expected .failure, got \(result)")
         }
@@ -39,10 +39,10 @@ internal class DecodingTests: XCTestCase {
           "errors": []
         }
         """.utf8)
-        let decodingService = DecodingService()
+        let decoding = Decoding()
 
         let networkingResult = NetworkingResult.decodableDataFailure(httpCode: 400, data: json)
-        let result = decodingService.decodeNetworkingResult(networkingResult, expectedPayloadType: SinglePayload<Device>.self)
+        let result = decoding.decodeNetworkingResult(networkingResult, expectedPayloadType: SinglePayload<Device>.self)
         guard case let .failure(error) = result else {
             return XCTFail("Expected .failure, got \(result)")
         }
@@ -62,10 +62,10 @@ internal class DecodingTests: XCTestCase {
             ]
           }
         """.utf8)
-        let decodingService = DecodingService()
+        let decoding = Decoding()
 
         let networkingResult = NetworkingResult.decodableDataFailure(httpCode: 400, data: json)
-        let result = decodingService.decodeNetworkingResult(networkingResult, expectedPayloadType: SinglePayload<Device>.self)
+        let result = decoding.decodeNetworkingResult(networkingResult, expectedPayloadType: SinglePayload<Device>.self)
         guard case let .failure(error) = result else {
             return XCTFail("Expected .failure, got \(result)")
         }
@@ -88,10 +88,10 @@ internal class DecodingTests: XCTestCase {
           ]
         }
         """.utf8)
-        let decodingService = DecodingService()
+        let decoding = Decoding()
 
         let networkingResult = NetworkingResult.decodableDataFailure(httpCode: 400, data: json)
-        let result = decodingService.decodeNetworkingResult(networkingResult, expectedPayloadType: SinglePayload<Device>.self)
+        let result = decoding.decodeNetworkingResult(networkingResult, expectedPayloadType: SinglePayload<Device>.self)
         guard case let .failure(error) = result else {
             return XCTFail("Expected .failure, got \(result)")
         }
