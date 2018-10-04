@@ -15,4 +15,6 @@ public struct App: ListableResource {
     let bundleIdentifier: String
     let itunesStoreId: Int?
     let version: String?
+
+    let managedConfigs: NestedResourceCursor<App, ManagedConfig>
 }

@@ -63,6 +63,7 @@ extension App: Decodable {
         case bundleIdentifier
         case itunesStoreId
         case version
+        case managedConfigs
     }
 
     public init(from decoder: Decoder) throws {
@@ -83,6 +84,47 @@ extension App: Decodable {
         bundleIdentifier = try attributes.decode(String.self, forKey: .bundleIdentifier)
         itunesStoreId = try attributes.decodeIfPresent(Int.self, forKey: .itunesStoreId)
         version = try attributes.decodeIfPresent(String.self, forKey: .version)
+        managedConfigs = NestedResourceCursor<App, ManagedConfig>(parentId: id)
+    }
+}
+
+// MARK: App.ManagedConfig
+
+extension App.ManagedConfig: Resource {
+    public static var endpointName: String {
+        return "managed_configs"
+    }
+}
+
+extension App.ManagedConfig: Decodable {
+    private enum CodingKeys: String, CodingKey {
+        case type
+        case id
+        case attributes
+    }
+
+    private enum AttributesKeys: String, CodingKey {
+        case key
+        case value
+        case valueType
+    }
+
+    public init(from decoder: Decoder) throws {
+        let payload = try decoder.container(keyedBy: CodingKeys.self)
+
+        let type = try payload.decode(String.self, forKey: .type)
+        let expectedType = "managed_config"
+        guard type == expectedType else {
+            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
+            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
+        }
+
+        id = try payload.decode(Identifier.self, forKey: .id)
+
+        let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
+        key = try attributes.decode(String.self, forKey: .key)
+        value = try attributes.decode(String.self, forKey: .value)
+        valueType = try attributes.decode(String.self, forKey: .valueType)
     }
 }
 
@@ -133,7 +175,6 @@ extension AppGroup: Decodable {
         apps = try relationships.decode(RelatedToMany<App>.self, forKey: .apps)
         deviceGroups = try relationships.decode(RelatedToMany<DeviceGroup>.self, forKey: .deviceGroups)
         devices = try relationships.decode(RelatedToMany<Device>.self, forKey: .devices)
-
     }
 }
 
@@ -214,7 +255,6 @@ extension CustomConfigurationProfile: Decodable {
 
         let relationships = try payload.nestedContainer(keyedBy: RelationshipKeys.self, forKey: .relationships)
         deviceGroups = try relationships.decode(RelatedToMany<DeviceGroup>.self, forKey: .deviceGroups)
-
     }
 }
 
@@ -371,7 +411,6 @@ extension Device: Decodable {
 
         let relationships = try payload.nestedContainer(keyedBy: RelationshipKeys.self, forKey: .relationships)
         deviceGroup = try relationships.decode(RelatedToOne<DeviceGroup>.self, forKey: .deviceGroup)
-
         customAttributes = RelatedToManyNested<Device, CustomAttributeValue>(parentId: id)
     }
 }

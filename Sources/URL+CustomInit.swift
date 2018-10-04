@@ -29,15 +29,31 @@ extension URL {
         urlComponents.queryItems = queryItems
 
         var url = resourceType.endpointName
-        if let query = urlComponents.query {
+        if let query = urlComponents.query, !query.isEmpty {
             url.append("?\(query)")
         }
 
         self.init(string: url, relativeTo: baseURL)
     }
 
-    init?<R: IdentifiableResource, P: IdentifiableResource>(resourceType: R.Type, inParent parentType: P.Type, withId parentId: P.Identifier, relativeTo baseURL: URL) {
+    init?<R: IdentifiableResource, P: IdentifiableResource>(resourceType: R.Type,
+                                                            inParent parentType: P.Type,
+                                                            withId parentId: P.Identifier,
+                                                            relativeTo baseURL: URL) {
         let path = "\(parentType.endpointName)/\(parentId)/\(resourceType.endpointName)"
         self.init(string: path, relativeTo: baseURL)
+    }
+
+    // swiftlint:disable:next function_default_parameter_at_end
+    init?<R: ListableResource, P: IdentifiableResource>(resourceType: R.Type,
+                                                        inParent parentType: P.Type,
+                                                        withId parentId: P.Identifier,
+                                                        startingAfter: R.Identifier? = nil,
+                                                        limit: Int? = nil,
+                                                        relativeTo baseURL: URL) {
+        guard let parentBaseURL = URL(string: "\(parentType.endpointName)/\(parentId)/", relativeTo: baseURL) else {
+            return nil
+        }
+        self.init(resourceType: resourceType, startingAfter: startingAfter, limit: limit, relativeTo: parentBaseURL)
     }
 }

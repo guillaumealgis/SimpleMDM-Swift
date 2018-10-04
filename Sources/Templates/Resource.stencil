@@ -57,7 +57,7 @@ extension {{ type.name }}: Decodable {
 
         {% endif %}
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
-        {% for variable in type.instanceVariables where not variable.type.implements.RelatedToResource %}
+        {% for variable in type.instanceVariables where not variable.type.implements.RelatedToResource and not variable.type.implements.NestedResourceAttribute %}
         {% if variable.typeName.isOptional %}
         {{ variable.name }} = try attributes.decodeIfPresent({{ variable.typeName.unwrappedTypeName }}.self, forKey: .{{ variable.name }})
         {% else %}
@@ -70,11 +70,10 @@ extension {{ type.name }}: Decodable {
         {% for variable in type.instanceVariables where variable.type.implements.Relationship %}
         {{ variable.name }} = try relationships.decode({{ variable.typeName.unwrappedTypeName }}.self, forKey: .{{ variable.name }})
         {% endfor %}
-
-        {% for variable in type.instanceVariables where variable.type.implements.RelatedToResource and not variable.type.implements.Relationship %}
-        {{ variable.name }} = {{ variable.typeName.unwrappedTypeName }}(parentId: id)
-        {% endfor %}
         {% endif %}
+        {% for variable in type.instanceVariables where variable.type.implements.NestedResourceAttribute %}
+        {{ variable.name }} = {{ variable.typeName }}(parentId: id)
+        {% endfor %}
     }
 }
 {% endfor %}

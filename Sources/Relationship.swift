@@ -117,8 +117,16 @@ public struct RelatedToMany<Element: GettableResource>: Relationship, RemoteColl
 
 // MARK: RelatedToManyNested
 
-public struct RelatedToManyNested<Parent: IdentifiableResource, Element: IdentifiableResource>: RelatedToResource, RemoteCollection {
-    private let parentId: Parent.Identifier
+internal protocol NestedResourceAttribute {
+    associatedtype Parent: IdentifiableResource
+
+    var parentId: Parent.Identifier { get }
+
+    init(parentId: Parent.Identifier)
+}
+
+public struct RelatedToManyNested<Parent: IdentifiableResource, Element: IdentifiableResource>: RelatedToResource, NestedResourceAttribute, RemoteCollection {
+    internal let parentId: Parent.Identifier
 
     init(parentId: Parent.Identifier) {
         self.parentId = parentId

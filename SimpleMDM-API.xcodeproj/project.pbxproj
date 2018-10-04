@@ -33,6 +33,8 @@
 		F0AA1FCA20DEEFB6003781DF /* SimpleMDM.h in Headers */ = {isa = PBXBuildFile; fileRef = F0AA1FBC20DEEFB5003781DF /* SimpleMDM.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F0CAEEFD2160ED3E00520332 /* CustomAttributeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CAEEFC2160ED3E00520332 /* CustomAttributeValue.swift */; };
 		F0CAEF012161051E00520332 /* Device_MikesiPhone_CustomAttributeValues.json in Resources */ = {isa = PBXBuildFile; fileRef = F0CAEF002161041600520332 /* Device_MikesiPhone_CustomAttributeValues.json */; };
+		F0CAEF402164104200520332 /* ManagedConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CAEF3F2164104200520332 /* ManagedConfig.swift */; };
+		F0CAEF42216418D800520332 /* ManagedConfigs.json in Resources */ = {isa = PBXBuildFile; fileRef = F0CAEF41216418CB00520332 /* ManagedConfigs.json */; };
 		F0D9F2AA20DEF3C10081081C /* Account.json in Resources */ = {isa = PBXBuildFile; fileRef = F069B47320CD7CC900A34F56 /* Account.json */; };
 		F0D9F2AB20DEF3C10081081C /* App_SimpleMDM.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E8C20CDD38F00D02395 /* App_SimpleMDM.json */; };
 		F0D9F2AC20DEF3C10081081C /* AppGroup_ProductivityApps.json in Resources */ = {isa = PBXBuildFile; fileRef = F06E9E9320CDE78800D02395 /* AppGroup_ProductivityApps.json */; };
@@ -144,6 +146,8 @@
 		F0AA1FC220DEEFB6003781DF /* SimpleMDMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleMDMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0CAEEFC2160ED3E00520332 /* CustomAttributeValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAttributeValue.swift; sourceTree = "<group>"; };
 		F0CAEF002161041600520332 /* Device_MikesiPhone_CustomAttributeValues.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Device_MikesiPhone_CustomAttributeValues.json; sourceTree = "<group>"; };
+		F0CAEF3F2164104200520332 /* ManagedConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedConfig.swift; sourceTree = "<group>"; };
+		F0CAEF41216418CB00520332 /* ManagedConfigs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ManagedConfigs.json; sourceTree = "<group>"; };
 		F0CD0A9620C5E27C00248134 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		F0CD0A9820C5E27C00248134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0CD0A9F20C5E37D00248134 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 				F06E9E9020CDE74B00D02395 /* AppGroup.swift */,
 				F06E9E9620D071FE00D02395 /* CustomAttribute.swift */,
 				F0CAEEFC2160ED3E00520332 /* CustomAttributeValue.swift */,
+				F0CAEF3F2164104200520332 /* ManagedConfig.swift */,
 				F06E9E9C20D07B3F00D02395 /* CustomConfigurationProfile.swift */,
 				F01FBE7020B4B6B300200CED /* Device.swift */,
 				F06E9EA720D085F900D02395 /* DeviceGroup.swift */,
@@ -258,6 +263,7 @@
 				F06E9E9320CDE78800D02395 /* AppGroup_ProductivityApps.json */,
 				F06E9E9220CDE78800D02395 /* AppGroups.json */,
 				F06E9E8D20CDD39000D02395 /* Apps.json */,
+				F0CAEF41216418CB00520332 /* ManagedConfigs.json */,
 				F06E9E9920D072BF00D02395 /* CustomAttribute_EmailAddress.json */,
 				F06E9E9820D072B600D02395 /* CustomAttributes.json */,
 				F06E9E9E20D07B7200D02395 /* CustomConfigurationProfile_MunkiConfiguration.json */,
@@ -419,6 +425,7 @@
 				F0D9F2B320DEF3C10081081C /* Device_MikesiPhone.json in Resources */,
 				F09F551D2135D53A00D4FE8D /* DeviceGroup_Interns.json in Resources */,
 				F0CAEF012161051E00520332 /* Device_MikesiPhone_CustomAttributeValues.json in Resources */,
+				F0CAEF42216418D800520332 /* ManagedConfigs.json in Resources */,
 				F0D9F2B520DEF3C10081081C /* DeviceGroups.json in Resources */,
 				F0D9F2AE20DEF3C10081081C /* Apps.json in Resources */,
 				F0D9F2B220DEF3C10081081C /* CustomConfigurationProfiles.json in Resources */,
@@ -474,6 +481,7 @@
 				F0D9F2CD20DEF3D50081081C /* URLSession.swift in Sources */,
 				F0D9F2CB20DEF3D50081081C /* Payload.swift in Sources */,
 				F0D9F2CF20DEF3D50081081C /* DateDecodingStrategy.swift in Sources */,
+				F0CAEF402164104200520332 /* ManagedConfig.swift in Sources */,
 				F033EF5E213B490E00AFDC1C /* URL+CustomInit.swift in Sources */,
 				F065C51F211CE26D00784545 /* Decoding.swift in Sources */,
 				F0D9F2C620DEF3D00081081C /* DeviceGroup.swift in Sources */,

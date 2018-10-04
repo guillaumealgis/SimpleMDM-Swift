@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "type": "managed_config",
+      "id": 14,
+      "attributes": {
+        "key": "customer_name",
+        "value": "ACME Inc.",
+        "value_type": "string"
+      }
+    },
+    {
+      "type": "managed_config",
+      "id": 32,
+      "attributes": {
+        "key": "User IDs",
+        "value": "1,53,3",
+        "value_type": "integer array"
+      }
+    },
+    {
+      "type": "managed_config",
+      "id": 13,
+      "attributes": {
+        "key": "Device values",
+        "value": "\"$imei\",\"$udid\"",
+        "value_type": "string array"
+      }
+    }
+  ],
+  "has_more": false
+}

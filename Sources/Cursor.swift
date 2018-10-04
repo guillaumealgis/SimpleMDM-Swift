@@ -12,7 +12,7 @@ public enum CursorLimit: Int {
 
 public class Cursor<T: ListableResource> {
     public private(set) var hasMore: Bool = true
-    private var lastFetchedId: T.Identifier?
+    internal var lastFetchedId: T.Identifier?
     private let serialQueue = DispatchQueue(label: "Cursor Queue")
 
     func next(_ limit: Int? = nil, completion: @escaping CompletionClosure<[T]>) {
@@ -24,17 +24,17 @@ public class Cursor<T: ListableResource> {
         }
 
         serialQueue.async {
-            self.fetchNextData(startingAfter: self.lastFetchedId, limit: limit, completion: completion)
+            self.fetchNextData(limit: limit, completion: completion)
         }
     }
 
-    private func fetchNextData(startingAfter _: T.Identifier?, limit: Int?, completion: @escaping CompletionClosure<[T]>) {
+    internal func fetchNextData(limit: Int?, completion: @escaping CompletionClosure<[T]>) {
         SimpleMDM.shared.networking.getDataForResources(ofType: T.self, startingAfter: lastFetchedId, limit: limit) { networkingResult in
             self.handleNetworkingResult(networkingResult, completion: completion)
         }
     }
 
-    private func handleNetworkingResult(_ networkingResult: NetworkingResult, completion: @escaping CompletionClosure<[T]>) {
+    internal func handleNetworkingResult(_ networkingResult: NetworkingResult, completion: @escaping CompletionClosure<[T]>) {
         let decoding = Decoding()
         let payloadResult = decoding.decodeNetworkingResultPayload(networkingResult, expectedPayloadType: PaginatedListPayload<T>.self)
 
@@ -46,7 +46,7 @@ public class Cursor<T: ListableResource> {
         }
     }
 
-    private func handleRequestSuccess(payload: PaginatedListPayload<T>, completion: @escaping CompletionClosure<[T]>) {
+    internal func handleRequestSuccess(payload: PaginatedListPayload<T>, completion: @escaping CompletionClosure<[T]>) {
         let resources = payload.data
 
         guard !(payload.hasMore && resources.isEmpty) else {
@@ -60,5 +60,22 @@ public class Cursor<T: ListableResource> {
         hasMore = payload.hasMore
 
         completion(.success(resources))
+    }
+}
+
+// MARK: NestedResourceCursor
+
+public class NestedResourceCursor<Parent: IdentifiableResource, T: ListableResource>: Cursor<T>, NestedResourceAttribute {
+    let parentId: Parent.Identifier
+
+    public required init(parentId: Parent.Identifier) {
+        self.parentId = parentId
+        super.init()
+    }
+
+    override func fetchNextData(limit: Int?, completion: @escaping (Result<[T]>) -> Void) {
+        SimpleMDM.shared.networking.getDataForNestedListableResources(ofType: T.self, inParent: Parent.self, withId: parentId, startingAfter: lastFetchedId, limit: limit) { networkingResult in
+            self.handleNetworkingResult(networkingResult, completion: completion)
+        }
     }
 }
