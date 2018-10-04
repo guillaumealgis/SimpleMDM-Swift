@@ -1,4 +1,5 @@
 --commas inline
+--decimalgrouping 3,5
 
 --exclude **/*.generated.swift
 --header "\n Copyright {year} Guillaume Algis.\n Licensed under the MIT License. See the LICENSE.md file in the project root for more information.\n"
