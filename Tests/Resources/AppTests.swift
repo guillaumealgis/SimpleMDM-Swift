@@ -81,7 +81,7 @@ internal class AppTests: XCTestCase {
                 }
                 XCTAssertEqual(managedConfigs.map { $0.key }, ["customer_name", "User IDs", "Device values"])
                 XCTAssertEqual(managedConfigs.map { $0.value }, ["ACME Inc.", "1,53,3", "\"$imei\",\"$udid\""])
-                XCTAssertEqual(managedConfigs.map { $0.valueType }, ["string.", "integer array", "string array"])
+                XCTAssertEqual(managedConfigs.map { $0.valueType }, ["string", "integer array", "string array"])
             }
         }
     }
