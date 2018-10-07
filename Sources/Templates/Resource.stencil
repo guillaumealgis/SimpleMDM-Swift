@@ -4,7 +4,7 @@
 //
 
 // swiftlint:disable file_length function_body_length
-{% for type in types.structs where type.implements.AutoDecodable %}
+{% for type in types.structs where type.implements.Resource %}
 
 // MARK: {{ type.name }}
 {% if type.implements.IdentifiableResource %}

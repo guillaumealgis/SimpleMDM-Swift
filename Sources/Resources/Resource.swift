@@ -7,9 +7,7 @@ import Foundation
 
 public typealias CompletionClosure<Value> = (Result<Value>) -> Void
 
-public protocol AutoDecodable: Decodable {}
-
-public protocol Resource: AutoDecodable {
+public protocol Resource: Decodable {
     static var endpointName: String { get }
 }
 
