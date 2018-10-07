@@ -1,5 +1,6 @@
 disabled_rules:
   - identifier_name
+  - line_length
 
 analyzer_rules:
   - explicit_self
@@ -76,9 +77,6 @@ identifier_name:
     - i
 number_separator:
   minimum_length: 5
-line_length:
-  warning: 200
-  error: 200
 modifier_order:
   preferred_modifier_order: [acl, override]
 

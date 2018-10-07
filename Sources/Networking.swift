@@ -59,10 +59,7 @@ internal class Networking {
         getData(atURL: url, completion: completion)
     }
 
-    internal func getDataForNestedResources<R: IdentifiableResource, P: IdentifiableResource>(ofType type: R.Type,
-                                                                                              inParent parentType: P.Type,
-                                                                                              withId parentId: P.Identifier,
-                                                                                              completion: @escaping (NetworkingResult) -> Void) {
+    internal func getDataForNestedResources<R: IdentifiableResource, P: IdentifiableResource>(ofType type: R.Type, inParent parentType: P.Type, withId parentId: P.Identifier, completion: @escaping (_ result: NetworkingResult) -> Void) {
         guard let url = URL(resourceType: type, inParent: parentType, withId: parentId, relativeTo: baseURL) else {
             completion(.failure(InternalError.malformedURL))
             return
@@ -70,12 +67,7 @@ internal class Networking {
         getData(atURL: url, completion: completion)
     }
 
-    internal func getDataForNestedListableResources<R: ListableResource, P: IdentifiableResource>(ofType type: R.Type,
-                                                                                                  inParent parentType: P.Type,
-                                                                                                  withId parentId: P.Identifier,
-                                                                                                  startingAfter: R.Identifier? = nil,
-                                                                                                  limit: Int? = nil,
-                                                                                                  completion: @escaping (NetworkingResult) -> Void) {
+    internal func getDataForNestedListableResources<R: ListableResource, P: IdentifiableResource>(ofType type: R.Type, inParent parentType: P.Type, withId parentId: P.Identifier, startingAfter: R.Identifier? = nil, limit: Int? = nil, completion: @escaping (_ result: NetworkingResult) -> Void) {
         guard let url = URL(resourceType: type, inParent: parentType, withId: parentId, startingAfter: startingAfter, limit: limit, relativeTo: baseURL) else {
             completion(.failure(InternalError.malformedURL))
             return

@@ -36,21 +36,12 @@ extension URL {
         self.init(string: url, relativeTo: baseURL)
     }
 
-    init?<R: IdentifiableResource, P: IdentifiableResource>(resourceType: R.Type,
-                                                            inParent parentType: P.Type,
-                                                            withId parentId: P.Identifier,
-                                                            relativeTo baseURL: URL) {
+    init?<R: IdentifiableResource, P: IdentifiableResource>(resourceType: R.Type, inParent parentType: P.Type, withId parentId: P.Identifier, relativeTo baseURL: URL) {
         let path = "\(parentType.endpointName)/\(parentId)/\(resourceType.endpointName)"
         self.init(string: path, relativeTo: baseURL)
     }
 
-    // swiftlint:disable:next function_default_parameter_at_end
-    init?<R: ListableResource, P: IdentifiableResource>(resourceType: R.Type,
-                                                        inParent parentType: P.Type,
-                                                        withId parentId: P.Identifier,
-                                                        startingAfter: R.Identifier? = nil,
-                                                        limit: Int? = nil,
-                                                        relativeTo baseURL: URL) {
+    init?<R: ListableResource, P: IdentifiableResource>(resourceType: R.Type, inParent parentType: P.Type, withId parentId: P.Identifier, startingAfter: R.Identifier? = nil, limit: Int? = nil, relativeTo baseURL: URL) {
         guard let parentBaseURL = URL(string: "\(parentType.endpointName)/\(parentId)/", relativeTo: baseURL) else {
             return nil
         }
