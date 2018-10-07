@@ -233,5 +233,6 @@ internal class NetworkingTests: XCTestCase {
             XCTAssertEqual(internalError, InternalError.malformedURL)
         }
     }
+
     // swiftlint:enable nesting
 }
