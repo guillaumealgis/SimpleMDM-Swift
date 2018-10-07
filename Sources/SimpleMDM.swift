@@ -24,5 +24,4 @@ public class SimpleMDM: NSObject {
     private override init() {}
 
     internal var networking = Networking()
-    internal var decoding = Decoding()
 }
