@@ -17,7 +17,7 @@
                BlueprintIdentifier = "F0AA1FB920DEEFB5003781DF"
                BuildableName = "SimpleMDM.framework"
                BlueprintName = "SimpleMDM"
-               ReferencedContainer = "container:SimpleMDM-API.xcodeproj">
+               ReferencedContainer = "container:SimpleMDM-Swift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "F0AA1FB920DEEFB5003781DF"
             BuildableName = "SimpleMDM.framework"
             BlueprintName = "SimpleMDM"
-            ReferencedContainer = "container:SimpleMDM-API.xcodeproj">
+            ReferencedContainer = "container:SimpleMDM-Swift.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
@@ -48,7 +48,7 @@
                BlueprintIdentifier = "F0AA1FC120DEEFB6003781DF"
                BuildableName = "SimpleMDMTests.xctest"
                BlueprintName = "SimpleMDMTests"
-               ReferencedContainer = "container:SimpleMDM-API.xcodeproj">
+               ReferencedContainer = "container:SimpleMDM-Swift.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -58,7 +58,7 @@
             BlueprintIdentifier = "F0AA1FB920DEEFB5003781DF"
             BuildableName = "SimpleMDM.framework"
             BlueprintName = "SimpleMDM"
-            ReferencedContainer = "container:SimpleMDM-API.xcodeproj">
+            ReferencedContainer = "container:SimpleMDM-Swift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -80,7 +80,7 @@
             BlueprintIdentifier = "F0AA1FB920DEEFB5003781DF"
             BuildableName = "SimpleMDM.framework"
             BlueprintName = "SimpleMDM"
-            ReferencedContainer = "container:SimpleMDM-API.xcodeproj">
+            ReferencedContainer = "container:SimpleMDM-Swift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -98,7 +98,7 @@
             BlueprintIdentifier = "F0AA1FB920DEEFB5003781DF"
             BuildableName = "SimpleMDM.framework"
             BlueprintName = "SimpleMDM"
-            ReferencedContainer = "container:SimpleMDM-API.xcodeproj">
+            ReferencedContainer = "container:SimpleMDM-Swift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

@@ -392,7 +392,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F063B3F52098B44A00E2ECDA /* Build configuration list for PBXProject "SimpleMDM-API" */;
+			buildConfigurationList = F063B3F52098B44A00E2ECDA /* Build configuration list for PBXProject "SimpleMDM-Swift" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -718,7 +718,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F063B3F52098B44A00E2ECDA /* Build configuration list for PBXProject "SimpleMDM-API" */ = {
+		F063B3F52098B44A00E2ECDA /* Build configuration list for PBXProject "SimpleMDM-Swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F063B3FF2098B44A00E2ECDA /* Debug */,
