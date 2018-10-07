@@ -21,7 +21,7 @@ public class SimpleMDM: NSObject {
 
     // MARK: Instance properties
 
-    override private init() {}
+    private override init() {}
 
     internal var networking = Networking()
     internal var decoding = Decoding()
