@@ -16,6 +16,8 @@ public enum CursorLimit: Int {
     case max = 100
 }
 
+// MARK: - Cursor
+
 /// A class used to fetch paginated lists of resources.
 ///
 /// A cursor represents a position in the global list of all resources of one type, and encapsulate methods to move
@@ -95,7 +97,7 @@ public class Cursor<T: ListableResource> {
     }
 }
 
-// MARK: NestedResourceCursor
+// MARK: - NestedResourceCursor
 
 /// A specific Cursor for fetching resources nested in another resource type.
 ///

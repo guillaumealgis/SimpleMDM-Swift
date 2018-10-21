@@ -16,7 +16,7 @@ public protocol Resource: Decodable {
     static var endpointName: String { get }
 }
 
-// MARK: Unique Resource
+// MARK: - Unique Resource
 
 /// A protocol describing resource types of which only one instance exists. Such resources have not id and cannot be
 /// listed.
@@ -41,7 +41,7 @@ public extension UniqueResource {
     }
 }
 
-// MARK: Identifiable Resource
+// MARK: - Identifiable Resource
 
 /// A protocol describing resource types of which multiple instances of can exists. These resources have an identifier
 /// which is unique per instance of the resource.
@@ -83,7 +83,7 @@ public extension GettableResource {
     }
 }
 
-// MARK: Listable Resource
+// MARK: - Listable Resource
 
 /// A protocol describing resource types that we can get a list of.
 public protocol ListableResource: GettableResource {

@@ -7,7 +7,7 @@ import Foundation
 
 /// The main static object representing the SimpleMDM API. Use this to set your private API key.
 public class SimpleMDM: NSObject {
-    // MARK: Type properties
+    // MARK: - Type properties
 
     /// Your private SimpleMDM API key.
     ///
@@ -26,7 +26,7 @@ public class SimpleMDM: NSObject {
 
     internal static let shared = SimpleMDM()
 
-    // MARK: Instance properties
+    // MARK: - Instance properties
 
     private override init() {}
 

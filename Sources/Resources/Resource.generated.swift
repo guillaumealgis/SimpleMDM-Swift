@@ -8,7 +8,7 @@
 
 // swiftlint:disable file_length function_body_length
 
-// MARK: Account
+// MARK: - Account
 extension Account: Resource {
     /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
@@ -50,7 +50,7 @@ extension Account: Decodable {
     }
 }
 
-// MARK: App
+// MARK: - App
 
 extension App: Resource {
     /// The remote API endpoint identifying this resource.
@@ -104,7 +104,7 @@ extension App: Decodable {
     }
 }
 
-// MARK: App.ManagedConfig
+// MARK: - App.ManagedConfig
 
 extension App.ManagedConfig: Resource {
     /// The remote API endpoint identifying this resource.
@@ -152,7 +152,7 @@ extension App.ManagedConfig: Decodable {
     }
 }
 
-// MARK: AppGroup
+// MARK: - AppGroup
 
 extension AppGroup: Resource {
     /// The remote API endpoint identifying this resource.
@@ -210,7 +210,7 @@ extension AppGroup: Decodable {
     }
 }
 
-// MARK: CustomAttribute
+// MARK: - CustomAttribute
 
 extension CustomAttribute: Resource {
     /// The remote API endpoint identifying this resource.
@@ -254,7 +254,7 @@ extension CustomAttribute: Decodable {
     }
 }
 
-// MARK: CustomConfigurationProfile
+// MARK: - CustomConfigurationProfile
 
 extension CustomConfigurationProfile: Resource {
     /// The remote API endpoint identifying this resource.
@@ -306,7 +306,7 @@ extension CustomConfigurationProfile: Decodable {
     }
 }
 
-// MARK: Device
+// MARK: - Device
 
 extension Device: Resource {
     /// The remote API endpoint identifying this resource.
@@ -471,7 +471,7 @@ extension Device: Decodable {
     }
 }
 
-// MARK: Device.CustomAttributeValue
+// MARK: - Device.CustomAttributeValue
 
 extension Device.CustomAttributeValue: Resource {
     /// The remote API endpoint identifying this resource.
@@ -515,7 +515,7 @@ extension Device.CustomAttributeValue: Decodable {
     }
 }
 
-// MARK: DeviceGroup
+// MARK: - DeviceGroup
 
 extension DeviceGroup: Resource {
     /// The remote API endpoint identifying this resource.
@@ -559,7 +559,7 @@ extension DeviceGroup: Decodable {
     }
 }
 
-// MARK: InstalledApp
+// MARK: - InstalledApp
 
 extension InstalledApp: Resource {
     /// The remote API endpoint identifying this resource.
@@ -617,7 +617,7 @@ extension InstalledApp: Decodable {
     }
 }
 
-// MARK: PushCertificate
+// MARK: - PushCertificate
 extension PushCertificate: Resource {
     /// The remote API endpoint identifying this resource.
     public static var endpointName: String {

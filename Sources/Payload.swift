@@ -5,7 +5,7 @@
 
 import Foundation
 
-// MARK: Errors
+// MARK: - Errors
 
 /// A struct describing the content of error response from the API.
 internal struct ErrorPayload: Decodable {
@@ -16,7 +16,7 @@ internal struct ErrorPayload: Decodable {
     let errors: [ErrorPayloadEntry]
 }
 
-// MARK: Response data
+// MARK: - Response data
 
 /// A struct describing the content of success response from the API.
 internal protocol Payload: Decodable {

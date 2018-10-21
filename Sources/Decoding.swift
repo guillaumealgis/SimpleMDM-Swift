@@ -16,7 +16,7 @@ internal class Decoding {
         decoder.dateDecodingStrategy = .custom(decodeSimpleMDMDate)
     }
 
-    // MARK: Decoding the response
+    // MARK: - Decoding the response
 
     /// Decodes the data fetched from the API, and return the full payload of the HTTP response (i.e. everything in
     /// the JSON response).

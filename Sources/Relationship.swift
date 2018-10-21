@@ -32,7 +32,7 @@ public protocol RemoteCollection {
     func getAll(completion: @escaping CompletionClosure<[Element]>)
 }
 
-// MARK: Relation
+// MARK: - Relation
 
 /// A type used to represent a relation to another resource.
 ///
@@ -46,7 +46,7 @@ private struct Relation<T: IdentifiableResource>: Decodable {
     let id: T.Identifier
 }
 
-// MARK: RelatedToOne
+// MARK: - RelatedToOne
 
 /// A relation to another resource.
 ///
@@ -87,7 +87,7 @@ public struct RelatedToOne<T: GettableResource>: Relationship {
     }
 }
 
-// MARK: RelatedToMany
+// MARK: - RelatedToMany
 
 /// A relation to a group of remote resources.
 ///
@@ -184,7 +184,7 @@ public struct RelatedToMany<Element: GettableResource>: Relationship, RemoteColl
     }
 }
 
-// MARK: RelatedToManyNested
+// MARK: - RelatedToManyNested
 
 /// A type defining an attribute of a resource having a "link" to its parent resource.
 internal protocol NestedResourceAttribute {

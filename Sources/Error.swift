@@ -5,8 +5,6 @@
 
 import Foundation
 
-// MARK: Error types
-
 private typealias BaseSimpleMDMError = LocalizedError & Equatable
 
 /// Internal errors of the SimpleMDM-Swift library.

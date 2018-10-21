@@ -6,7 +6,7 @@
 // swiftlint:disable file_length function_body_length
 {% for type in types.structs where type.implements.Resource %}
 
-// MARK: {{ type.name }}
+// MARK: - {{ type.name }}
 {% if type.implements.IdentifiableResource %}
 // sourcery:inline:auto:{{ type.name }}.Identifiable
     /// The unique identifier of this resource.

@@ -46,7 +46,7 @@ internal class Networking {
         session = urlSession
     }
 
-    // MARK: Getting the resources
+    // MARK: - Getting the resources
 
     /// Make a HTTP request for a `UniqueResouce`.
     ///
@@ -143,7 +143,7 @@ internal class Networking {
         getData(atURL: url, completion: completion)
     }
 
-    // MARK: Building the URLRequest
+    // MARK: - Building the URLRequest
 
     private func buildURLRequest(withURL url: URL) throws -> URLRequest {
         var urlRequest = URLRequest(url: url)
@@ -157,7 +157,7 @@ internal class Networking {
         return urlRequest
     }
 
-    // MARK: Making the request
+    // MARK: - Making the request
 
     private func getData(atURL url: URL, completion: @escaping (_ result: NetworkingResult) -> Void) {
         let urlRequest: URLRequest
