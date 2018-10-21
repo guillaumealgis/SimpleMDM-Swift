@@ -5,16 +5,48 @@
 
 import Foundation
 
+/// The bounds of the number of elements one can get when requesting a paginated list of resources.
+///
+/// These values are from the [Pagination documentation](https://simplemdm.com/docs/api/#pagination) and may be subject
+/// to change.
 public enum CursorLimit: Int {
+    /// The minimum number of resources one can request per page.
     case min = 1
+    /// The maximum number of resources one can request per page.
     case max = 100
 }
 
+/// A class used to fetch paginated lists of resources.
+///
+/// A cursor represents a position in the global list of all resources of one type, and encapsulate methods to move
+/// forward in the list, fetching resources page by page.
+///
+/// Usage:
+///
+///     let cursor = Cursor<Device>()
+///     cursor.next { result in
+///         switch {
+///         case let .success(devices):
+///             // Do something with the devices
+///         case let .failure(error):
+///             // Handle the error
+///         }
+///     }
 public class Cursor<T: ListableResource> {
+    /// Weither the server has more resources available to be fetched.
     public private(set) var hasMore: Bool = true
+
+    /// The identifier of the last resource of the last fetched page.
     internal var lastFetchedId: T.Identifier?
+
     private let serialQueue = DispatchQueue(label: "Cursor Queue")
 
+    /// Fetch the next page of resources.
+    ///
+    /// - Parameters:
+    ///   - limit: The number of resources to fetch in this page. If not provided a default number of resources will
+    ///     be returned by the SimpleMDM API.
+    ///   - completion: A completion handler called with a list of the fetched resources, or an error.
     func next(_ limit: Int? = nil, completion: @escaping CompletionClosure<[T]>) {
         if let limit = limit {
             guard limit >= CursorLimit.min.rawValue && limit <= CursorLimit.max.rawValue else {
@@ -65,6 +97,9 @@ public class Cursor<T: ListableResource> {
 
 // MARK: NestedResourceCursor
 
+/// A specific Cursor for fetching resources nested in another resource type.
+///
+/// This is an implementation detail, and this class can be used like a regular `Cursor` instance.
 public class NestedResourceCursor<Parent: IdentifiableResource, T: ListableResource>: Cursor<T>, NestedResourceAttribute {
     let parentId: Parent.Identifier
 

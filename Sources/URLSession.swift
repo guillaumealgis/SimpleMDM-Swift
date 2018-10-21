@@ -5,6 +5,7 @@
 
 import Foundation
 
+/// Internal protocol used to make the networking part of the library easier to inject.
 internal protocol URLSessionProtocol {
     func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Swift.Void) -> URLSessionDataTask
 }

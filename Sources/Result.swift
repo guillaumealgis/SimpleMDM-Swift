@@ -5,7 +5,13 @@
 
 import Foundation
 
+/// An enum used to represent failable asynchronous operations results throughout the library.
+///
+/// See [John Sundell's blog on this](https://www.swiftbysundell.com/posts/the-power-of-result-types-in-swift) for
+/// more details.
 public enum Result<Value> {
+    /// The operation was successful.
     case success(Value)
+    /// The operation was a failure.
     case failure(Error)
 }

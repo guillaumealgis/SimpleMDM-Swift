@@ -5,12 +5,24 @@
 
 import Foundation
 
+/// A result type repsenting a HTTP connection response. Used as a return type by the methods in the `Networking`
+/// class.
+///
+/// *Values*
+/// - `succes` The request was successful. The associated value contains the HTTP body data.
+/// - `decodableDataFailure` The HTTP request returned a non-success (200) code. The associated values are the HTTP
+///   code returned by the server, and the HTTP body data (that should be possible to decode).
+/// - `failure` The HTTP request failed, probably due to a connection error.
 internal enum NetworkingResult {
     case success(Data)
     case decodableDataFailure(httpCode: Int, data: Data)
     case failure(Error)
 }
 
+/// The netwoking layer of the library. Use this class to send HTTP requests to the SimpleMDM server.
+///
+/// - Note: You should not instanciate this class directly, but instead use the global instance `SimpleMDM.networking`.
+///   This allows the library to re-use a single connection, improving performances.
 internal class Networking {
     var APIKey: String? {
         didSet {
@@ -19,6 +31,7 @@ internal class Networking {
         }
     }
 
+    /// A base64 representation of `APIKey`.
     private var base64APIKey: String?
     // swiftlint:disable:next force_unwrapping
     private var baseURL = URL(string: "https://a.simplemdm.com/api/v1/")!
@@ -35,7 +48,13 @@ internal class Networking {
 
     // MARK: Getting the resources
 
-    internal func getDataForUniqueResource<R: UniqueResource>(ofType type: R.Type, completion: @escaping (NetworkingResult) -> Void) {
+    /// Make a HTTP request for a `UniqueResouce`.
+    ///
+    /// - Parameters:
+    ///   - type: The type of the unique resource you want to fetch.
+    ///   - completion: A completion handler called with the result of the HTTP request, or an error.
+    ///   - result: The result of the network operation. See `NetworkingResult`.
+    internal func getDataForUniqueResource<R: UniqueResource>(ofType type: R.Type, completion: @escaping (_ result: NetworkingResult) -> Void) {
         guard let url = URL(resourceType: type, relativeTo: baseURL) else {
             completion(.failure(InternalError.malformedURL))
             return
@@ -43,7 +62,18 @@ internal class Networking {
         getData(atURL: url, completion: completion)
     }
 
-    internal func getDataForResources<R: ListableResource>(ofType type: R.Type, startingAfter: R.Identifier? = nil, limit: Int? = nil, completion: @escaping (NetworkingResult) -> Void) {
+    /// Make a HTTP request for a `ListableResource`.
+    ///
+    /// - Parameters:
+    ///   - ofType: The type of the resources you want to fetch.
+    ///   - startingAfter: The id of a resource. The fetched list of resources will start after (and not including)
+    ///     this resource. It is typically set to the id of the last object of the previous response. If unspecified,
+    ///     the returned list will start at the beginning of the complete resources list.
+    ///   - limit: A limit on the number of resources to be returned, between `CursorLimit.min` and `CursorLimit.max`.
+    ///     See SimpleMDM's online documentation for the default value (`10` at the time of writing).
+    ///   - completion: A completion handler called with the result of the HTTP request, or an error.
+    ///   - result: The result of the network operation. See `NetworkingResult`.
+    internal func getDataForResources<R: ListableResource>(ofType type: R.Type, startingAfter: R.Identifier? = nil, limit: Int? = nil, completion: @escaping (_ result: NetworkingResult) -> Void) {
         guard let url = URL(resourceType: type, startingAfter: startingAfter, limit: limit, relativeTo: baseURL) else {
             completion(.failure(InternalError.malformedURL))
             return
@@ -51,7 +81,14 @@ internal class Networking {
         getData(atURL: url, completion: completion)
     }
 
-    internal func getDataForResource<R: IdentifiableResource>(ofType type: R.Type, withId id: R.Identifier, completion: @escaping (NetworkingResult) -> Void) {
+    /// Make a HTTP request for a `ListableResource`.
+    ///
+    /// - Parameters:
+    ///   - ofType: The type of the resource you want to fetch.
+    ///   - id: The id of the resource you want to fetch.
+    ///   - completion: A completion handler called with the result of the HTTP request, or an error.
+    ///   - result: The result of the network operation. See `NetworkingResult`.
+    internal func getDataForResource<R: IdentifiableResource>(ofType type: R.Type, withId id: R.Identifier, completion: @escaping (_ result: NetworkingResult) -> Void) {
         guard let url = URL(resourceType: type, withId: id, relativeTo: baseURL) else {
             completion(.failure(InternalError.malformedURL))
             return
@@ -59,6 +96,19 @@ internal class Networking {
         getData(atURL: url, completion: completion)
     }
 
+    /// Make a HTTP request for a list of nested resource. Nested resources are "children" resources of a parent, with
+    /// their endpoint being of the form `https://api.simplemdm.com/<parent_type>/<parent_id>/<nested_type>/`.
+    ///
+    /// - Parameters:
+    ///   - ofType: The type of the (nested) resource you want to fetch.
+    ///   - parentType: The type of the parent resource.
+    ///   - parentId: The id of the parent resource.
+    ///   - completion: A completion handler called with the result of the HTTP request, or an error.
+    ///   - result: The result of the network operation. See `NetworkingResult`.
+    ///
+    /// - SeeAlso:
+    ///   - `Device.CustomAttributeValue`
+    ///   - `App.ManagedConfig`
     internal func getDataForNestedResources<R: IdentifiableResource, P: IdentifiableResource>(ofType type: R.Type, inParent parentType: P.Type, withId parentId: P.Identifier, completion: @escaping (_ result: NetworkingResult) -> Void) {
         guard let url = URL(resourceType: type, inParent: parentType, withId: parentId, relativeTo: baseURL) else {
             completion(.failure(InternalError.malformedURL))
@@ -67,6 +117,24 @@ internal class Networking {
         getData(atURL: url, completion: completion)
     }
 
+    /// Make a HTTP request for a paginated list of nested resource. While similar to
+    /// `getDataForNestedListableResources(ofType:inParent:withId:startingAfter:limit:completion:)`, this method
+    /// should be used to retrieve list of resources conforming to the `ListableResource` protocol.
+    ///
+    /// - Parameters:
+    ///   - ofType: The type of the (nested) resource you want to fetch.
+    ///   - parentType: The type of the parent resource.
+    ///   - parentId: The id of the parent resource.
+    ///   - startingAfter: The id of a resource. The fetched list of resources will start after (and not including)
+    ///     this resource. It is typically set to the id of the last object of the previous response. If unspecified,
+    ///     the returned list will start at the beginning of the complete resources list.
+    ///   - limit: A limit on the number of resources to be returned, between `CursorLimit.min` and `CursorLimit.max`.
+    ///     See SimpleMDM's online documentation for the default value (`10` at the time of writing).
+    ///   - completion: A completion handler called with the result of the HTTP request, or an error.
+    ///   - result: The result of the network operation. See `NetworkingResult`.
+    ///
+    /// - SeeAlso:
+    ///   - `getDataForNestedResources:ofType:inParent:withId:completion`
     internal func getDataForNestedListableResources<R: ListableResource, P: IdentifiableResource>(ofType type: R.Type, inParent parentType: P.Type, withId parentId: P.Identifier, startingAfter: R.Identifier? = nil, limit: Int? = nil, completion: @escaping (_ result: NetworkingResult) -> Void) {
         guard let url = URL(resourceType: type, inParent: parentType, withId: parentId, startingAfter: startingAfter, limit: limit, relativeTo: baseURL) else {
             completion(.failure(InternalError.malformedURL))
@@ -91,7 +159,7 @@ internal class Networking {
 
     // MARK: Making the request
 
-    private func getData(atURL url: URL, completion: @escaping (NetworkingResult) -> Void) {
+    private func getData(atURL url: URL, completion: @escaping (_ result: NetworkingResult) -> Void) {
         let urlRequest: URLRequest
         do {
             urlRequest = try buildURLRequest(withURL: url)

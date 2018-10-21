@@ -5,7 +5,10 @@
 
 import Foundation
 
+/// The Apple push certificate used by SimpleMDM to push configuration update to your devices.
 public struct PushCertificate: UniqueResource {
-    let appleId: String
-    let expiresAt: Date
+    /// The Apple id of the certificate.
+    public let appleId: String
+    /// The expiration date of the certificate.
+    public let expiresAt: Date
 }

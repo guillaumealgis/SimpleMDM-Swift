@@ -5,6 +5,9 @@
 
 import Foundation
 
+/// The decoding layer of the library. Use this class to decode data received from the `Networking` class.
+///
+/// This decodes data in the JSON format.
 internal class Decoding {
     private let decoder = JSONDecoder()
 
@@ -15,11 +18,18 @@ internal class Decoding {
 
     // MARK: Decoding the response
 
-    func decodeNetworkingResultPayload<P: Payload>(_ result: NetworkingResult, expectedPayloadType _: P.Type) -> Result<P> {
+    /// Decodes the data fetched from the API, and return the full payload of the HTTP response (i.e. everything in
+    /// the JSON response).
+    ///
+    /// - Parameters:
+    ///   - result: The request result to decode.
+    ///   - expectedPayloadType: The expected payload type.
+    /// - Returns: Either the decoded payload, or an error.
+    func decodeNetworkingResultPayload<P: Payload>(_ result: NetworkingResult, expectedPayloadType: P.Type) -> Result<P> {
         switch result {
         case let .success(data):
             do {
-                return .success(try decodePayload(ofType: P.self, from: data))
+                return .success(try decodePayload(ofType: expectedPayloadType, from: data))
             } catch {
                 return .failure(error)
             }
@@ -30,6 +40,13 @@ internal class Decoding {
         }
     }
 
+    /// Decodes the data fetched from the API, and return the data contained in the payload of the HTTP response
+    /// (i.e. everything under the `"data"` key of the JSON response).
+    ///
+    /// - Parameters:
+    ///   - result: The request result to decode.
+    ///   - expectedPayloadType: The expected payload type.
+    /// - Returns: Either the decoded data, or an error.
     func decodeNetworkingResult<P: Payload>(_ result: NetworkingResult, expectedPayloadType: P.Type) -> Result<P.DataType> {
         let payloadResult = decodeNetworkingResultPayload(result, expectedPayloadType: expectedPayloadType)
         switch payloadResult {

@@ -9,10 +9,12 @@
 // MARK: {{ type.name }}
 {% if type.implements.IdentifiableResource %}
 // sourcery:inline:auto:{{ type.name }}.Identifiable
+    /// The unique identifier of this resource.
     public let id: {{ type.annotations.identifierType|default:"Int" }}
 // sourcery:end
 {% endif %}
 extension {{ type.name }}: Resource {
+    /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
         return "{{ type.localName|camelToSnakeCase }}{% ifnot type.implements.UniqueResource %}s{% endif %}"
     }
@@ -42,6 +44,13 @@ extension {{ type.name }}: Decodable {
     }
     {% endif %}
 
+    /// Creates a new instance of the resource by decoding from the given decoder.
+    ///
+    /// This initializer throws an error if reading from the decoder fails, or if the data read is corrupted or
+    /// otherwise invalid.
+    ///
+    /// - Parameters:
+    ///   - decoder: The decoder to read data from.
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 

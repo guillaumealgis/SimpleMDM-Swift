@@ -1,4 +1,4 @@
-// Generated using Sourcery 0.14.0 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 0.15.0 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
 //
@@ -10,6 +10,7 @@
 
 // MARK: Account
 extension Account: Resource {
+    /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
         return "account"
     }
@@ -26,6 +27,13 @@ extension Account: Decodable {
         case appleStoreCountryCode
     }
 
+    /// Creates a new instance of the resource by decoding from the given decoder.
+    ///
+    /// This initializer throws an error if reading from the decoder fails, or if the data read is corrupted or
+    /// otherwise invalid.
+    ///
+    /// - Parameters:
+    ///   - decoder: The decoder to read data from.
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -45,6 +53,7 @@ extension Account: Decodable {
 // MARK: App
 
 extension App: Resource {
+    /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
         return "apps"
     }
@@ -66,6 +75,13 @@ extension App: Decodable {
         case managedConfigs
     }
 
+    /// Creates a new instance of the resource by decoding from the given decoder.
+    ///
+    /// This initializer throws an error if reading from the decoder fails, or if the data read is corrupted or
+    /// otherwise invalid.
+    ///
+    /// - Parameters:
+    ///   - decoder: The decoder to read data from.
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -91,6 +107,7 @@ extension App: Decodable {
 // MARK: App.ManagedConfig
 
 extension App.ManagedConfig: Resource {
+    /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
         return "managed_configs"
     }
@@ -109,6 +126,13 @@ extension App.ManagedConfig: Decodable {
         case valueType
     }
 
+    /// Creates a new instance of the resource by decoding from the given decoder.
+    ///
+    /// This initializer throws an error if reading from the decoder fails, or if the data read is corrupted or
+    /// otherwise invalid.
+    ///
+    /// - Parameters:
+    ///   - decoder: The decoder to read data from.
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -131,6 +155,7 @@ extension App.ManagedConfig: Decodable {
 // MARK: AppGroup
 
 extension AppGroup: Resource {
+    /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
         return "app_groups"
     }
@@ -155,6 +180,13 @@ extension AppGroup: Decodable {
         case devices
     }
 
+    /// Creates a new instance of the resource by decoding from the given decoder.
+    ///
+    /// This initializer throws an error if reading from the decoder fails, or if the data read is corrupted or
+    /// otherwise invalid.
+    ///
+    /// - Parameters:
+    ///   - decoder: The decoder to read data from.
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -181,6 +213,7 @@ extension AppGroup: Decodable {
 // MARK: CustomAttribute
 
 extension CustomAttribute: Resource {
+    /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
         return "custom_attributes"
     }
@@ -197,6 +230,13 @@ extension CustomAttribute: Decodable {
         case name
     }
 
+    /// Creates a new instance of the resource by decoding from the given decoder.
+    ///
+    /// This initializer throws an error if reading from the decoder fails, or if the data read is corrupted or
+    /// otherwise invalid.
+    ///
+    /// - Parameters:
+    ///   - decoder: The decoder to read data from.
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -217,6 +257,7 @@ extension CustomAttribute: Decodable {
 // MARK: CustomConfigurationProfile
 
 extension CustomConfigurationProfile: Resource {
+    /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
         return "custom_configuration_profiles"
     }
@@ -238,6 +279,13 @@ extension CustomConfigurationProfile: Decodable {
         case deviceGroups
     }
 
+    /// Creates a new instance of the resource by decoding from the given decoder.
+    ///
+    /// This initializer throws an error if reading from the decoder fails, or if the data read is corrupted or
+    /// otherwise invalid.
+    ///
+    /// - Parameters:
+    ///   - decoder: The decoder to read data from.
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -261,6 +309,7 @@ extension CustomConfigurationProfile: Decodable {
 // MARK: Device
 
 extension Device: Resource {
+    /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
         return "devices"
     }
@@ -305,10 +354,10 @@ extension Device: Decodable {
         case dataRoamingEnabled
         case isRoaming
         case subscriberMcc
-        case simmnc
-        case currentMcc
         case subscriberMnc
         case simmcc
+        case simmnc
+        case currentMcc
         case currentMnc
         case hardwareEncryptionCaps
         case passcodePresent
@@ -316,8 +365,8 @@ extension Device: Decodable {
         case passcodeCompliantWithProfiles
         case filevaultEnabled
         case filevaultRecoveryKey
-        case firmwarePassword
         case firmwarePasswordEnabled
+        case firmwarePassword
         case isSupervised
         case isDepEnrollment
         case isUserApprovedEnrollment
@@ -338,6 +387,13 @@ extension Device: Decodable {
         case deviceGroup
     }
 
+    /// Creates a new instance of the resource by decoding from the given decoder.
+    ///
+    /// This initializer throws an error if reading from the decoder fails, or if the data read is corrupted or
+    /// otherwise invalid.
+    ///
+    /// - Parameters:
+    ///   - decoder: The decoder to read data from.
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -381,10 +437,10 @@ extension Device: Decodable {
         dataRoamingEnabled = try attributes.decode(Bool.self, forKey: .dataRoamingEnabled)
         isRoaming = try attributes.decode(Bool.self, forKey: .isRoaming)
         subscriberMcc = try attributes.decodeIfPresent(String.self, forKey: .subscriberMcc)
-        simmnc = try attributes.decodeIfPresent(String.self, forKey: .simmnc)
-        currentMcc = try attributes.decodeIfPresent(String.self, forKey: .currentMcc)
         subscriberMnc = try attributes.decodeIfPresent(String.self, forKey: .subscriberMnc)
         simmcc = try attributes.decodeIfPresent(String.self, forKey: .simmcc)
+        simmnc = try attributes.decodeIfPresent(String.self, forKey: .simmnc)
+        currentMcc = try attributes.decodeIfPresent(String.self, forKey: .currentMcc)
         currentMnc = try attributes.decodeIfPresent(String.self, forKey: .currentMnc)
         hardwareEncryptionCaps = try attributes.decode(Int.self, forKey: .hardwareEncryptionCaps)
         passcodePresent = try attributes.decode(Bool.self, forKey: .passcodePresent)
@@ -392,8 +448,8 @@ extension Device: Decodable {
         passcodeCompliantWithProfiles = try attributes.decode(Bool.self, forKey: .passcodeCompliantWithProfiles)
         filevaultEnabled = try attributes.decode(Bool.self, forKey: .filevaultEnabled)
         filevaultRecoveryKey = try attributes.decodeIfPresent(String.self, forKey: .filevaultRecoveryKey)
-        firmwarePassword = try attributes.decodeIfPresent(String.self, forKey: .firmwarePassword)
         firmwarePasswordEnabled = try attributes.decode(Bool.self, forKey: .firmwarePasswordEnabled)
+        firmwarePassword = try attributes.decodeIfPresent(String.self, forKey: .firmwarePassword)
         isSupervised = try attributes.decode(Bool.self, forKey: .isSupervised)
         isDepEnrollment = try attributes.decode(Bool.self, forKey: .isDepEnrollment)
         isUserApprovedEnrollment = try attributes.decodeIfPresent(Bool.self, forKey: .isUserApprovedEnrollment)
@@ -418,6 +474,7 @@ extension Device: Decodable {
 // MARK: Device.CustomAttributeValue
 
 extension Device.CustomAttributeValue: Resource {
+    /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
         return "custom_attribute_values"
     }
@@ -434,6 +491,13 @@ extension Device.CustomAttributeValue: Decodable {
         case value
     }
 
+    /// Creates a new instance of the resource by decoding from the given decoder.
+    ///
+    /// This initializer throws an error if reading from the decoder fails, or if the data read is corrupted or
+    /// otherwise invalid.
+    ///
+    /// - Parameters:
+    ///   - decoder: The decoder to read data from.
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -454,6 +518,7 @@ extension Device.CustomAttributeValue: Decodable {
 // MARK: DeviceGroup
 
 extension DeviceGroup: Resource {
+    /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
         return "device_groups"
     }
@@ -470,6 +535,13 @@ extension DeviceGroup: Decodable {
         case name
     }
 
+    /// Creates a new instance of the resource by decoding from the given decoder.
+    ///
+    /// This initializer throws an error if reading from the decoder fails, or if the data read is corrupted or
+    /// otherwise invalid.
+    ///
+    /// - Parameters:
+    ///   - decoder: The decoder to read data from.
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -490,6 +562,7 @@ extension DeviceGroup: Decodable {
 // MARK: InstalledApp
 
 extension InstalledApp: Resource {
+    /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
         return "installed_apps"
     }
@@ -513,6 +586,13 @@ extension InstalledApp: Decodable {
         case discoveredAt
     }
 
+    /// Creates a new instance of the resource by decoding from the given decoder.
+    ///
+    /// This initializer throws an error if reading from the decoder fails, or if the data read is corrupted or
+    /// otherwise invalid.
+    ///
+    /// - Parameters:
+    ///   - decoder: The decoder to read data from.
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -539,6 +619,7 @@ extension InstalledApp: Decodable {
 
 // MARK: PushCertificate
 extension PushCertificate: Resource {
+    /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
         return "push_certificate"
     }
@@ -555,6 +636,13 @@ extension PushCertificate: Decodable {
         case expiresAt
     }
 
+    /// Creates a new instance of the resource by decoding from the given decoder.
+    ///
+    /// This initializer throws an error if reading from the decoder fails, or if the data read is corrupted or
+    /// otherwise invalid.
+    ///
+    /// - Parameters:
+    ///   - decoder: The decoder to read data from.
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 

@@ -5,8 +5,10 @@
 
 import Foundation
 
-// https://useyourloaf.com/blog/swift-codable-with-custom-dates/
 extension DateFormatter {
+    /// A custom date formatter used by some dates returned by the SimpleMDM API.
+    ///
+    /// - SeeAlso: `DateDecodingStrategy`
     static let simpleMDMFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"

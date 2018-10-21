@@ -1,0 +1,2289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Device Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/Device" class="dashAnchor"></a>
+    <a title="Device Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SimpleMDM Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/guillaumealgis/simplemdm-swift"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SimpleMDM Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Device Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../SimpleMDM.html">SimpleMDM</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SimpleMDM.html">SimpleMDM</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Resources.html">Resources</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Account.html">Account</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/App.html">App</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/App/ManagedConfig.html">– ManagedConfig</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AppGroup.html">AppGroup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CustomAttribute.html">CustomAttribute</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/CustomConfigurationProfile.html">CustomConfigurationProfile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Device.html">Device</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Device/CustomAttributeValue.html">– CustomAttributeValue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DeviceGroup.html">DeviceGroup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/InstalledApp.html">InstalledApp</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/PushCertificate.html">PushCertificate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Resource.html">Resource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Resources Types.html">Resources Types</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/UniqueResource.html">UniqueResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/IdentifiableResource.html">IdentifiableResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GettableResource.html">GettableResource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ListableResource.html">ListableResource</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Relationships.html">Relationships</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/RelatedToOne.html">RelatedToOne</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RelatedToMany.html">RelatedToMany</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RelatedToManyNested.html">RelatedToManyNested</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Cursor.html">Cursor</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Cursor.html">Cursor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NestedResourceCursor.html">NestedResourceCursor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/CursorLimit.html">CursorLimit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Errors.html">Errors</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/InternalError.html">InternalError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/NetworkError.html">NetworkError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SimpleMDMError.html">SimpleMDMError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Enums.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Result.html">Result</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/RemoteCollection.html">RemoteCollection</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Typealiases.html">Other Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Typealiases.html#/s:9SimpleMDM17CompletionClosurea">CompletionClosure</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Device</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Device</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ListableResource.html">ListableResource</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>A device registered in your SimpleMDM account.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV2idSivp"></a>
+                    <a name="//apple_ref/swift/Property/id" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV2idSivp">id</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The unique identifier of this resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L12">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Identifiers"></a>
+                <a name="//apple_ref/swift/Section/Identifiers" class="dashAnchor"></a>
+                <a href="#/Identifiers">
+                  <h3 class="section-name">Identifiers</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV16uniqueIdentifierSSvp"></a>
+                    <a name="//apple_ref/swift/Property/uniqueIdentifier" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV16uniqueIdentifierSSvp">uniqueIdentifier</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An unique 40 characters long hash identifying the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">uniqueIdentifier</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L18">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV12serialNumberSSvp"></a>
+                    <a name="//apple_ref/swift/Property/serialNumber" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV12serialNumberSSvp">serialNumber</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The serial number of the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">serialNumber</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L20">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV4imeiSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/imei" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV4imeiSSSgvp">imei</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <a href="https://en.wikipedia.org/wiki/International_Mobile_Equipment_Identity">International Mobile Equipment Identity
+(IMEI)</a> number of the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">imei</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L23">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV4meidSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/meid" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV4meidSSSgvp">meid</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <a href="https://en.wikipedia.org/wiki/Mobile_equipment_identifier">Mobile Equipment IDentifier (MEID)</a> number of
+the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">meid</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L26">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV5iccidSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/iccid" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV5iccidSSSgvp">iccid</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <a href="https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID">Integrated Circuit Card IDentifier
+(ICCID)</a> number of the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">iccid</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L29">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Name"></a>
+                <a name="//apple_ref/swift/Section/Name" class="dashAnchor"></a>
+                <a href="#/Name">
+                  <h3 class="section-name">Name</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV4nameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV4nameSSvp">name</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The name you&rsquo;ve given to the device in the SimpleMDM interface.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L34">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV10deviceNameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/deviceName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV10deviceNameSSvp">deviceName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The name set in the device&rsquo;s settings.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">deviceName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L36">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Current%20status"></a>
+                <a name="//apple_ref/swift/Section/Current status" class="dashAnchor"></a>
+                <a href="#/Current%20status">
+                  <h3 class="section-name">Current status</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV10lastSeenAt10Foundation4DateVvp"></a>
+                    <a name="//apple_ref/swift/Property/lastSeenAt" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV10lastSeenAt10Foundation4DateVvp">lastSeenAt</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Date at which the device last communicated with SimpleMDM.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">lastSeenAt</span><span class="p">:</span> <span class="kt">Date</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L41">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV6statusSSvp"></a>
+                    <a name="//apple_ref/swift/Property/status" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV6statusSSvp">status</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current MDM status of the device (e.g. <q>enrolled</q>).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">status</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L43">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Model"></a>
+                <a name="//apple_ref/swift/Section/Model" class="dashAnchor"></a>
+                <a href="#/Model">
+                  <h3 class="section-name">Model</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV9modelNameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/modelName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV9modelNameSSvp">modelName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The displayable model name of the device (e.g. <q>iPad 9.7-Inch 6th Gen</q>).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">modelName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L48">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV5modelSSvp"></a>
+                    <a name="//apple_ref/swift/Property/model" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV5modelSSvp">model</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Apple model identifier of the device (e.g. <q>MR7F2NF</q>).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">model</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L50">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV11productNameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/productName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV11productNameSSvp">productName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Apple product name of the device (e.g. <q>iPad7,5</q>).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">productName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L52">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Sofware%20version"></a>
+                <a name="//apple_ref/swift/Section/Sofware version" class="dashAnchor"></a>
+                <a href="#/Sofware%20version">
+                  <h3 class="section-name">Sofware version</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV9osVersionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/osVersion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV9osVersionSSvp">osVersion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The displayabled current OS version of the device (e.g. <q>12.0.1</q>).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">osVersion</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L57">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV12buildVersionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/buildVersion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV12buildVersionSSvp">buildVersion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current build version of the OS (e.g. <q>16A404</q>).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">buildVersion</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L59">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV20modemFirmwareVersionSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/modemFirmwareVersion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV20modemFirmwareVersionSSSgvp">modemFirmwareVersion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current modem firmware version of the device (e.g. <q>6.60.00</q>).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">modemFirmwareVersion</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L61">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV22carrierSettingsVersionSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/carrierSettingsVersion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV22carrierSettingsVersionSSSgvp">carrierSettingsVersion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current version of the settings of the cell carrier (e.g. <q>33.0</q>).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">carrierSettingsVersion</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L63">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Capacity"></a>
+                <a name="//apple_ref/swift/Section/Capacity" class="dashAnchor"></a>
+                <a href="#/Capacity">
+                  <h3 class="section-name">Capacity</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV14deviceCapacitySdvp"></a>
+                    <a name="//apple_ref/swift/Property/deviceCapacity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV14deviceCapacitySdvp">deviceCapacity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The total device storage capacity, in GB.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">deviceCapacity</span><span class="p">:</span> <span class="kt">Double</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L68">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV09availableC8CapacitySdvp"></a>
+                    <a name="//apple_ref/swift/Property/availableDeviceCapacity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV09availableC8CapacitySdvp">availableDeviceCapacity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The available device storage capacity, in GB.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">availableDeviceCapacity</span><span class="p">:</span> <span class="kt">Double</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L70">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Battery"></a>
+                <a name="//apple_ref/swift/Section/Battery" class="dashAnchor"></a>
+                <a href="#/Battery">
+                  <h3 class="section-name">Battery</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV12batteryLevelSSvp"></a>
+                    <a name="//apple_ref/swift/Property/batteryLevel" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV12batteryLevelSSvp">batteryLevel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The curreny battery level of the device, in percent (e.g. <q>76%</q>).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">batteryLevel</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L75">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Wireless%20networking"></a>
+                <a name="//apple_ref/swift/Section/Wireless networking" class="dashAnchor"></a>
+                <a href="#/Wireless%20networking">
+                  <h3 class="section-name">Wireless networking</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV12bluetoothMacSSvp"></a>
+                    <a name="//apple_ref/swift/Property/bluetoothMac" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV12bluetoothMacSSvp">bluetoothMac</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The bluetooth MAC address of the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">bluetoothMac</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L80">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV7wifiMacSSvp"></a>
+                    <a name="//apple_ref/swift/Property/wifiMac" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV7wifiMacSSvp">wifiMac</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The wifi MAC address of the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">wifiMac</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L82">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV21currentCarrierNetworkSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/currentCarrierNetwork" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV21currentCarrierNetworkSSSgvp">currentCarrierNetwork</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current carrier network of the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">currentCarrierNetwork</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L84">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV17simCarrierNetworkSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/simCarrierNetwork" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV17simCarrierNetworkSSSgvp">simCarrierNetwork</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The SIM carrier network of the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">simCarrierNetwork</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L86">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV24subscriberCarrierNetworkSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/subscriberCarrierNetwork" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV24subscriberCarrierNetworkSSSgvp">subscriberCarrierNetwork</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The subscriber carrier network of the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">subscriberCarrierNetwork</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L88">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Cellular"></a>
+                <a name="//apple_ref/swift/Section/Cellular" class="dashAnchor"></a>
+                <a href="#/Cellular">
+                  <h3 class="section-name">Cellular</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV11phoneNumberSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/phoneNumber" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV11phoneNumberSSSgvp">phoneNumber</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The phone number</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">phoneNumber</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L93">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV18cellularTechnologySivp"></a>
+                    <a name="//apple_ref/swift/Property/cellularTechnology" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV18cellularTechnologySivp">cellularTechnology</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The cellular technology of the device. Signification of the value isn&rsquo;t documented by SimpleMDM.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">cellularTechnology</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L95">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV19voiceRoamingEnabledSbSgvp"></a>
+                    <a name="//apple_ref/swift/Property/voiceRoamingEnabled" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV19voiceRoamingEnabledSbSgvp">voiceRoamingEnabled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither the device allows roaming for voice.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">voiceRoamingEnabled</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L97">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV18dataRoamingEnabledSbvp"></a>
+                    <a name="//apple_ref/swift/Property/dataRoamingEnabled" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV18dataRoamingEnabledSbvp">dataRoamingEnabled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither the device allows roaming for data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">dataRoamingEnabled</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L99">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV9isRoamingSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isRoaming" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV9isRoamingSbvp">isRoaming</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither the device is currently roaming.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">isRoaming</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L101">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/MCC%20&amp;%20MNC"></a>
+                <a name="//apple_ref/swift/Section/MCC &amp; MNC" class="dashAnchor"></a>
+                <a href="#/MCC%20&amp;%20MNC">
+                  <h3 class="section-name">MCC &amp; MNC</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV13subscriberMccSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/subscriberMcc" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV13subscriberMccSSSgvp">subscriberMcc</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The subscriber <a href="https://en.wikipedia.org/wiki/Mobile_country_code">Mobile Contry Code (MCC)</a> of the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">subscriberMcc</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L106">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV13subscriberMncSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/subscriberMnc" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV13subscriberMncSSSgvp">subscriberMnc</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The subscriber <a href="https://en.wikipedia.org/wiki/Mobile_country_code">Mobile Network Code (MNC)</a> of the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">subscriberMnc</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L108">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV6simmccSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/simmcc" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV6simmccSSSgvp">simmcc</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The SIM <a href="https://en.wikipedia.org/wiki/Mobile_country_code">Mobile Contry Code (MCC)</a> of the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">simmcc</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L110">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV6simmncSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/simmnc" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV6simmncSSSgvp">simmnc</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The SIM <a href="https://en.wikipedia.org/wiki/Mobile_country_code">Mobile Network Code (MNC)</a> of the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">simmnc</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L112">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV10currentMccSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/currentMcc" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV10currentMccSSSgvp">currentMcc</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current <a href="https://en.wikipedia.org/wiki/Mobile_country_code">Mobile Contry Code (MCC)</a> of the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">currentMcc</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L114">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV10currentMncSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/currentMnc" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV10currentMncSSSgvp">currentMnc</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current <a href="https://en.wikipedia.org/wiki/Mobile_country_code">Mobile Network Code (MNC)</a> of the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">currentMnc</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L116">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Security"></a>
+                <a name="//apple_ref/swift/Section/Security" class="dashAnchor"></a>
+                <a href="#/Security">
+                  <h3 class="section-name">Security</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV22hardwareEncryptionCapsSivp"></a>
+                    <a name="//apple_ref/swift/Property/hardwareEncryptionCaps" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV22hardwareEncryptionCapsSivp">hardwareEncryptionCaps</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Not documented by SimpleMDM.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">hardwareEncryptionCaps</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L121">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV15passcodePresentSbvp"></a>
+                    <a name="//apple_ref/swift/Property/passcodePresent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV15passcodePresentSbvp">passcodePresent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither the device is passcode protected.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">passcodePresent</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L123">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV17passcodeCompliantSbvp"></a>
+                    <a name="//apple_ref/swift/Property/passcodeCompliant" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV17passcodeCompliantSbvp">passcodeCompliant</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither the device&rsquo;s passcode is compliant with your global passcode policy.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">passcodeCompliant</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L125">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV29passcodeCompliantWithProfilesSbvp"></a>
+                    <a name="//apple_ref/swift/Property/passcodeCompliantWithProfiles" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV29passcodeCompliantWithProfilesSbvp">passcodeCompliantWithProfiles</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither the device&rsquo;s passcode is compliant with the passcode policy defined in your profiles.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">passcodeCompliantWithProfiles</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L127">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV16filevaultEnabledSbvp"></a>
+                    <a name="//apple_ref/swift/Property/filevaultEnabled" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV16filevaultEnabledSbvp">filevaultEnabled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither Filevault (disk encryption) is enabled on the device (macOS only).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">filevaultEnabled</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L129">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV20filevaultRecoveryKeySSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/filevaultRecoveryKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV20filevaultRecoveryKeySSSgvp">filevaultRecoveryKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Filevault recovery key (macOS only).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">filevaultRecoveryKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L131">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV23firmwarePasswordEnabledSbvp"></a>
+                    <a name="//apple_ref/swift/Property/firmwarePasswordEnabled" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV23firmwarePasswordEnabledSbvp">firmwarePasswordEnabled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither the firmware of the device is password protected (macOS only?).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">firmwarePasswordEnabled</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L133">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV16firmwarePasswordSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/firmwarePassword" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV16firmwarePasswordSSSgvp">firmwarePassword</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The firmware password (macOS only?).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">firmwarePassword</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L135">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/MDM"></a>
+                <a name="//apple_ref/swift/Section/MDM" class="dashAnchor"></a>
+                <a href="#/MDM">
+                  <h3 class="section-name">MDM</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV12isSupervisedSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isSupervised" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV12isSupervisedSbvp">isSupervised</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither the device is supervised.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">isSupervised</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L140">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV15isDepEnrollmentSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isDepEnrollment" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV15isDepEnrollmentSbvp">isDepEnrollment</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither the device is enrolled in Apple&rsquo;s Device Enrollment Program (DEP).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">isDepEnrollment</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L142">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV24isUserApprovedEnrollmentSbSgvp"></a>
+                    <a name="//apple_ref/swift/Property/isUserApprovedEnrollment" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV24isUserApprovedEnrollmentSbSgvp">isUserApprovedEnrollment</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither the device can be enrolled by the user (?).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">isUserApprovedEnrollment</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L144">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV02isC21LocatorServiceEnabledSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isDeviceLocatorServiceEnabled" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV02isC21LocatorServiceEnabledSbvp">isDeviceLocatorServiceEnabled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither the device locator service (Find my Mac / Find my iPhone) is enabled.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">isDeviceLocatorServiceEnabled</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L146">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV22isDoNotDisturbInEffectSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isDoNotDisturbInEffect" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV22isDoNotDisturbInEffectSbvp">isDoNotDisturbInEffect</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither the device is currently in Do Not Disturb mode.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">isDoNotDisturbInEffect</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L148">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV22personalHotspotEnabledSbSgvp"></a>
+                    <a name="//apple_ref/swift/Property/personalHotspotEnabled" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV22personalHotspotEnabledSbSgvp">personalHotspotEnabled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither the device&rsquo;s personal hotspot functionnality is enabled.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">personalHotspotEnabled</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L150">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV26itunesStoreAccountIsActiveSbvp"></a>
+                    <a name="//apple_ref/swift/Property/itunesStoreAccountIsActive" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV26itunesStoreAccountIsActiveSbvp">itunesStoreAccountIsActive</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither the device&rsquo;s iTunes Store account is active.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">itunesStoreAccountIsActive</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L152">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV19lastCloudBackupDate10Foundation0G0VSgvp"></a>
+                    <a name="//apple_ref/swift/Property/lastCloudBackupDate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV19lastCloudBackupDate10Foundation0G0VSgvp">lastCloudBackupDate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The date of the last iCloud backup of the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">lastCloudBackupDate</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L154">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV23isActivationLockEnabledSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isActivationLockEnabled" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV23isActivationLockEnabledSbvp">isActivationLockEnabled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither Activation Lock is enabled on the device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">isActivationLockEnabled</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L156">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV20isCloudBackupEnabledSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isCloudBackupEnabled" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV20isCloudBackupEnabledSbvp">isCloudBackupEnabled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Weither backing up to iCloud is enabled.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">isCloudBackupEnabled</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L158">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Location"></a>
+                <a name="//apple_ref/swift/Section/Location" class="dashAnchor"></a>
+                <a href="#/Location">
+                  <h3 class="section-name">Location</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV16locationLatitudeSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/locationLatitude" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV16locationLatitudeSSSgvp">locationLatitude</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The latitude of the device&rsquo;s location (in degrees, e.g. <q>46.23451120895299</q>).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">locationLatitude</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L163">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV17locationLongitudeSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/locationLongitude" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV17locationLongitudeSSSgvp">locationLongitude</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The longitude of the device&rsquo;s location (in degrees, e.g. <q>4.273176170426797</q>).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">locationLongitude</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L165">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV16locationAccuracySiSgvp"></a>
+                    <a name="//apple_ref/swift/Property/locationAccuracy" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV16locationAccuracySiSgvp">locationAccuracy</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The accuracy of the device&rsquo;s location.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">locationAccuracy</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L167">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV17locationUpdatedAt10Foundation4DateVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/locationUpdatedAt" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV17locationUpdatedAt10Foundation4DateVSgvp">locationUpdatedAt</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The date at which the device&rsquo;s location has been udpated last.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">locationUpdatedAt</span><span class="p">:</span> <span class="kt">Date</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L169">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Relations"></a>
+                <a name="//apple_ref/swift/Section/Relations" class="dashAnchor"></a>
+                <a href="#/Relations">
+                  <h3 class="section-name">Relations</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV11deviceGroupAA12RelatedToOneVyAA0cE0VGvp"></a>
+                    <a name="//apple_ref/swift/Property/deviceGroup" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV11deviceGroupAA12RelatedToOneVyAA0cE0VGvp">deviceGroup</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The groups the devices is a member of.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">deviceGroup</span><span class="p">:</span> <span class="kt"><a href="../Structs/RelatedToOne.html">RelatedToOne</a></span><span class="o">&lt;</span><span class="kt"><a href="../Structs/DeviceGroup.html">DeviceGroup</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L174">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV16customAttributesAA19RelatedToManyNestedVyA2C20CustomAttributeValueVGvp"></a>
+                    <a name="//apple_ref/swift/Property/customAttributes" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV16customAttributesAA19RelatedToManyNestedVyA2C20CustomAttributeValueVGvp">customAttributes</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The custom attributes values set for this device.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">customAttributes</span><span class="p">:</span> <span class="kt"><a href="../Structs/RelatedToManyNested.html">RelatedToManyNested</a></span><span class="o">&lt;</span><span class="kt">Device</span><span class="p">,</span> <span class="kt"><a href="../Structs/Device/CustomAttributeValue.html">CustomAttributeValue</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Device.swift#L176">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV20CustomAttributeValueV"></a>
+                    <a name="//apple_ref/swift/Struct/CustomAttributeValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV20CustomAttributeValueV">CustomAttributeValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A custom attribute value assigned to a device.</p>
+
+                        <a href="../Structs/Device/CustomAttributeValue.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">CustomAttributeValue</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/IdentifiableResource.html">IdentifiableResource</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/CustomAttributeValue.swift#L12-L20">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Device"></a>
+                <a name="//apple_ref/swift/Section/Device" class="dashAnchor"></a>
+                <a href="#/Device">
+                  <h3 class="section-name">Device</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV12endpointNameSSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/endpointName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV12endpointNameSSvpZ">endpointName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The remote API endpoint identifying this resource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">endpointName</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Resource.generated.swift#L313-L315">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Device2"></a>
+                <a name="//apple_ref/swift/Section/Device" class="dashAnchor"></a>
+                <a href="#/Device2">
+                  <h3 class="section-name">Device</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9SimpleMDM6DeviceV4fromACs7Decoder_p_tKcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM6DeviceV4fromACs7Decoder_p_tKcfc">init(from:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new instance of the resource by decoding from the given decoder.</p>
+
+<p>This initializer throws an error if reading from the decoder fails, or if the data read is corrupted or
+otherwise invalid.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">from</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt">Decoder</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>decoder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The decoder to read data from.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.1.0/Sources/Resources/Resource.generated.swift#L397-L471">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="http://twitter.com/guillaumealgis" target="_blank" rel="external">Guillaume Algis</a>. All rights reserved. (Last updated: 2018-10-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

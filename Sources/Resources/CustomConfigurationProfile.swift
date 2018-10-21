@@ -5,12 +5,18 @@
 
 import Foundation
 
+/// A custom configuration profile created with AppleConfiguration and applied to devices.
 public struct CustomConfigurationProfile: ListableResource {
     // sourcery:inline:auto:CustomConfigurationProfile.Identifiable
+    /// The unique identifier of this resource.
     public let id: Int
     // sourcery:end
 
-    let name: String
+    /// The name of the configuration profile.
+    public let name: String
 
-    let deviceGroups: RelatedToMany<DeviceGroup>
+    // MARK: - Relations
+
+    /// The device groups to which the profile is applied.
+    public let deviceGroups: RelatedToMany<DeviceGroup>
 }

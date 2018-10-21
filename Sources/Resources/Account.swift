@@ -5,7 +5,10 @@
 
 import Foundation
 
+/// Your SimpleMDM account.
 public struct Account: UniqueResource {
-    let name: String
-    let appleStoreCountryCode: String
+    /// The name of the account.
+    public let name: String
+    /// The app store country that SimpleMDM uses for the account.
+    public let appleStoreCountryCode: String
 }

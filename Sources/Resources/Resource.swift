@@ -5,20 +5,33 @@
 
 import Foundation
 
+/// A completion clusure used to return a Result type asynchronously.
 public typealias CompletionClosure<Value> = (Result<Value>) -> Void
 
+/// A protocol adopted by all resources types of the library.
 public protocol Resource: Decodable {
+    /// The SimpleMDM API endpoint for this resources type.
+    ///
+    /// This is an implementation detail, and you shouldn't have to use this.
     static var endpointName: String { get }
 }
 
 // MARK: Unique Resource
 
-// A resource type for which it can only exists one instante of
+/// A protocol describing resource types of which only one instance exists. Such resources have not id and cannot be
+/// listed.
 public protocol UniqueResource: Resource {
+    /// Get the unique instance of this resource.
+    ///
+    /// - Parameter completion: A completion handler called with the resource, or an error.
     static func get(completion: @escaping CompletionClosure<Self>)
 }
 
+/// An extension of `UniqueResource` providing a default implementation for `get(completion:)`.
 public extension UniqueResource {
+    /// Fetch the resource from the server.
+    ///
+    /// - Parameter completion: A completion handler called with the resource, or an error.
     static func get(completion: @escaping CompletionClosure<Self>) {
         SimpleMDM.shared.networking.getDataForUniqueResource(ofType: Self.self) { networkResult in
             let decoding = Decoding()
@@ -30,18 +43,32 @@ public extension UniqueResource {
 
 // MARK: Identifiable Resource
 
-// A resource for which multiple instance of can coexists, and is identifiable by an id
+/// A protocol describing resource types of which multiple instances of can exists. These resources have an identifier
+/// which is unique per instance of the resource.
 public protocol IdentifiableResource: Resource {
+    /// The type of the resource identifier.
     associatedtype Identifier: LosslessStringConvertible & Comparable & Decodable
 
+    /// The identifier of the resource.
     var id: Identifier { get }
 }
 
+/// A protocol describing resource types that can be fetched independently, using their unique identifier
+/// (these resources adopt the `IdentifiableResource` protocol).
 public protocol GettableResource: IdentifiableResource {
+    /// Get the instance of this resource with the identifier `id`.
+    ///
+    /// - Parameter completion: A completion handler called with the resource, or an error.
     static func get(id: Identifier, completion: @escaping CompletionClosure<Self>)
 }
 
+/// An extension of `GettableResource` providing a default implementation for `get(id:completion:)`.
 public extension GettableResource {
+    /// Fetch the resource identified by `id` from the server.
+    ///
+    /// - Parameters:
+    ///   - id: The unique identifier of the resource to get.
+    ///   - completion: A completion handler called with the resource, or an error.
     static func get(id: Identifier, completion: @escaping CompletionClosure<Self>) {
         SimpleMDM.shared.networking.getDataForResource(ofType: Self.self, withId: id) { networkResult in
             let decoding = Decoding()
@@ -58,18 +85,40 @@ public extension GettableResource {
 
 // MARK: Listable Resource
 
-// A resource for which multiple instance of can coexists, and we can get a list of
+/// A protocol describing resource types that we can get a list of.
 public protocol ListableResource: GettableResource {
+    /// Get a list of all resources of this type.
+    ///
+    /// - Parameter completion: A completion handler called with a list of resources, or an error.
     static func getAll(completion: @escaping CompletionClosure<[Self]>)
 }
 
+/// An extension of `ListableResource` providing a default implementation for `getAll(completion:)`.
 public extension ListableResource {
+    /// Fetch the list of all resources of this type.
+    ///
+    /// Because the SimpleMDM API enforces pagination when getting a list of resources, this method will fetch the
+    /// resources page by page, and concatenate the results of each page. This means that if the total count of
+    /// resources fetched is high (more than a hundred of resources), calling this method may end up making multiple
+    /// HTTP requests to the SimpleMDM API.
+    ///
+    /// - Important: Prefer using the `Cursor` class over this convenience method when fetching large lists of
+    ///   resources (see Discussion).
+    ///
+    /// - Parameter completion: A completion handler called with a list of resources, or an error.
     static func getAll(completion: @escaping CompletionClosure<[Self]>) {
         let accumulator = [Self]()
         let cursor = Cursor<Self>()
         getNext(accumulator: accumulator, cursor: cursor, completion: completion)
     }
 
+    /// Recursive method fetching all resources of this type page by page.
+    ///
+    /// - Parameters:
+    ///   - accumulator: A list of all the resources fetched up to this point.
+    ///   - cursor: A cursor used to fetch the resources.
+    ///   - completion: A completion handler called with the content of `accumulator` once we arrive to the end of the
+    ///     list, or an error if one occurs.
     private static func getNext(accumulator: [Self], cursor: Cursor<Self>, completion: @escaping CompletionClosure<[Self]>) {
         if !cursor.hasMore {
             completion(.success(accumulator))

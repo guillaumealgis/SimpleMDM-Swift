@@ -5,10 +5,13 @@
 
 import Foundation
 
+/// A group of device, used to assign apps and profiles to devices.
 public struct DeviceGroup: ListableResource {
     // sourcery:inline:auto:DeviceGroup.Identifiable
+    /// The unique identifier of this resource.
     public let id: Int
     // sourcery:end
 
-    let name: String
+    /// The name of the device group.
+    public let name: String
 }
