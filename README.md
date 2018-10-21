@@ -22,7 +22,7 @@ SimpleMDM-Swift is a cross-platform (iOS, macOS, tvOS, watchOS) SDK to access th
 
 ## Usage
 
-Full documentation is available here: [FIXME](http://example.com/FIXME)
+Full documentation is available here: [https://guillaumealgis.github.io/SimpleMDM-Swift/](https://guillaumealgis.github.io/SimpleMDM-Swift/)
 
 ```swift
 // Just set this once in your applicationDidBecomeActive method
@@ -85,7 +85,7 @@ Run `carthage update` to build the framework and drag the built Euclid.framework
 
 ### Swift Package Manager
 
-The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler. It is in early development, but SimpleMDM-Swift does support its use on supported platforms. 
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler. It is in early development, but SimpleMDM-Swift does support its use on supported platforms.
 
 Once you have your Swift package set up, adding SimpleMDM-Swift as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
 
