@@ -1,6 +1,4 @@
 
-CURRENT_PROJECT_VERSION = 1
-
 SUPPORTED_PLATFORMS = macosx appletvsimulator appletvos watchsimulator iphonesimulator watchos iphoneos
 
 IPHONEOS_DEPLOYMENT_TARGET = 10.0
