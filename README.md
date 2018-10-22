@@ -58,10 +58,9 @@ To integrate SimpleMDM-Swift into your Xcode project using [CocoaPods](https://c
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '12.0'
-use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'SimpleMDM-Swift'
+    pod 'SimpleMDM-Swift', '~> 0.1.0'
 end
 ```
 
@@ -75,11 +74,11 @@ $ pod install
 
 ### Carthage
 
-To integrate Euclid into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your Cartfile:
+To integrate SimpleMDM-Swift into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your Cartfile:
 
 `github "guillaumealgis/SimpleMDM-Swift"`
 
-Run `carthage update` to build the framework and drag the built Euclid.framework into your Xcode project and update your run scripts as appropriate. For additional support, please visit the Carthage [documentation](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
+Run `carthage update` to build the framework and drag the built SimpleMDM-Swift.framework into your Xcode project and update your run scripts as appropriate. For additional support, please visit the Carthage [documentation](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
 
 ----
 
@@ -93,7 +92,7 @@ Once you have your Swift package set up, adding SimpleMDM-Swift as a dependency 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/guillaumealgis/SimpleMDM-Swift.git", from: "0.0.0")
+    .package(url: "https://github.com/guillaumealgis/SimpleMDM-Swift.git", from: "0.1.0")
 ]
 ```
 
