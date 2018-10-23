@@ -88,6 +88,22 @@ To integrate SimpleMDM-Swift into your Xcode project using [Carthage](https://gi
 
 Run `carthage update` to build the framework and drag the built SimpleMDM-Swift.framework into your Xcode project and update your run scripts as appropriate. For additional support, please visit the Carthage [documentation](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
 
+----
+
+### Swift Package Manager
+
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler. It is in early development, but SimpleMDM-Swift does support its use on supported platforms.
+
+Once you have your Swift package set up, adding SimpleMDM-Swift as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
+
+#### Swift 4
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/guillaumealgis/SimpleMDM-Swift.git", from: "0.1.0")
+]
+```
+
 ## Apps using SimpleMDM-Swift
 
 I'd love to hear what you have used SimpleMDM-Swift for, if you would like your app displayed here, please send a pull request!

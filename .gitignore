@@ -1,7 +1,8 @@
 # Mac OS X
 .DS_Store
 
-# Xcode
+# SwiftPM
+.swiftpm
 
 ## Build generated
 build/

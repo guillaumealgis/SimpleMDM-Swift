@@ -127,3 +127,5 @@ number_separator:
 modifier_order:
   preferred_modifier_order: [acl, override]
 
+excluded:
+  - Package.swift
