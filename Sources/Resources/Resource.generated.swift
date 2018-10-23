@@ -6,6 +6,8 @@
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
+import Foundation
+
 // swiftlint:disable file_length function_body_length
 
 // MARK: - Account
