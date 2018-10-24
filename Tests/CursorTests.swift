@@ -57,10 +57,10 @@ internal class CursorTests: XCTestCase {
     func testCursorFetchOnceWithDefaultParamters() {
         let json = loadFixture("Apps")
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
         let cursor = Cursor<App>()
-        cursor.next { result in
+        cursor.next(s.networking) { result in
             guard case let .success(apps) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -77,10 +77,10 @@ internal class CursorTests: XCTestCase {
           }
         """.utf8)
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
         let cursor = Cursor<App>()
-        cursor.next { result in
+        cursor.next(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -111,10 +111,10 @@ internal class CursorTests: XCTestCase {
           }
         """.utf8)
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
         let cursor = Cursor<App>()
-        cursor.next(1) { result in
+        cursor.next(s.networking, 1) { result in
             guard case let .success(apps) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -149,13 +149,13 @@ internal class CursorTests: XCTestCase {
             "/api/v1/apps?limit=1": Response(data: appFixture(name: "Evernote", itunesId: 2_345_623, id: 737, hasMore: true)),
             "/api/v1/apps?starting_after=737&limit=20": Response(data: appFixture(name: "Instagram", itunesId: 923_646, id: 3462, hasMore: false))
         ])
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
         let firstFetchSuccess = expectation(description: "First fetch succeeded")
         let secondFetchSuccess = expectation(description: "Second fetch succeeded")
 
         let cursor = Cursor<App>()
-        cursor.next(1) { result in
+        cursor.next(s.networking, 1) { result in
             guard case let .success(apps) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -163,7 +163,7 @@ internal class CursorTests: XCTestCase {
             XCTAssertTrue(cursor.hasMore)
             firstFetchSuccess.fulfill()
 
-            cursor.next(20) { result in
+            cursor.next(s.networking, 20) { result in
                 guard case let .success(apps) = result else {
                     return XCTFail("Expected .success, got \(result)")
                 }

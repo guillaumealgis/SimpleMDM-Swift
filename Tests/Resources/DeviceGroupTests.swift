@@ -10,9 +10,9 @@ internal class DeviceGroupTests: XCTestCase {
     func testGetAllDeviceGroups() {
         let json = loadFixture("DeviceGroups")
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        DeviceGroup.getAll { result in
+        DeviceGroup.getAll(s.networking) { result in
             guard case let .success(devices) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -23,9 +23,9 @@ internal class DeviceGroupTests: XCTestCase {
     func testGetADeviceGroup() {
         let json = loadFixture("DeviceGroup_Executives")
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        DeviceGroup.get(id: 38) { result in
+        DeviceGroup.get(s.networking, id: 38) { result in
             guard case let .success(device) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }

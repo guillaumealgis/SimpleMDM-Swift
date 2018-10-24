@@ -18,9 +18,9 @@ internal class ResourcesTests: XCTestCase {
     func testEmptyJSONResponse() {
         let json = "{}".data(using: .utf8)
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Account.get { result in
+        Account.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -44,9 +44,9 @@ internal class ResourcesTests: XCTestCase {
           }
         """.data(using: .utf8)
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Account.get { result in
+        Account.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -71,9 +71,9 @@ internal class ResourcesTests: XCTestCase {
           }
         """.data(using: .utf8)
         let session = URLSessionMock(data: json, responseCode: 404)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Device.get(id: 0) { result in
+        Device.get(s.networking, id: 0) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -93,9 +93,9 @@ internal class ResourcesTests: XCTestCase {
           }
         """.data(using: .utf8)
         let session = URLSessionMock(data: json, responseCode: errorCode)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Account.get { result in
+        Account.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -116,9 +116,9 @@ internal class ResourcesTests: XCTestCase {
           }
         """.data(using: .utf8)
         let session = URLSessionMock(data: json, responseCode: errorCode)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Account.get { result in
+        Account.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -145,9 +145,9 @@ internal class ResourcesTests: XCTestCase {
           }
         """.data(using: .utf8)
         let session = URLSessionMock(data: json, responseCode: errorCode)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Account.get { result in
+        Account.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -167,9 +167,9 @@ internal class ResourcesTests: XCTestCase {
           }
         """.data(using: .utf8)
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Device.getAll { result in
+        Device.getAll(s.networking) { result in
             guard case let .success(resources) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -184,9 +184,9 @@ internal class ResourcesTests: XCTestCase {
           }
         """.data(using: .utf8)
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Device.getAll { result in
+        Device.getAll(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -213,9 +213,9 @@ internal class ResourcesTests: XCTestCase {
           }
         """.data(using: .utf8)
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        PushCertificate.get { result in
+        PushCertificate.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -242,9 +242,9 @@ internal class ResourcesTests: XCTestCase {
           }
         """.data(using: .utf8)
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Account.get { result in
+        Account.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -261,9 +261,9 @@ internal class ResourcesTests: XCTestCase {
     func testFetchResourceWithUnexpectedId() {
         let json = loadFixture("App_GoogleCalendar")
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        App.get(id: 63) { result in
+        App.get(s.networking, id: 63) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }

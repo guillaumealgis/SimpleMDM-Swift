@@ -10,9 +10,9 @@ internal class DeviceTests: XCTestCase {
     func testGetAllDevices() {
         let json = loadFixture("Devices")
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Device.getAll { result in
+        Device.getAll(s.networking) { result in
             guard case let .success(devices) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -23,9 +23,9 @@ internal class DeviceTests: XCTestCase {
     func testGetADevice() {
         let json = loadFixture("Device_MikesiPhone")
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Device.get(id: 121) { result in
+        Device.get(s.networking, id: 121) { result in
             guard case let .success(device) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -38,15 +38,15 @@ internal class DeviceTests: XCTestCase {
             "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone")),
             "/api/v1/device_groups/37": Response(data: loadFixture("DeviceGroup_Interns"))
         ])
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Device.get(id: 121) { deviceResult in
+        Device.get(s.networking, id: 121) { deviceResult in
             guard case let .success(device) = deviceResult else {
                 return XCTFail("Expected .success, got \(deviceResult)")
             }
             XCTAssertEqual(device.deviceGroup.relatedId, 37)
 
-            device.deviceGroup.get { deviceGroupResult in
+            device.deviceGroup.get(s.networking) { deviceGroupResult in
                 guard case let .success(deviceGroup) = deviceGroupResult else {
                     return XCTFail("Expected .success, got \(deviceGroupResult)")
                 }
@@ -60,15 +60,15 @@ internal class DeviceTests: XCTestCase {
             "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone")),
             "/api/v1/device_groups/37": Response(data: Data(), code: 404)
         ])
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Device.get(id: 121) { deviceResult in
+        Device.get(s.networking, id: 121) { deviceResult in
             guard case let .success(device) = deviceResult else {
                 return XCTFail("Expected .success, got \(deviceResult)")
             }
             XCTAssertEqual(device.deviceGroup.relatedId, 37)
 
-            device.deviceGroup.get { deviceGroupResult in
+            device.deviceGroup.get(s.networking) { deviceGroupResult in
                 guard case let .failure(error) = deviceGroupResult else {
                     return XCTFail("Expected .failure, got \(deviceGroupResult)")
                 }
@@ -91,14 +91,14 @@ internal class DeviceTests: XCTestCase {
             "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone")),
             "/api/v1/devices/121/custom_attribute_values": Response(data: json, code: 500)
         ])
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Device.get(id: 121) { deviceResult in
+        Device.get(s.networking, id: 121) { deviceResult in
             guard case let .success(device) = deviceResult else {
                 return XCTFail("Expected .success, got \(deviceResult)")
             }
 
-            device.customAttributes.get("device_color") { customAttributesResult in
+            device.customAttributes.get(s.networking, "device_color") { customAttributesResult in
                 guard case let .failure(error) = customAttributesResult else {
                     return XCTFail("Expected .failure, got \(customAttributesResult)")
                 }
@@ -115,14 +115,14 @@ internal class DeviceTests: XCTestCase {
             "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone")),
             "/api/v1/devices/121/custom_attribute_values": Response(data: loadFixture("Device_MikesiPhone_CustomAttributeValues"))
         ])
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Device.get(id: 121) { deviceResult in
+        Device.get(s.networking, id: 121) { deviceResult in
             guard case let .success(device) = deviceResult else {
                 return XCTFail("Expected .success, got \(deviceResult)")
             }
 
-            device.customAttributes.getAll { customAttributesResult in
+            device.customAttributes.getAll(s.networking) { customAttributesResult in
                 guard case let .success(customAttributes) = customAttributesResult else {
                     return XCTFail("Expected .success, got \(customAttributesResult)")
                 }
@@ -137,14 +137,14 @@ internal class DeviceTests: XCTestCase {
             "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone")),
             "/api/v1/devices/121/custom_attribute_values": Response(data: loadFixture("Device_MikesiPhone_CustomAttributeValues"))
         ])
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Device.get(id: 121) { deviceResult in
+        Device.get(s.networking, id: 121) { deviceResult in
             guard case let .success(device) = deviceResult else {
                 return XCTFail("Expected .success, got \(deviceResult)")
             }
 
-            device.customAttributes.get("device_color") { customAttributesResult in
+            device.customAttributes.get(s.networking, "device_color") { customAttributesResult in
                 guard case let .success(customAttribute) = customAttributesResult else {
                     return XCTFail("Expected .success, got \(customAttributesResult)")
                 }
@@ -158,14 +158,14 @@ internal class DeviceTests: XCTestCase {
             "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone")),
             "/api/v1/devices/121/custom_attribute_values": Response(data: loadFixture("Device_MikesiPhone_CustomAttributeValues"))
         ])
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Device.get(id: 121) { deviceResult in
+        Device.get(s.networking, id: 121) { deviceResult in
             guard case let .success(device) = deviceResult else {
                 return XCTFail("Expected .success, got \(deviceResult)")
             }
 
-            device.customAttributes.get("nonexistent_attribute") { customAttributesResult in
+            device.customAttributes.get(s.networking, "nonexistent_attribute") { customAttributesResult in
                 guard case let .failure(error) = customAttributesResult else {
                     return XCTFail("Expected .failure, got \(customAttributesResult)")
                 }

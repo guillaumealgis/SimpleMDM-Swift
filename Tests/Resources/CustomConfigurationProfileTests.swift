@@ -10,9 +10,9 @@ internal class CustomConfigurationProfileTests: XCTestCase {
     func testGetAllCustomConfigurationProfiles() {
         let json = loadFixture("CustomConfigurationProfiles")
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        CustomConfigurationProfile.getAll { result in
+        CustomConfigurationProfile.getAll(s.networking) { result in
             guard case let .success(customAttributes) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -23,9 +23,9 @@ internal class CustomConfigurationProfileTests: XCTestCase {
     func testGetACustomConfigurationProfile() {
         let json = loadFixture("CustomConfigurationProfile_MunkiConfiguration")
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        CustomConfigurationProfile.get(id: 293_814) { result in
+        CustomConfigurationProfile.get(s.networking, id: 293_814) { result in
             guard case let .success(customConfigurationProfile) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -38,15 +38,15 @@ internal class CustomConfigurationProfileTests: XCTestCase {
             "/api/v1/custom_configuration_profiles/293814": Response(data: loadFixture("CustomConfigurationProfile_MunkiConfiguration")),
             "/api/v1/device_groups/38": Response(data: loadFixture("DeviceGroup_Executives"))
         ])
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        CustomConfigurationProfile.get(id: 293_814) { ccpResult in
+        CustomConfigurationProfile.get(s.networking, id: 293_814) { ccpResult in
             guard case let .success(customConfigurationProfile) = ccpResult else {
                 return XCTFail("Expected .success, got \(ccpResult)")
             }
             XCTAssertEqual(customConfigurationProfile.deviceGroups.relatedIds, [38])
 
-            customConfigurationProfile.deviceGroups.getAll { deviceGroupsResult in
+            customConfigurationProfile.deviceGroups.getAll(s.networking) { deviceGroupsResult in
                 guard case let .success(deviceGroups) = deviceGroupsResult else {
                     return XCTFail("Expected .success, got \(deviceGroupsResult)")
                 }

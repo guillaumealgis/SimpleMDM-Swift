@@ -10,9 +10,9 @@ internal class CustomAttributeTests: XCTestCase {
     func testGetAllCustomAttributes() {
         let json = loadFixture("CustomAttributes")
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        CustomAttribute.getAll { result in
+        CustomAttribute.getAll(s.networking) { result in
             guard case let .success(customAttributes) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -23,9 +23,9 @@ internal class CustomAttributeTests: XCTestCase {
     func testGetACustomAttribute() {
         let json = loadFixture("CustomAttribute_EmailAddress")
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        CustomAttribute.get(id: "email_address") { result in
+        CustomAttribute.get(s.networking, id: "email_address") { result in
             guard case let .success(customAttribute) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }

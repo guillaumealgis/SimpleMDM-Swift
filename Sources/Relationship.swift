@@ -83,7 +83,12 @@ public struct RelatedToOne<T: GettableResource>: Relationship {
     ///
     /// - Parameter completion: A completion handler called with the fetched resource, or an error.
     public func get(completion: @escaping CompletionClosure<T>) {
-        T.get(id: relation.id, completion: completion)
+        get(SimpleMDM.shared.networking, completion: completion)
+    }
+
+    /// Actual implementation of the `get(completion:)` method, with a injectable `Networking` parameter.
+    internal func get(_ networking: Networking, completion: @escaping CompletionClosure<T>) {
+        T.get(networking, id: relation.id, completion: completion)
     }
 }
 
@@ -126,7 +131,12 @@ public struct RelatedToMany<Element: GettableResource>: Relationship, RemoteColl
     ///   - index: The index of the resource to fetch in the collection.
     ///   - completion: A completion handler called with the fetched resource, or an error.
     public func get(at index: Int, completion: @escaping CompletionClosure<Element>) {
-        Element.get(id: relations[index].id, completion: completion)
+        get(SimpleMDM.shared.networking, at: index, completion: completion)
+    }
+
+    /// Actual implementation of the `get(at:completion:)` method, with a injectable `Networking` parameter.
+    internal func get(_ networking: Networking, at index: Int, completion: @escaping CompletionClosure<Element>) {
+        Element.get(networking, id: relations[index].id, completion: completion)
     }
 
     /// Fetch the related resource with the identifier `id` in the collection from the server.
@@ -135,15 +145,29 @@ public struct RelatedToMany<Element: GettableResource>: Relationship, RemoteColl
     ///   - index: The index of the resource to fetch in the collection.
     ///   - completion: A completion handler called with the fetched resource, or an error.
     public func get(_ id: Element.Identifier, completion: @escaping CompletionClosure<Element>) {
-        Element.get(id: id, completion: completion)
+        get(SimpleMDM.shared.networking, id, completion: completion)
+    }
+
+    /// Actual implementation of the `get(_:completion:)` method, with a injectable `Networking` parameter.
+    internal func get(_ networking: Networking, _ id: Element.Identifier, completion: @escaping CompletionClosure<Element>) {
+        Element.get(networking, id: id, completion: completion)
     }
 
     /// Fetch all related resources from the server.
     ///
     /// The resources in the resulting collection a guaranteed to be in the same order as their id in `relatedIds`.
     ///
+    /// - Warning: Because the SimpleMDM API offers no way to fetch multiple resources by id at once, this method will
+    ///   fetch resources one by one, and then merge the result in an array. This means that calling this method will
+    ///   make as many HTTP requests to the SimpleMDM API as there is resources in the relation.
+    ///
     /// - Parameter completion: A completion handler called with the fetched resources, or an error.
     public func getAll(completion: @escaping CompletionClosure<[Element]>) {
+        getAll(SimpleMDM.shared.networking, completion: completion)
+    }
+
+    /// Actual implementation of the `getAll(completion:)` method, with a injectable `Networking` parameter.
+    internal func getAll(_ networking: Networking, completion: @escaping CompletionClosure<[Element]>) {
         var resources = [Element]()
         var error: Error?
 
@@ -152,7 +176,7 @@ public struct RelatedToMany<Element: GettableResource>: Relationship, RemoteColl
 
         for i in 0 ..< relations.count {
             group.enter()
-            get(at: i) { result in
+            get(networking, at: i) { result in
                 semaphore.wait()
                 switch result {
                 case let .success(resource):
@@ -221,7 +245,12 @@ public struct RelatedToManyNested<Parent: IdentifiableResource, Element: Identif
     ///   - index: The index of the resource to fetch in the collection.
     ///   - completion: A completion handler called with the fetched resource, or an error.
     public func get(_ id: Element.Identifier, completion: @escaping (Result<Element>) -> Void) {
-        getAll { result in
+        get(SimpleMDM.shared.networking, id, completion: completion)
+    }
+
+    /// Actual implementation of the `get(_:completion:)` method, with a injectable `Networking` parameter.
+    internal func get(_ networking: Networking, _ id: Element.Identifier, completion: @escaping (Result<Element>) -> Void) {
+        getAll(networking) { result in
             switch result {
             case let .success(nestedResources):
                 guard let resource = nestedResources.first(where: { $0.id == id }) else {
@@ -240,7 +269,12 @@ public struct RelatedToManyNested<Parent: IdentifiableResource, Element: Identif
     ///
     /// - Parameter completion: A completion handler called with the fetched resources, or an error.
     public func getAll(completion: @escaping CompletionClosure<[Element]>) {
-        SimpleMDM.shared.networking.getDataForNestedResources(ofType: Element.self, inParent: Parent.self, withId: parentId) { networkResult in
+        getAll(SimpleMDM.shared.networking, completion: completion)
+    }
+
+    /// Actual implementation of the `getAll(completion:)` method, with a injectable `Networking` parameter.
+    internal func getAll(_ networking: Networking, completion: @escaping CompletionClosure<[Element]>) {
+        networking.getDataForNestedResources(ofType: Element.self, inParent: Parent.self, withId: parentId) { networkResult in
             let decoding = Decoding()
             let result = decoding.decodeNetworkingResult(networkResult, expectedPayloadType: ListPayload<Element>.self)
             completion(result)

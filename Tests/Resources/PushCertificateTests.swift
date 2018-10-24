@@ -10,9 +10,9 @@ internal class PushCertificateTests: XCTestCase {
     func testGetPushCertificate() {
         let json = loadFixture("PushCertificate")
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        PushCertificate.get { result in
+        PushCertificate.get(s.networking) { result in
             guard case let .success(pushCertificate) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }

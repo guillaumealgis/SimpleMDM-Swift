@@ -10,9 +10,9 @@ internal class AccountTests: XCTestCase {
     func testGetAccount() {
         let json = loadFixture("Account")
         let session = URLSessionMock(data: json, responseCode: 200)
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        Account.get { result in
+        Account.get(s.networking) { result in
             guard case let .success(account) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }

@@ -33,7 +33,12 @@ public extension UniqueResource {
     ///
     /// - Parameter completion: A completion handler called with the resource, or an error.
     static func get(completion: @escaping CompletionClosure<Self>) {
-        SimpleMDM.shared.networking.getDataForUniqueResource(ofType: Self.self) { networkResult in
+        get(SimpleMDM.shared.networking, completion: completion)
+    }
+
+    /// Actual implementation of the `get(completion:)` static method, with a injectable `Networking` parameter.
+    internal static func get(_ networking: Networking, completion: @escaping CompletionClosure<Self>) {
+        networking.getDataForUniqueResource(ofType: Self.self) { networkResult in
             let decoding = Decoding()
             let result = decoding.decodeNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
             completion(result)
@@ -70,7 +75,12 @@ public extension GettableResource {
     ///   - id: The unique identifier of the resource to get.
     ///   - completion: A completion handler called with the resource, or an error.
     static func get(id: Identifier, completion: @escaping CompletionClosure<Self>) {
-        SimpleMDM.shared.networking.getDataForResource(ofType: Self.self, withId: id) { networkResult in
+        get(SimpleMDM.shared.networking, id: id, completion: completion)
+    }
+
+    /// Actual implementation of the `get(id:completion:)` method, with a injectable `Networking` parameter.
+    internal static func get(_ networking: Networking, id: Identifier, completion: @escaping CompletionClosure<Self>) {
+        networking.getDataForResource(ofType: Self.self, withId: id) { networkResult in
             let decoding = Decoding()
             let result = decoding.decodeNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
             if case let .success(resource) = result, resource.id != id {
@@ -107,31 +117,37 @@ public extension ListableResource {
     ///
     /// - Parameter completion: A completion handler called with a list of resources, or an error.
     static func getAll(completion: @escaping CompletionClosure<[Self]>) {
+        getAll(SimpleMDM.shared.networking, completion: completion)
+    }
+
+    /// Actual implementation of the `getAll(completion:)` method, with a injectable `Networking` parameter.
+    internal static func getAll(_ networking: Networking, completion: @escaping CompletionClosure<[Self]>) {
         let accumulator = [Self]()
         let cursor = Cursor<Self>()
-        getNext(accumulator: accumulator, cursor: cursor, completion: completion)
+        getNext(networking, accumulator: accumulator, cursor: cursor, completion: completion)
     }
 
     /// Recursive method fetching all resources of this type page by page.
     ///
     /// - Parameters:
+    ///   - networking: An injectable object used to perform the network requests.
     ///   - accumulator: A list of all the resources fetched up to this point.
     ///   - cursor: A cursor used to fetch the resources.
     ///   - completion: A completion handler called with the content of `accumulator` once we arrive to the end of the
     ///     list, or an error if one occurs.
-    private static func getNext(accumulator: [Self], cursor: Cursor<Self>, completion: @escaping CompletionClosure<[Self]>) {
+    private static func getNext(_ networking: Networking, accumulator: [Self], cursor: Cursor<Self>, completion: @escaping CompletionClosure<[Self]>) {
         if !cursor.hasMore {
             completion(.success(accumulator))
             return
         }
 
-        cursor.next(CursorLimit.max.rawValue) { result in
+        cursor.next(networking, CursorLimit.max.rawValue) { result in
             switch result {
             case let .failure(error):
                 completion(.failure(error))
             case let .success(resources):
                 let accumulator = accumulator + resources
-                getNext(accumulator: accumulator, cursor: cursor, completion: completion)
+                getNext(networking, accumulator: accumulator, cursor: cursor, completion: completion)
             }
         }
     }

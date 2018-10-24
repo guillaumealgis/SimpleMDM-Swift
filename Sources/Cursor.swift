@@ -50,6 +50,11 @@ public class Cursor<T: ListableResource> {
     ///     be returned by the SimpleMDM API.
     ///   - completion: A completion handler called with a list of the fetched resources, or an error.
     func next(_ limit: Int? = nil, completion: @escaping CompletionClosure<[T]>) {
+        next(SimpleMDM.shared.networking, limit, completion: completion)
+    }
+
+    /// Actual implementation of the `next(_:completion:)` method, with a injectable `Networking` parameter.
+    internal func next(_ networking: Networking, _ limit: Int? = nil, completion: @escaping CompletionClosure<[T]>) {
         if let limit = limit {
             guard limit >= CursorLimit.min.rawValue && limit <= CursorLimit.max.rawValue else {
                 completion(.failure(SimpleMDMError.invalidLimit(limit)))
@@ -58,12 +63,12 @@ public class Cursor<T: ListableResource> {
         }
 
         serialQueue.async {
-            self.fetchNextData(limit: limit, completion: completion)
+            self.fetchNextData(networking, limit: limit, completion: completion)
         }
     }
 
-    internal func fetchNextData(limit: Int?, completion: @escaping CompletionClosure<[T]>) {
-        SimpleMDM.shared.networking.getDataForResources(ofType: T.self, startingAfter: lastFetchedId, limit: limit) { networkingResult in
+    internal func fetchNextData(_ networking: Networking, limit: Int?, completion: @escaping CompletionClosure<[T]>) {
+        networking.getDataForResources(ofType: T.self, startingAfter: lastFetchedId, limit: limit) { networkingResult in
             self.handleNetworkingResult(networkingResult, completion: completion)
         }
     }
@@ -110,8 +115,8 @@ public class NestedResourceCursor<Parent: IdentifiableResource, T: ListableResou
         super.init()
     }
 
-    override func fetchNextData(limit: Int?, completion: @escaping (Result<[T]>) -> Void) {
-        SimpleMDM.shared.networking.getDataForNestedListableResources(ofType: T.self, inParent: Parent.self, withId: parentId, startingAfter: lastFetchedId, limit: limit) { networkingResult in
+    override func fetchNextData(_ networking: Networking, limit: Int?, completion: @escaping (Result<[T]>) -> Void) {
+        networking.getDataForNestedListableResources(ofType: T.self, inParent: Parent.self, withId: parentId, startingAfter: lastFetchedId, limit: limit) { networkingResult in
             self.handleNetworkingResult(networkingResult, completion: completion)
         }
     }

@@ -146,9 +146,9 @@ internal class NetworkingTests: XCTestCase {
         }
 
         let session = URLSessionMock()
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        FakeResource.get { result in
+        FakeResource.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -168,9 +168,9 @@ internal class NetworkingTests: XCTestCase {
         }
 
         let session = URLSessionMock()
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        FakeResource.getAll { result in
+        FakeResource.getAll(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -190,9 +190,9 @@ internal class NetworkingTests: XCTestCase {
         }
 
         let session = URLSessionMock()
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        FakeResource.get(id: "anID") { result in
+        FakeResource.get(s.networking, id: "anID") { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -221,9 +221,9 @@ internal class NetworkingTests: XCTestCase {
         let nestedResources = RelatedToManyNested<FakeResource, FakeNestedResource>(parentId: "fakeId")
 
         let session = URLSessionMock()
-        SimpleMDM.useSessionMock(session)
+        let s = SimpleMDM(sessionMock: session)
 
-        nestedResources.getAll { result in
+        nestedResources.getAll(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
