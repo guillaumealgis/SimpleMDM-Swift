@@ -8,6 +8,16 @@
 
 import Foundation
 
+private extension Resource {
+    func decodeAndValidateType<K: CodingKey>(forKey key: K, in container: KeyedDecodingContainer<K>, expecting expectedType: String) throws {
+        let type = try container.decode(String.self, forKey: key)
+        guard type == expectedType else {
+            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
+            throw DecodingError.dataCorruptedError(forKey: key, in: container, debugDescription: description)
+        }
+    }
+}
+
 // swiftlint:disable file_length function_body_length
 
 // MARK: - Account
@@ -39,16 +49,11 @@ extension Account: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        let type = try payload.decode(String.self, forKey: .type)
-        let expectedType = "account"
-        guard type == expectedType else {
-            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
-        }
-
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         name = try attributes.decode(String.self, forKey: .name)
         appleStoreCountryCode = try attributes.decode(String.self, forKey: .appleStoreCountryCode)
+
+        try decodeAndValidateType(forKey: .type, in: payload, expecting: "account")
     }
 }
 
@@ -87,13 +92,6 @@ extension App: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        let type = try payload.decode(String.self, forKey: .type)
-        let expectedType = "app"
-        guard type == expectedType else {
-            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
-        }
-
         id = try payload.decode(Identifier.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
@@ -103,6 +101,8 @@ extension App: Decodable {
         itunesStoreId = try attributes.decodeIfPresent(Int.self, forKey: .itunesStoreId)
         version = try attributes.decodeIfPresent(String.self, forKey: .version)
         managedConfigs = NestedResourceCursor<App, ManagedConfig>(parentId: id)
+
+        try decodeAndValidateType(forKey: .type, in: payload, expecting: "app")
     }
 }
 
@@ -138,19 +138,14 @@ extension App.ManagedConfig: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        let type = try payload.decode(String.self, forKey: .type)
-        let expectedType = "managed_config"
-        guard type == expectedType else {
-            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
-        }
-
         id = try payload.decode(Identifier.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         key = try attributes.decode(String.self, forKey: .key)
         value = try attributes.decode(String.self, forKey: .value)
         valueType = try attributes.decode(String.self, forKey: .valueType)
+
+        try decodeAndValidateType(forKey: .type, in: payload, expecting: "managed_config")
     }
 }
 
@@ -192,13 +187,6 @@ extension AppGroup: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        let type = try payload.decode(String.self, forKey: .type)
-        let expectedType = "app_group"
-        guard type == expectedType else {
-            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
-        }
-
         id = try payload.decode(Identifier.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
@@ -209,6 +197,8 @@ extension AppGroup: Decodable {
         apps = try relationships.decode(RelatedToMany<App>.self, forKey: .apps)
         deviceGroups = try relationships.decode(RelatedToMany<DeviceGroup>.self, forKey: .deviceGroups)
         devices = try relationships.decode(RelatedToMany<Device>.self, forKey: .devices)
+
+        try decodeAndValidateType(forKey: .type, in: payload, expecting: "app_group")
     }
 }
 
@@ -242,17 +232,12 @@ extension CustomAttribute: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        let type = try payload.decode(String.self, forKey: .type)
-        let expectedType = "custom_attribute"
-        guard type == expectedType else {
-            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
-        }
-
         id = try payload.decode(Identifier.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         name = try attributes.decode(String.self, forKey: .name)
+
+        try decodeAndValidateType(forKey: .type, in: payload, expecting: "custom_attribute")
     }
 }
 
@@ -291,13 +276,6 @@ extension CustomConfigurationProfile: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        let type = try payload.decode(String.self, forKey: .type)
-        let expectedType = "custom_configuration_profile"
-        guard type == expectedType else {
-            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
-        }
-
         id = try payload.decode(Identifier.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
@@ -305,6 +283,8 @@ extension CustomConfigurationProfile: Decodable {
 
         let relationships = try payload.nestedContainer(keyedBy: RelationshipKeys.self, forKey: .relationships)
         deviceGroups = try relationships.decode(RelatedToMany<DeviceGroup>.self, forKey: .deviceGroups)
+
+        try decodeAndValidateType(forKey: .type, in: payload, expecting: "custom_configuration_profile")
     }
 }
 
@@ -399,13 +379,6 @@ extension Device: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        let type = try payload.decode(String.self, forKey: .type)
-        let expectedType = "device"
-        guard type == expectedType else {
-            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
-        }
-
         id = try payload.decode(Identifier.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
@@ -470,6 +443,8 @@ extension Device: Decodable {
         let relationships = try payload.nestedContainer(keyedBy: RelationshipKeys.self, forKey: .relationships)
         deviceGroup = try relationships.decode(RelatedToOne<DeviceGroup>.self, forKey: .deviceGroup)
         customAttributes = RelatedToManyNested<Device, CustomAttributeValue>(parentId: id)
+
+        try decodeAndValidateType(forKey: .type, in: payload, expecting: "device")
     }
 }
 
@@ -503,17 +478,12 @@ extension Device.CustomAttributeValue: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        let type = try payload.decode(String.self, forKey: .type)
-        let expectedType = "custom_attribute_value"
-        guard type == expectedType else {
-            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
-        }
-
         id = try payload.decode(Identifier.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         value = try attributes.decode(String.self, forKey: .value)
+
+        try decodeAndValidateType(forKey: .type, in: payload, expecting: "custom_attribute_value")
     }
 }
 
@@ -547,17 +517,12 @@ extension DeviceGroup: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        let type = try payload.decode(String.self, forKey: .type)
-        let expectedType = "device_group"
-        guard type == expectedType else {
-            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
-        }
-
         id = try payload.decode(Identifier.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         name = try attributes.decode(String.self, forKey: .name)
+
+        try decodeAndValidateType(forKey: .type, in: payload, expecting: "device_group")
     }
 }
 
@@ -598,13 +563,6 @@ extension InstalledApp: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        let type = try payload.decode(String.self, forKey: .type)
-        let expectedType = "installed_app"
-        guard type == expectedType else {
-            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
-        }
-
         id = try payload.decode(Identifier.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
@@ -616,6 +574,8 @@ extension InstalledApp: Decodable {
         dynamicSize = try attributes.decode(Int.self, forKey: .dynamicSize)
         managed = try attributes.decode(Bool.self, forKey: .managed)
         discoveredAt = try attributes.decode(Date.self, forKey: .discoveredAt)
+
+        try decodeAndValidateType(forKey: .type, in: payload, expecting: "installed_app")
     }
 }
 
@@ -648,15 +608,10 @@ extension PushCertificate: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        let type = try payload.decode(String.self, forKey: .type)
-        let expectedType = "push_certificate"
-        guard type == expectedType else {
-            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
-        }
-
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         appleId = try attributes.decode(String.self, forKey: .appleId)
         expiresAt = try attributes.decode(Date.self, forKey: .expiresAt)
+
+        try decodeAndValidateType(forKey: .type, in: payload, expecting: "push_certificate")
     }
 }

@@ -156,6 +156,7 @@ internal class NetworkingTests: XCTestCase {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
             }
             XCTAssertEqual(internalError, InternalError.malformedURL)
+            XCTAssertEqual(internalError.localizedDescription, "The URL could not be constructed")
         }
     }
 
@@ -178,6 +179,7 @@ internal class NetworkingTests: XCTestCase {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
             }
             XCTAssertEqual(internalError, InternalError.malformedURL)
+            XCTAssertEqual(internalError.localizedDescription, "The URL could not be constructed")
         }
     }
 
@@ -200,6 +202,7 @@ internal class NetworkingTests: XCTestCase {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
             }
             XCTAssertEqual(internalError, InternalError.malformedURL)
+            XCTAssertEqual(internalError.localizedDescription, "The URL could not be constructed")
         }
     }
 
@@ -231,6 +234,71 @@ internal class NetworkingTests: XCTestCase {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
             }
             XCTAssertEqual(internalError, InternalError.malformedURL)
+            XCTAssertEqual(internalError.localizedDescription, "The URL could not be constructed")
+        }
+    }
+
+    func testNestedListableResourceWithMalformedParentResourceURL() {
+        struct FakeResource: IdentifiableResource {
+            typealias Identifier = String
+
+            var id: String
+            static var endpointName: String { return "💩" }
+        }
+
+        struct FakeNestedResource: ListableResource {
+            typealias Identifier = String
+
+            var id: String
+            static var endpointName: String { return "nested_endpoint" }
+        }
+
+        let nestedResources = NestedResourceCursor<FakeResource, FakeNestedResource>(parentId: "fakeId")
+
+        let session = URLSessionMock()
+        let s = SimpleMDM(sessionMock: session)
+
+        nestedResources.next(s.networking) { result in
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let internalError = error as? InternalError else {
+                return XCTFail("Expected error to be a InternalError, got \(error)")
+            }
+            XCTAssertEqual(internalError, InternalError.malformedURL)
+            XCTAssertEqual(internalError.localizedDescription, "The URL could not be constructed")
+        }
+    }
+
+    func testMalformedNestedListableResourceURL() {
+        struct FakeResource: IdentifiableResource {
+            typealias Identifier = String
+
+            var id: String
+            static var endpointName: String { return "fake_endpoint" }
+        }
+
+        struct FakeNestedResource: ListableResource {
+            typealias Identifier = String
+
+            var id: String
+            static var endpointName: String { return "💩" }
+        }
+
+        let nestedResources = NestedResourceCursor<FakeResource, FakeNestedResource>(parentId: "fakeId")
+
+        let session = URLSessionMock()
+        let s = SimpleMDM(sessionMock: session)
+
+        nestedResources.next(s.networking) { result in
+            guard case let .failure(error) = result else {
+                return XCTFail("Expected .failure, got \(result)")
+            }
+            guard let internalError = error as? InternalError else {
+                return XCTFail("Expected error to be a InternalError, got \(error)")
+            }
+            XCTAssertEqual(internalError, InternalError.malformedURL)
+            XCTAssertEqual(internalError.localizedDescription, "The URL could not be constructed")
         }
     }
 

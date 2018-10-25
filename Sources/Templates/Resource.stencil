@@ -5,6 +5,16 @@
 
 import Foundation
 
+private extension Resource {
+    func decodeAndValidateType<K: CodingKey>(forKey key: K, in container: KeyedDecodingContainer<K>, expecting expectedType: String) throws {
+        let type = try container.decode(String.self, forKey: key)
+        guard type == expectedType else {
+            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
+            throw DecodingError.dataCorruptedError(forKey: key, in: container, debugDescription: description)
+        }
+    }
+}
+
 // swiftlint:disable file_length function_body_length
 {% for type in types.structs where type.implements.Resource %}
 
@@ -56,13 +66,6 @@ extension {{ type.name }}: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        let type = try payload.decode(String.self, forKey: .type)
-        let expectedType = "{{ type.localName|camelToSnakeCase }}"
-        guard type == expectedType else {
-            let description = "Expected type of resource to be \"\(expectedType)\" but got \"\(type)\""
-            throw DecodingError.dataCorruptedError(forKey: .type, in: payload, debugDescription: description)
-        }
-
         {% if type.implements.IdentifiableResource %}
         id = try payload.decode(Identifier.self, forKey: .id)
 
@@ -85,6 +88,8 @@ extension {{ type.name }}: Decodable {
         {% for variable in type.instanceVariables where variable.type.implements.NestedResourceAttribute %}
         {{ variable.name }} = {{ variable.typeName }}(parentId: id)
         {% endfor %}
+
+        try decodeAndValidateType(forKey: .type, in: payload, expecting: "{{ type.localName|camelToSnakeCase }}")
     }
 }
 {% endfor %}
