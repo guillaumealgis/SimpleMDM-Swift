@@ -12,11 +12,16 @@ internal class PushCertificateTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         PushCertificate.get(s.networking) { result in
             guard case let .success(pushCertificate) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
             XCTAssertEqual(pushCertificate.appleId, "devops@example.org")
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 }

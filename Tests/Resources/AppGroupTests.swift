@@ -12,12 +12,17 @@ internal class AppGroupTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         AppGroup.getAll(s.networking) { result in
             guard case let .success(appGroups) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
             XCTAssertEqual(appGroups.count, 2)
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testGetAnAppGroup() {
@@ -25,12 +30,17 @@ internal class AppGroupTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         AppGroup.get(s.networking, id: 38) { result in
             guard case let .success(appGroup) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
             XCTAssertEqual(appGroup.name, "Productivity Apps")
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testErrorWhileFetchingRelatedToMany() {
@@ -40,6 +50,8 @@ internal class AppGroupTests: XCTestCase {
             "/api/v1/apps/67": Response(data: Data(), code: 404)
         ])
         let s = SimpleMDM(sessionMock: session)
+
+        let expectation = self.expectation(description: "Callback called")
 
         AppGroup.get(s.networking, id: 38) { appGroupResult in
             guard case let .success(appGroup) = appGroupResult else {
@@ -55,18 +67,22 @@ internal class AppGroupTests: XCTestCase {
                     return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
                 }
                 XCTAssertEqual(simpleMDMError, SimpleMDMError.doesNotExist)
+                expectation.fulfill()
             }
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testFetchingRelatedToManyAsynchronouslyWithDelay() {
-        let expectation = XCTestExpectation(description: "testFetchingRelatedToManyAsynchronouslyWithDelay expectation")
         let session = URLSessionMock(routes: [
             "/api/v1/app_groups/38": Response(data: loadFixture("AppGroup_ProductivityApps")),
             "/api/v1/apps/63": Response(data: loadFixture("App_Trello"), delay: .milliseconds(50)),
             "/api/v1/apps/67": Response(data: loadFixture("App_Evernote"), delay: .milliseconds(10))
         ])
         let s = SimpleMDM(sessionMock: session)
+
+        let expectation = self.expectation(description: "Callback called")
 
         AppGroup.get(s.networking, id: 38) { appGroupResult in
             guard case let .success(appGroup) = appGroupResult else {
@@ -86,8 +102,7 @@ internal class AppGroupTests: XCTestCase {
             }
         }
 
-        let result = XCTWaiter.wait(for: [expectation], timeout: 1.0)
-        XCTAssertEqual(result, .completed)
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testGetAnAppGroupRelatedApps() {
@@ -97,6 +112,8 @@ internal class AppGroupTests: XCTestCase {
             "/api/v1/apps/67": Response(data: loadFixture("App_Evernote"))
         ])
         let s = SimpleMDM(sessionMock: session)
+
+        let expectation = self.expectation(description: "Callback called")
 
         AppGroup.get(s.networking, id: 38) { appGroupResult in
             guard case let .success(appGroup) = appGroupResult else {
@@ -111,8 +128,11 @@ internal class AppGroupTests: XCTestCase {
                 XCTAssertEqual(apps.map { $0.id }, [63, 67])
                 XCTAssertEqual(apps[0].name, "Trello")
                 XCTAssertEqual(apps[1].name, "Evernote")
+                expectation.fulfill()
             }
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testGetAnAppGroupRelatedDeviceGroups() {
@@ -122,6 +142,8 @@ internal class AppGroupTests: XCTestCase {
             "/api/v1/device_groups/38": Response(data: loadFixture("DeviceGroup_Executives"))
         ])
         let s = SimpleMDM(sessionMock: session)
+
+        let expectation = self.expectation(description: "Callback called")
 
         AppGroup.get(s.networking, id: 38) { appGroupResult in
             guard case let .success(appGroup) = appGroupResult else {
@@ -136,8 +158,11 @@ internal class AppGroupTests: XCTestCase {
                 XCTAssertEqual(deviceGroups.map { $0.id }, [37, 38])
                 XCTAssertEqual(deviceGroups[0].name, "Interns")
                 XCTAssertEqual(deviceGroups[1].name, "Executives")
+                expectation.fulfill()
             }
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testGetAnAppGroupRelatedDevices() {
@@ -146,6 +171,8 @@ internal class AppGroupTests: XCTestCase {
             "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone"))
         ])
         let s = SimpleMDM(sessionMock: session)
+
+        let expectation = self.expectation(description: "Callback called")
 
         AppGroup.get(s.networking, id: 38) { appGroupResult in
             guard case let .success(appGroup) = appGroupResult else {
@@ -159,8 +186,11 @@ internal class AppGroupTests: XCTestCase {
                 }
                 XCTAssertEqual(devices.map { $0.id }, [121])
                 XCTAssertEqual(devices[0].name, "Mike's iPhone")
+                expectation.fulfill()
             }
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testGetAnAppGroupRelatedDeviceAtPosition() {
@@ -169,6 +199,8 @@ internal class AppGroupTests: XCTestCase {
             "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone"))
         ])
         let s = SimpleMDM(sessionMock: session)
+
+        let expectation = self.expectation(description: "Callback called")
 
         AppGroup.get(s.networking, id: 38) { appGroupResult in
             guard case let .success(appGroup) = appGroupResult else {
@@ -181,8 +213,11 @@ internal class AppGroupTests: XCTestCase {
                     return XCTFail("Expected .success, got \(deviceResult)")
                 }
                 XCTAssertEqual(device.name, "Mike's iPhone")
+                expectation.fulfill()
             }
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testGetAnAppGroupRelatedDeviceById() {
@@ -191,6 +226,8 @@ internal class AppGroupTests: XCTestCase {
             "/api/v1/devices/121": Response(data: loadFixture("Device_MikesiPhone"))
         ])
         let s = SimpleMDM(sessionMock: session)
+
+        let expectation = self.expectation(description: "Callback called")
 
         AppGroup.get(s.networking, id: 38) { appGroupResult in
             guard case let .success(appGroup) = appGroupResult else {
@@ -203,7 +240,10 @@ internal class AppGroupTests: XCTestCase {
                     return XCTFail("Expected .success, got \(deviceResult)")
                 }
                 XCTAssertEqual(device.name, "Mike's iPhone")
+                expectation.fulfill()
             }
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 }

@@ -13,6 +13,8 @@ internal class CursorTests: XCTestCase {
     }
 
     func testCursorReturnsErrorWithNegativeLimit() {
+        let expectation = self.expectation(description: "Cursor next")
+
         let cursor = Cursor<Device>()
         cursor.next(-1) { result in
             guard case let .failure(error) = result else {
@@ -23,10 +25,15 @@ internal class CursorTests: XCTestCase {
             }
             XCTAssertEqual(simpleMDMError, SimpleMDMError.invalidLimit(-1))
             XCTAssertTrue(simpleMDMError.localizedDescription.contains("Limit \"-1\" is invalid"))
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testCursorReturnsErrorWithLimitEqualToZero() {
+        let expectation = self.expectation(description: "Cursor next")
+
         let cursor = Cursor<Device>()
         cursor.next(0) { result in
             guard case let .failure(error) = result else {
@@ -37,10 +44,15 @@ internal class CursorTests: XCTestCase {
             }
             XCTAssertEqual(simpleMDMError, SimpleMDMError.invalidLimit(0))
             XCTAssertTrue(simpleMDMError.localizedDescription.contains("Limit \"0\" is invalid"))
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testCursorReturnsErrorWithLimitOverAHundred() {
+        let expectation = self.expectation(description: "Cursor next")
+
         let cursor = Cursor<Device>()
         cursor.next(101) { result in
             guard case let .failure(error) = result else {
@@ -51,13 +63,18 @@ internal class CursorTests: XCTestCase {
             }
             XCTAssertEqual(simpleMDMError, SimpleMDMError.invalidLimit(101))
             XCTAssertTrue(simpleMDMError.localizedDescription.contains("Limit \"101\" is invalid"))
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testCursorFetchOnceWithDefaultParamters() {
         let json = loadFixture("Apps")
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
+
+        let expectation = self.expectation(description: "Cursor next")
 
         let cursor = Cursor<App>()
         cursor.next(s.networking) { result in
@@ -66,7 +83,10 @@ internal class CursorTests: XCTestCase {
             }
             XCTAssertEqual(apps.count, 5)
             XCTAssertFalse(cursor.hasMore)
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testCursorFetchedNothingButAdvertisedMore() {
@@ -79,6 +99,8 @@ internal class CursorTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Cursor next")
+
         let cursor = Cursor<App>()
         cursor.next(s.networking) { result in
             guard case let .failure(error) = result else {
@@ -89,7 +111,10 @@ internal class CursorTests: XCTestCase {
             }
             XCTAssertEqual(simpleMDMError, SimpleMDMError.doesNotExpectMoreResources)
             XCTAssertEqual(simpleMDMError.localizedDescription, "No resource was fetched, but the server advertised for more resources")
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testCursorFetchWithLimit() {
@@ -113,6 +138,8 @@ internal class CursorTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Cursor next")
+
         let cursor = Cursor<App>()
         cursor.next(s.networking, 1) { result in
             guard case let .success(apps) = result else {
@@ -120,7 +147,10 @@ internal class CursorTests: XCTestCase {
             }
             XCTAssertEqual(apps.count, 1)
             XCTAssertTrue(cursor.hasMore)
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testCursorFetchWithLimitMultipleTimes() {
@@ -173,7 +203,6 @@ internal class CursorTests: XCTestCase {
             }
         }
 
-        let result = XCTWaiter.wait(for: [firstFetchSuccess, secondFetchSuccess], timeout: 1.0)
-        XCTAssertEqual(result, .completed)
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 }

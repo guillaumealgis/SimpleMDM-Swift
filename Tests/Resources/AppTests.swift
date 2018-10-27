@@ -12,12 +12,17 @@ internal class AppTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         App.getAll(s.networking) { result in
             guard case let .success(apps) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
             XCTAssertEqual(apps.count, 5)
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testGetAnApp() {
@@ -25,12 +30,17 @@ internal class AppTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         App.get(s.networking, id: 17_635) { result in
             guard case let .success(app) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
             XCTAssertEqual(app.bundleIdentifier, "com.unwiredrev.DeviceLink.public")
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testErrorWhileFetchingAnAppManagedConfigs() {
@@ -46,6 +56,8 @@ internal class AppTests: XCTestCase {
         ])
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         App.get(s.networking, id: 17_635) { appResult in
             guard case let .success(app) = appResult else {
                 return XCTFail("Expected .success, got \(appResult)")
@@ -59,8 +71,11 @@ internal class AppTests: XCTestCase {
                     return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
                 }
                 XCTAssertEqual(simpleMDMError, SimpleMDMError.unknown(httpCode: 500))
+                expectation.fulfill()
             }
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testGetAnAppRelatedManagedConfigs() {
@@ -69,6 +84,8 @@ internal class AppTests: XCTestCase {
             "/api/v1/apps/17635/managed_configs": Response(data: loadFixture("ManagedConfigs"))
         ])
         let s = SimpleMDM(sessionMock: session)
+
+        let expectation = self.expectation(description: "Callback called")
 
         App.get(s.networking, id: 17_635) { appResult in
             guard case let .success(app) = appResult else {
@@ -82,7 +99,10 @@ internal class AppTests: XCTestCase {
                 XCTAssertEqual(managedConfigs.map { $0.key }, ["customer_name", "User IDs", "Device values"])
                 XCTAssertEqual(managedConfigs.map { $0.value }, ["ACME Inc.", "1,53,3", "\"$imei\",\"$udid\""])
                 XCTAssertEqual(managedConfigs.map { $0.valueType }, ["string", "integer array", "string array"])
+                expectation.fulfill()
             }
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 }

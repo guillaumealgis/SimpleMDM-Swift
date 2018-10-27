@@ -12,12 +12,17 @@ internal class CustomConfigurationProfileTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         CustomConfigurationProfile.getAll(s.networking) { result in
             guard case let .success(customAttributes) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
             XCTAssertEqual(customAttributes.count, 3)
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testGetACustomConfigurationProfile() {
@@ -25,12 +30,17 @@ internal class CustomConfigurationProfileTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         CustomConfigurationProfile.get(s.networking, id: 293_814) { result in
             guard case let .success(customConfigurationProfile) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
             XCTAssertEqual(customConfigurationProfile.name, "Munki Configuration")
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testGetACustomConfigurationProfileRelatedDeviceGroups() {
@@ -39,6 +49,8 @@ internal class CustomConfigurationProfileTests: XCTestCase {
             "/api/v1/device_groups/38": Response(data: loadFixture("DeviceGroup_Executives"))
         ])
         let s = SimpleMDM(sessionMock: session)
+
+        let expectation = self.expectation(description: "Callback called")
 
         CustomConfigurationProfile.get(s.networking, id: 293_814) { ccpResult in
             guard case let .success(customConfigurationProfile) = ccpResult else {
@@ -52,7 +64,10 @@ internal class CustomConfigurationProfileTests: XCTestCase {
                 }
                 XCTAssertEqual(deviceGroups.map { $0.id }, [38])
                 XCTAssertEqual(deviceGroups[0].name, "Executives")
+                expectation.fulfill()
             }
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 }

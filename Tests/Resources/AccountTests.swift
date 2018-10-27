@@ -12,12 +12,17 @@ internal class AccountTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         Account.get(s.networking) { result in
             guard case let .success(account) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
             XCTAssertEqual(account.name, "MyCompany")
             XCTAssertEqual(account.appleStoreCountryCode, "US")
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 }

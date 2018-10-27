@@ -6,6 +6,7 @@
 @testable import SimpleMDM
 import XCTest
 
+// swiftlint:disable:next type_body_length
 internal class ResourcesTests: XCTestCase {
     func testUniqueResourceEndpointIsSingular() {
         XCTAssertEqual(Account.endpointName, "account")
@@ -20,6 +21,8 @@ internal class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         Account.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
@@ -31,7 +34,10 @@ internal class ResourcesTests: XCTestCase {
                 return XCTFail("Expected .keyNotFound, got \(decodingError)")
             }
             XCTAssertEqual(codingKey.stringValue, "data")
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testMalformedJSONResponse() {
@@ -46,6 +52,8 @@ internal class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         Account.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
@@ -57,7 +65,10 @@ internal class ResourcesTests: XCTestCase {
                 return XCTFail("Expected .keyNotFound, got \(decodingError)")
             }
             XCTAssertEqual(codingKey.stringValue, "data")
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testGetUnexistentResource() {
@@ -73,6 +84,8 @@ internal class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 404)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         Device.get(s.networking, id: 0) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
@@ -82,7 +95,10 @@ internal class ResourcesTests: XCTestCase {
             }
             XCTAssertEqual(simpleMDMError, SimpleMDMError.doesNotExist)
             XCTAssertTrue(simpleMDMError.localizedDescription.contains("does not exist"))
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testUnexpectedServerResponseCodeWithNoErrorDescription() {
@@ -95,6 +111,8 @@ internal class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: errorCode)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         Account.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
@@ -104,7 +122,10 @@ internal class ResourcesTests: XCTestCase {
             }
             XCTAssertEqual(simpleMDMError, SimpleMDMError.unknown(httpCode: errorCode))
             XCTAssertTrue(simpleMDMError.localizedDescription.contains(String(errorCode)))
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testUnexpectedServerResponseCodeWithMalformedBody() {
@@ -118,6 +139,8 @@ internal class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: errorCode)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         Account.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
@@ -129,7 +152,10 @@ internal class ResourcesTests: XCTestCase {
                 return XCTFail("Expected .keyNotFound, got \(decodingError)")
             }
             XCTAssertEqual(codingKey.stringValue, "errors")
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testUnexpectedServerError() {
@@ -147,6 +173,8 @@ internal class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: errorCode)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         Account.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
@@ -156,7 +184,10 @@ internal class ResourcesTests: XCTestCase {
             }
             XCTAssertEqual(simpleMDMError, SimpleMDMError.generic(httpCode: errorCode, description: errorMessage))
             XCTAssertTrue(simpleMDMError.localizedDescription.contains(errorMessage))
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testGetEmptyResourcesList() {
@@ -169,12 +200,17 @@ internal class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         Device.getAll(s.networking) { result in
             guard case let .success(resources) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
             XCTAssertEqual(resources.count, 0)
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testGetResourcesListWithMissingHasMoreAttribute() {
@@ -185,6 +221,8 @@ internal class ResourcesTests: XCTestCase {
         """.data(using: .utf8)
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
+
+        let expectation = self.expectation(description: "Callback called")
 
         Device.getAll(s.networking) { result in
             guard case let .failure(error) = result else {
@@ -197,7 +235,10 @@ internal class ResourcesTests: XCTestCase {
                 return XCTFail("Expected .keyNotFound, got \(decodingError)")
             }
             XCTAssertEqual(codingKey.stringValue, "hasMore")
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testInvalidDateFormat() {
@@ -215,6 +256,8 @@ internal class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         PushCertificate.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
@@ -226,7 +269,10 @@ internal class ResourcesTests: XCTestCase {
                 return XCTFail("Expected .dataCorrupted, got \(decodingError)")
             }
             XCTAssertEqual(context.debugDescription, "Date string does not match any expected format")
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testInvalidResourceType() {
@@ -244,6 +290,8 @@ internal class ResourcesTests: XCTestCase {
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
+        let expectation = self.expectation(description: "Callback called")
+
         Account.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
@@ -255,13 +303,18 @@ internal class ResourcesTests: XCTestCase {
                 return XCTFail("Expected .dataCorrupted, got \(decodingError)")
             }
             XCTAssertEqual(context.debugDescription, "Expected type of resource to be \"account\" but got \"nonexistant_type\"")
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
     func testFetchResourceWithUnexpectedId() {
         let json = loadFixture("App_GoogleCalendar")
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
+
+        let expectation = self.expectation(description: "Callback called")
 
         App.get(s.networking, id: 63) { result in
             guard case let .failure(error) = result else {
@@ -272,6 +325,9 @@ internal class ResourcesTests: XCTestCase {
             }
             XCTAssertEqual(simpleMDMError, SimpleMDMError.unexpectedResourceId)
             XCTAssertTrue(simpleMDMError.localizedDescription.contains("unexpected id"))
+            expectation.fulfill()
         }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
     }
 }
