@@ -15,7 +15,7 @@ internal class CursorTests: XCTestCase {
     func testCursorReturnsErrorWithNegativeLimit() {
         let expectation = self.expectation(description: "Cursor next")
 
-        let cursor = Cursor<Device>()
+        let cursor = Cursor<ResourceMock>()
         cursor.next(-1) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
@@ -34,7 +34,7 @@ internal class CursorTests: XCTestCase {
     func testCursorReturnsErrorWithLimitEqualToZero() {
         let expectation = self.expectation(description: "Cursor next")
 
-        let cursor = Cursor<Device>()
+        let cursor = Cursor<ResourceMock>()
         cursor.next(0) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
@@ -53,7 +53,7 @@ internal class CursorTests: XCTestCase {
     func testCursorReturnsErrorWithLimitOverAHundred() {
         let expectation = self.expectation(description: "Cursor next")
 
-        let cursor = Cursor<Device>()
+        let cursor = Cursor<ResourceMock>()
         cursor.next(101) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
@@ -69,14 +69,14 @@ internal class CursorTests: XCTestCase {
         waitForExpectations(timeout: 0.3, handler: nil)
     }
 
-    func testCursorFetchOnceWithDefaultParamters() {
-        let json = loadFixture("Apps")
+    func testCursorFetchOnceWithDefaultParameters() {
+        let json = loadFixture("ResourceMocks")
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
         let expectation = self.expectation(description: "Cursor next")
 
-        let cursor = Cursor<App>()
+        let cursor = Cursor<ResourceMock>()
         cursor.next(s.networking) { result in
             guard case let .success(apps) = result else {
                 return XCTFail("Expected .success, got \(result)")
@@ -101,7 +101,7 @@ internal class CursorTests: XCTestCase {
 
         let expectation = self.expectation(description: "Cursor next")
 
-        let cursor = Cursor<App>()
+        let cursor = Cursor<ResourceMock>()
         cursor.next(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
@@ -123,13 +123,9 @@ internal class CursorTests: XCTestCase {
             "data": [
               {
                 "attributes": {
-                  "app_type": "app_store",
-                  "bundle_identifier": "com.evernote.iPhone.Evernote",
-                  "itunes_store_id": 281796108,
-                  "name": "Evernote"
                 },
-                "id": 17851,
-                "type": "app"
+                "id": 3454,
+                "type": "resource_mock"
               }
             ],
             "has_more": true
@@ -140,7 +136,7 @@ internal class CursorTests: XCTestCase {
 
         let expectation = self.expectation(description: "Cursor next")
 
-        let cursor = Cursor<App>()
+        let cursor = Cursor<ResourceMock>()
         cursor.next(s.networking, 1) { result in
             guard case let .success(apps) = result else {
                 return XCTFail("Expected .success, got \(result)")
@@ -154,19 +150,16 @@ internal class CursorTests: XCTestCase {
     }
 
     func testCursorFetchWithLimitMultipleTimes() {
-        func appFixture(name: String, itunesId: Int, id: Int, hasMore: Bool) -> Data {
+        // Local function used to define a new fixture on the fly
+        func resourceMockFixture(id: Int, hasMore: Bool) -> Data {
             let json = Data("""
               {
                 "data": [
                   {
                     "attributes": {
-                      "app_type": "app_store",
-                      "bundle_identifier": "com.example.\(name)",
-                      "itunes_store_id": \(itunesId),
-                      "name": "\(name)"
                     },
                     "id": \(id),
-                    "type": "app"
+                    "type": "resource_mock"
                   }
                 ],
                 "has_more": \(hasMore)
@@ -176,15 +169,15 @@ internal class CursorTests: XCTestCase {
         }
 
         let session = URLSessionMock(routes: [
-            "/api/v1/apps?limit=1": Response(data: appFixture(name: "Evernote", itunesId: 2_345_623, id: 737, hasMore: true)),
-            "/api/v1/apps?starting_after=737&limit=20": Response(data: appFixture(name: "Instagram", itunesId: 923_646, id: 3462, hasMore: false))
+            "/api/v1/resource_mock?limit=1": Response(data: resourceMockFixture(id: 737, hasMore: true)),
+            "/api/v1/resource_mock?starting_after=737&limit=20": Response(data: resourceMockFixture(id: 3462, hasMore: false))
         ])
         let s = SimpleMDM(sessionMock: session)
 
         let firstFetchSuccess = expectation(description: "First fetch succeeded")
         let secondFetchSuccess = expectation(description: "Second fetch succeeded")
 
-        let cursor = Cursor<App>()
+        let cursor = Cursor<ResourceMock>()
         cursor.next(s.networking, 1) { result in
             guard case let .success(apps) = result else {
                 return XCTFail("Expected .success, got \(result)")

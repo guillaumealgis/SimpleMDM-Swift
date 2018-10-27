@@ -8,7 +8,7 @@
 
 import Foundation
 
-private extension Resource {
+internal extension Resource {
     func decodeAndValidateType<K: CodingKey>(forKey key: K, in container: KeyedDecodingContainer<K>, expecting expectedType: String) throws {
         let type = try container.decode(String.self, forKey: key)
         guard type == expectedType else {

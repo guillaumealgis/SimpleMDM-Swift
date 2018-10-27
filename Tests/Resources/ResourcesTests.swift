@@ -23,7 +23,7 @@ internal class ResourcesTests: XCTestCase {
 
         let expectation = self.expectation(description: "Callback called")
 
-        Account.get(s.networking) { result in
+        UniqueResourceMock.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -54,7 +54,7 @@ internal class ResourcesTests: XCTestCase {
 
         let expectation = self.expectation(description: "Callback called")
 
-        Account.get(s.networking) { result in
+        UniqueResourceMock.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -86,7 +86,7 @@ internal class ResourcesTests: XCTestCase {
 
         let expectation = self.expectation(description: "Callback called")
 
-        Device.get(s.networking, id: 0) { result in
+        ResourceMock.get(s.networking, id: 0) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -113,7 +113,7 @@ internal class ResourcesTests: XCTestCase {
 
         let expectation = self.expectation(description: "Callback called")
 
-        Account.get(s.networking) { result in
+        UniqueResourceMock.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -141,7 +141,7 @@ internal class ResourcesTests: XCTestCase {
 
         let expectation = self.expectation(description: "Callback called")
 
-        Account.get(s.networking) { result in
+        UniqueResourceMock.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -175,7 +175,7 @@ internal class ResourcesTests: XCTestCase {
 
         let expectation = self.expectation(description: "Callback called")
 
-        Account.get(s.networking) { result in
+        UniqueResourceMock.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -202,7 +202,7 @@ internal class ResourcesTests: XCTestCase {
 
         let expectation = self.expectation(description: "Callback called")
 
-        Device.getAll(s.networking) { result in
+        ResourceMock.getAll(s.networking) { result in
             guard case let .success(resources) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
@@ -224,7 +224,7 @@ internal class ResourcesTests: XCTestCase {
 
         let expectation = self.expectation(description: "Callback called")
 
-        Device.getAll(s.networking) { result in
+        ResourceMock.getAll(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -245,10 +245,10 @@ internal class ResourcesTests: XCTestCase {
         let json = """
           {
             "data": {
-              "type": "push_certificate",
+              "type": "unique_resource_mock",
+              "id": 1,
               "attributes": {
-                "apple_id": "invalid-date@example.org",
-                "expires_at": "2019-05-22T15:12:23.344+00:00"
+                "date": "2019-05-22T15:12:23.344+00:00"
               }
             }
           }
@@ -258,7 +258,7 @@ internal class ResourcesTests: XCTestCase {
 
         let expectation = self.expectation(description: "Callback called")
 
-        PushCertificate.get(s.networking) { result in
+        ResourceWithDateMock.get(s.networking, id: 1) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -292,7 +292,7 @@ internal class ResourcesTests: XCTestCase {
 
         let expectation = self.expectation(description: "Callback called")
 
-        Account.get(s.networking) { result in
+        UniqueResourceMock.get(s.networking) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
@@ -302,7 +302,7 @@ internal class ResourcesTests: XCTestCase {
             guard case let .dataCorrupted(context) = decodingError else {
                 return XCTFail("Expected .dataCorrupted, got \(decodingError)")
             }
-            XCTAssertEqual(context.debugDescription, "Expected type of resource to be \"account\" but got \"nonexistant_type\"")
+            XCTAssertEqual(context.debugDescription, "Expected type of resource to be \"unique_resource_mock\" but got \"nonexistant_type\"")
             expectation.fulfill()
         }
 
@@ -310,13 +310,22 @@ internal class ResourcesTests: XCTestCase {
     }
 
     func testFetchResourceWithUnexpectedId() {
-        let json = loadFixture("App_GoogleCalendar")
+        let json = """
+          {
+            "data": {
+              "attributes": {
+              },
+              "id": 67,
+              "type": "resource_mock"
+            }
+          }
+        """.data(using: .utf8)
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
         let expectation = self.expectation(description: "Callback called")
 
-        App.get(s.networking, id: 63) { result in
+        ResourceMock.get(s.networking, id: 63) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }

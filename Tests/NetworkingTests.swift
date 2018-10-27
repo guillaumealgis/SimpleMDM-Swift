@@ -12,7 +12,7 @@ internal class NetworkingTests: XCTestCase {
         let networking = Networking(urlSession: session)
         networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networking.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: ResourceMock.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -28,7 +28,7 @@ internal class NetworkingTests: XCTestCase {
         let networking = Networking(urlSession: session)
         networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networking.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: ResourceMock.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -44,7 +44,7 @@ internal class NetworkingTests: XCTestCase {
         let networking = Networking(urlSession: session)
         networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networking.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: ResourceMock.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -60,7 +60,7 @@ internal class NetworkingTests: XCTestCase {
         let networking = Networking(urlSession: session)
         networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networking.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: ResourceMock.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -77,7 +77,7 @@ internal class NetworkingTests: XCTestCase {
         let networking = Networking(urlSession: session)
         networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networking.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: ResourceMock.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -94,7 +94,7 @@ internal class NetworkingTests: XCTestCase {
         let networking = Networking(urlSession: session)
         networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networking.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: ResourceMock.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -111,7 +111,7 @@ internal class NetworkingTests: XCTestCase {
         let networking = Networking(urlSession: session)
         networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networking.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: ResourceMock.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }
@@ -128,7 +128,7 @@ internal class NetworkingTests: XCTestCase {
         let networking = Networking(urlSession: session)
         networking.APIKey = "AVeryRandomTestAPIKey"
 
-        networking.getDataForResources(ofType: Device.self) { result in
+        networking.getDataForResources(ofType: ResourceMock.self) { result in
             guard case let .failure(error) = result else {
                 return XCTFail("Expected .failure, got \(result)")
             }

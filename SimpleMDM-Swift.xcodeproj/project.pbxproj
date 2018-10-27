@@ -15,6 +15,8 @@
 		F05EAB9C2131AC7D0076F5FC /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB9B2131AC7D0076F5FC /* Relationship.swift */; };
 		F05EAB9E21320B030076F5FC /* Resource.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB9D21320B020076F5FC /* Resource.generated.swift */; };
 		F065C51F211CE26D00784545 /* Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F065C51E211CE26D00784545 /* Decoding.swift */; };
+		F095A6582184AEA1007B3B4C /* ResourceMocks.json in Resources */ = {isa = PBXBuildFile; fileRef = F095A6562184AE78007B3B4C /* ResourceMocks.json */; };
+		F095A65A2184BE92007B3B4C /* ResourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F095A6542184A95E007B3B4C /* ResourceMock.swift */; };
 		F09F55092132FA9700D4FE8D /* App_Trello.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F55072132F8F500D4FE8D /* App_Trello.json */; };
 		F09F550A2132FA9700D4FE8D /* App_Evernote.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F55082132F96B00D4FE8D /* App_Evernote.json */; };
 		F09F551D2135D53A00D4FE8D /* DeviceGroup_Interns.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F551C2135D53A00D4FE8D /* DeviceGroup_Interns.json */; };
@@ -99,35 +101,37 @@
 		F063B3FD2098B44A00E2ECDA /* SimpleMDM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMDM.swift; sourceTree = "<group>"; };
 		F065C51E211CE26D00784545 /* Decoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoding.swift; sourceTree = "<group>"; };
 		F069B46E20CD76BA00A34F56 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		F069B47120CD7CBA00A34F56 /* Device_MikesiPhone.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Device_MikesiPhone.json; sourceTree = "<group>"; };
-		F069B47320CD7CC900A34F56 /* Account.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Account.json; sourceTree = "<group>"; };
-		F069B47420CD7CD500A34F56 /* Devices.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Devices.json; sourceTree = "<group>"; };
+		F069B47120CD7CBA00A34F56 /* Device_MikesiPhone.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Device_MikesiPhone.json; sourceTree = "<group>"; };
+		F069B47320CD7CC900A34F56 /* Account.json */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text.json; path = Account.json; sourceTree = "<group>"; tabWidth = 2; };
+		F069B47420CD7CD500A34F56 /* Devices.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Devices.json; sourceTree = "<group>"; };
 		F06CDAC2209DF233000D389E /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		F06E9E8C20CDD38F00D02395 /* App_SimpleMDM.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = App_SimpleMDM.json; sourceTree = "<group>"; };
-		F06E9E8D20CDD39000D02395 /* Apps.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Apps.json; sourceTree = "<group>"; };
+		F06E9E8C20CDD38F00D02395 /* App_SimpleMDM.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = App_SimpleMDM.json; sourceTree = "<group>"; };
+		F06E9E8D20CDD39000D02395 /* Apps.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Apps.json; sourceTree = "<group>"; };
 		F06E9E9020CDE74B00D02395 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
-		F06E9E9220CDE78800D02395 /* AppGroups.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AppGroups.json; sourceTree = "<group>"; };
-		F06E9E9320CDE78800D02395 /* AppGroup_ProductivityApps.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AppGroup_ProductivityApps.json; sourceTree = "<group>"; };
+		F06E9E9220CDE78800D02395 /* AppGroups.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AppGroups.json; sourceTree = "<group>"; };
+		F06E9E9320CDE78800D02395 /* AppGroup_ProductivityApps.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AppGroup_ProductivityApps.json; sourceTree = "<group>"; };
 		F06E9E9620D071FE00D02395 /* CustomAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAttribute.swift; sourceTree = "<group>"; };
-		F06E9E9820D072B600D02395 /* CustomAttributes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CustomAttributes.json; sourceTree = "<group>"; };
-		F06E9E9920D072BF00D02395 /* CustomAttribute_EmailAddress.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CustomAttribute_EmailAddress.json; sourceTree = "<group>"; };
+		F06E9E9820D072B600D02395 /* CustomAttributes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CustomAttributes.json; sourceTree = "<group>"; };
+		F06E9E9920D072BF00D02395 /* CustomAttribute_EmailAddress.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CustomAttribute_EmailAddress.json; sourceTree = "<group>"; };
 		F06E9E9C20D07B3F00D02395 /* CustomConfigurationProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfigurationProfile.swift; sourceTree = "<group>"; };
-		F06E9E9E20D07B7200D02395 /* CustomConfigurationProfile_MunkiConfiguration.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CustomConfigurationProfile_MunkiConfiguration.json; sourceTree = "<group>"; };
-		F06E9E9F20D07B7200D02395 /* CustomConfigurationProfiles.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CustomConfigurationProfiles.json; sourceTree = "<group>"; };
+		F06E9E9E20D07B7200D02395 /* CustomConfigurationProfile_MunkiConfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CustomConfigurationProfile_MunkiConfiguration.json; sourceTree = "<group>"; };
+		F06E9E9F20D07B7200D02395 /* CustomConfigurationProfiles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CustomConfigurationProfiles.json; sourceTree = "<group>"; };
 		F06E9EA720D085F900D02395 /* DeviceGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceGroup.swift; sourceTree = "<group>"; };
-		F06E9EA920D0862900D02395 /* DeviceGroup_Executives.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DeviceGroup_Executives.json; sourceTree = "<group>"; };
-		F06E9EAA20D0862900D02395 /* DeviceGroups.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DeviceGroups.json; sourceTree = "<group>"; };
+		F06E9EA920D0862900D02395 /* DeviceGroup_Executives.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DeviceGroup_Executives.json; sourceTree = "<group>"; };
+		F06E9EAA20D0862900D02395 /* DeviceGroups.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DeviceGroups.json; sourceTree = "<group>"; };
 		F08410DF20D3221800CE9480 /* InstalledApp_Dropbox.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = InstalledApp_Dropbox.json; sourceTree = "<group>"; };
 		F08410EF20D3223E00CE9480 /* InstalledApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstalledApp.swift; sourceTree = "<group>"; };
 		F08410F120D3232B00CE9480 /* PushCertificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushCertificate.swift; sourceTree = "<group>"; };
-		F08410F320D3238B00CE9480 /* PushCertificate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PushCertificate.json; sourceTree = "<group>"; };
+		F08410F320D3238B00CE9480 /* PushCertificate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PushCertificate.json; sourceTree = "<group>"; };
 		F08410F520D325EA00CE9480 /* DateDecodingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDecodingStrategy.swift; sourceTree = "<group>"; };
 		F0888ABC20DEFDFE00CF5906 /* SimpleMDM.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SimpleMDM.xcconfig; sourceTree = "<group>"; };
 		F09488EA209F27AD00CA2CF3 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
+		F095A6542184A95E007B3B4C /* ResourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceMock.swift; sourceTree = "<group>"; };
+		F095A6562184AE78007B3B4C /* ResourceMocks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ResourceMocks.json; sourceTree = "<group>"; };
 		F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+CustomFormat.swift"; sourceTree = "<group>"; };
 		F09AADD720CDD272004D8AC4 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		F09F55072132F8F500D4FE8D /* App_Trello.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = App_Trello.json; sourceTree = "<group>"; };
-		F09F55082132F96B00D4FE8D /* App_Evernote.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = App_Evernote.json; sourceTree = "<group>"; };
+		F09F55072132F8F500D4FE8D /* App_Trello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = App_Trello.json; sourceTree = "<group>"; };
+		F09F55082132F96B00D4FE8D /* App_Evernote.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = App_Evernote.json; sourceTree = "<group>"; };
 		F09F551C2135D53A00D4FE8D /* DeviceGroup_Interns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DeviceGroup_Interns.json; sourceTree = "<group>"; };
 		F09F551E2139E31500D4FE8D /* App_GoogleCalendar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = App_GoogleCalendar.json; sourceTree = "<group>"; };
 		F09F55222139FDF300D4FE8D /* CustomConfigurationProfileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomConfigurationProfileTests.swift; sourceTree = "<group>"; };
@@ -145,9 +149,9 @@
 		F0AA1FBD20DEEFB5003781DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0AA1FC220DEEFB6003781DF /* SimpleMDMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleMDMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0CAEEFC2160ED3E00520332 /* CustomAttributeValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAttributeValue.swift; sourceTree = "<group>"; };
-		F0CAEF002161041600520332 /* Device_MikesiPhone_CustomAttributeValues.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Device_MikesiPhone_CustomAttributeValues.json; sourceTree = "<group>"; };
+		F0CAEF002161041600520332 /* Device_MikesiPhone_CustomAttributeValues.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Device_MikesiPhone_CustomAttributeValues.json; sourceTree = "<group>"; };
 		F0CAEF3F2164104200520332 /* ManagedConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedConfig.swift; sourceTree = "<group>"; };
-		F0CAEF41216418CB00520332 /* ManagedConfigs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ManagedConfigs.json; sourceTree = "<group>"; };
+		F0CAEF41216418CB00520332 /* ManagedConfigs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ManagedConfigs.json; sourceTree = "<group>"; };
 		F0CD0A9620C5E27C00248134 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		F0CD0A9820C5E27C00248134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0CD0A9F20C5E37D00248134 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
@@ -263,7 +267,6 @@
 				F06E9E9320CDE78800D02395 /* AppGroup_ProductivityApps.json */,
 				F06E9E9220CDE78800D02395 /* AppGroups.json */,
 				F06E9E8D20CDD39000D02395 /* Apps.json */,
-				F0CAEF41216418CB00520332 /* ManagedConfigs.json */,
 				F06E9E9920D072BF00D02395 /* CustomAttribute_EmailAddress.json */,
 				F06E9E9820D072B600D02395 /* CustomAttributes.json */,
 				F06E9E9E20D07B7200D02395 /* CustomConfigurationProfile_MunkiConfiguration.json */,
@@ -275,7 +278,9 @@
 				F06E9EAA20D0862900D02395 /* DeviceGroups.json */,
 				F069B47420CD7CD500A34F56 /* Devices.json */,
 				F08410DF20D3221800CE9480 /* InstalledApp_Dropbox.json */,
+				F0CAEF41216418CB00520332 /* ManagedConfigs.json */,
 				F08410F320D3238B00CE9480 /* PushCertificate.json */,
+				F095A6562184AE78007B3B4C /* ResourceMocks.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 			children = (
 				F069B46E20CD76BA00A34F56 /* Utils.swift */,
 				F0CD0AA320C5E9C400248134 /* URLSessionMock.swift */,
+				F095A6542184A95E007B3B4C /* ResourceMock.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -437,6 +443,7 @@
 				F09F55092132FA9700D4FE8D /* App_Trello.json in Resources */,
 				F0D9F2B620DEF3C10081081C /* Devices.json in Resources */,
 				F0D9F2B020DEF3C10081081C /* CustomAttributes.json in Resources */,
+				F095A6582184AEA1007B3B4C /* ResourceMocks.json in Resources */,
 				F09F550A2132FA9700D4FE8D /* App_Evernote.json in Resources */,
 				F09F551F2139E31600D4FE8D /* App_GoogleCalendar.json in Resources */,
 				F0D9F2AA20DEF3C10081081C /* Account.json in Resources */,
@@ -511,6 +518,7 @@
 				F09F55472139FE2700D4FE8D /* DeviceTests.swift in Sources */,
 				F09F55462139FE2700D4FE8D /* DeviceGroupTests.swift in Sources */,
 				F09F55402139FE2700D4FE8D /* ResourcesTests.swift in Sources */,
+				F095A65A2184BE92007B3B4C /* ResourceMock.swift in Sources */,
 				F09F55482139FE2700D4FE8D /* InstalledAppTests.swift in Sources */,
 				F0D9F2B920DEF3CB0081081C /* Utils.swift in Sources */,
 				F09F55442139FE2700D4FE8D /* CustomAttributeTests.swift in Sources */,
