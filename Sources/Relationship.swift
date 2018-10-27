@@ -197,8 +197,12 @@ public struct RelatedToMany<Element: GettableResource>: Relationship, RemoteColl
                 // Because the resources will not necessarily arrive in the right order, we need to sort them
                 // according to their id position in relatedIds
                 resources.sort {
-                    let firstResourcePosition = self.relatedIds.index(of: $0.id) ?? 0
-                    let secondResourcePosition = self.relatedIds.index(of: $1.id) ?? 0
+                    // We know here that the fetched id will be in the `relatedIds` collection, otherwise a
+                    // SimpleMDMError.unexpectedResourceId would have been raised earlier.
+                    // swiftlint:disable force_unwrapping
+                    let firstResourcePosition = self.relatedIds.index(of: $0.id)!
+                    let secondResourcePosition = self.relatedIds.index(of: $1.id)!
+                    // swiftlint:enable force_unwrapping
                     return firstResourcePosition < secondResourcePosition
                 }
                 result = .success(resources)
