@@ -1,0 +1,27 @@
+{
+  "data": {
+    "attributes": {},
+    "relationships": {
+      "to_one": {
+        "data": {
+          "type": "resource_mock",
+          "id": 37
+        }
+      },
+      "to_many": {
+        "data": [
+          {
+            "type": "resource_mock",
+            "id": 326
+          },
+          {
+            "type": "resource_mock",
+            "id": 78
+          }
+        ]
+      }
+    },
+    "id": 42,
+    "type": "resource_with_relations_mock"
+  }
+}

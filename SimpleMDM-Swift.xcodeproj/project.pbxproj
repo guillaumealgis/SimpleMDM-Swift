@@ -15,8 +15,10 @@
 		F05EAB9C2131AC7D0076F5FC /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB9B2131AC7D0076F5FC /* Relationship.swift */; };
 		F05EAB9E21320B030076F5FC /* Resource.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB9D21320B020076F5FC /* Resource.generated.swift */; };
 		F065C51F211CE26D00784545 /* Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F065C51E211CE26D00784545 /* Decoding.swift */; };
+		F095A65321827738007B3B4C /* SimpleMDMSingletonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F095A65221827738007B3B4C /* SimpleMDMSingletonTests.swift */; };
 		F095A6582184AEA1007B3B4C /* ResourceMocks.json in Resources */ = {isa = PBXBuildFile; fileRef = F095A6562184AE78007B3B4C /* ResourceMocks.json */; };
 		F095A65A2184BE92007B3B4C /* ResourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F095A6542184A95E007B3B4C /* ResourceMock.swift */; };
+		F095A65D2184C16B007B3B4C /* ResourceWithRelationsMock_42.json in Resources */ = {isa = PBXBuildFile; fileRef = F095A65B2184C167007B3B4C /* ResourceWithRelationsMock_42.json */; };
 		F09F55092132FA9700D4FE8D /* App_Trello.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F55072132F8F500D4FE8D /* App_Trello.json */; };
 		F09F550A2132FA9700D4FE8D /* App_Evernote.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F55082132F96B00D4FE8D /* App_Evernote.json */; };
 		F09F551D2135D53A00D4FE8D /* DeviceGroup_Interns.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F551C2135D53A00D4FE8D /* DeviceGroup_Interns.json */; };
@@ -126,8 +128,10 @@
 		F08410F520D325EA00CE9480 /* DateDecodingStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDecodingStrategy.swift; sourceTree = "<group>"; };
 		F0888ABC20DEFDFE00CF5906 /* SimpleMDM.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SimpleMDM.xcconfig; sourceTree = "<group>"; };
 		F09488EA209F27AD00CA2CF3 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
+		F095A65221827738007B3B4C /* SimpleMDMSingletonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMDMSingletonTests.swift; sourceTree = "<group>"; };
 		F095A6542184A95E007B3B4C /* ResourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceMock.swift; sourceTree = "<group>"; };
 		F095A6562184AE78007B3B4C /* ResourceMocks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ResourceMocks.json; sourceTree = "<group>"; };
+		F095A65B2184C167007B3B4C /* ResourceWithRelationsMock_42.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ResourceWithRelationsMock_42.json; sourceTree = "<group>"; };
 		F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+CustomFormat.swift"; sourceTree = "<group>"; };
 		F09AADD720CDD272004D8AC4 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		F09F55072132F8F500D4FE8D /* App_Trello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = App_Trello.json; sourceTree = "<group>"; };
@@ -281,6 +285,7 @@
 				F0CAEF41216418CB00520332 /* ManagedConfigs.json */,
 				F08410F320D3238B00CE9480 /* PushCertificate.json */,
 				F095A6562184AE78007B3B4C /* ResourceMocks.json */,
+				F095A65B2184C167007B3B4C /* ResourceWithRelationsMock_42.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -319,6 +324,7 @@
 				F069B47020CD7C9F00A34F56 /* Fixtures */,
 				F09F55212139FDF300D4FE8D /* Resources */,
 				F0CD0AA120C5E7AF00248134 /* APIKeyTests.swift */,
+				F095A65221827738007B3B4C /* SimpleMDMSingletonTests.swift */,
 				F0CD0A9620C5E27C00248134 /* NetworkingTests.swift */,
 				F01E2E5E213DECA400292E12 /* CursorTests.swift */,
 				F05EAB6C21309C8F0076F5FC /* DecodingTests.swift */,
@@ -441,6 +447,7 @@
 				F0D9F2AC20DEF3C10081081C /* AppGroup_ProductivityApps.json in Resources */,
 				F0D9F2B720DEF3C10081081C /* InstalledApp_Dropbox.json in Resources */,
 				F09F55092132FA9700D4FE8D /* App_Trello.json in Resources */,
+				F095A65D2184C16B007B3B4C /* ResourceWithRelationsMock_42.json in Resources */,
 				F0D9F2B620DEF3C10081081C /* Devices.json in Resources */,
 				F0D9F2B020DEF3C10081081C /* CustomAttributes.json in Resources */,
 				F095A6582184AEA1007B3B4C /* ResourceMocks.json in Resources */,
@@ -519,6 +526,7 @@
 				F09F55462139FE2700D4FE8D /* DeviceGroupTests.swift in Sources */,
 				F09F55402139FE2700D4FE8D /* ResourcesTests.swift in Sources */,
 				F095A65A2184BE92007B3B4C /* ResourceMock.swift in Sources */,
+				F095A65321827738007B3B4C /* SimpleMDMSingletonTests.swift in Sources */,
 				F09F55482139FE2700D4FE8D /* InstalledAppTests.swift in Sources */,
 				F0D9F2B920DEF3CB0081081C /* Utils.swift in Sources */,
 				F09F55442139FE2700D4FE8D /* CustomAttributeTests.swift in Sources */,

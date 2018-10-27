@@ -1,32 +1,27 @@
 {
   "data": [
     {
-      "attributes": {
-      },
+      "attributes": {},
       "id": 923,
       "type": "resource_mock"
     },
     {
-      "attributes": {
-      },
+      "attributes": {},
       "id": 345,
       "type": "resource_mock"
     },
     {
-      "attributes": {
-      },
+      "attributes": {},
       "id": 8762,
       "type": "resource_mock"
     },
     {
-      "attributes": {
-      },
+      "attributes": {},
       "id": 3,
       "type": "resource_mock"
     },
     {
-      "attributes": {
-      },
+      "attributes": {},
       "id": 9021,
       "type": "resource_mock"
     }
