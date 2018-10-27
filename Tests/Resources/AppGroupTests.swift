@@ -92,7 +92,7 @@ internal class AppGroupTests: XCTestCase {
 
             appGroup.apps.getAll(s.networking) { appsResult in
                 guard case let .success(apps) = appsResult else {
-                    return XCTFail("Expected .successz, got \(appsResult)")
+                    return XCTFail("Expected .success, got \(appsResult)")
                 }
                 XCTAssertEqual(apps.map { $0.id }, [63, 67])
                 XCTAssertEqual(apps[0].name, "Trello")
