@@ -64,7 +64,7 @@ internal class VersionTests: XCTestCase {
     }
 
     func testVersionInitWithStringLiteralSimple() {
-        guard let version = Version(string: "4.2.7") else {
+        guard let version = Version("4.2.7") else {
             return XCTFail("Failed to parse version string")
         }
         XCTAssertEqual(version.major, 4)
@@ -73,7 +73,7 @@ internal class VersionTests: XCTestCase {
     }
 
     func testVersionInitWithStringLiteralNoPatch() {
-        guard let version = Version(string: "4.2") else {
+        guard let version = Version("4.2") else {
             return XCTFail("Failed to parse version string")
         }
         XCTAssertEqual(version.major, 4)
@@ -82,22 +82,22 @@ internal class VersionTests: XCTestCase {
     }
 
     func testVersionInitWithStringLiteralMultipleDots() {
-        let version = Version(string: "4..2.7")
+        let version = Version("4..2.7")
         XCTAssertNil(version)
     }
 
     func testVersionInitWithStringLiteralMoreThan3Parts() {
-        let version = Version(string: "4.2.7.9")
+        let version = Version("4.2.7.9")
         XCTAssertNil(version)
     }
 
     func testVersionInitWithStringLiteralLessThan2Parts() {
-        let version = Version(string: "4")
+        let version = Version("4")
         XCTAssertNil(version)
     }
 
     func testVersionInitWithStringLiteralBigNumbers() {
-        guard let version = Version(string: "4238640239684.20867913510.95346097204567") else {
+        guard let version = Version("4238640239684.20867913510.95346097204567") else {
             return XCTFail("Failed to parse version string")
         }
         XCTAssertEqual(version.major, 4_238_640_239_684)
@@ -106,7 +106,7 @@ internal class VersionTests: XCTestCase {
     }
 
     func testVersionInitWithStringLiteralWithZeros() {
-        guard let version = Version(string: "0.3.1") else {
+        guard let version = Version("0.3.1") else {
             return XCTFail("Failed to parse version string")
         }
         XCTAssertEqual(version.major, 0)
@@ -115,7 +115,7 @@ internal class VersionTests: XCTestCase {
     }
 
     func testVersionInitWithStringLiteralLeadingZero() {
-        guard let version = Version(string: "1.4.02") else {
+        guard let version = Version("1.4.02") else {
             return XCTFail("Failed to parse version string")
         }
         XCTAssertEqual(version.major, 1)
@@ -155,6 +155,6 @@ internal class VersionTests: XCTestCase {
 
     func testVersionEquality() {
         XCTAssertEqual(Version(major: 5, minor: 43, patch: 25), Version(major: 5, minor: 43, patch: 25))
-        XCTAssertEqual(Version(major: 1, minor: 7, patch: 0), Version(string: "1.7.0"))
+        XCTAssertEqual(Version(major: 1, minor: 7, patch: 0), Version("1.7.0"))
     }
 }

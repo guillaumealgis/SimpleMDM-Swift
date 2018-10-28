@@ -11,7 +11,7 @@ import Foundation
 /// liberties for simplicity and convenience sake:
 /// - String version numbers omitting a "patch" component are accepted, and their `patch` component defaults to `0`.
 /// - "Pre-release" version numbers (with an hyphen after the patch component) are currently not supported.
-public struct Version: Codable, Comparable {
+public struct Version: Codable, Comparable, LosslessStringConvertible {
     /// The major version number of the release. Incremented when making incompatible API changes.
     let major: Int
     /// The minor version number of the release. Incremented when adding functionality in a backwards-compatible
@@ -20,6 +20,11 @@ public struct Version: Codable, Comparable {
     /// The patch version number of the release. Incremented when making backwards-compatible bug fixes.
     let patch: Int
 
+    /// A textual representation of this version number.
+    public var description: String {
+        return "\(major).\(minor).\(patch)"
+    }
+
     /// Memberwise initializer.
     public init(major: Int, minor: Int, patch: Int) {
         self.major = major
@@ -27,9 +32,9 @@ public struct Version: Codable, Comparable {
         self.patch = patch
     }
 
-    // MARK: - Init from String
+    // MARK: - LosslessStringConvertible
 
-    /// Initializing the version number from a string.
+    /// Instantiates a version number from a string representation.
     ///
     /// The string will be parsed and the expected formats are either:
     /// - "MAJOR.MINOR", or
@@ -40,8 +45,8 @@ public struct Version: Codable, Comparable {
     /// If the parsed string is not in a valid format, the initializer will fail and return `nil`.
     ///
     /// - Parameter value: The formatted version number.
-    public init?(string value: String) {
-        guard let (major, minor, patch) = Version.parseSemVerString(value) else {
+    public init?(_ description: String) {
+        guard let (major, minor, patch) = Version.parseSemVerString(description) else {
             return nil
         }
         self.major = major
@@ -81,7 +86,7 @@ public struct Version: Codable, Comparable {
     /// - Parameter encoder: The encoder to write data to.
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
-        try container.encode("\(major).\(minor).\(patch)")
+        try container.encode(description)
     }
 
     // MARK: - Comparable
