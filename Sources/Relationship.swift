@@ -24,7 +24,7 @@ public protocol RemoteCollection {
     /// - Parameters:
     ///   - id: The identifier of the resource to fetch.
     ///   - completion: A completion handler called with the fetched resource, or an error.
-    func get(_ id: Element.Identifier, completion: @escaping CompletionClosure<Element>)
+    func get(id: Element.Identifier, completion: @escaping CompletionClosure<Element>)
 
     /// Fetch all remote resources in the collection.
     ///
@@ -144,12 +144,12 @@ public struct RelatedToMany<Element: GettableResource>: Relationship, RemoteColl
     /// - Parameters:
     ///   - index: The index of the resource to fetch in the collection.
     ///   - completion: A completion handler called with the fetched resource, or an error.
-    public func get(_ id: Element.Identifier, completion: @escaping CompletionClosure<Element>) {
-        get(SimpleMDM.shared.networking, id, completion: completion)
+    public func get(id: Element.Identifier, completion: @escaping CompletionClosure<Element>) {
+        get(SimpleMDM.shared.networking, id: id, completion: completion)
     }
 
-    /// Actual implementation of the `get(_:completion:)` method, with a injectable `Networking` parameter.
-    internal func get(_ networking: Networking, _ id: Element.Identifier, completion: @escaping CompletionClosure<Element>) {
+    /// Actual implementation of the `get(id:completion:)` method, with a injectable `Networking` parameter.
+    internal func get(_ networking: Networking, id: Element.Identifier, completion: @escaping CompletionClosure<Element>) {
         Element.get(networking, id: id, completion: completion)
     }
 
@@ -248,12 +248,12 @@ public struct RelatedToManyNested<Parent: IdentifiableResource, Element: Identif
     /// - Parameters:
     ///   - index: The index of the resource to fetch in the collection.
     ///   - completion: A completion handler called with the fetched resource, or an error.
-    public func get(_ id: Element.Identifier, completion: @escaping (Result<Element>) -> Void) {
-        get(SimpleMDM.shared.networking, id, completion: completion)
+    public func get(id: Element.Identifier, completion: @escaping (Result<Element>) -> Void) {
+        get(SimpleMDM.shared.networking, id: id, completion: completion)
     }
 
-    /// Actual implementation of the `get(_:completion:)` method, with a injectable `Networking` parameter.
-    internal func get(_ networking: Networking, _ id: Element.Identifier, completion: @escaping (Result<Element>) -> Void) {
+    /// Actual implementation of the `get(id:completion:)` method, with a injectable `Networking` parameter.
+    internal func get(_ networking: Networking, id: Element.Identifier, completion: @escaping (Result<Element>) -> Void) {
         getAll(networking) { result in
             switch result {
             case let .success(nestedResources):

@@ -120,7 +120,7 @@ internal class DeviceTests: XCTestCase {
                 return XCTFail("Expected .success, got \(deviceResult)")
             }
 
-            device.customAttributes.get(s.networking, "device_color") { customAttributesResult in
+            device.customAttributes.get(s.networking, id: "device_color") { customAttributesResult in
                 guard case let .failure(error) = customAttributesResult else {
                     return XCTFail("Expected .failure, got \(customAttributesResult)")
                 }
@@ -176,7 +176,7 @@ internal class DeviceTests: XCTestCase {
                 return XCTFail("Expected .success, got \(deviceResult)")
             }
 
-            device.customAttributes.get(s.networking, "device_color") { customAttributesResult in
+            device.customAttributes.get(s.networking, id: "device_color") { customAttributesResult in
                 guard case let .success(customAttribute) = customAttributesResult else {
                     return XCTFail("Expected .success, got \(customAttributesResult)")
                 }
@@ -202,7 +202,7 @@ internal class DeviceTests: XCTestCase {
                 return XCTFail("Expected .success, got \(deviceResult)")
             }
 
-            device.customAttributes.get(s.networking, "nonexistent_attribute") { customAttributesResult in
+            device.customAttributes.get(s.networking, id: "nonexistent_attribute") { customAttributesResult in
                 guard case let .failure(error) = customAttributesResult else {
                     return XCTFail("Expected .failure, got \(customAttributesResult)")
                 }

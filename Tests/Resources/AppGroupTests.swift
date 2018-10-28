@@ -235,7 +235,7 @@ internal class AppGroupTests: XCTestCase {
             }
             XCTAssertEqual(appGroup.devices.relatedIds, [121])
 
-            appGroup.devices.get(s.networking, 121) { deviceResult in
+            appGroup.devices.get(s.networking, id: 121) { deviceResult in
                 guard case let .success(device) = deviceResult else {
                     return XCTFail("Expected .success, got \(deviceResult)")
                 }

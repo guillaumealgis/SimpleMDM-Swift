@@ -179,7 +179,7 @@ internal class SimpleMDMSingletonTests: XCTestCase {
                 return XCTFail("Expected .success, got \(result)")
             }
 
-            resource.toMany.get(0) { relationResult in
+            resource.toMany.get(id: 0) { relationResult in
                 guard case let .failure(error) = relationResult else {
                     return XCTFail("Expected .error, got \(relationResult)")
                 }
@@ -239,7 +239,7 @@ internal class SimpleMDMSingletonTests: XCTestCase {
                 return XCTFail("Expected .success, got \(result)")
             }
 
-            resource.toManyNested.get(0) { relationResult in
+            resource.toManyNested.get(id: 0) { relationResult in
                 guard case let .failure(error) = relationResult else {
                     return XCTFail("Expected .error, got \(relationResult)")
                 }
