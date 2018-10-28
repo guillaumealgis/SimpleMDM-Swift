@@ -45,6 +45,10 @@ custom_categories:
     - GettableResource
     - ListableResource
 
+  - name: Fields Types
+    children:
+    - Version
+
   - name: Relationships
     children:
     - RelatedToOne
@@ -62,3 +66,9 @@ custom_categories:
     - InternalError
     - NetworkError
     - SimpleMDMError
+
+  - name: Misc
+    children:
+    - Result
+    - CompletionClosure
+    - RemoteCollection
