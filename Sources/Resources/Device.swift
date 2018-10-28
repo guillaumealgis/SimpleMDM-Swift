@@ -54,7 +54,7 @@ public struct Device: ListableResource {
     // MARK: - Sofware version
 
     /// The displayabled current OS version of the device (e.g. "12.0.1").
-    public let osVersion: String
+    public let osVersion: Version
     /// The current build version of the OS (e.g. "16A404").
     public let buildVersion: String
     /// The current modem firmware version of the device (e.g. "6.60.00").

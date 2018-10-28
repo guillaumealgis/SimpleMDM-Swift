@@ -19,7 +19,7 @@ public struct InstalledApp: GettableResource {
     /// The version of the app (corresponding to the `CFBundleVersion` entry in the app's Info.plist).
     public let version: String
     /// The version of the app (corresponding to the `CFBundleShortVersionString` entry in the app's Info.plist).
-    public let shortVersion: String
+    public let shortVersion: Version
     /// The size of the installed app on the device, in bytes.
     public let bundleSize: Int
     /// The size of the installed app ???, in bytes.
