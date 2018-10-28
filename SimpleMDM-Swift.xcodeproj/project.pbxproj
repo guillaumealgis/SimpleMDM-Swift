@@ -11,6 +11,7 @@
 		F01E2E5F213DECA400292E12 /* CursorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E2E5E213DECA400292E12 /* CursorTests.swift */; };
 		F033EF5A213B38E400AFDC1C /* Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033EF59213B38E400AFDC1C /* Cursor.swift */; };
 		F033EF5E213B490E00AFDC1C /* URL+CustomInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033EF5D213B490E00AFDC1C /* URL+CustomInit.swift */; };
+		F05A602321851A0A00FBEE2E /* VersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F095A66B21851736007B3B4C /* VersionTests.swift */; };
 		F05EAB6D21309C8F0076F5FC /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB6C21309C8F0076F5FC /* DecodingTests.swift */; };
 		F05EAB9C2131AC7D0076F5FC /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB9B2131AC7D0076F5FC /* Relationship.swift */; };
 		F05EAB9E21320B030076F5FC /* Resource.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB9D21320B020076F5FC /* Resource.generated.swift */; };
@@ -19,6 +20,7 @@
 		F095A6582184AEA1007B3B4C /* ResourceMocks.json in Resources */ = {isa = PBXBuildFile; fileRef = F095A6562184AE78007B3B4C /* ResourceMocks.json */; };
 		F095A65A2184BE92007B3B4C /* ResourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F095A6542184A95E007B3B4C /* ResourceMock.swift */; };
 		F095A65D2184C16B007B3B4C /* ResourceWithRelationsMock_42.json in Resources */ = {isa = PBXBuildFile; fileRef = F095A65B2184C167007B3B4C /* ResourceWithRelationsMock_42.json */; };
+		F095A66921851311007B3B4C /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = F095A66821851311007B3B4C /* Version.swift */; };
 		F09F55092132FA9700D4FE8D /* App_Trello.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F55072132F8F500D4FE8D /* App_Trello.json */; };
 		F09F550A2132FA9700D4FE8D /* App_Evernote.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F55082132F96B00D4FE8D /* App_Evernote.json */; };
 		F09F551D2135D53A00D4FE8D /* DeviceGroup_Interns.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F551C2135D53A00D4FE8D /* DeviceGroup_Interns.json */; };
@@ -132,6 +134,8 @@
 		F095A6542184A95E007B3B4C /* ResourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceMock.swift; sourceTree = "<group>"; };
 		F095A6562184AE78007B3B4C /* ResourceMocks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ResourceMocks.json; sourceTree = "<group>"; };
 		F095A65B2184C167007B3B4C /* ResourceWithRelationsMock_42.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ResourceWithRelationsMock_42.json; sourceTree = "<group>"; };
+		F095A66821851311007B3B4C /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		F095A66B21851736007B3B4C /* VersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTests.swift; sourceTree = "<group>"; };
 		F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+CustomFormat.swift"; sourceTree = "<group>"; };
 		F09AADD720CDD272004D8AC4 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		F09F55072132F8F500D4FE8D /* App_Trello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = App_Trello.json; sourceTree = "<group>"; };
@@ -254,6 +258,7 @@
 				F0CD0A9F20C5E37D00248134 /* URLSession.swift */,
 				F033EF59213B38E400AFDC1C /* Cursor.swift */,
 				F01FBE7420B4BEF400200CED /* Resources */,
+				F095A667218512FA007B3B4C /* FieldTypes */,
 				F05F7437211A34D4003F1594 /* Templates */,
 				F0AA1FBD20DEEFB5003781DF /* Info.plist */,
 			);
@@ -300,6 +305,22 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		F095A667218512FA007B3B4C /* FieldTypes */ = {
+			isa = PBXGroup;
+			children = (
+				F095A66821851311007B3B4C /* Version.swift */,
+			);
+			path = FieldTypes;
+			sourceTree = "<group>";
+		};
+		F095A66A21851726007B3B4C /* FieldTypes */ = {
+			isa = PBXGroup;
+			children = (
+				F095A66B21851736007B3B4C /* VersionTests.swift */,
+			);
+			path = FieldTypes;
+			sourceTree = "<group>";
+		};
 		F09F55212139FDF300D4FE8D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +344,7 @@
 				F06E9EA420D081CA00D02395 /* Tools */,
 				F069B47020CD7C9F00A34F56 /* Fixtures */,
 				F09F55212139FDF300D4FE8D /* Resources */,
+				F095A66A21851726007B3B4C /* FieldTypes */,
 				F0CD0AA120C5E7AF00248134 /* APIKeyTests.swift */,
 				F095A65221827738007B3B4C /* SimpleMDMSingletonTests.swift */,
 				F0CD0A9620C5E27C00248134 /* NetworkingTests.swift */,
@@ -507,6 +529,7 @@
 				F033EF5A213B38E400AFDC1C /* Cursor.swift in Sources */,
 				F0D9F2C020DEF3D00081081C /* Account.swift in Sources */,
 				F0D9F2C320DEF3D00081081C /* CustomAttribute.swift in Sources */,
+				F095A66921851311007B3B4C /* Version.swift in Sources */,
 				F0D9F2CA20DEF3D50081081C /* Networking.swift in Sources */,
 				F0D9F2C520DEF3D00081081C /* Device.swift in Sources */,
 				F0D9F2C220DEF3D00081081C /* AppGroup.swift in Sources */,
@@ -522,6 +545,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0D9F2BA20DEF3CB0081081C /* URLSessionMock.swift in Sources */,
+				F05A602321851A0A00FBEE2E /* VersionTests.swift in Sources */,
 				F09F55472139FE2700D4FE8D /* DeviceTests.swift in Sources */,
 				F09F55462139FE2700D4FE8D /* DeviceGroupTests.swift in Sources */,
 				F09F55402139FE2700D4FE8D /* ResourcesTests.swift in Sources */,
