@@ -81,6 +81,26 @@ internal class Networking {
         getData(atURL: url, completion: completion)
     }
 
+    /// Make a HTTP request for a `SearchableResource`.
+    ///
+    /// - Parameters:
+    ///   - ofType: The type of the resources you want to fetch.
+    ///   - matching: A string the fetched resources will match.
+    ///   - startingAfter: The id of a resource. The fetched list of resources will start after (and not including)
+    ///     this resource. It is typically set to the id of the last object of the previous response. If unspecified,
+    ///     the returned list will start at the beginning of the complete resources list.
+    ///   - limit: A limit on the number of resources to be returned, between `CursorLimit.min` and `CursorLimit.max`.
+    ///     See SimpleMDM's online documentation for the default value (`10` at the time of writing).
+    ///   - completion: A completion handler called with the result of the HTTP request, or an error.
+    ///   - result: The result of the network operation. See `NetworkingResult`.
+    internal func getDataForResources<R: SearchableResource>(ofType type: R.Type, matching: String, startingAfter: R.Identifier? = nil, limit: Int? = nil, completion: @escaping (_ result: NetworkingResult) -> Void) {
+        guard let url = URL(resourceType: type, matching: matching, startingAfter: startingAfter, limit: limit, relativeTo: baseURL) else {
+            completion(.failure(InternalError.malformedURL))
+            return
+        }
+        getData(atURL: url, completion: completion)
+    }
+
     /// Make a HTTP request for a `ListableResource`.
     ///
     /// - Parameters:

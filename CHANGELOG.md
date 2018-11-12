@@ -2,7 +2,7 @@
 
 ##### Enhancements
 
-* None.
+* Add new SearchCursor and SearchableResource.
 
 ##### Bug Fixes
 

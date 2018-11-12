@@ -102,6 +102,24 @@ public class Cursor<T: ListableResource> {
     }
 }
 
+// MARK: - SearchCursor
+
+/// A specific Cursor for fetching resources matching a passed string.
+public class SearchCursor<T: SearchableResource>: Cursor<T> {
+    private let searchString: String
+
+    public required init(searchString: String) {
+        self.searchString = searchString
+        super.init()
+    }
+
+    override func fetchNextData(_ networking: Networking, limit: Int?, completion: @escaping (Result<[T]>) -> Void) {
+        networking.getDataForResources(ofType: T.self, matching: searchString, startingAfter: lastFetchedId, limit: limit) { networkingResult in
+            self.handleNetworkingResult(networkingResult, completion: completion)
+        }
+    }
+}
+
 // MARK: - NestedResourceCursor
 
 /// A specific Cursor for fetching resources nested in another resource type.

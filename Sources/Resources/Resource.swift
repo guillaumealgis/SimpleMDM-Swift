@@ -152,3 +152,12 @@ public extension ListableResource {
         }
     }
 }
+
+// MARK: - Searchable Resource
+
+/// A protocol describing resource types for which we can get instances without knowing their identifier, by searching
+/// for value in their properties.
+/// Which properties are defined by the SimpleMDM implementation server-side. See the online SimpleMDM documentation.
+///
+/// - SeeAlso: `SearchCursor`.
+public protocol SearchableResource: ListableResource {}

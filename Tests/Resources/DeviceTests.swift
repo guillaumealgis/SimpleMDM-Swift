@@ -216,4 +216,24 @@ internal class DeviceTests: XCTestCase {
 
         waitForExpectations(timeout: 0.3, handler: nil)
     }
+
+    func testSearchForADevice() {
+        let session = URLSessionMock(routes: [
+            "/api/v1/devices?search=iPhone": Response(data: loadFixture("Devices"))
+        ])
+        let s = SimpleMDM(sessionMock: session)
+
+        let expectation = self.expectation(description: "Callback called")
+
+        let cursor = SearchCursor<Device>(searchString: "iPhone")
+        cursor.next(s.networking) { searchResult in
+            guard case let .success(devices) = searchResult else {
+                return XCTFail("Expected .success, got \(searchResult)")
+            }
+            XCTAssertEqual(devices.count, 2)
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
+    }
 }

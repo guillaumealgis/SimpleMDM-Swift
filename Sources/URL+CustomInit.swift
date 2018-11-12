@@ -29,17 +29,21 @@ extension URL {
     // swiftlint:disable function_default_parameter_at_end
 
     /// Initializes a newly created URL referencing a paginated list of resources, optionally appending pagination
-    /// parameters to the query part of the URL.
+    /// parameters to the query part of the URL, and a search term.
     ///
     /// - Parameters:
     ///   - resourceType: The type of resource.
+    ///   - matching: A string the fetched resources will match.
     ///   - startingAfter: The value for the 'startingAfter' parameter of the URL.
     ///   - limit: The value for the 'limit' parameter of the URL.
     ///   - relativeTo: A base URL the new URL will be constructed uppon.
-    init?<R: ListableResource>(resourceType: R.Type, startingAfter: R.Identifier? = nil, limit: Int? = nil, relativeTo baseURL: URL) {
+    init?<R: ListableResource>(resourceType: R.Type, matching: String? = nil, startingAfter: R.Identifier? = nil, limit: Int? = nil, relativeTo baseURL: URL) {
         var urlComponents = URLComponents()
 
         var queryItems = [URLQueryItem]()
+        if let matching = matching {
+            queryItems.append(URLQueryItem(name: "search", value: matching))
+        }
         if let startingAfter = startingAfter {
             queryItems.append(URLQueryItem(name: "starting_after", value: String(startingAfter)))
         }
