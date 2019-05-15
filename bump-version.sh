@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+git diff-index --quiet HEAD || { echo "error: dirty repository"; exit 1; }
+
 current_version=$(tr -d '\n' < VERSION)
 IFS='.' read -ra version_array <<< "$current_version"
 major="${version_array[0]}"
@@ -45,4 +47,14 @@ echo
 echo "Updating documentation..."
 jazzy
 
+echo
+echo "Committing changes..."
+git add .
+git ci -m "Bump version $current_version -> $new_version"
 git tag -m "$new_version ($new_build)" "$new_version"
+git --no-pager show --summary
+
+echo
+echo "Don't forget to release the new version of the Pod by running"
+echo "  git push; git push --tags"
+echo "  pod trunk push SimpleMDM-Swift.podspec"
