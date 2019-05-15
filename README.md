@@ -6,6 +6,7 @@
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/SimpleMDM-Swift.svg)](https://cocoapods.org/pods/SimpleMDM-Swift)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-blue.svg)](https://github.com/Carthage/Carthage)
 [![Platform](https://img.shields.io/cocoapods/p/SimpleMDM-Swift.svg)](https://alamofire.github.io/Alamofire)
+![Swift version](https://img.shields.io/badge/swift-5.0-orange.svg)
 [![Twitter](https://img.shields.io/badge/twitter-@guillaumealgis-00aced.svg)](https://twitter.com/guillaumealgis)
 
 SimpleMDM-Swift is a cross-platform (iOS, macOS, tvOS, watchOS) SDK to access the SimpleMDM API written in Swift.
