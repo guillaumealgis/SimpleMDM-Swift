@@ -200,8 +200,8 @@ public struct RelatedToMany<Element: GettableResource>: Relationship, RemoteColl
                     // We know here that the fetched id will be in the `relatedIds` collection, otherwise a
                     // SimpleMDMError.unexpectedResourceId would have been raised earlier.
                     // swiftlint:disable force_unwrapping
-                    let firstResourcePosition = self.relatedIds.index(of: $0.id)!
-                    let secondResourcePosition = self.relatedIds.index(of: $1.id)!
+                    let firstResourcePosition = self.relatedIds.firstIndex(of: $0.id)!
+                    let secondResourcePosition = self.relatedIds.firstIndex(of: $1.id)!
                     // swiftlint:enable force_unwrapping
                     return firstResourcePosition < secondResourcePosition
                 }

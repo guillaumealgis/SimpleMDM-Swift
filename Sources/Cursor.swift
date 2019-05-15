@@ -56,7 +56,7 @@ public class Cursor<T: ListableResource> {
     /// Actual implementation of the `next(_:completion:)` method, with a injectable `Networking` parameter.
     internal func next(_ networking: Networking, _ limit: Int? = nil, completion: @escaping CompletionClosure<[T]>) {
         if let limit = limit {
-            guard limit >= CursorLimit.min.rawValue && limit <= CursorLimit.max.rawValue else {
+            guard limit >= CursorLimit.min.rawValue, limit <= CursorLimit.max.rawValue else {
                 completion(.failure(SimpleMDMError.invalidLimit(limit)))
                 return
             }

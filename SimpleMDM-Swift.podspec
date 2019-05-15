@@ -24,7 +24,7 @@ Please Note: This library is not officially supported by SimpleMDM. It does not 
   s.documentation_url = 'https://guillaumealgis.github.io/SimpleMDM-Swift/'
   s.social_media_url = 'https://twitter.com/guillaumealgis'
 
-  s.swift_version = '4.2'
+  s.swift_version = '5.0.1'
   s.ios.deployment_target = '10.0'
   s.osx.deployment_target  = '10.12'
   s.tvos.deployment_target  = '10.0'
