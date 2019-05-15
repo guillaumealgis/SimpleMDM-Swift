@@ -67,7 +67,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '12.0'
 
 target '<Your Target Name>' do
-    pod 'SimpleMDM-Swift', '~> 0.1.0'
+    pod 'SimpleMDM-Swift', '~> 0.2.0'
 end
 ```
 

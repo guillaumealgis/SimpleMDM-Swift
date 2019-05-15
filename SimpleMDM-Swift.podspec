@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SimpleMDM-Swift'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'Swift bindings for the SimpleMDM API.'
 
   s.description      = <<-DESC

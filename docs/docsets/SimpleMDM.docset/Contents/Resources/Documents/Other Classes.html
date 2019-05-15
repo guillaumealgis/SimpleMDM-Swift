@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Cursor  Reference</title>
+    <title>Other Classes  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Section/Cursor" class="dashAnchor"></a>
-    <a title="Cursor  Reference"></a>
+    <a name="//apple_ref/swift/Section/Other Classes" class="dashAnchor"></a>
+    <a title="Other Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html">SimpleMDM Docs</a> (99% documented)</p>
@@ -23,7 +23,7 @@
       <p id="breadcrumbs">
         <a href="index.html">SimpleMDM Reference</a>
         <img id="carat" src="img/carat.png" />
-        Cursor  Reference
+        Other Classes  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -180,25 +180,26 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Cursor</h1>
-            
+            <h1>Other Classes</h1>
+            <p>The following classes are available globally.</p>
+
           </section>
           <section class="section task-group-section">
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Cursor"></a>
-                <a name="//apple_ref/swift/Section/Cursor" class="dashAnchor"></a>
-                <a href="#/Cursor">
-                  <h3 class="section-name">Cursor</h3>
+                <a name="/SearchCursor"></a>
+                <a name="//apple_ref/swift/Section/SearchCursor" class="dashAnchor"></a>
+                <a href="#/SearchCursor">
+                  <h3 class="section-name">SearchCursor</h3>
                 </a>
               </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9SimpleMDM6CursorC"></a>
-                    <a name="//apple_ref/swift/Class/Cursor" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9SimpleMDM6CursorC">Cursor</a>
+                    <a name="/s:9SimpleMDM12SearchCursorC"></a>
+                    <a name="//apple_ref/swift/Class/SearchCursor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9SimpleMDM12SearchCursorC">SearchCursor</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -206,117 +207,20 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A class used to fetch paginated lists of resources.</p>
+                        <p>A specific Cursor for fetching resources matching a passed string.</p>
 
-<p>A cursor represents a position in the global list of all resources of one type, and encapsulate methods to move
-forward in the list, fetching resources page by page.</p>
-
-<p>Usage:</p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">cursor</span> <span class="o">=</span> <span class="kt">Cursor</span><span class="o">&lt;</span><span class="kt">Device</span><span class="o">&gt;</span><span class="p">()</span>
-<span class="n">cursor</span><span class="o">.</span><span class="n">next</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
-    <span class="k">switch</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="n">devices</span><span class="p">):</span>
-        <span class="c1">// Do something with the devices</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="n">error</span><span class="p">):</span>
-        <span class="c1">// Handle the error</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-
-                        <a href="Classes/Cursor.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/SearchCursor.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Cursor</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ListableResource.html">ListableResource</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SearchCursor</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Classes/Cursor.html">Cursor</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="Other Protocols.html#/s:9SimpleMDM18SearchableResourceP">SearchableResource</a></span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.2.0/Sources/Cursor.swift#L37-L103">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/NestedResourceCursor"></a>
-                <a name="//apple_ref/swift/Section/NestedResourceCursor" class="dashAnchor"></a>
-                <a href="#/NestedResourceCursor">
-                  <h3 class="section-name">NestedResourceCursor</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:9SimpleMDM20NestedResourceCursorC"></a>
-                    <a name="//apple_ref/swift/Class/NestedResourceCursor" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9SimpleMDM20NestedResourceCursorC">NestedResourceCursor</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A specific Cursor for fetching resources nested in another resource type.</p>
-
-<p>This is an implementation detail, and this class can be used like a regular <code><a href="Classes/Cursor.html">Cursor</a></code> instance.</p>
-
-                        <a href="Classes/NestedResourceCursor.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">NestedResourceCursor</span><span class="o">&lt;</span><span class="kt">Parent</span><span class="p">,</span> <span class="kt">T</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="Classes/Cursor.html">Cursor</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">NestedResourceAttribute</span> <span class="k">where</span> <span class="kt">Parent</span> <span class="p">:</span> <span class="kt"><a href="Protocols/IdentifiableResource.html">IdentifiableResource</a></span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ListableResource.html">ListableResource</a></span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.2.0/Sources/Cursor.swift#L128-L141">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:9SimpleMDM11CursorLimitO"></a>
-                    <a name="//apple_ref/swift/Enum/CursorLimit" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9SimpleMDM11CursorLimitO">CursorLimit</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The bounds of the number of elements one can get when requesting a paginated list of resources.</p>
-
-<p>These values are from the <a href="https://simplemdm.com/docs/api/#pagination">Pagination documentation</a> and may be subject
-to change.</p>
-
-                        <a href="Enums/CursorLimit.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">CursorLimit</span> <span class="p">:</span> <span class="kt">Int</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.2.0/Sources/Cursor.swift#L12-L17">Show on GitHub</a>
+                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.2.0/Sources/Cursor.swift#L108-L121">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
