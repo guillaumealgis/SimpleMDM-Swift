@@ -34,5 +34,7 @@ matrix:
 
   - name: "linting"
     script:
+      - swiftformat --version
       - swiftformat --config .swiftformat --lint .
+      - swiftlint version
       - swiftlint --strict
