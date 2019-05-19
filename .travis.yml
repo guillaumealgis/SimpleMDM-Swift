@@ -9,6 +9,7 @@ addons:
     packages:
     - swiftformat
     - swiftlint
+    update: true
 
 matrix:
   include:
