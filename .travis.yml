@@ -30,7 +30,7 @@ matrix:
     xcode_sdk: watchos5.2
     xcode_destination: platform=watchOS Simulator,OS=5.2,name=Apple Watch Series 4 - 40mm
     # We can't run tests for watchOS, just ensure the project builds fine
-    script: set -o pipefail && xcodebuild -project SimpleMDM-Swift.xcodeproj -scheme SimpleMDM -sdk watchos5.0 build | xcpretty
+    script: set -o pipefail && xcodebuild -project SimpleMDM-Swift.xcodeproj -scheme SimpleMDM -sdk watchos5.2 build | xcpretty
 
   - name: "linting"
     script:
