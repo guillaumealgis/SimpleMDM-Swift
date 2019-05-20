@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F010683920E444E600C7D616 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F010683820E444E600C7D616 /* Result.swift */; };
 		F01E2E5F213DECA400292E12 /* CursorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E2E5E213DECA400292E12 /* CursorTests.swift */; };
 		F033EF5A213B38E400AFDC1C /* Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033EF59213B38E400AFDC1C /* Cursor.swift */; };
 		F033EF5E213B490E00AFDC1C /* URL+CustomInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033EF5D213B490E00AFDC1C /* URL+CustomInit.swift */; };
@@ -90,7 +89,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F010683820E444E600C7D616 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		F01E2E5E213DECA400292E12 /* CursorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorTests.swift; sourceTree = "<group>"; };
 		F01FBE6E20B4B39500200CED /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		F01FBE7020B4B6B300200CED /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -253,7 +251,6 @@
 				F08410F520D325EA00CE9480 /* DateDecodingStrategy.swift */,
 				F09488EA209F27AD00CA2CF3 /* Payload.swift */,
 				F05EAB9B2131AC7D0076F5FC /* Relationship.swift */,
-				F010683820E444E600C7D616 /* Result.swift */,
 				F01FBE6E20B4B39500200CED /* Error.swift */,
 				F0CD0A9F20C5E37D00248134 /* URLSession.swift */,
 				F033EF59213B38E400AFDC1C /* Cursor.swift */,
@@ -511,7 +508,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F010683920E444E600C7D616 /* Result.swift in Sources */,
 				F0D9F2C420DEF3D00081081C /* CustomConfigurationProfile.swift in Sources */,
 				F0D9F2C820DEF3D00081081C /* PushCertificate.swift in Sources */,
 				F0D9F2CD20DEF3D50081081C /* URLSession.swift in Sources */,

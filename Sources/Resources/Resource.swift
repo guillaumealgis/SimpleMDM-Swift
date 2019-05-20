@@ -6,7 +6,7 @@
 import Foundation
 
 /// A completion clusure used to return a Result type asynchronously.
-public typealias CompletionClosure<Value> = (Result<Value>) -> Void
+public typealias CompletionClosure<Value> = (Result<Value, Error>) -> Void
 
 /// A protocol adopted by all resources types of the library.
 public protocol Resource: Decodable {

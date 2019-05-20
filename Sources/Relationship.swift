@@ -190,7 +190,7 @@ public struct RelatedToMany<Element: GettableResource>: Relationship, RemoteColl
         }
 
         group.notify(queue: DispatchQueue.main) {
-            let result: Result<[Element]>
+            let result: Result<[Element], Error>
             if let error = error {
                 result = .failure(error)
             } else {
@@ -248,12 +248,12 @@ public struct RelatedToManyNested<Parent: IdentifiableResource, Element: Identif
     /// - Parameters:
     ///   - index: The index of the resource to fetch in the collection.
     ///   - completion: A completion handler called with the fetched resource, or an error.
-    public func get(id: Element.Identifier, completion: @escaping (Result<Element>) -> Void) {
+    public func get(id: Element.Identifier, completion: @escaping (Result<Element, Error>) -> Void) {
         get(SimpleMDM.shared.networking, id: id, completion: completion)
     }
 
     /// Actual implementation of the `get(id:completion:)` method, with a injectable `Networking` parameter.
-    internal func get(_ networking: Networking, id: Element.Identifier, completion: @escaping (Result<Element>) -> Void) {
+    internal func get(_ networking: Networking, id: Element.Identifier, completion: @escaping (Result<Element, Error>) -> Void) {
         getAll(networking) { result in
             switch result {
             case let .success(nestedResources):

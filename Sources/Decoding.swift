@@ -25,7 +25,7 @@ internal class Decoding {
     ///   - result: The request result to decode.
     ///   - expectedPayloadType: The expected payload type.
     /// - Returns: Either the decoded payload, or an error.
-    func decodeNetworkingResultPayload<P: Payload>(_ result: NetworkingResult, expectedPayloadType: P.Type) -> Result<P> {
+    func decodeNetworkingResultPayload<P: Payload>(_ result: NetworkingResult, expectedPayloadType: P.Type) -> Result<P, Error> {
         switch result {
         case let .success(data):
             do {
@@ -47,7 +47,7 @@ internal class Decoding {
     ///   - result: The request result to decode.
     ///   - expectedPayloadType: The expected payload type.
     /// - Returns: Either the decoded data, or an error.
-    func decodeNetworkingResult<P: Payload>(_ result: NetworkingResult, expectedPayloadType: P.Type) -> Result<P.DataType> {
+    func decodeNetworkingResult<P: Payload>(_ result: NetworkingResult, expectedPayloadType: P.Type) -> Result<P.DataType, Error> {
         let payloadResult = decodeNetworkingResultPayload(result, expectedPayloadType: expectedPayloadType)
         switch payloadResult {
         case let .success(payload):

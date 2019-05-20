@@ -113,7 +113,7 @@ public class SearchCursor<T: SearchableResource>: Cursor<T> {
         super.init()
     }
 
-    override func fetchNextData(_ networking: Networking, limit: Int?, completion: @escaping (Result<[T]>) -> Void) {
+    override func fetchNextData(_ networking: Networking, limit: Int?, completion: @escaping (Result<[T], Error>) -> Void) {
         networking.getDataForResources(ofType: T.self, matching: searchString, startingAfter: lastFetchedId, limit: limit) { networkingResult in
             self.handleNetworkingResult(networkingResult, completion: completion)
         }
@@ -133,7 +133,7 @@ public class NestedResourceCursor<Parent: IdentifiableResource, T: ListableResou
         super.init()
     }
 
-    override func fetchNextData(_ networking: Networking, limit: Int?, completion: @escaping (Result<[T]>) -> Void) {
+    override func fetchNextData(_ networking: Networking, limit: Int?, completion: @escaping (Result<[T], Error>) -> Void) {
         networking.getDataForNestedListableResources(ofType: T.self, inParent: Parent.self, withId: parentId, startingAfter: lastFetchedId, limit: limit) { networkingResult in
             self.handleNetworkingResult(networkingResult, completion: completion)
         }
