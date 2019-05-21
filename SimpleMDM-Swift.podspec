@@ -31,4 +31,9 @@ Please Note: This library is not officially supported by SimpleMDM. It does not 
   s.watchos.deployment_target  = '3.0'
 
   s.source_files = 'Sources/**/*.swift'
+
+  subspec 'PromiseKit' do |sp|
+    sp.dependency 'PromiseKit', "~> 6.8"
+    sp.source_files = 'Extensions/SimpleMDM+Promise.swift'
+  end
 end

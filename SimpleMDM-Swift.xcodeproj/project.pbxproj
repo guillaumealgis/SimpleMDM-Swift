@@ -7,18 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F013CF4D223E8C3600E143EB /* SimpleMDM+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F013CF4C223E8C3600E143EB /* SimpleMDM+PromiseKit.swift */; };
+		F013CF54223EB4C500E143EB /* SimpleMDM+PromiseKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F013CF53223EB4C500E143EB /* SimpleMDM+PromiseKitTests.swift */; };
 		F01E2E5F213DECA400292E12 /* CursorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E2E5E213DECA400292E12 /* CursorTests.swift */; };
 		F033EF5A213B38E400AFDC1C /* Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033EF59213B38E400AFDC1C /* Cursor.swift */; };
 		F033EF5E213B490E00AFDC1C /* URL+CustomInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033EF5D213B490E00AFDC1C /* URL+CustomInit.swift */; };
+		F05A0D6F22A47EB000F34648 /* SimpleMDMSingleton+PromiseKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A0D6E22A47EB000F34648 /* SimpleMDMSingleton+PromiseKitTests.swift */; };
 		F05A602321851A0A00FBEE2E /* VersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F095A66B21851736007B3B4C /* VersionTests.swift */; };
 		F05EAB6D21309C8F0076F5FC /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB6C21309C8F0076F5FC /* DecodingTests.swift */; };
 		F05EAB9C2131AC7D0076F5FC /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB9B2131AC7D0076F5FC /* Relationship.swift */; };
 		F05EAB9E21320B030076F5FC /* Resource.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05EAB9D21320B020076F5FC /* Resource.generated.swift */; };
 		F065C51F211CE26D00784545 /* Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F065C51E211CE26D00784545 /* Decoding.swift */; };
 		F095A65321827738007B3B4C /* SimpleMDMSingletonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F095A65221827738007B3B4C /* SimpleMDMSingletonTests.swift */; };
-		F095A6582184AEA1007B3B4C /* ResourceMocks.json in Resources */ = {isa = PBXBuildFile; fileRef = F095A6562184AE78007B3B4C /* ResourceMocks.json */; };
 		F095A65A2184BE92007B3B4C /* ResourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F095A6542184A95E007B3B4C /* ResourceMock.swift */; };
-		F095A65D2184C16B007B3B4C /* ResourceWithRelationsMock_42.json in Resources */ = {isa = PBXBuildFile; fileRef = F095A65B2184C167007B3B4C /* ResourceWithRelationsMock_42.json */; };
 		F095A66921851311007B3B4C /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = F095A66821851311007B3B4C /* Version.swift */; };
 		F09F55092132FA9700D4FE8D /* App_Trello.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F55072132F8F500D4FE8D /* App_Trello.json */; };
 		F09F550A2132FA9700D4FE8D /* App_Evernote.json in Resources */ = {isa = PBXBuildFile; fileRef = F09F55082132F96B00D4FE8D /* App_Evernote.json */; };
@@ -76,9 +77,57 @@
 		F0D9F2CD20DEF3D50081081C /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD0A9F20C5E37D00248134 /* URLSession.swift */; };
 		F0D9F2CE20DEF3D50081081C /* DateFormatter+CustomFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */; };
 		F0D9F2CF20DEF3D50081081C /* DateDecodingStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08410F520D325EA00CE9480 /* DateDecodingStrategy.swift */; };
+		F0F2F02A22A0882400D09B95 /* UniqueResourceMock.json in Resources */ = {isa = PBXBuildFile; fileRef = F0238CF722A04C2800D4C952 /* UniqueResourceMock.json */; };
+		F0F2F02B22A0882500D09B95 /* ResourceMock_37.json in Resources */ = {isa = PBXBuildFile; fileRef = F09B100122A07AA900A60CDC /* ResourceMock_37.json */; };
+		F0F2F02C22A0882500D09B95 /* ResourceMock_78.json in Resources */ = {isa = PBXBuildFile; fileRef = F0F2F02622A0878700D09B95 /* ResourceMock_78.json */; };
+		F0F2F02D22A0882500D09B95 /* ResourceMock_326.json in Resources */ = {isa = PBXBuildFile; fileRef = F0F2F02722A0878900D09B95 /* ResourceMock_326.json */; };
+		F0F2F02E22A0882500D09B95 /* ResourcesMock.json in Resources */ = {isa = PBXBuildFile; fileRef = F09B100222A07AA900A60CDC /* ResourcesMock.json */; };
+		F0F2F02F22A0882500D09B95 /* ResourceWithRelationsMock_42.json in Resources */ = {isa = PBXBuildFile; fileRef = F095A65B2184C167007B3B4C /* ResourceWithRelationsMock_42.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F013CF40223E8C1C00E143EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 63B0AC571D595E1B00FA21D9;
+			remoteInfo = PromiseKit;
+		};
+		F0238CED22A0480300D4C952 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "PromiseKit::A+.js::Product";
+			remoteInfo = "A+.js";
+		};
+		F0238CEF22A0480300D4C952 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "PromiseKit::A+.swift::Product";
+			remoteInfo = "A+.swift";
+		};
+		F0238CF122A0480300D4C952 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "PromiseKit::Cancel::Product";
+			remoteInfo = Cancel;
+		};
+		F0238CF322A0480300D4C952 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "PromiseKit::Core::Product";
+			remoteInfo = Core;
+		};
+		F0238CF522A0480600D4C952 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = "PromiseKit::PromiseKit";
+			remoteInfo = PromiseKit;
+		};
 		F0AA1FC420DEEFB6003781DF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F063B3F22098B44A00E2ECDA /* Project object */;
@@ -89,13 +138,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PromiseKit.xcodeproj; path = PromiseKit/PromiseKit.xcodeproj; sourceTree = "<group>"; };
+		F013CF4C223E8C3600E143EB /* SimpleMDM+PromiseKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SimpleMDM+PromiseKit.swift"; sourceTree = "<group>"; };
+		F013CF53223EB4C500E143EB /* SimpleMDM+PromiseKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SimpleMDM+PromiseKitTests.swift"; sourceTree = "<group>"; };
 		F01E2E5E213DECA400292E12 /* CursorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorTests.swift; sourceTree = "<group>"; };
 		F01FBE6E20B4B39500200CED /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		F01FBE7020B4B6B300200CED /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		F01FBE7220B4BEEB00200CED /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		F01FBE7520B4BF1B00200CED /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		F0238CF722A04C2800D4C952 /* UniqueResourceMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UniqueResourceMock.json; sourceTree = "<group>"; };
 		F033EF59213B38E400AFDC1C /* Cursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cursor.swift; sourceTree = "<group>"; };
 		F033EF5D213B490E00AFDC1C /* URL+CustomInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+CustomInit.swift"; sourceTree = "<group>"; };
+		F05A0D6E22A47EB000F34648 /* SimpleMDMSingleton+PromiseKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SimpleMDMSingleton+PromiseKitTests.swift"; sourceTree = "<group>"; };
 		F05EAB6C21309C8F0076F5FC /* DecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
 		F05EAB9B2131AC7D0076F5FC /* Relationship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relationship.swift; sourceTree = "<group>"; };
 		F05EAB9D21320B020076F5FC /* Resource.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.generated.swift; sourceTree = "<group>"; };
@@ -130,12 +184,13 @@
 		F09488EA209F27AD00CA2CF3 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		F095A65221827738007B3B4C /* SimpleMDMSingletonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMDMSingletonTests.swift; sourceTree = "<group>"; };
 		F095A6542184A95E007B3B4C /* ResourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceMock.swift; sourceTree = "<group>"; };
-		F095A6562184AE78007B3B4C /* ResourceMocks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ResourceMocks.json; sourceTree = "<group>"; };
 		F095A65B2184C167007B3B4C /* ResourceWithRelationsMock_42.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ResourceWithRelationsMock_42.json; sourceTree = "<group>"; };
 		F095A66821851311007B3B4C /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		F095A66B21851736007B3B4C /* VersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTests.swift; sourceTree = "<group>"; };
 		F09AADD520CD92CF004D8AC4 /* DateFormatter+CustomFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+CustomFormat.swift"; sourceTree = "<group>"; };
 		F09AADD720CDD272004D8AC4 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		F09B100122A07AA900A60CDC /* ResourceMock_37.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ResourceMock_37.json; sourceTree = "<group>"; };
+		F09B100222A07AA900A60CDC /* ResourcesMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ResourcesMock.json; sourceTree = "<group>"; };
 		F09F55072132F8F500D4FE8D /* App_Trello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = App_Trello.json; sourceTree = "<group>"; };
 		F09F55082132F96B00D4FE8D /* App_Evernote.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = App_Evernote.json; sourceTree = "<group>"; };
 		F09F551C2135D53A00D4FE8D /* DeviceGroup_Interns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DeviceGroup_Interns.json; sourceTree = "<group>"; };
@@ -163,6 +218,8 @@
 		F0CD0A9F20C5E37D00248134 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		F0CD0AA120C5E7AF00248134 /* APIKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyTests.swift; sourceTree = "<group>"; };
 		F0CD0AA320C5E9C400248134 /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
+		F0F2F02622A0878700D09B95 /* ResourceMock_78.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ResourceMock_78.json; sourceTree = "<group>"; };
+		F0F2F02722A0878900D09B95 /* ResourceMock_326.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ResourceMock_326.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +241,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F013CE16223E8BFE00E143EB /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		F013CEC3223E8BFE00E143EB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F013CF4C223E8C3600E143EB /* SimpleMDM+PromiseKit.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F013CF38223E8C1C00E143EB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F0238CEE22A0480300D4C952 /* A__js.xctest */,
+				F0238CF022A0480300D4C952 /* A__swift.xctest */,
+				F0238CF222A0480300D4C952 /* Cancel.xctest */,
+				F0238CF422A0480300D4C952 /* Core.xctest */,
+				F013CF41223E8C1C00E143EB /* PromiseKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F01FBE7420B4BEF400200CED /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +287,15 @@
 				F08410F120D3232B00CE9480 /* PushCertificate.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		F05A0D6722A47E9D00F34648 /* PromiseKit */ = {
+			isa = PBXGroup;
+			children = (
+				F05A0D6E22A47EB000F34648 /* SimpleMDMSingleton+PromiseKitTests.swift */,
+				F013CF53223EB4C500E143EB /* SimpleMDM+PromiseKitTests.swift */,
+			);
+			path = PromiseKit;
 			sourceTree = "<group>";
 		};
 		F05F7437211A34D4003F1594 /* Templates */ = {
@@ -224,6 +318,7 @@
 			children = (
 				F0888ABC20DEFDFE00CF5906 /* SimpleMDM.xcconfig */,
 				F063B3FC2098B44A00E2ECDA /* Sources */,
+				F013CE16223E8BFE00E143EB /* Dependencies */,
 				F0CD0A9520C5E27C00248134 /* Tests */,
 				F063B3FB2098B44A00E2ECDA /* Products */,
 				F062C3C120D9BEFB00ABA853 /* Frameworks */,
@@ -257,6 +352,7 @@
 				F01FBE7420B4BEF400200CED /* Resources */,
 				F095A667218512FA007B3B4C /* FieldTypes */,
 				F05F7437211A34D4003F1594 /* Templates */,
+				F013CEC3223E8BFE00E143EB /* Extensions */,
 				F0AA1FBD20DEEFB5003781DF /* Info.plist */,
 			);
 			path = Sources;
@@ -286,8 +382,7 @@
 				F08410DF20D3221800CE9480 /* InstalledApp_Dropbox.json */,
 				F0CAEF41216418CB00520332 /* ManagedConfigs.json */,
 				F08410F320D3238B00CE9480 /* PushCertificate.json */,
-				F095A6562184AE78007B3B4C /* ResourceMocks.json */,
-				F095A65B2184C167007B3B4C /* ResourceWithRelationsMock_42.json */,
+				F09B0FF222A0765100A60CDC /* Generic */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -318,6 +413,19 @@
 			path = FieldTypes;
 			sourceTree = "<group>";
 		};
+		F09B0FF222A0765100A60CDC /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				F0238CF722A04C2800D4C952 /* UniqueResourceMock.json */,
+				F09B100122A07AA900A60CDC /* ResourceMock_37.json */,
+				F0F2F02622A0878700D09B95 /* ResourceMock_78.json */,
+				F0F2F02722A0878900D09B95 /* ResourceMock_326.json */,
+				F09B100222A07AA900A60CDC /* ResourcesMock.json */,
+				F095A65B2184C167007B3B4C /* ResourceWithRelationsMock_42.json */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
 		F09F55212139FDF300D4FE8D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +450,7 @@
 				F069B47020CD7C9F00A34F56 /* Fixtures */,
 				F09F55212139FDF300D4FE8D /* Resources */,
 				F095A66A21851726007B3B4C /* FieldTypes */,
+				F05A0D6722A47E9D00F34648 /* PromiseKit */,
 				F0CD0AA120C5E7AF00248134 /* APIKeyTests.swift */,
 				F095A65221827738007B3B4C /* SimpleMDMSingletonTests.swift */,
 				F0CD0A9620C5E27C00248134 /* NetworkingTests.swift */,
@@ -379,6 +488,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F0238CF622A0480600D4C952 /* PBXTargetDependency */,
 			);
 			name = SimpleMDM;
 			productName = SimpleMDM;
@@ -433,6 +543,12 @@
 			mainGroup = F063B3F12098B44A00E2ECDA;
 			productRefGroup = F063B3FB2098B44A00E2ECDA /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F013CF38223E8C1C00E143EB /* Products */;
+					ProjectRef = F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				F0AA1FB920DEEFB5003781DF /* SimpleMDM */,
@@ -440,6 +556,46 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F013CF41223E8C1C00E143EB /* PromiseKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PromiseKit.framework;
+			remoteRef = F013CF40223E8C1C00E143EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F0238CEE22A0480300D4C952 /* A__js.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = file;
+			name = A__js.xctest;
+			path = "A+.js.xctest";
+			remoteRef = F0238CED22A0480300D4C952 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F0238CF022A0480300D4C952 /* A__swift.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = file;
+			name = A__swift.xctest;
+			path = "A+.swift.xctest";
+			remoteRef = F0238CEF22A0480300D4C952 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F0238CF222A0480300D4C952 /* Cancel.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = file;
+			path = Cancel.xctest;
+			remoteRef = F0238CF122A0480300D4C952 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F0238CF422A0480300D4C952 /* Core.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = file;
+			path = Core.xctest;
+			remoteRef = F0238CF322A0480300D4C952 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F0AA1FB820DEEFB5003781DF /* Resources */ = {
@@ -455,24 +611,28 @@
 			files = (
 				F0D9F2B320DEF3C10081081C /* Device_MikesiPhone.json in Resources */,
 				F09F551D2135D53A00D4FE8D /* DeviceGroup_Interns.json in Resources */,
+				F0F2F02D22A0882500D09B95 /* ResourceMock_326.json in Resources */,
 				F0CAEF012161051E00520332 /* Device_MikesiPhone_CustomAttributeValues.json in Resources */,
 				F0CAEF42216418D800520332 /* ManagedConfigs.json in Resources */,
 				F0D9F2B520DEF3C10081081C /* DeviceGroups.json in Resources */,
+				F0F2F02F22A0882500D09B95 /* ResourceWithRelationsMock_42.json in Resources */,
 				F0D9F2AE20DEF3C10081081C /* Apps.json in Resources */,
 				F0D9F2B220DEF3C10081081C /* CustomConfigurationProfiles.json in Resources */,
 				F0D9F2B120DEF3C10081081C /* CustomConfigurationProfile_MunkiConfiguration.json in Resources */,
 				F0D9F2B820DEF3C10081081C /* PushCertificate.json in Resources */,
+				F0F2F02B22A0882500D09B95 /* ResourceMock_37.json in Resources */,
 				F0D9F2AB20DEF3C10081081C /* App_SimpleMDM.json in Resources */,
 				F0D9F2AC20DEF3C10081081C /* AppGroup_ProductivityApps.json in Resources */,
 				F0D9F2B720DEF3C10081081C /* InstalledApp_Dropbox.json in Resources */,
 				F09F55092132FA9700D4FE8D /* App_Trello.json in Resources */,
-				F095A65D2184C16B007B3B4C /* ResourceWithRelationsMock_42.json in Resources */,
 				F0D9F2B620DEF3C10081081C /* Devices.json in Resources */,
 				F0D9F2B020DEF3C10081081C /* CustomAttributes.json in Resources */,
-				F095A6582184AEA1007B3B4C /* ResourceMocks.json in Resources */,
+				F0F2F02E22A0882500D09B95 /* ResourcesMock.json in Resources */,
 				F09F550A2132FA9700D4FE8D /* App_Evernote.json in Resources */,
+				F0F2F02A22A0882400D09B95 /* UniqueResourceMock.json in Resources */,
 				F09F551F2139E31600D4FE8D /* App_GoogleCalendar.json in Resources */,
 				F0D9F2AA20DEF3C10081081C /* Account.json in Resources */,
+				F0F2F02C22A0882500D09B95 /* ResourceMock_78.json in Resources */,
 				F0D9F2B420DEF3C10081081C /* DeviceGroup_Executives.json in Resources */,
 				F0D9F2AD20DEF3C10081081C /* AppGroups.json in Resources */,
 				F0D9F2AF20DEF3C10081081C /* CustomAttribute_EmailAddress.json in Resources */,
@@ -523,6 +683,7 @@
 				F0D9F2BF20DEF3D00081081C /* Resource.swift in Sources */,
 				F0D9F2CE20DEF3D50081081C /* DateFormatter+CustomFormat.swift in Sources */,
 				F033EF5A213B38E400AFDC1C /* Cursor.swift in Sources */,
+				F013CF4D223E8C3600E143EB /* SimpleMDM+PromiseKit.swift in Sources */,
 				F0D9F2C020DEF3D00081081C /* Account.swift in Sources */,
 				F0D9F2C320DEF3D00081081C /* CustomAttribute.swift in Sources */,
 				F095A66921851311007B3B4C /* Version.swift in Sources */,
@@ -550,10 +711,12 @@
 				F09F55482139FE2700D4FE8D /* InstalledAppTests.swift in Sources */,
 				F0D9F2B920DEF3CB0081081C /* Utils.swift in Sources */,
 				F09F55442139FE2700D4FE8D /* CustomAttributeTests.swift in Sources */,
+				F013CF54223EB4C500E143EB /* SimpleMDM+PromiseKitTests.swift in Sources */,
 				F0D9F2BD20DEF3CB0081081C /* NetworkingTests.swift in Sources */,
 				F09F55412139FE2700D4FE8D /* AccountTests.swift in Sources */,
 				F09F55432139FE2700D4FE8D /* AppTests.swift in Sources */,
 				F09F55492139FE2700D4FE8D /* PushCertificateTests.swift in Sources */,
+				F05A0D6F22A47EB000F34648 /* SimpleMDMSingleton+PromiseKitTests.swift in Sources */,
 				F01E2E5F213DECA400292E12 /* CursorTests.swift in Sources */,
 				F09F55452139FE2700D4FE8D /* CustomConfigurationProfileTests.swift in Sources */,
 				F0D9F2BC20DEF3CB0081081C /* APIKeyTests.swift in Sources */,
@@ -565,6 +728,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F0238CF622A0480600D4C952 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PromiseKit;
+			targetProxy = F0238CF522A0480600D4C952 /* PBXContainerItemProxy */;
+		};
 		F0AA1FC520DEEFB6003781DF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F0AA1FB920DEEFB5003781DF /* SimpleMDM */;

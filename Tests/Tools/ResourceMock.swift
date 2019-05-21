@@ -77,7 +77,7 @@ internal struct ResourceWithDateMock: ListableResource {
     }
 }
 
-/// An listable resource with a field of type `Date` used when testing.
+/// An listable resource with fields of type `RelatedToOne`, `RelatedToMany`, and `RelatedToManyNested` used when testing.
 internal struct ResourceWithRelationsMock: ListableResource {
     typealias Identifier = Int
 

@@ -70,7 +70,7 @@ internal class CursorTests: XCTestCase {
     }
 
     func testCursorFetchOnceWithDefaultParameters() {
-        let json = loadFixture("ResourceMocks")
+        let json = loadFixture("ResourcesMock")
         let session = URLSessionMock(data: json, responseCode: 200)
         let s = SimpleMDM(sessionMock: session)
 
