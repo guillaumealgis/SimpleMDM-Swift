@@ -78,10 +78,10 @@ internal class CursorTests: XCTestCase {
 
         let cursor = Cursor<ResourceMock>()
         cursor.next(s.networking) { result in
-            guard case let .success(apps) = result else {
+            guard case let .success(resources) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
-            XCTAssertEqual(apps.count, 5)
+            XCTAssertEqual(resources.count, 5)
             XCTAssertFalse(cursor.hasMore)
             expectation.fulfill()
         }
@@ -138,10 +138,10 @@ internal class CursorTests: XCTestCase {
 
         let cursor = Cursor<ResourceMock>()
         cursor.next(s.networking, 1) { result in
-            guard case let .success(apps) = result else {
+            guard case let .success(resources) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
-            XCTAssertEqual(apps.count, 1)
+            XCTAssertEqual(resources.count, 1)
             XCTAssertTrue(cursor.hasMore)
             expectation.fulfill()
         }
@@ -179,18 +179,18 @@ internal class CursorTests: XCTestCase {
 
         let cursor = Cursor<ResourceMock>()
         cursor.next(s.networking, 1) { result in
-            guard case let .success(apps) = result else {
+            guard case let .success(resources) = result else {
                 return XCTFail("Expected .success, got \(result)")
             }
-            XCTAssertEqual(apps.count, 1)
+            XCTAssertEqual(resources.count, 1)
             XCTAssertTrue(cursor.hasMore)
             firstFetchSuccess.fulfill()
 
             cursor.next(s.networking, 20) { result in
-                guard case let .success(apps) = result else {
+                guard case let .success(resources) = result else {
                     return XCTFail("Expected .success, got \(result)")
                 }
-                XCTAssertEqual(apps.count, 1)
+                XCTAssertEqual(resources.count, 1)
                 XCTAssertFalse(cursor.hasMore)
                 secondFetchSuccess.fulfill()
             }
