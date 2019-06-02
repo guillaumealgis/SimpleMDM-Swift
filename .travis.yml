@@ -11,6 +11,9 @@ addons:
     - swiftlint
     update: true
 
+install:
+  - cd Dependencies/PromiseKit; swift package generate-xcodeproj; cd -
+
 matrix:
   include:
 
