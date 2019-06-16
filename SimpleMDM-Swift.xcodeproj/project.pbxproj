@@ -86,48 +86,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F013CF40223E8C1C00E143EB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 63B0AC571D595E1B00FA21D9;
-			remoteInfo = PromiseKit;
-		};
-		F0238CED22A0480300D4C952 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "PromiseKit::A+.js::Product";
-			remoteInfo = "A+.js";
-		};
-		F0238CEF22A0480300D4C952 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "PromiseKit::A+.swift::Product";
-			remoteInfo = "A+.swift";
-		};
-		F0238CF122A0480300D4C952 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "PromiseKit::Cancel::Product";
-			remoteInfo = Cancel;
-		};
-		F0238CF322A0480300D4C952 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "PromiseKit::Core::Product";
-			remoteInfo = Core;
-		};
-		F0238CF522A0480600D4C952 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = "PromiseKit::PromiseKit";
-			remoteInfo = PromiseKit;
-		};
 		F0AA1FC420DEEFB6003781DF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F063B3F22098B44A00E2ECDA /* Project object */;
@@ -138,7 +96,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PromiseKit.xcodeproj; path = PromiseKit/PromiseKit.xcodeproj; sourceTree = "<group>"; };
 		F013CF4C223E8C3600E143EB /* SimpleMDM+PromiseKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SimpleMDM+PromiseKit.swift"; sourceTree = "<group>"; };
 		F013CF53223EB4C500E143EB /* SimpleMDM+PromiseKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SimpleMDM+PromiseKitTests.swift"; sourceTree = "<group>"; };
 		F01E2E5E213DECA400292E12 /* CursorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorTests.swift; sourceTree = "<group>"; };
@@ -241,32 +198,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F013CE16223E8BFE00E143EB /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */,
-			);
-			path = Dependencies;
-			sourceTree = "<group>";
-		};
 		F013CEC3223E8BFE00E143EB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				F013CF4C223E8C3600E143EB /* SimpleMDM+PromiseKit.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		F013CF38223E8C1C00E143EB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F0238CEE22A0480300D4C952 /* A__js.xctest */,
-				F0238CF022A0480300D4C952 /* A__swift.xctest */,
-				F0238CF222A0480300D4C952 /* Cancel.xctest */,
-				F0238CF422A0480300D4C952 /* Core.xctest */,
-				F013CF41223E8C1C00E143EB /* PromiseKit.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		F01FBE7420B4BEF400200CED /* Resources */ = {
@@ -318,7 +255,6 @@
 			children = (
 				F0888ABC20DEFDFE00CF5906 /* SimpleMDM.xcconfig */,
 				F063B3FC2098B44A00E2ECDA /* Sources */,
-				F013CE16223E8BFE00E143EB /* Dependencies */,
 				F0CD0A9520C5E27C00248134 /* Tests */,
 				F063B3FB2098B44A00E2ECDA /* Products */,
 				F062C3C120D9BEFB00ABA853 /* Frameworks */,
@@ -488,7 +424,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				F0238CF622A0480600D4C952 /* PBXTargetDependency */,
 			);
 			name = SimpleMDM;
 			productName = SimpleMDM;
@@ -543,12 +478,6 @@
 			mainGroup = F063B3F12098B44A00E2ECDA;
 			productRefGroup = F063B3FB2098B44A00E2ECDA /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = F013CF38223E8C1C00E143EB /* Products */;
-					ProjectRef = F013CF37223E8C1C00E143EB /* PromiseKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				F0AA1FB920DEEFB5003781DF /* SimpleMDM */,
@@ -556,46 +485,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		F013CF41223E8C1C00E143EB /* PromiseKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PromiseKit.framework;
-			remoteRef = F013CF40223E8C1C00E143EB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F0238CEE22A0480300D4C952 /* A__js.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = file;
-			name = A__js.xctest;
-			path = "A+.js.xctest";
-			remoteRef = F0238CED22A0480300D4C952 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F0238CF022A0480300D4C952 /* A__swift.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = file;
-			name = A__swift.xctest;
-			path = "A+.swift.xctest";
-			remoteRef = F0238CEF22A0480300D4C952 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F0238CF222A0480300D4C952 /* Cancel.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = file;
-			path = Cancel.xctest;
-			remoteRef = F0238CF122A0480300D4C952 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F0238CF422A0480300D4C952 /* Core.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = file;
-			path = Core.xctest;
-			remoteRef = F0238CF322A0480300D4C952 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F0AA1FB820DEEFB5003781DF /* Resources */ = {
@@ -728,11 +617,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F0238CF622A0480600D4C952 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PromiseKit;
-			targetProxy = F0238CF522A0480600D4C952 /* PBXContainerItemProxy */;
-		};
 		F0AA1FC520DEEFB6003781DF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F0AA1FB920DEEFB5003781DF /* SimpleMDM */;
@@ -859,7 +743,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 135;
+				DYLIB_CURRENT_VERSION = 147;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Sources/Info.plist;
@@ -880,7 +764,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 135;
+				DYLIB_CURRENT_VERSION = 147;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Sources/Info.plist;

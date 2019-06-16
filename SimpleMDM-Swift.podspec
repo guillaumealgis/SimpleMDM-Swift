@@ -8,6 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SimpleMDM-Swift'
+  s.module_name      = 'SimpleMDM'
   s.version          = '0.2.0'
   s.summary          = 'Swift bindings for the SimpleMDM API.'
 
@@ -24,16 +25,26 @@ Please Note: This library is not officially supported by SimpleMDM. It does not 
   s.documentation_url = 'https://guillaumealgis.github.io/SimpleMDM-Swift/'
   s.social_media_url = 'https://twitter.com/guillaumealgis'
 
-  s.swift_version = '5.0.1'
+  s.swift_versions = [
+    '5.0',
+    '5.0.1'
+  ]
+
   s.ios.deployment_target = '10.0'
   s.osx.deployment_target  = '10.12'
   s.tvos.deployment_target  = '10.0'
   s.watchos.deployment_target  = '3.0'
 
-  s.source_files = 'Sources/**/*.swift'
+  s.default_subspecs = 'Core'
 
-  subspec 'PromiseKit' do |sp|
-    sp.dependency 'PromiseKit', "~> 6.8"
-    sp.source_files = 'Extensions/SimpleMDM+Promise.swift'
+  s.subspec 'Core' do |ss|
+    ss.source_files = 'Sources/**/*.swift'
+    ss.exclude_files = 'Sources/Extensions/**/*'
+  end
+
+  s.subspec 'PromiseKit' do |ss|
+    ss.dependency 'SimpleMDM-Swift/Core'
+    ss.dependency 'PromiseKit/CorePromise', "~> 6.8"
+    ss.source_files = 'Sources/Extensions/**/*'
   end
 end
