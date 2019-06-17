@@ -10,6 +10,7 @@
 		F013CF4D223E8C3600E143EB /* SimpleMDM+PromiseKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F013CF4C223E8C3600E143EB /* SimpleMDM+PromiseKit.swift */; };
 		F013CF54223EB4C500E143EB /* SimpleMDM+PromiseKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F013CF53223EB4C500E143EB /* SimpleMDM+PromiseKitTests.swift */; };
 		F01E2E5F213DECA400292E12 /* CursorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01E2E5E213DECA400292E12 /* CursorTests.swift */; };
+		F025BAF922B82CA300F835C1 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F025BAF822B82CA300F835C1 /* PromiseKit.framework */; };
 		F033EF5A213B38E400AFDC1C /* Cursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033EF59213B38E400AFDC1C /* Cursor.swift */; };
 		F033EF5E213B490E00AFDC1C /* URL+CustomInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F033EF5D213B490E00AFDC1C /* URL+CustomInit.swift */; };
 		F05A0D6F22A47EB000F34648 /* SimpleMDMSingleton+PromiseKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05A0D6E22A47EB000F34648 /* SimpleMDMSingleton+PromiseKitTests.swift */; };
@@ -104,6 +105,7 @@
 		F01FBE7220B4BEEB00200CED /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		F01FBE7520B4BF1B00200CED /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		F0238CF722A04C2800D4C952 /* UniqueResourceMock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UniqueResourceMock.json; sourceTree = "<group>"; };
+		F025BAF822B82CA300F835C1 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		F033EF59213B38E400AFDC1C /* Cursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cursor.swift; sourceTree = "<group>"; };
 		F033EF5D213B490E00AFDC1C /* URL+CustomInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+CustomInit.swift"; sourceTree = "<group>"; };
 		F05A0D6E22A47EB000F34648 /* SimpleMDMSingleton+PromiseKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SimpleMDMSingleton+PromiseKitTests.swift"; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F025BAF922B82CA300F835C1 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +249,7 @@
 		F062C3C120D9BEFB00ABA853 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F025BAF822B82CA300F835C1 /* PromiseKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -420,6 +424,7 @@
 				F0AA1FB620DEEFB5003781DF /* Sources */,
 				F0AA1FB720DEEFB5003781DF /* Frameworks */,
 				F0AA1FB820DEEFB5003781DF /* Resources */,
+				F025BAFA22B82D0A00F835C1 /* Carthage Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -531,6 +536,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		F025BAFA22B82D0A00F835C1 /* Carthage Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/$(CARTHAGE_PLATFORM_NAME)/PromiseKit.framework",
+			);
+			name = "Carthage Copy Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PromiseKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+			showEnvVarsInLog = 0;
+		};
 		F09F55202139F3C100D4FE8D /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
