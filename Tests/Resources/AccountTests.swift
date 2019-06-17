@@ -15,8 +15,8 @@ internal class AccountTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         Account.get(s.networking) { result in
-            guard case let .success(account) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(account) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(account.name, "MyCompany")
             XCTAssertEqual(account.appleStoreCountryCode, "US")

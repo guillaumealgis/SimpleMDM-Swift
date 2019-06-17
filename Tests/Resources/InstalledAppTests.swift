@@ -15,8 +15,8 @@ internal class InstalledAppsTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         InstalledApp.get(s.networking, id: 10_446_659) { result in
-            guard case let .success(installedApp) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(installedApp) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(installedApp.name, "Dropbox")
             expectation.fulfill()

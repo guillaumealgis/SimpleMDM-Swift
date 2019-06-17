@@ -15,8 +15,8 @@ internal class CustomAttributeTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         CustomAttribute.getAll(s.networking) { result in
-            guard case let .success(customAttributes) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(customAttributes) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(customAttributes.count, 2)
             expectation.fulfill()
@@ -33,8 +33,8 @@ internal class CustomAttributeTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         CustomAttribute.get(s.networking, id: "email_address") { result in
-            guard case let .success(customAttribute) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(customAttribute) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(customAttribute.name, "email_address")
             expectation.fulfill()

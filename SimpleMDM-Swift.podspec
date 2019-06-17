@@ -35,16 +35,7 @@ Please Note: This library is not officially supported by SimpleMDM. It does not 
   s.tvos.deployment_target  = '10.0'
   s.watchos.deployment_target  = '3.0'
 
-  s.default_subspecs = 'Core'
+  s.dependency 'PromiseKit/CorePromise', "~> 6.8"
 
-  s.subspec 'Core' do |ss|
-    ss.source_files = 'Sources/**/*.swift'
-    ss.exclude_files = 'Sources/Extensions/**/*'
-  end
-
-  s.subspec 'PromiseKit' do |ss|
-    ss.dependency 'SimpleMDM-Swift/Core'
-    ss.dependency 'PromiseKit/CorePromise', "~> 6.8"
-    ss.source_files = 'Sources/Extensions/**/*'
-  end
+  s.source_files = 'Sources/**/*.swift'
 end

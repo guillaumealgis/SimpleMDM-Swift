@@ -442,6 +442,7 @@
 				F0AA1FBE20DEEFB6003781DF /* Sources */,
 				F0AA1FBF20DEEFB6003781DF /* Frameworks */,
 				F0AA1FC020DEEFB6003781DF /* Resources */,
+				F025BB0622B8487E00F835C1 /* Carthage Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -537,6 +538,27 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 		F025BAFA22B82D0A00F835C1 /* Carthage Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/$(CARTHAGE_PLATFORM_NAME)/PromiseKit.framework",
+			);
+			name = "Carthage Copy Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/PromiseKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+			showEnvVarsInLog = 0;
+		};
+		F025BB0622B8487E00F835C1 /* Carthage Copy Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

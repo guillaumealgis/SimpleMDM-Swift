@@ -15,8 +15,8 @@ internal class DeviceTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         Device.getAll(s.networking) { result in
-            guard case let .success(devices) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(devices) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(devices.count, 2)
             expectation.fulfill()
@@ -33,8 +33,8 @@ internal class DeviceTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         Device.get(s.networking, id: 121) { result in
-            guard case let .success(device) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(device) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(device.name, "Mike's iPhone")
             expectation.fulfill()
@@ -53,14 +53,14 @@ internal class DeviceTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         Device.get(s.networking, id: 121) { deviceResult in
-            guard case let .success(device) = deviceResult else {
-                return XCTFail("Expected .success, got \(deviceResult)")
+            guard case let .fulfilled(device) = deviceResult else {
+                return XCTFail("Expected .fulfilled, got \(deviceResult)")
             }
             XCTAssertEqual(device.deviceGroup.relatedId, 37)
 
             device.deviceGroup.get(s.networking) { deviceGroupResult in
-                guard case let .success(deviceGroup) = deviceGroupResult else {
-                    return XCTFail("Expected .success, got \(deviceGroupResult)")
+                guard case let .fulfilled(deviceGroup) = deviceGroupResult else {
+                    return XCTFail("Expected .fulfilled, got \(deviceGroupResult)")
                 }
                 XCTAssertEqual(deviceGroup.name, "Interns")
                 expectation.fulfill()
@@ -80,14 +80,14 @@ internal class DeviceTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         Device.get(s.networking, id: 121) { deviceResult in
-            guard case let .success(device) = deviceResult else {
-                return XCTFail("Expected .success, got \(deviceResult)")
+            guard case let .fulfilled(device) = deviceResult else {
+                return XCTFail("Expected .fulfilled, got \(deviceResult)")
             }
             XCTAssertEqual(device.deviceGroup.relatedId, 37)
 
             device.deviceGroup.get(s.networking) { deviceGroupResult in
-                guard case let .failure(error) = deviceGroupResult else {
-                    return XCTFail("Expected .failure, got \(deviceGroupResult)")
+                guard case let .rejected(error) = deviceGroupResult else {
+                    return XCTFail("Expected .rejected, got \(deviceGroupResult)")
                 }
                 guard let simpleMDMError = error as? SimpleMDMError else {
                     return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
@@ -116,13 +116,13 @@ internal class DeviceTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         Device.get(s.networking, id: 121) { deviceResult in
-            guard case let .success(device) = deviceResult else {
-                return XCTFail("Expected .success, got \(deviceResult)")
+            guard case let .fulfilled(device) = deviceResult else {
+                return XCTFail("Expected .fulfilled, got \(deviceResult)")
             }
 
             device.customAttributes.get(s.networking, id: "device_color") { customAttributesResult in
-                guard case let .failure(error) = customAttributesResult else {
-                    return XCTFail("Expected .failure, got \(customAttributesResult)")
+                guard case let .rejected(error) = customAttributesResult else {
+                    return XCTFail("Expected .rejected, got \(customAttributesResult)")
                 }
                 guard let simpleMDMError = error as? SimpleMDMError else {
                     return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
@@ -145,13 +145,13 @@ internal class DeviceTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         Device.get(s.networking, id: 121) { deviceResult in
-            guard case let .success(device) = deviceResult else {
-                return XCTFail("Expected .success, got \(deviceResult)")
+            guard case let .fulfilled(device) = deviceResult else {
+                return XCTFail("Expected .fulfilled, got \(deviceResult)")
             }
 
             device.customAttributes.getAll(s.networking) { customAttributesResult in
-                guard case let .success(customAttributes) = customAttributesResult else {
-                    return XCTFail("Expected .success, got \(customAttributesResult)")
+                guard case let .fulfilled(customAttributes) = customAttributesResult else {
+                    return XCTFail("Expected .fulfilled, got \(customAttributesResult)")
                 }
                 XCTAssertEqual(customAttributes.map { $0.id }, ["device_color", "year_purchased"])
                 XCTAssertEqual(customAttributes.map { $0.value }, ["space gray", "2018"])
@@ -172,13 +172,13 @@ internal class DeviceTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         Device.get(s.networking, id: 121) { deviceResult in
-            guard case let .success(device) = deviceResult else {
-                return XCTFail("Expected .success, got \(deviceResult)")
+            guard case let .fulfilled(device) = deviceResult else {
+                return XCTFail("Expected .fulfilled, got \(deviceResult)")
             }
 
             device.customAttributes.get(s.networking, id: "device_color") { customAttributesResult in
-                guard case let .success(customAttribute) = customAttributesResult else {
-                    return XCTFail("Expected .success, got \(customAttributesResult)")
+                guard case let .fulfilled(customAttribute) = customAttributesResult else {
+                    return XCTFail("Expected .fulfilled, got \(customAttributesResult)")
                 }
                 XCTAssertEqual(customAttribute.value, "space gray")
                 expectation.fulfill()
@@ -198,13 +198,13 @@ internal class DeviceTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         Device.get(s.networking, id: 121) { deviceResult in
-            guard case let .success(device) = deviceResult else {
-                return XCTFail("Expected .success, got \(deviceResult)")
+            guard case let .fulfilled(device) = deviceResult else {
+                return XCTFail("Expected .fulfilled, got \(deviceResult)")
             }
 
             device.customAttributes.get(s.networking, id: "nonexistent_attribute") { customAttributesResult in
-                guard case let .failure(error) = customAttributesResult else {
-                    return XCTFail("Expected .failure, got \(customAttributesResult)")
+                guard case let .rejected(error) = customAttributesResult else {
+                    return XCTFail("Expected .rejected, got \(customAttributesResult)")
                 }
                 guard let simpleMDMError = error as? SimpleMDMError else {
                     return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
@@ -227,8 +227,8 @@ internal class DeviceTests: XCTestCase {
 
         let cursor = SearchCursor<Device>(searchString: "iPhone")
         cursor.next(s.networking) { searchResult in
-            guard case let .success(devices) = searchResult else {
-                return XCTFail("Expected .success, got \(searchResult)")
+            guard case let .fulfilled(devices) = searchResult else {
+                return XCTFail("Expected .fulfilled, got \(searchResult)")
             }
             XCTAssertEqual(devices.count, 2)
             expectation.fulfill()

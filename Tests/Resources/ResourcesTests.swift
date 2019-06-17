@@ -24,7 +24,7 @@ internal class ResourcesTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         UniqueResourceMock.get(s.networking) { result in
-            guard case let .failure(error) = result else {
+            guard case let .rejected(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
             guard let decodingError = error as? DecodingError else {
@@ -55,7 +55,7 @@ internal class ResourcesTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         UniqueResourceMock.get(s.networking) { result in
-            guard case let .failure(error) = result else {
+            guard case let .rejected(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
             guard let decodingError = error as? DecodingError else {
@@ -87,7 +87,7 @@ internal class ResourcesTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         ResourceMock.get(s.networking, id: 0) { result in
-            guard case let .failure(error) = result else {
+            guard case let .rejected(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
             guard let simpleMDMError = error as? SimpleMDMError else {
@@ -114,7 +114,7 @@ internal class ResourcesTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         UniqueResourceMock.get(s.networking) { result in
-            guard case let .failure(error) = result else {
+            guard case let .rejected(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
             guard let simpleMDMError = error as? SimpleMDMError else {
@@ -142,7 +142,7 @@ internal class ResourcesTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         UniqueResourceMock.get(s.networking) { result in
-            guard case let .failure(error) = result else {
+            guard case let .rejected(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
             guard let decodingError = error as? DecodingError else {
@@ -176,7 +176,7 @@ internal class ResourcesTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         UniqueResourceMock.get(s.networking) { result in
-            guard case let .failure(error) = result else {
+            guard case let .rejected(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
             guard let simpleMDMError = error as? SimpleMDMError else {
@@ -203,8 +203,8 @@ internal class ResourcesTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         ResourceMock.getAll(s.networking) { result in
-            guard case let .success(resources) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(resources) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(resources.count, 0)
             expectation.fulfill()
@@ -225,8 +225,8 @@ internal class ResourcesTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         ResourceMock.getAll(s.networking) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
+            guard case let .rejected(error) = result else {
+                return XCTFail("Expected .rejected, got \(result)")
             }
             guard let decodingError = error as? DecodingError else {
                 return XCTFail("Expected error to be a DecodingError, got \(error)")
@@ -259,7 +259,7 @@ internal class ResourcesTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         ResourceWithDateMock.get(s.networking, id: 1) { result in
-            guard case let .failure(error) = result else {
+            guard case let .rejected(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
             guard let decodingError = error as? DecodingError else {
@@ -293,7 +293,7 @@ internal class ResourcesTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         UniqueResourceMock.get(s.networking) { result in
-            guard case let .failure(error) = result else {
+            guard case let .rejected(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
             guard let decodingError = error as? DecodingError else {
@@ -326,7 +326,7 @@ internal class ResourcesTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         ResourceMock.get(s.networking, id: 63) { result in
-            guard case let .failure(error) = result else {
+            guard case let .rejected(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
             guard let simpleMDMError = error as? SimpleMDMError else {

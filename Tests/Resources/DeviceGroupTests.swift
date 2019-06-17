@@ -15,8 +15,8 @@ internal class DeviceGroupTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         DeviceGroup.getAll(s.networking) { result in
-            guard case let .success(devices) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(devices) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(devices.count, 2)
             expectation.fulfill()
@@ -33,8 +33,8 @@ internal class DeviceGroupTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         DeviceGroup.get(s.networking, id: 38) { result in
-            guard case let .success(device) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(device) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(device.name, "Executives")
             expectation.fulfill()

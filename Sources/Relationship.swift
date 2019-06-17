@@ -179,9 +179,9 @@ public struct RelatedToMany<Element: GettableResource>: Relationship, RemoteColl
             get(networking, at: i) { result in
                 semaphore.wait()
                 switch result {
-                case let .success(resource):
+                case let .fulfilled(resource):
                     resources.append(resource)
-                case let .failure(err):
+                case let .rejected(err):
                     error = err
                 }
                 semaphore.signal()
@@ -190,9 +190,9 @@ public struct RelatedToMany<Element: GettableResource>: Relationship, RemoteColl
         }
 
         group.notify(queue: DispatchQueue.main) {
-            let result: Result<[Element], Error>
+            let result: Result<[Element]>
             if let error = error {
-                result = .failure(error)
+                result = .rejected(error)
             } else {
                 // Because the resources will not necessarily arrive in the right order, we need to sort them
                 // according to their id position in relatedIds
@@ -205,7 +205,7 @@ public struct RelatedToMany<Element: GettableResource>: Relationship, RemoteColl
                     // swiftlint:enable force_unwrapping
                     return firstResourcePosition < secondResourcePosition
                 }
-                result = .success(resources)
+                result = .fulfilled(resources)
             }
             completion(result)
         }
@@ -248,21 +248,21 @@ public struct RelatedToManyNested<Parent: IdentifiableResource, Element: Identif
     /// - Parameters:
     ///   - index: The index of the resource to fetch in the collection.
     ///   - completion: A completion handler called with the fetched resource, or an error.
-    public func get(id: Element.Identifier, completion: @escaping (Result<Element, Error>) -> Void) {
+    public func get(id: Element.Identifier, completion: @escaping (Result<Element>) -> Void) {
         get(SimpleMDM.shared.networking, id: id, completion: completion)
     }
 
     /// Actual implementation of the `get(id:completion:)` method, with a injectable `Networking` parameter.
-    internal func get(_ networking: Networking, id: Element.Identifier, completion: @escaping (Result<Element, Error>) -> Void) {
+    internal func get(_ networking: Networking, id: Element.Identifier, completion: @escaping (Result<Element>) -> Void) {
         getAll(networking) { result in
             switch result {
-            case let .success(nestedResources):
+            case let .fulfilled(nestedResources):
                 guard let resource = nestedResources.first(where: { $0.id == id }) else {
-                    return completion(.failure(SimpleMDMError.doesNotExist))
+                    return completion(.rejected(SimpleMDMError.doesNotExist))
                 }
-                completion(.success(resource))
-            case let .failure(error):
-                completion(.failure(error))
+                completion(.fulfilled(resource))
+            case let .rejected(error):
+                completion(.rejected(error))
             }
         }
     }

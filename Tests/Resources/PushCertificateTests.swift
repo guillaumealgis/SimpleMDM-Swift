@@ -15,8 +15,8 @@ internal class PushCertificateTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         PushCertificate.get(s.networking) { result in
-            guard case let .success(pushCertificate) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(pushCertificate) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(pushCertificate.appleId, "devops@example.org")
             expectation.fulfill()

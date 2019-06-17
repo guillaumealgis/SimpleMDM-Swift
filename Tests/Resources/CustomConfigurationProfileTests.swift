@@ -15,8 +15,8 @@ internal class CustomConfigurationProfileTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         CustomConfigurationProfile.getAll(s.networking) { result in
-            guard case let .success(customAttributes) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(customAttributes) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(customAttributes.count, 3)
             expectation.fulfill()
@@ -33,8 +33,8 @@ internal class CustomConfigurationProfileTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         CustomConfigurationProfile.get(s.networking, id: 293_814) { result in
-            guard case let .success(customConfigurationProfile) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(customConfigurationProfile) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(customConfigurationProfile.name, "Munki Configuration")
             expectation.fulfill()
@@ -53,14 +53,14 @@ internal class CustomConfigurationProfileTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         CustomConfigurationProfile.get(s.networking, id: 293_814) { ccpResult in
-            guard case let .success(customConfigurationProfile) = ccpResult else {
-                return XCTFail("Expected .success, got \(ccpResult)")
+            guard case let .fulfilled(customConfigurationProfile) = ccpResult else {
+                return XCTFail("Expected .fulfilled, got \(ccpResult)")
             }
             XCTAssertEqual(customConfigurationProfile.deviceGroups.relatedIds, [38])
 
             customConfigurationProfile.deviceGroups.getAll(s.networking) { deviceGroupsResult in
-                guard case let .success(deviceGroups) = deviceGroupsResult else {
-                    return XCTFail("Expected .success, got \(deviceGroupsResult)")
+                guard case let .fulfilled(deviceGroups) = deviceGroupsResult else {
+                    return XCTFail("Expected .fulfilled, got \(deviceGroupsResult)")
                 }
                 XCTAssertEqual(deviceGroups.map { $0.id }, [38])
                 XCTAssertEqual(deviceGroups[0].name, "Executives")

@@ -5,6 +5,13 @@
 
 import Foundation
 
+import PromiseKit
+
+/// Alias Result to PromiseKit.Result to prevent a mixup when compiling with Swift 5.
+///
+/// Once we migrate to PromiseKit 7 this should be removed.
+public typealias Result = PromiseKit.Result
+
 /// The main static object representing the SimpleMDM API. Use this to set your private API key.
 public class SimpleMDM: NSObject {
     // MARK: - Type properties

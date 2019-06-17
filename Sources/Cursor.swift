@@ -28,9 +28,9 @@ public enum CursorLimit: Int {
 ///     let cursor = Cursor<Device>()
 ///     cursor.next { result in
 ///         switch {
-///         case let .success(devices):
+///         case let .fulfilled(devices):
 ///             // Do something with the devices
-///         case let .failure(error):
+///         case let .rejected(error):
 ///             // Handle the error
 ///         }
 ///     }
@@ -57,7 +57,7 @@ public class Cursor<T: ListableResource> {
     internal func next(_ networking: Networking, _ limit: Int? = nil, completion: @escaping CompletionClosure<[T]>) {
         if let limit = limit {
             guard limit >= CursorLimit.min.rawValue, limit <= CursorLimit.max.rawValue else {
-                completion(.failure(SimpleMDMError.invalidLimit(limit)))
+                completion(.rejected(SimpleMDMError.invalidLimit(limit)))
                 return
             }
         }
@@ -78,10 +78,10 @@ public class Cursor<T: ListableResource> {
         let payloadResult = decoding.decodeNetworkingResultPayload(networkingResult, expectedPayloadType: PaginatedListPayload<T>.self)
 
         switch payloadResult {
-        case let .success(payload):
+        case let .fulfilled(payload):
             handleRequestSuccess(payload: payload, completion: completion)
-        case let .failure(error):
-            completion(.failure(error))
+        case let .rejected(error):
+            completion(.rejected(error))
         }
     }
 
@@ -90,7 +90,7 @@ public class Cursor<T: ListableResource> {
 
         guard !(payload.hasMore && resources.isEmpty) else {
             // We got an empty resource list, but the server advertised for more resources. That does not makes sense.
-            return completion(.failure(SimpleMDMError.doesNotExpectMoreResources))
+            return completion(.rejected(SimpleMDMError.doesNotExpectMoreResources))
         }
 
         if let lastResource = resources.last {
@@ -98,7 +98,7 @@ public class Cursor<T: ListableResource> {
         }
         hasMore = payload.hasMore
 
-        completion(.success(resources))
+        completion(.fulfilled(resources))
     }
 }
 
@@ -113,7 +113,7 @@ public class SearchCursor<T: SearchableResource>: Cursor<T> {
         super.init()
     }
 
-    override func fetchNextData(_ networking: Networking, limit: Int?, completion: @escaping (Result<[T], Error>) -> Void) {
+    override func fetchNextData(_ networking: Networking, limit: Int?, completion: @escaping (Result<[T]>) -> Void) {
         networking.getDataForResources(ofType: T.self, matching: searchString, startingAfter: lastFetchedId, limit: limit) { networkingResult in
             self.handleNetworkingResult(networkingResult, completion: completion)
         }
@@ -133,7 +133,7 @@ public class NestedResourceCursor<Parent: IdentifiableResource, T: ListableResou
         super.init()
     }
 
-    override func fetchNextData(_ networking: Networking, limit: Int?, completion: @escaping (Result<[T], Error>) -> Void) {
+    override func fetchNextData(_ networking: Networking, limit: Int?, completion: @escaping (Result<[T]>) -> Void) {
         networking.getDataForNestedListableResources(ofType: T.self, inParent: Parent.self, withId: parentId, startingAfter: lastFetchedId, limit: limit) { networkingResult in
             self.handleNetworkingResult(networkingResult, completion: completion)
         }

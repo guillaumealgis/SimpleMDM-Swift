@@ -21,7 +21,7 @@ internal class SimpleMDMSingletonTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         UniqueResourceMock.get { result in
-            guard case let .failure(error) = result else {
+            guard case let .rejected(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
             guard let simpleMDMError = error as? SimpleMDMError else {
@@ -41,7 +41,7 @@ internal class SimpleMDMSingletonTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         ResourceMock.getAll { result in
-            guard case let .failure(error) = result else {
+            guard case let .rejected(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
             guard let simpleMDMError = error as? SimpleMDMError else {
@@ -61,7 +61,7 @@ internal class SimpleMDMSingletonTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         ResourceMock.get(id: 42) { result in
-            guard case let .failure(error) = result else {
+            guard case let .rejected(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
             guard let simpleMDMError = error as? SimpleMDMError else {
@@ -85,12 +85,12 @@ internal class SimpleMDMSingletonTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         ResourceWithRelationsMock.get(s.networking, id: 42) { result in
-            guard case let .success(resource) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(resource) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
 
             resource.toOne.get { relationResult in
-                guard case let .failure(error) = relationResult else {
+                guard case let .rejected(error) = relationResult else {
                     return XCTFail("Expected .error, got \(relationResult)")
                 }
                 guard let simpleMDMError = error as? SimpleMDMError else {
@@ -115,12 +115,12 @@ internal class SimpleMDMSingletonTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         ResourceWithRelationsMock.get(s.networking, id: 42) { result in
-            guard case let .success(resource) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(resource) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
 
             resource.toMany.getAll { relationResult in
-                guard case let .failure(error) = relationResult else {
+                guard case let .rejected(error) = relationResult else {
                     return XCTFail("Expected .error, got \(relationResult)")
                 }
                 guard let simpleMDMError = error as? SimpleMDMError else {
@@ -145,12 +145,12 @@ internal class SimpleMDMSingletonTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         ResourceWithRelationsMock.get(s.networking, id: 42) { result in
-            guard case let .success(resource) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(resource) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
 
             resource.toMany.get(at: 0) { relationResult in
-                guard case let .failure(error) = relationResult else {
+                guard case let .rejected(error) = relationResult else {
                     return XCTFail("Expected .error, got \(relationResult)")
                 }
                 guard let simpleMDMError = error as? SimpleMDMError else {
@@ -175,12 +175,12 @@ internal class SimpleMDMSingletonTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         ResourceWithRelationsMock.get(s.networking, id: 42) { result in
-            guard case let .success(resource) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(resource) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
 
             resource.toMany.get(id: 0) { relationResult in
-                guard case let .failure(error) = relationResult else {
+                guard case let .rejected(error) = relationResult else {
                     return XCTFail("Expected .error, got \(relationResult)")
                 }
                 guard let simpleMDMError = error as? SimpleMDMError else {
@@ -205,12 +205,12 @@ internal class SimpleMDMSingletonTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         ResourceWithRelationsMock.get(s.networking, id: 42) { result in
-            guard case let .success(resource) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(resource) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
 
             resource.toManyNested.getAll { relationResult in
-                guard case let .failure(error) = relationResult else {
+                guard case let .rejected(error) = relationResult else {
                     return XCTFail("Expected .error, got \(relationResult)")
                 }
                 guard let simpleMDMError = error as? SimpleMDMError else {
@@ -235,12 +235,12 @@ internal class SimpleMDMSingletonTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         ResourceWithRelationsMock.get(s.networking, id: 42) { result in
-            guard case let .success(resource) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(resource) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
 
             resource.toManyNested.get(id: 0) { relationResult in
-                guard case let .failure(error) = relationResult else {
+                guard case let .rejected(error) = relationResult else {
                     return XCTFail("Expected .error, got \(relationResult)")
                 }
                 guard let simpleMDMError = error as? SimpleMDMError else {

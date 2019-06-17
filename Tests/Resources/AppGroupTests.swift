@@ -15,8 +15,8 @@ internal class AppGroupTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         AppGroup.getAll(s.networking) { result in
-            guard case let .success(appGroups) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(appGroups) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(appGroups.count, 2)
             expectation.fulfill()
@@ -33,8 +33,8 @@ internal class AppGroupTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         AppGroup.get(s.networking, id: 38) { result in
-            guard case let .success(appGroup) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(appGroup) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(appGroup.name, "Productivity Apps")
             expectation.fulfill()
@@ -54,14 +54,14 @@ internal class AppGroupTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         AppGroup.get(s.networking, id: 38) { appGroupResult in
-            guard case let .success(appGroup) = appGroupResult else {
-                return XCTFail("Expected .success, got \(appGroupResult)")
+            guard case let .fulfilled(appGroup) = appGroupResult else {
+                return XCTFail("Expected .fulfilled, got \(appGroupResult)")
             }
             XCTAssertEqual(appGroup.apps.relatedIds, [63, 67])
 
             appGroup.apps.getAll(s.networking) { appsResult in
-                guard case let .failure(error) = appsResult else {
-                    return XCTFail("Expected .failure, got \(appsResult)")
+                guard case let .rejected(error) = appsResult else {
+                    return XCTFail("Expected .rejected, got \(appsResult)")
                 }
                 guard let simpleMDMError = error as? SimpleMDMError else {
                     return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
@@ -85,14 +85,14 @@ internal class AppGroupTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         AppGroup.get(s.networking, id: 38) { appGroupResult in
-            guard case let .success(appGroup) = appGroupResult else {
-                return XCTFail("Expected .success, got \(appGroupResult)")
+            guard case let .fulfilled(appGroup) = appGroupResult else {
+                return XCTFail("Expected .fulfilled, got \(appGroupResult)")
             }
             XCTAssertEqual(appGroup.apps.relatedIds, [63, 67])
 
             appGroup.apps.getAll(s.networking) { appsResult in
-                guard case let .success(apps) = appsResult else {
-                    return XCTFail("Expected .success, got \(appsResult)")
+                guard case let .fulfilled(apps) = appsResult else {
+                    return XCTFail("Expected .fulfilled, got \(appsResult)")
                 }
                 XCTAssertEqual(apps.map { $0.id }, [63, 67])
                 XCTAssertEqual(apps[0].name, "Trello")
@@ -116,14 +116,14 @@ internal class AppGroupTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         AppGroup.get(s.networking, id: 38) { appGroupResult in
-            guard case let .success(appGroup) = appGroupResult else {
-                return XCTFail("Expected .success, got \(appGroupResult)")
+            guard case let .fulfilled(appGroup) = appGroupResult else {
+                return XCTFail("Expected .fulfilled, got \(appGroupResult)")
             }
             XCTAssertEqual(appGroup.apps.relatedIds, [63, 67])
 
             appGroup.apps.getAll(s.networking) { appsResult in
-                guard case let .success(apps) = appsResult else {
-                    return XCTFail("Expected .success, got \(appsResult)")
+                guard case let .fulfilled(apps) = appsResult else {
+                    return XCTFail("Expected .fulfilled, got \(appsResult)")
                 }
                 XCTAssertEqual(apps.map { $0.id }, [63, 67])
                 XCTAssertEqual(apps[0].name, "Trello")
@@ -146,14 +146,14 @@ internal class AppGroupTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         AppGroup.get(s.networking, id: 38) { appGroupResult in
-            guard case let .success(appGroup) = appGroupResult else {
-                return XCTFail("Expected .success, got \(appGroupResult)")
+            guard case let .fulfilled(appGroup) = appGroupResult else {
+                return XCTFail("Expected .fulfilled, got \(appGroupResult)")
             }
             XCTAssertEqual(appGroup.deviceGroups.relatedIds, [37, 38])
 
             appGroup.deviceGroups.getAll(s.networking) { deviceGroupsResult in
-                guard case let .success(deviceGroups) = deviceGroupsResult else {
-                    return XCTFail("Expected .success, got \(deviceGroupsResult)")
+                guard case let .fulfilled(deviceGroups) = deviceGroupsResult else {
+                    return XCTFail("Expected .fulfilled, got \(deviceGroupsResult)")
                 }
                 XCTAssertEqual(deviceGroups.map { $0.id }, [37, 38])
                 XCTAssertEqual(deviceGroups[0].name, "Interns")
@@ -175,14 +175,14 @@ internal class AppGroupTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         AppGroup.get(s.networking, id: 38) { appGroupResult in
-            guard case let .success(appGroup) = appGroupResult else {
-                return XCTFail("Expected .success, got \(appGroupResult)")
+            guard case let .fulfilled(appGroup) = appGroupResult else {
+                return XCTFail("Expected .fulfilled, got \(appGroupResult)")
             }
             XCTAssertEqual(appGroup.devices.relatedIds, [121])
 
             appGroup.devices.getAll(s.networking) { devicesResult in
-                guard case let .success(devices) = devicesResult else {
-                    return XCTFail("Expected .success, got \(devicesResult)")
+                guard case let .fulfilled(devices) = devicesResult else {
+                    return XCTFail("Expected .fulfilled, got \(devicesResult)")
                 }
                 XCTAssertEqual(devices.map { $0.id }, [121])
                 XCTAssertEqual(devices[0].name, "Mike's iPhone")
@@ -203,14 +203,14 @@ internal class AppGroupTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         AppGroup.get(s.networking, id: 38) { appGroupResult in
-            guard case let .success(appGroup) = appGroupResult else {
-                return XCTFail("Expected .success, got \(appGroupResult)")
+            guard case let .fulfilled(appGroup) = appGroupResult else {
+                return XCTFail("Expected .fulfilled, got \(appGroupResult)")
             }
             XCTAssertEqual(appGroup.devices.relatedIds, [121])
 
             appGroup.devices.get(s.networking, at: 0) { deviceResult in
-                guard case let .success(device) = deviceResult else {
-                    return XCTFail("Expected .success, got \(deviceResult)")
+                guard case let .fulfilled(device) = deviceResult else {
+                    return XCTFail("Expected .fulfilled, got \(deviceResult)")
                 }
                 XCTAssertEqual(device.name, "Mike's iPhone")
                 expectation.fulfill()
@@ -230,14 +230,14 @@ internal class AppGroupTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         AppGroup.get(s.networking, id: 38) { appGroupResult in
-            guard case let .success(appGroup) = appGroupResult else {
-                return XCTFail("Expected .success, got \(appGroupResult)")
+            guard case let .fulfilled(appGroup) = appGroupResult else {
+                return XCTFail("Expected .fulfilled, got \(appGroupResult)")
             }
             XCTAssertEqual(appGroup.devices.relatedIds, [121])
 
             appGroup.devices.get(s.networking, id: 121) { deviceResult in
-                guard case let .success(device) = deviceResult else {
-                    return XCTFail("Expected .success, got \(deviceResult)")
+                guard case let .fulfilled(device) = deviceResult else {
+                    return XCTFail("Expected .fulfilled, got \(deviceResult)")
                 }
                 XCTAssertEqual(device.name, "Mike's iPhone")
                 expectation.fulfill()

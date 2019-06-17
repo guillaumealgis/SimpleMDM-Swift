@@ -25,18 +25,18 @@ internal class Decoding {
     ///   - result: The request result to decode.
     ///   - expectedPayloadType: The expected payload type.
     /// - Returns: Either the decoded payload, or an error.
-    func decodeNetworkingResultPayload<P: Payload>(_ result: NetworkingResult, expectedPayloadType: P.Type) -> Result<P, Error> {
+    func decodeNetworkingResultPayload<P: Payload>(_ result: NetworkingResult, expectedPayloadType: P.Type) -> Result<P> {
         switch result {
         case let .success(data):
             do {
-                return .success(try decodePayload(ofType: expectedPayloadType, from: data))
+                return .fulfilled(try decodePayload(ofType: expectedPayloadType, from: data))
             } catch {
-                return .failure(error)
+                return .rejected(error)
             }
         case let .decodableDataFailure(httpCode, data):
-            return .failure(decodeError(from: data, httpCode: httpCode))
+            return .rejected(decodeError(from: data, httpCode: httpCode))
         case let .failure(error):
-            return .failure(error)
+            return .rejected(error)
         }
     }
 
@@ -47,13 +47,13 @@ internal class Decoding {
     ///   - result: The request result to decode.
     ///   - expectedPayloadType: The expected payload type.
     /// - Returns: Either the decoded data, or an error.
-    func decodeNetworkingResult<P: Payload>(_ result: NetworkingResult, expectedPayloadType: P.Type) -> Result<P.DataType, Error> {
+    func decodeNetworkingResult<P: Payload>(_ result: NetworkingResult, expectedPayloadType: P.Type) -> Result<P.DataType> {
         let payloadResult = decodeNetworkingResultPayload(result, expectedPayloadType: expectedPayloadType)
         switch payloadResult {
-        case let .success(payload):
-            return .success(payload.data)
-        case let .failure(error):
-            return .failure(error)
+        case let .fulfilled(payload):
+            return .fulfilled(payload.data)
+        case let .rejected(error):
+            return .rejected(error)
         }
     }
 

@@ -42,7 +42,7 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
         }.done { _ in
             expectation.fulfill()
         }.catch { error in
-            XCTFail("Expected .success, got \(error)")
+            XCTFail("Expected .fulfilled, got \(error)")
         }
 
         waitForExpectations(timeout: 0.3, handler: nil)
@@ -79,7 +79,7 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
             XCTAssertEqual(resources.count, 5)
             expectation.fulfill()
         }.catch { error in
-            XCTFail("Expected .success, got \(error)")
+            XCTFail("Expected .fulfilled, got \(error)")
         }
 
         waitForExpectations(timeout: 0.3, handler: nil)
@@ -116,7 +116,7 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
             XCTAssertEqual(resource.id, 37)
             expectation.fulfill()
         }.catch { error in
-            XCTFail("Expected .success, got \(error)")
+            XCTFail("Expected .fulfilled, got \(error)")
         }
 
         waitForExpectations(timeout: 0.3, handler: nil)
@@ -159,7 +159,7 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
             XCTAssertEqual(relatedResource.id, 37)
             expectation.fulfill()
         }.catch { error in
-            XCTFail("Expected .success, got \(error)")
+            XCTFail("Expected .fulfilled, got \(error)")
         }
 
         waitForExpectations(timeout: 0.3, handler: nil)
@@ -210,7 +210,7 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
             XCTAssertEqual(relatedResources.map { $0.id }, [326, 78])
             expectation.fulfill()
         }.catch { error in
-            XCTFail("Expected .success, got \(error)")
+            XCTFail("Expected .fulfilled, got \(error)")
         }
 
         waitForExpectations(timeout: 0.3, handler: nil)
@@ -287,7 +287,7 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
             XCTAssertEqual(relatedResource.id, 78)
             expectation.fulfill()
         }.catch { error in
-            XCTFail("Expected .success, got \(error)")
+            XCTFail("Expected .fulfilled, got \(error)")
         }
 
         waitForExpectations(timeout: 0.3, handler: nil)
@@ -312,7 +312,7 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
             XCTAssertEqual(relatedResource.id, 326)
             expectation.fulfill()
         }.catch { error in
-            XCTFail("Expected .success, got \(error)")
+            XCTFail("Expected .fulfilled, got \(error)")
         }
 
         waitForExpectations(timeout: 0.3, handler: nil)
@@ -337,7 +337,7 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
             XCTAssertEqual(relatedResources.map { $0.id }, [923, 345, 8762, 3, 9021])
             expectation.fulfill()
         }.catch { error in
-            XCTFail("Expected .success, got \(error)")
+            XCTFail("Expected .fulfilled, got \(error)")
         }
 
         waitForExpectations(timeout: 0.3, handler: nil)
@@ -387,7 +387,7 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
             XCTAssertEqual(relatedResource.id, 8762)
             expectation.fulfill()
         }.catch { error in
-            XCTFail("Expected .success, got \(error)")
+            XCTFail("Expected .fulfilled, got \(error)")
         }
 
         waitForExpectations(timeout: 0.3, handler: nil)
@@ -409,7 +409,7 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
             XCTAssertFalse(cursor.hasMore)
             expectation.fulfill()
         }.catch { error in
-            XCTFail("Expected .success, got \(error)")
+            XCTFail("Expected .fulfilled, got \(error)")
         }
 
         waitForExpectations(timeout: 0.3, handler: nil)
@@ -443,7 +443,7 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
             XCTAssertTrue(cursor.hasMore)
             expectation.fulfill()
         }.catch { error in
-            XCTFail("Expected .success, got \(error)")
+            XCTFail("Expected .fulfilled, got \(error)")
         }
 
         waitForExpectations(timeout: 0.3, handler: nil)
@@ -494,7 +494,7 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
             secondFetchSuccess.fulfill()
         }
         .catch { error in
-            XCTFail("Expected .success, got \(error)")
+            XCTFail("Expected .fulfilled, got \(error)")
         }
 
         waitForExpectations(timeout: 0.3, handler: nil)

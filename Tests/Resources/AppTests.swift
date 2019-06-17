@@ -15,8 +15,8 @@ internal class AppTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         App.getAll(s.networking) { result in
-            guard case let .success(apps) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(apps) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(apps.count, 5)
             expectation.fulfill()
@@ -33,8 +33,8 @@ internal class AppTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         App.get(s.networking, id: 17_635) { result in
-            guard case let .success(app) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(app) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(app.bundleIdentifier, "com.unwiredrev.DeviceLink.public")
             expectation.fulfill()
@@ -59,13 +59,13 @@ internal class AppTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         App.get(s.networking, id: 17_635) { appResult in
-            guard case let .success(app) = appResult else {
-                return XCTFail("Expected .success, got \(appResult)")
+            guard case let .fulfilled(app) = appResult else {
+                return XCTFail("Expected .fulfilled, got \(appResult)")
             }
 
             app.managedConfigs.next(s.networking) { managedConfigsResult in
-                guard case let .failure(error) = managedConfigsResult else {
-                    return XCTFail("Expected .failure, got \(managedConfigsResult)")
+                guard case let .rejected(error) = managedConfigsResult else {
+                    return XCTFail("Expected .rejected, got \(managedConfigsResult)")
                 }
                 guard let simpleMDMError = error as? SimpleMDMError else {
                     return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
@@ -88,13 +88,13 @@ internal class AppTests: XCTestCase {
         let expectation = self.expectation(description: "Callback called")
 
         App.get(s.networking, id: 17_635) { appResult in
-            guard case let .success(app) = appResult else {
-                return XCTFail("Expected .success, got \(appResult)")
+            guard case let .fulfilled(app) = appResult else {
+                return XCTFail("Expected .fulfilled, got \(appResult)")
             }
 
             app.managedConfigs.next(s.networking) { managedConfigsResult in
-                guard case let .success(managedConfigs) = managedConfigsResult else {
-                    return XCTFail("Expected .success, got \(managedConfigsResult)")
+                guard case let .fulfilled(managedConfigs) = managedConfigsResult else {
+                    return XCTFail("Expected .fulfilled, got \(managedConfigsResult)")
                 }
                 XCTAssertEqual(managedConfigs.map { $0.key }, ["customer_name", "User IDs", "Device values"])
                 XCTAssertEqual(managedConfigs.map { $0.value }, ["ACME Inc.", "1,53,3", "\"$imei\",\"$udid\""])

@@ -149,8 +149,8 @@ internal class NetworkingTests: XCTestCase {
         let s = SimpleMDM(sessionMock: session)
 
         FakeResource.get(s.networking) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
+            guard case let .rejected(error) = result else {
+                return XCTFail("Expected .rejected, got \(result)")
             }
             guard let internalError = error as? InternalError else {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
@@ -172,8 +172,8 @@ internal class NetworkingTests: XCTestCase {
         let s = SimpleMDM(sessionMock: session)
 
         FakeResource.getAll(s.networking) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
+            guard case let .rejected(error) = result else {
+                return XCTFail("Expected .rejected, got \(result)")
             }
             guard let internalError = error as? InternalError else {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
@@ -195,8 +195,8 @@ internal class NetworkingTests: XCTestCase {
         let s = SimpleMDM(sessionMock: session)
 
         FakeResource.get(s.networking, id: "anID") { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
+            guard case let .rejected(error) = result else {
+                return XCTFail("Expected .rejected, got \(result)")
             }
             guard let internalError = error as? InternalError else {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
@@ -219,8 +219,8 @@ internal class NetworkingTests: XCTestCase {
 
         let cursor = SearchCursor<FakeResource>(searchString: "Foobar")
         cursor.next(s.networking) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
+            guard case let .rejected(error) = result else {
+                return XCTFail("Expected .rejected, got \(result)")
             }
             guard let internalError = error as? InternalError else {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
@@ -251,8 +251,8 @@ internal class NetworkingTests: XCTestCase {
         let s = SimpleMDM(sessionMock: session)
 
         nestedResources.getAll(s.networking) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
+            guard case let .rejected(error) = result else {
+                return XCTFail("Expected .rejected, got \(result)")
             }
             guard let internalError = error as? InternalError else {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
@@ -283,8 +283,8 @@ internal class NetworkingTests: XCTestCase {
         let s = SimpleMDM(sessionMock: session)
 
         nestedResources.next(s.networking) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
+            guard case let .rejected(error) = result else {
+                return XCTFail("Expected .rejected, got \(result)")
             }
             guard let internalError = error as? InternalError else {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
@@ -315,8 +315,8 @@ internal class NetworkingTests: XCTestCase {
         let s = SimpleMDM(sessionMock: session)
 
         nestedResources.next(s.networking) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
+            guard case let .rejected(error) = result else {
+                return XCTFail("Expected .rejected, got \(result)")
             }
             guard let internalError = error as? InternalError else {
                 return XCTFail("Expected error to be a InternalError, got \(error)")

@@ -6,7 +6,7 @@
 import Foundation
 
 /// A completion clusure used to return a Result type asynchronously.
-public typealias CompletionClosure<Value> = (Result<Value, Error>) -> Void
+public typealias CompletionClosure<Value> = (Result<Value>) -> Void
 
 /// A protocol adopted by all resources types of the library.
 public protocol Resource: Decodable {
@@ -83,8 +83,8 @@ public extension GettableResource {
         networking.getDataForResource(ofType: Self.self, withId: id) { networkResult in
             let decoding = Decoding()
             let result = decoding.decodeNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
-            if case let .success(resource) = result, resource.id != id {
-                completion(.failure(SimpleMDMError.unexpectedResourceId))
+            if case let .fulfilled(resource) = result, resource.id != id {
+                completion(.rejected(SimpleMDMError.unexpectedResourceId))
                 return
             } else {
                 completion(result)
@@ -137,15 +137,15 @@ public extension ListableResource {
     ///     list, or an error if one occurs.
     private static func getNext(_ networking: Networking, accumulator: [Self], cursor: Cursor<Self>, completion: @escaping CompletionClosure<[Self]>) {
         if !cursor.hasMore {
-            completion(.success(accumulator))
+            completion(.fulfilled(accumulator))
             return
         }
 
         cursor.next(networking, CursorLimit.max.rawValue) { result in
             switch result {
-            case let .failure(error):
-                completion(.failure(error))
-            case let .success(resources):
+            case let .rejected(error):
+                completion(.rejected(error))
+            case let .fulfilled(resources):
                 let accumulator = accumulator + resources
                 getNext(networking, accumulator: accumulator, cursor: cursor, completion: completion)
             }

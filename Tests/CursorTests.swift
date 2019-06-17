@@ -17,7 +17,7 @@ internal class CursorTests: XCTestCase {
 
         let cursor = Cursor<ResourceMock>()
         cursor.next(-1) { result in
-            guard case let .failure(error) = result else {
+            guard case let .rejected(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
             guard let simpleMDMError = error as? SimpleMDMError else {
@@ -36,7 +36,7 @@ internal class CursorTests: XCTestCase {
 
         let cursor = Cursor<ResourceMock>()
         cursor.next(0) { result in
-            guard case let .failure(error) = result else {
+            guard case let .rejected(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
             guard let simpleMDMError = error as? SimpleMDMError else {
@@ -55,7 +55,7 @@ internal class CursorTests: XCTestCase {
 
         let cursor = Cursor<ResourceMock>()
         cursor.next(101) { result in
-            guard case let .failure(error) = result else {
+            guard case let .rejected(error) = result else {
                 return XCTFail("Expected .error, got \(result)")
             }
             guard let simpleMDMError = error as? SimpleMDMError else {
@@ -78,8 +78,8 @@ internal class CursorTests: XCTestCase {
 
         let cursor = Cursor<ResourceMock>()
         cursor.next(s.networking) { result in
-            guard case let .success(resources) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(resources) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(resources.count, 5)
             XCTAssertFalse(cursor.hasMore)
@@ -103,8 +103,8 @@ internal class CursorTests: XCTestCase {
 
         let cursor = Cursor<ResourceMock>()
         cursor.next(s.networking) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
+            guard case let .rejected(error) = result else {
+                return XCTFail("Expected .rejected, got \(result)")
             }
             guard let simpleMDMError = error as? SimpleMDMError else {
                 return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
@@ -138,8 +138,8 @@ internal class CursorTests: XCTestCase {
 
         let cursor = Cursor<ResourceMock>()
         cursor.next(s.networking, 1) { result in
-            guard case let .success(resources) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(resources) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(resources.count, 1)
             XCTAssertTrue(cursor.hasMore)
@@ -179,16 +179,16 @@ internal class CursorTests: XCTestCase {
 
         let cursor = Cursor<ResourceMock>()
         cursor.next(s.networking, 1) { result in
-            guard case let .success(resources) = result else {
-                return XCTFail("Expected .success, got \(result)")
+            guard case let .fulfilled(resources) = result else {
+                return XCTFail("Expected .fulfilled, got \(result)")
             }
             XCTAssertEqual(resources.count, 1)
             XCTAssertTrue(cursor.hasMore)
             firstFetchSuccess.fulfill()
 
             cursor.next(s.networking, 20) { result in
-                guard case let .success(resources) = result else {
-                    return XCTFail("Expected .success, got \(result)")
+                guard case let .fulfilled(resources) = result else {
+                    return XCTFail("Expected .fulfilled, got \(result)")
                 }
                 XCTAssertEqual(resources.count, 1)
                 XCTAssertFalse(cursor.hasMore)
