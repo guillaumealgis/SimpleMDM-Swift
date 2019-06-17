@@ -42,3 +42,7 @@ matrix:
       - swiftformat --config .swiftformat --lint .
       - swiftlint version
       - swiftlint --strict
+
+  - name: "Cocoapods"
+    script:
+      - pod lib lint --verbose --fail-fast SimpleMDM-Swift.podspec
