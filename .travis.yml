@@ -9,10 +9,11 @@ addons:
     packages:
     - swiftformat
     - swiftlint
+    - carthage
     update: true
 
 install:
-  - cd Dependencies/PromiseKit; swift package generate-xcodeproj; cd -
+  - carthage update --cache-builds
 
 matrix:
   include:
