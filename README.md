@@ -30,7 +30,7 @@ SimpleMDM-Swift is a cross-platform (iOS, macOS, tvOS, watchOS) SDK to access th
 
 ## Usage
 
-Full documentation is available here: [https://guillaumealgis.github.io/SimpleMDM-Swift/](https://guillaumealgis.github.io/SimpleMDM-Swift/)
+📘 Full documentation is available here: [https://guillaumealgis.github.io/SimpleMDM-Swift/](https://guillaumealgis.github.io/SimpleMDM-Swift/)
 
 ```swift
 // Just set this once in your applicationDidBecomeActive method
