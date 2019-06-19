@@ -16,7 +16,7 @@ before_install:
   - gem install cocoapods
 
 install:
-  - carthage update --cache-builds
+  - carthage update
 
 matrix:
   include:
