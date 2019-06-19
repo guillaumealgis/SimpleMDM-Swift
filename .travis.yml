@@ -12,6 +12,9 @@ addons:
     - carthage
     update: true
 
+before_install:
+  - gem install cocoapods
+
 install:
   - carthage update --cache-builds
 
