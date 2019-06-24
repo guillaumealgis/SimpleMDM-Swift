@@ -108,6 +108,9 @@ public class Cursor<T: ListableResource> {
 public class SearchCursor<T: SearchableResource>: Cursor<T> {
     private let searchString: String
 
+    /// Create a new search cursor.
+    ///
+    /// - Parameter searchString: The string the resources must match.
     public required init(searchString: String) {
         self.searchString = searchString
         super.init()
@@ -128,7 +131,10 @@ public class SearchCursor<T: SearchableResource>: Cursor<T> {
 public class NestedResourceCursor<Parent: IdentifiableResource, T: ListableResource>: Cursor<T>, NestedResourceAttribute {
     let parentId: Parent.Identifier
 
-    public required init(parentId: Parent.Identifier) {
+    /// Create a new nested resource cursor.
+    ///
+    /// - Parameter parentId: The identifier of the parent resource this cursor is an attribute of.
+    required init(parentId: Parent.Identifier) {
         self.parentId = parentId
         super.init()
     }

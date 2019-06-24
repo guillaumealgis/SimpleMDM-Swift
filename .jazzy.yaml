@@ -27,12 +27,10 @@ custom_categories:
     children:
     - Account
     - App
-    - App.ManagedConfig
     - AppGroup
     - CustomAttribute
     - CustomConfigurationProfile
     - Device
-    - Device.CustomAttributeValue
     - DeviceGroup
     - InstalledApp
     - PushCertificate
