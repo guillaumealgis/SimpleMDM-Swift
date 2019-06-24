@@ -2,11 +2,17 @@
 
 ##### Enhancements
 
-* Add PromiseKit support.
+* None.
 
 ##### Bug Fixes
 
 * None.
+
+## 0.3.0 (2019-06-25)
+
+##### Enhancements
+
+* Add PromiseKit support.
 
 
 ## 0.2.0 (2019-05-15)
