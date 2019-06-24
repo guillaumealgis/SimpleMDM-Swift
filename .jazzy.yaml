@@ -1,12 +1,12 @@
 clean: true
 
 module: SimpleMDM
-module_version: 0.2.0
+module_version: 0.3.0
 
 swift_version: 5.0.1
 
 github_url: https://github.com/guillaumealgis/simplemdm-swift
-github_file_prefix: https://github.com/guillaumealgis/simplemdm-swift/tree/0.2.0
+github_file_prefix: https://github.com/guillaumealgis/simplemdm-swift/tree/0.3.0
 
 root_url: https://guillaumealgis.github.io/SimpleMDM-Swift
 
