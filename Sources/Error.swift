@@ -53,11 +53,11 @@ public enum NetworkError: BaseSimpleMDMError {
 public enum SimpleMDMError: BaseSimpleMDMError {
     /// The SimpleMDM API key was not set before sending a request.
     ///
-    /// - SeeAlso: `SimpleMDM.APIKey`
-    case APIKeyNotSet
+    /// - SeeAlso: `SimpleMDM.apiKey`
+    case apiKeyNotSet
 
     /// The SimpleMDM API key was rejected by the server.
-    case APIKeyInvalid
+    case apiKeyInvalid
 
     /// The server responded with an unexpected HTTP response code.
     case unknown(httpCode: Int)
@@ -87,9 +87,9 @@ public enum SimpleMDMError: BaseSimpleMDMError {
     /// A localized message describing what error occurred.
     public var errorDescription: String? {
         switch self {
-        case .APIKeyNotSet:
+        case .apiKeyNotSet:
             return "The SimpleMDM API key was not set"
-        case .APIKeyInvalid:
+        case .apiKeyInvalid:
             return "The SimpleMDM server rejected the API key"
         case let .unknown(httpCode):
             return "Unknown API error (empty payload, HTTP response code was \(httpCode)"

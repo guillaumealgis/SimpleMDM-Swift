@@ -13,7 +13,7 @@ internal class SimpleMDMSingletonTests: XCTestCase {
     override static func setUp() {
         let session = URLSessionMock(responseCode: 999)
         let networking = Networking(urlSession: session)
-        networking.APIKey = "AGlobalAndRandomAPIKey"
+        networking.apiKey = "AGlobalAndRandomAPIKey"
         SimpleMDM.shared.networking = networking
     }
 

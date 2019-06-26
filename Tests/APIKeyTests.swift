@@ -8,11 +8,11 @@ import XCTest
 
 internal class APIKeyTests: XCTestCase {
     func testSettingAPIKeyViaSingleton() {
-        let APIKey = "AVeryRandomTestAPIKey"
-        SimpleMDM.APIKey = APIKey
+        let apiKey = "AVeryRandomTestAPIKey"
+        SimpleMDM.apiKey = apiKey
 
-        XCTAssertEqual(SimpleMDM.APIKey, APIKey)
-        XCTAssertEqual(SimpleMDM.shared.networking.APIKey, APIKey)
+        XCTAssertEqual(SimpleMDM.apiKey, apiKey)
+        XCTAssertEqual(SimpleMDM.shared.networking.apiKey, apiKey)
     }
 
     func testNotSettingAPIKeyReturnsError() {
@@ -26,7 +26,7 @@ internal class APIKeyTests: XCTestCase {
             guard let simpleMDMError = error as? SimpleMDMError else {
                 return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
             }
-            XCTAssertEqual(simpleMDMError, SimpleMDMError.APIKeyNotSet)
+            XCTAssertEqual(simpleMDMError, SimpleMDMError.apiKeyNotSet)
         }
     }
 
@@ -48,7 +48,7 @@ internal class APIKeyTests: XCTestCase {
     func test401ResponseReturnsInvalidSimpleMDMError() {
         let session = URLSessionMock(responseCode: 401)
         let networking = Networking(urlSession: session)
-        networking.APIKey = "AVeryRandomTestAPIKey"
+        networking.apiKey = "AVeryRandomTestAPIKey"
 
         networking.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {
@@ -57,14 +57,14 @@ internal class APIKeyTests: XCTestCase {
             guard let simpleMDMError = error as? SimpleMDMError else {
                 return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
             }
-            XCTAssertEqual(simpleMDMError, SimpleMDMError.APIKeyInvalid)
+            XCTAssertEqual(simpleMDMError, SimpleMDMError.apiKeyInvalid)
         }
     }
 
     func testInvalidSimpleMDMErrorHasHumanReadableDescription() {
         let session = URLSessionMock(responseCode: 401)
         let networking = Networking(urlSession: session)
-        networking.APIKey = "AVeryRandomTestAPIKey"
+        networking.apiKey = "AVeryRandomTestAPIKey"
 
         networking.getDataForResources(ofType: Device.self) { result in
             guard case let .failure(error) = result else {

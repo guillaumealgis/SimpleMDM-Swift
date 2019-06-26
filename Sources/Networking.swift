@@ -24,14 +24,14 @@ internal enum NetworkingResult {
 /// - Note: You should not instanciate this class directly, but instead use the global instance `SimpleMDM.networking`.
 ///   This allows the library to re-use a single connection, improving performances.
 internal class Networking {
-    var APIKey: String? {
+    var apiKey: String? {
         didSet {
-            let utf8Data = APIKey?.data(using: .utf8)
+            let utf8Data = apiKey?.data(using: .utf8)
             base64APIKey = utf8Data?.base64EncodedString()
         }
     }
 
-    /// A base64 representation of `APIKey`.
+    /// A base64 representation of `apiKey`.
     private var base64APIKey: String?
     // swiftlint:disable:next force_unwrapping
     private var baseURL = URL(string: "https://a.simplemdm.com/api/v1/")!
@@ -169,7 +169,7 @@ internal class Networking {
         var urlRequest = URLRequest(url: url)
 
         guard let base64APIKey = base64APIKey else {
-            throw SimpleMDMError.APIKeyNotSet
+            throw SimpleMDMError.apiKeyNotSet
         }
 
         urlRequest.setValue("Basic \(base64APIKey)", forHTTPHeaderField: "Authorization")
@@ -212,7 +212,7 @@ internal class Networking {
         case 200:
             return .success(data)
         case 401:
-            return .failure(SimpleMDMError.APIKeyInvalid)
+            return .failure(SimpleMDMError.apiKeyInvalid)
         case 404:
             return .failure(SimpleMDMError.doesNotExist)
         default:

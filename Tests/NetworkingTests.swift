@@ -10,7 +10,7 @@ internal class NetworkingTests: XCTestCase {
     func testReturnUnknownErrorIfRequestFails() {
         let session = URLSessionMock(data: nil)
         let networking = Networking(urlSession: session)
-        networking.APIKey = "AVeryRandomTestAPIKey"
+        networking.apiKey = "AVeryRandomTestAPIKey"
 
         networking.getDataForResources(ofType: ResourceMock.self) { result in
             guard case let .failure(error) = result else {
@@ -26,7 +26,7 @@ internal class NetworkingTests: XCTestCase {
     func testUnknownErrorHasHumanReadableDescription() {
         let session = URLSessionMock(data: nil)
         let networking = Networking(urlSession: session)
-        networking.APIKey = "AVeryRandomTestAPIKey"
+        networking.apiKey = "AVeryRandomTestAPIKey"
 
         networking.getDataForResources(ofType: ResourceMock.self) { result in
             guard case let .failure(error) = result else {
@@ -42,7 +42,7 @@ internal class NetworkingTests: XCTestCase {
     func testReturnNoHTTPResponseIfNoResponseReturned() {
         let session = URLSessionMock()
         let networking = Networking(urlSession: session)
-        networking.APIKey = "AVeryRandomTestAPIKey"
+        networking.apiKey = "AVeryRandomTestAPIKey"
 
         networking.getDataForResources(ofType: ResourceMock.self) { result in
             guard case let .failure(error) = result else {
@@ -58,7 +58,7 @@ internal class NetworkingTests: XCTestCase {
     func testNoHTTPResponseErrorHasHumanReadableDescription() {
         let session = URLSessionMock()
         let networking = Networking(urlSession: session)
-        networking.APIKey = "AVeryRandomTestAPIKey"
+        networking.apiKey = "AVeryRandomTestAPIKey"
 
         networking.getDataForResources(ofType: ResourceMock.self) { result in
             guard case let .failure(error) = result else {
@@ -75,7 +75,7 @@ internal class NetworkingTests: XCTestCase {
         let mimeType = "text/html"
         let session = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
         let networking = Networking(urlSession: session)
-        networking.APIKey = "AVeryRandomTestAPIKey"
+        networking.apiKey = "AVeryRandomTestAPIKey"
 
         networking.getDataForResources(ofType: ResourceMock.self) { result in
             guard case let .failure(error) = result else {
@@ -92,7 +92,7 @@ internal class NetworkingTests: XCTestCase {
         let mimeType: String? = nil
         let session = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
         let networking = Networking(urlSession: session)
-        networking.APIKey = "AVeryRandomTestAPIKey"
+        networking.apiKey = "AVeryRandomTestAPIKey"
 
         networking.getDataForResources(ofType: ResourceMock.self) { result in
             guard case let .failure(error) = result else {
@@ -109,7 +109,7 @@ internal class NetworkingTests: XCTestCase {
         let mimeType = "text/html"
         let session = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
         let networking = Networking(urlSession: session)
-        networking.APIKey = "AVeryRandomTestAPIKey"
+        networking.apiKey = "AVeryRandomTestAPIKey"
 
         networking.getDataForResources(ofType: ResourceMock.self) { result in
             guard case let .failure(error) = result else {
@@ -126,7 +126,7 @@ internal class NetworkingTests: XCTestCase {
         let mimeType: String? = nil
         let session = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
         let networking = Networking(urlSession: session)
-        networking.APIKey = "AVeryRandomTestAPIKey"
+        networking.apiKey = "AVeryRandomTestAPIKey"
 
         networking.getDataForResources(ofType: ResourceMock.self) { result in
             guard case let .failure(error) = result else {

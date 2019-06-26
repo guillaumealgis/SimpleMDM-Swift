@@ -24,7 +24,7 @@ internal extension SimpleMDM {
         self.init()
 
         let networking = Networking(urlSession: sessionMock)
-        networking.APIKey = "AVeryRandomAPIKey"
+        networking.apiKey = "AVeryRandomAPIKey"
         self.networking = networking
     }
 }

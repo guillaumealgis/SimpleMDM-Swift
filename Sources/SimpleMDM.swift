@@ -19,15 +19,15 @@ public class SimpleMDM: NSObject {
     /// Your private SimpleMDM API key.
     ///
     /// You **must** set this property to an non-empty string before using any other object of this library.
-    /// Failure to do so will result in most methods returning a `SimpleMDMError.APIKeyNotSet` error.
+    /// Failure to do so will result in most methods returning a `SimpleMDMError.aPIKeyNotSet` error.
     ///
     /// Your API key can be found in your SimpleMDM account, under Settings > API > Secret Access Key.
-    public static var APIKey: String? {
+    public static var apiKey: String? {
         get {
-            return SimpleMDM.shared.networking.APIKey
+            return SimpleMDM.shared.networking.apiKey
         }
         set {
-            SimpleMDM.shared.networking.APIKey = newValue
+            SimpleMDM.shared.networking.apiKey = newValue
         }
     }
 
