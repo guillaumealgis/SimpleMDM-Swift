@@ -35,7 +35,7 @@ Please Note: This library is not officially supported by SimpleMDM. It does not 
   s.tvos.deployment_target  = '10.0'
   s.watchos.deployment_target  = '3.0'
 
-  s.dependency 'PromiseKit/CorePromise', "~> 6.8"
+  s.dependency 'PromiseKit/CorePromise', "= 6.9"
 
   s.source_files = 'Sources/**/*.swift'
 end
