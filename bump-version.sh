@@ -22,6 +22,9 @@ else
     exit 1
 fi
 
+# Ensure we won't leave a dirty repository if the script is interrupted.
+trap 'git reset HEAD . > /dev/null && git checkout HEAD . > /dev/null' INT TERM HUP EXIT
+
 new_version="$major.$minor.$bugfix"
 new_build="$(git rev-list HEAD --count)"
 echo "Bumping version to $new_version (build $new_build)"
@@ -50,7 +53,7 @@ jazzy
 echo
 echo "Committing changes..."
 git add .
-git ci -m "Bump version $current_version -> $new_version"
+git commit -m "Bump version $current_version -> $new_version"
 git tag -m "$new_version ($new_build)" "$new_version"
 git --no-pager show --summary
 
