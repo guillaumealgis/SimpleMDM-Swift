@@ -12,9 +12,6 @@ addons:
     - carthage
     update: true
 
-before_install:
-  - gem install cocoapods
-
 install:
   - carthage update
 
@@ -49,4 +46,6 @@ matrix:
 
   - name: "Cocoapods"
     script:
+      - gem install cocoapods
+      - pod repo update
       - pod lib lint --verbose --fail-fast SimpleMDM-Swift.podspec
