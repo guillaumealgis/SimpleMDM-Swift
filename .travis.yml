@@ -48,4 +48,4 @@ matrix:
     script:
       - gem install cocoapods
       - pod repo update
-      - pod lib lint --verbose --fail-fast SimpleMDM-Swift.podspec
+      - pod lib lint --verbose --allow-warnings --fail-fast SimpleMDM-Swift.podspec
