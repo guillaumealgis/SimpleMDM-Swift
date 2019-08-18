@@ -72,7 +72,7 @@ public struct Device: ListableResource, SearchableResource {
     // MARK: - Battery
 
     /// The curreny battery level of the device, in percent (e.g. "76%").
-    public let batteryLevel: String
+    public let batteryLevel: String?
 
     // MARK: - Wireless networking
 
@@ -92,13 +92,13 @@ public struct Device: ListableResource, SearchableResource {
     /// The phone number
     public let phoneNumber: String?
     /// The cellular technology of the device. Signification of the value isn't documented by SimpleMDM.
-    public let cellularTechnology: Int
+    public let cellularTechnology: Int?
     /// Weither the device allows roaming for voice.
     public let voiceRoamingEnabled: Bool?
     /// Weither the device allows roaming for data.
-    public let dataRoamingEnabled: Bool
+    public let dataRoamingEnabled: Bool?
     /// Weither the device is currently roaming.
-    public let isRoaming: Bool
+    public let isRoaming: Bool?
 
     // MARK: - MCC & MNC
 
@@ -118,13 +118,13 @@ public struct Device: ListableResource, SearchableResource {
     // MARK: - Security
 
     /// Not documented by SimpleMDM.
-    public let hardwareEncryptionCaps: Int
+    public let hardwareEncryptionCaps: Int?
     /// Weither the device is passcode protected.
-    public let passcodePresent: Bool
+    public let passcodePresent: Bool?
     /// Weither the device's passcode is compliant with your global passcode policy.
-    public let passcodeCompliant: Bool
+    public let passcodeCompliant: Bool?
     /// Weither the device's passcode is compliant with the passcode policy defined in your profiles.
-    public let passcodeCompliantWithProfiles: Bool
+    public let passcodeCompliantWithProfiles: Bool?
     /// Weither Filevault (disk encryption) is enabled on the device (macOS only).
     public let filevaultEnabled: Bool
     /// The Filevault recovery key (macOS only).
@@ -137,19 +137,19 @@ public struct Device: ListableResource, SearchableResource {
     // MARK: - MDM
 
     /// Weither the device is supervised.
-    public let isSupervised: Bool
+    public let isSupervised: Bool?
     /// Weither the device is enrolled in Apple's Device Enrollment Program (DEP).
     public let isDepEnrollment: Bool
     /// Weither the device can be enrolled by the user (?).
     public let isUserApprovedEnrollment: Bool?
     /// Weither the device locator service (Find my Mac / Find my iPhone) is enabled.
-    public let isDeviceLocatorServiceEnabled: Bool
+    public let isDeviceLocatorServiceEnabled: Bool?
     /// Weither the device is currently in Do Not Disturb mode.
-    public let isDoNotDisturbInEffect: Bool
+    public let isDoNotDisturbInEffect: Bool?
     /// Weither the device's personal hotspot functionnality is enabled.
     public let personalHotspotEnabled: Bool?
     /// Weither the device's iTunes Store account is active.
-    public let itunesStoreAccountIsActive: Bool
+    public let itunesStoreAccountIsActive: Bool?
     /// The date of the last iCloud backup of the device.
     public let lastCloudBackupDate: Date?
     /// Weither Activation Lock is enabled on the device.
