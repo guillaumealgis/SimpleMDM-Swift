@@ -1,0 +1,2 @@
+disabled_rules:
+  - discouraged_optional_boolean

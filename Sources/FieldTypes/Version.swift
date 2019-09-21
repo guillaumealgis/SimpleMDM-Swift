@@ -138,10 +138,10 @@ public struct Version: Codable, Comparable, LosslessStringConvertible {
         }
         let patch: Int
         if bits.count == 3 {
-            guard let p = parseSemVerSubstring(bits[2]) else {
+            guard let value = parseSemVerSubstring(bits[2]) else {
                 return nil
             }
-            patch = p
+            patch = value
         } else {
             patch = 0
         }
