@@ -1,5 +1,5 @@
 language: swift
-osx_image: xcode10.2
+osx_image: xcode11
 
 xcode_project: SimpleMDM-Swift.xcodeproj
 xcode_scheme: SimpleMDM
@@ -18,24 +18,24 @@ install:
 matrix:
   include:
 
-  - name: "macOS 10.14"
-    xcode_sdk: macosx10.14
+  - name: "macOS 10.15"
+    xcode_sdk: macosx10.15
     after_success:
       - bash <(curl -s https://codecov.io/bash) -J SimpleMDM
 
-  - name: "iOS 12"
-    xcode_sdk: iphoneos12.2
-    xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone XS
+  - name: "iOS 13.0"
+    xcode_sdk: iphoneos13.0
+    xcode_destination: platform=iOS Simulator,OS=13.0,name=iPhone 11
 
-  - name: "tvOS 12"
-    xcode_sdk: appletvos12.2
-    xcode_destination: platform=tvOS Simulator,OS=12.2,name=Apple TV 4K
+  - name: "tvOS 13.0"
+    xcode_sdk: appletvos13.0
+    xcode_destination: platform=tvOS Simulator,OS=13.0,name=Apple TV 4K
 
-  - name: "watchOS 5"
-    xcode_sdk: watchos5.2
-    xcode_destination: platform=watchOS Simulator,OS=5.2,name=Apple Watch Series 4 - 40mm
+  - name: "watchOS 6.0"
+    xcode_sdk: watchos6.0
+    xcode_destination: platform=watchOS Simulator,OS=6.0,name=Apple Watch Series 5 - 40mm
     # We can't run tests for watchOS, just ensure the project builds fine
-    script: set -o pipefail && xcodebuild -project SimpleMDM-Swift.xcodeproj -scheme SimpleMDM -sdk watchos5.2 build | xcpretty
+    script: set -o pipefail && xcodebuild -project SimpleMDM-Swift.xcodeproj -scheme SimpleMDM -sdk watchos6.0 build | xcpretty
 
   - name: "linting"
     script:
