@@ -1,4 +1,4 @@
-// Generated using Sourcery 0.16.1 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 0.17.0 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
 //
@@ -92,7 +92,7 @@ extension App: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try payload.decode(Identifier.self, forKey: .id)
+        id = try payload.decode(ID.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         name = try attributes.decode(String.self, forKey: .name)
@@ -138,7 +138,7 @@ extension App.ManagedConfig: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try payload.decode(Identifier.self, forKey: .id)
+        id = try payload.decode(ID.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         key = try attributes.decode(String.self, forKey: .key)
@@ -187,7 +187,7 @@ extension AppGroup: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try payload.decode(Identifier.self, forKey: .id)
+        id = try payload.decode(ID.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         name = try attributes.decode(String.self, forKey: .name)
@@ -232,7 +232,7 @@ extension CustomAttribute: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try payload.decode(Identifier.self, forKey: .id)
+        id = try payload.decode(ID.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         name = try attributes.decode(String.self, forKey: .name)
@@ -276,7 +276,7 @@ extension CustomConfigurationProfile: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try payload.decode(Identifier.self, forKey: .id)
+        id = try payload.decode(ID.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         name = try attributes.decode(String.self, forKey: .name)
@@ -379,7 +379,7 @@ extension Device: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try payload.decode(Identifier.self, forKey: .id)
+        id = try payload.decode(ID.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         uniqueIdentifier = try attributes.decode(String.self, forKey: .uniqueIdentifier)
@@ -478,7 +478,7 @@ extension Device.CustomAttributeValue: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try payload.decode(Identifier.self, forKey: .id)
+        id = try payload.decode(ID.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         value = try attributes.decode(String.self, forKey: .value)
@@ -517,7 +517,7 @@ extension DeviceGroup: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try payload.decode(Identifier.self, forKey: .id)
+        id = try payload.decode(ID.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         name = try attributes.decode(String.self, forKey: .name)
@@ -563,7 +563,7 @@ extension InstalledApp: Decodable {
     public init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try payload.decode(Identifier.self, forKey: .id)
+        id = try payload.decode(ID.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         name = try attributes.decode(String.self, forKey: .name)

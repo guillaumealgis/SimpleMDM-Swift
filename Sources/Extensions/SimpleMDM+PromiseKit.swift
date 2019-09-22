@@ -27,12 +27,12 @@ public extension GettableResource {
     /// Fetch the resource from the server.
     ///
     /// - Returns: A promise that fulfills with the resource.
-    static func get(id: Identifier) -> Promise<Self> {
+    static func get(id: ID) -> Promise<Self> {
         return get(SimpleMDM.shared.networking, id: id)
     }
 
     /// Actual implementation of the `get(id:)` static method, with a injectable `Networking` parameter.
-    internal static func get(_ networking: Networking, id: Identifier) -> Promise<Self> {
+    internal static func get(_ networking: Networking, id: ID) -> Promise<Self> {
         return Promise { get(networking, id: id, completion: $0.resolve) }
     }
 }
@@ -81,7 +81,7 @@ public extension RelatedToMany {
     ///
     /// - Parameter index: The index of the resource to fetch in the collection.
     /// - Returns: A promise that fulfills with the resource.
-    func get(id: Element.Identifier) -> Promise<Element> {
+    func get(id: Element.ID) -> Promise<Element> {
         return get(SimpleMDM.shared.networking, id: id)
     }
 
@@ -104,7 +104,7 @@ public extension RelatedToMany {
     }
 
     /// Actual implementation of the `get(id:)` static method, with a injectable `Networking` parameter.
-    internal func get(_ networking: Networking, id: Element.Identifier) -> Promise<Element> {
+    internal func get(_ networking: Networking, id: Element.ID) -> Promise<Element> {
         return Promise { get(networking, id: id, completion: $0.resolve) }
     }
 
@@ -120,7 +120,7 @@ public extension RelatedToManyNested {
     ///
     /// - Parameter index: The index of the resource to fetch in the collection.
     /// - Returns: A promise that fulfills with the resource.
-    func get(id: Element.Identifier) -> Promise<Element> {
+    func get(id: Element.ID) -> Promise<Element> {
         return get(SimpleMDM.shared.networking, id: id)
     }
 
@@ -134,7 +134,7 @@ public extension RelatedToManyNested {
     }
 
     /// Actual implementation of the `get(id:)` static method, with a injectable `Networking` parameter.
-    internal func get(_ networking: Networking, id: Element.Identifier) -> Promise<Element> {
+    internal func get(_ networking: Networking, id: Element.ID) -> Promise<Element> {
         return Promise { get(networking, id: id, completion: $0.resolve) }
     }
 

@@ -119,6 +119,9 @@ identifier_name:
   excluded:
     - id
     - i
+type_name:
+  excluded:
+    - ID
 number_separator:
   minimum_length: 5
 modifier_order:

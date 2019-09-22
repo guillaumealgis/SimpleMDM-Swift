@@ -25,11 +25,11 @@ internal struct UniqueResourceMock: UniqueResource {
 
 /// An empty listable resource used when testing.
 internal struct ResourceMock: ListableResource {
-    typealias Identifier = Int
+    typealias ID = Int
 
     static let endpointName = "resource_mock"
 
-    let id: Int
+    let id: ID
 
     private enum CodingKeys: String, CodingKey {
         case type
@@ -40,7 +40,7 @@ internal struct ResourceMock: ListableResource {
     init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try payload.decode(Identifier.self, forKey: .id)
+        id = try payload.decode(ID.self, forKey: .id)
 
         try decodeAndValidateType(forKey: .type, in: payload, expecting: "resource_mock")
     }
@@ -48,11 +48,11 @@ internal struct ResourceMock: ListableResource {
 
 /// An listable resource with a field of type `Date` used when testing.
 internal struct ResourceWithDateMock: ListableResource {
-    typealias Identifier = Int
+    typealias ID = Int
 
     static let endpointName = "resource_with_date_mock"
 
-    let id: Int
+    let id: ID
     let date: Date
 
     private enum CodingKeys: String, CodingKey {
@@ -68,7 +68,7 @@ internal struct ResourceWithDateMock: ListableResource {
     init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try payload.decode(Identifier.self, forKey: .id)
+        id = try payload.decode(ID.self, forKey: .id)
 
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)
         date = try attributes.decode(Date.self, forKey: .date)
@@ -79,11 +79,11 @@ internal struct ResourceWithDateMock: ListableResource {
 
 /// An listable resource with fields of type `RelatedToOne`, `RelatedToMany`, and `RelatedToManyNested` used when testing.
 internal struct ResourceWithRelationsMock: ListableResource {
-    typealias Identifier = Int
+    typealias ID = Int
 
     static let endpointName = "resource_with_relations_mock"
 
-    let id: Int
+    let id: ID
     let toOne: RelatedToOne<ResourceMock>
     let toMany: RelatedToMany<ResourceMock>
     let toManyNested: RelatedToManyNested<ResourceWithRelationsMock, ResourceMock>
@@ -103,7 +103,7 @@ internal struct ResourceWithRelationsMock: ListableResource {
     init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
-        id = try payload.decode(Identifier.self, forKey: .id)
+        id = try payload.decode(ID.self, forKey: .id)
 
         let relationships = try payload.nestedContainer(keyedBy: RelationshipKeys.self, forKey: .relationships)
         toOne = try relationships.decode(RelatedToOne<ResourceMock>.self, forKey: .toOne)

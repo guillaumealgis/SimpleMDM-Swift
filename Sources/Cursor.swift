@@ -39,7 +39,7 @@ public class Cursor<T: ListableResource> {
     public private(set) var hasMore: Bool = true
 
     /// The identifier of the last resource of the last fetched page.
-    internal var lastFetchedId: T.Identifier?
+    internal var lastFetchedId: T.ID?
 
     private let serialQueue = DispatchQueue(label: "Cursor Queue")
 
@@ -129,12 +129,12 @@ public class SearchCursor<T: SearchableResource>: Cursor<T> {
 ///
 /// This is an implementation detail, and this class can be used like a regular `Cursor` instance.
 public class NestedResourceCursor<Parent: IdentifiableResource, T: ListableResource>: Cursor<T>, NestedResourceAttribute {
-    let parentId: Parent.Identifier
+    let parentId: Parent.ID
 
     /// Create a new nested resource cursor.
     ///
     /// - Parameter parentId: The identifier of the parent resource this cursor is an attribute of.
-    required init(parentId: Parent.Identifier) {
+    required init(parentId: Parent.ID) {
         self.parentId = parentId
         super.init()
     }

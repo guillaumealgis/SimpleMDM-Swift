@@ -67,7 +67,7 @@ extension {{ type.name }}: Decodable {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
 
         {% if type.implements.IdentifiableResource %}
-        id = try payload.decode(Identifier.self, forKey: .id)
+        id = try payload.decode(ID.self, forKey: .id)
 
         {% endif %}
         let attributes = try payload.nestedContainer(keyedBy: AttributesKeys.self, forKey: .attributes)

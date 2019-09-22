@@ -162,9 +162,9 @@ internal class NetworkingTests: XCTestCase {
 
     func testMalformedResourceListURL() {
         struct FakeResource: ListableResource {
-            typealias Identifier = String
+            typealias ID = String
 
-            var id: String
+            var id: ID
             static var endpointName: String { return "💩" }
         }
 
@@ -185,9 +185,9 @@ internal class NetworkingTests: XCTestCase {
 
     func testMalformedResourceWithIdURL() {
         struct FakeResource: GettableResource {
-            typealias Identifier = String
+            typealias ID = String
 
-            var id: String
+            var id: ID
             static var endpointName: String { return "💩" }
         }
 
@@ -208,9 +208,9 @@ internal class NetworkingTests: XCTestCase {
 
     func testMalformedResourceSearchURL() {
         struct FakeResource: SearchableResource {
-            typealias Identifier = String
+            typealias ID = String
 
-            var id: String
+            var id: ID
             static var endpointName: String { return "💩" }
         }
 
@@ -232,16 +232,16 @@ internal class NetworkingTests: XCTestCase {
 
     func testMalformedNestedResourceURL() {
         struct FakeResource: IdentifiableResource {
-            typealias Identifier = String
+            typealias ID = String
 
-            var id: String
+            var id: ID
             static var endpointName: String { return "fake_endpoint" }
         }
 
         struct FakeNestedResource: IdentifiableResource {
-            typealias Identifier = String
+            typealias ID = String
 
-            var id: String
+            var id: ID
             static var endpointName: String { return "💩" }
         }
 
@@ -264,16 +264,16 @@ internal class NetworkingTests: XCTestCase {
 
     func testNestedListableResourceWithMalformedParentResourceURL() {
         struct FakeResource: IdentifiableResource {
-            typealias Identifier = String
+            typealias ID = String
 
-            var id: String
+            var id: ID
             static var endpointName: String { return "💩" }
         }
 
         struct FakeNestedResource: ListableResource {
-            typealias Identifier = String
+            typealias ID = String
 
-            var id: String
+            var id: ID
             static var endpointName: String { return "nested_endpoint" }
         }
 
@@ -296,16 +296,16 @@ internal class NetworkingTests: XCTestCase {
 
     func testMalformedNestedListableResourceURL() {
         struct FakeResource: IdentifiableResource {
-            typealias Identifier = String
+            typealias ID = String
 
-            var id: String
+            var id: ID
             static var endpointName: String { return "fake_endpoint" }
         }
 
         struct FakeNestedResource: ListableResource {
-            typealias Identifier = String
+            typealias ID = String
 
-            var id: String
+            var id: ID
             static var endpointName: String { return "💩" }
         }
 

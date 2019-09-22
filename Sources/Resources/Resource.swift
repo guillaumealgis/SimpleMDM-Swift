@@ -46,16 +46,31 @@ public extension UniqueResource {
     }
 }
 
+// MARK: - Identifiable
+
+// Somehow, using the Swift Standard Library's Identifiable protocol on older OS versions crashes the application.
+// So until we update our minimal deployment target to OSX 10.15, iOS 13, tvOS 13, and watchOS 6, we need to keep
+// our own Identifiable protocol.
+
+/// A class of types whose instances hold the value of an entity with stable identity.
+public protocol Identifiable {
+    /// A type representing the stable identity of the entity associated with `self`.
+    associatedtype ID: Hashable
+
+    /// The stable identity of the entity associated with `self`.
+    var id: Self.ID { get }
+}
+
 // MARK: - Identifiable Resource
 
 /// A protocol describing resource types of which multiple instances of can exists. These resources have an identifier
 /// which is unique per instance of the resource.
-public protocol IdentifiableResource: Resource {
-    /// The type of the resource identifier.
-    associatedtype Identifier: LosslessStringConvertible & Comparable & Decodable
+public protocol IdentifiableResource: Resource, Identifiable where ID: LosslessStringConvertible & Comparable & Decodable {}
 
-    /// The identifier of the resource.
-    var id: Identifier { get }
+extension Equatable where Self: IdentifiableResource {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 /// A protocol describing resource types that can be fetched independently, using their unique identifier
@@ -64,7 +79,7 @@ public protocol GettableResource: IdentifiableResource {
     /// Get the instance of this resource with the identifier `id`.
     ///
     /// - Parameter completion: A completion handler called with the resource, or an error.
-    static func get(id: Identifier, completion: @escaping CompletionClosure<Self>)
+    static func get(id: ID, completion: @escaping CompletionClosure<Self>)
 }
 
 /// An extension of `GettableResource` providing a default implementation for `get(id:completion:)`.
@@ -74,12 +89,12 @@ public extension GettableResource {
     /// - Parameters:
     ///   - id: The unique identifier of the resource to get.
     ///   - completion: A completion handler called with the resource, or an error.
-    static func get(id: Identifier, completion: @escaping CompletionClosure<Self>) {
+    static func get(id: ID, completion: @escaping CompletionClosure<Self>) {
         get(SimpleMDM.shared.networking, id: id, completion: completion)
     }
 
     /// Actual implementation of the `get(id:completion:)` method, with a injectable `Networking` parameter.
-    internal static func get(_ networking: Networking, id: Identifier, completion: @escaping CompletionClosure<Self>) {
+    internal static func get(_ networking: Networking, id: ID, completion: @escaping CompletionClosure<Self>) {
         networking.getDataForResource(ofType: Self.self, withId: id) { networkResult in
             let decoding = Decoding()
             let result = decoding.decodeNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)

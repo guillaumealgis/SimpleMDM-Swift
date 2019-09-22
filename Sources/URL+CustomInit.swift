@@ -21,7 +21,7 @@ extension URL {
     ///   - resourceType: The type of the resource.
     ///   - id: The identifier of the resource.
     ///   - relativeTo: A base URL the new URL will be constructed uppon.
-    init?<R: IdentifiableResource>(resourceType: R.Type, withId id: R.Identifier, relativeTo baseURL: URL) {
+    init?<R: IdentifiableResource>(resourceType: R.Type, withId id: R.ID, relativeTo baseURL: URL) {
         let path = "\(resourceType.endpointName)/\(id)"
         self.init(string: path, relativeTo: baseURL)
     }
@@ -37,7 +37,7 @@ extension URL {
     ///   - startingAfter: The value for the 'startingAfter' parameter of the URL.
     ///   - limit: The value for the 'limit' parameter of the URL.
     ///   - relativeTo: A base URL the new URL will be constructed uppon.
-    init?<R: ListableResource>(resourceType: R.Type, matching: String? = nil, startingAfter: R.Identifier? = nil, limit: Int? = nil, relativeTo baseURL: URL) {
+    init?<R: ListableResource>(resourceType: R.Type, matching: String? = nil, startingAfter: R.ID? = nil, limit: Int? = nil, relativeTo baseURL: URL) {
         var urlComponents = URLComponents()
 
         var queryItems = [URLQueryItem]()
@@ -67,7 +67,7 @@ extension URL {
     ///   - parentType: The type of the parent resource.
     ///   - parentId: The identifier of the parent resource.
     ///   - relativeTo: A base URL the new URL will be constructed uppon.
-    init?<R: IdentifiableResource, P: IdentifiableResource>(resourceType: R.Type, inParent parentType: P.Type, withId parentId: P.Identifier, relativeTo baseURL: URL) {
+    init?<R: IdentifiableResource, P: IdentifiableResource>(resourceType: R.Type, inParent parentType: P.Type, withId parentId: P.ID, relativeTo baseURL: URL) {
         let path = "\(parentType.endpointName)/\(parentId)/\(resourceType.endpointName)"
         self.init(string: path, relativeTo: baseURL)
     }
@@ -82,7 +82,7 @@ extension URL {
     ///   - startingAfter: The value for the 'startingAfter' parameter of the URL.
     ///   - limit: The value for the 'limit' parameter of the URL.
     ///   - relativeTo: A base URL the new URL will be constructed uppon.
-    init?<R: ListableResource, P: IdentifiableResource>(resourceType: R.Type, inParent parentType: P.Type, withId parentId: P.Identifier, startingAfter: R.Identifier? = nil, limit: Int? = nil, relativeTo baseURL: URL) {
+    init?<R: ListableResource, P: IdentifiableResource>(resourceType: R.Type, inParent parentType: P.Type, withId parentId: P.ID, startingAfter: R.ID? = nil, limit: Int? = nil, relativeTo baseURL: URL) {
         guard let parentBaseURL = URL(string: "\(parentType.endpointName)/\(parentId)/", relativeTo: baseURL) else {
             return nil
         }
