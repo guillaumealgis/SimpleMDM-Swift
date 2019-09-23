@@ -1,41 +1,48 @@
 language: swift
 osx_image: xcode11
 
-xcode_project: SimpleMDM-Swift.xcodeproj
-xcode_scheme: SimpleMDM
-
 addons:
   homebrew:
     packages:
     - swiftformat
     - swiftlint
-    - carthage
     update: true
-
-install:
-  - carthage update
 
 matrix:
   include:
 
+  - name: "macOS 10.12"
+    script: >-
+      xcrun swift test --parallel --verbose
+      -Xswiftc "-sdk" -Xswiftc $(xcrun --sdk macosx --show-sdk-path)
+      -Xswiftc "-target" -Xswiftc "x86_64-apple-macosx10.12"
+
   - name: "macOS 10.15"
-    xcode_sdk: macosx10.15
+    script: >-
+      xcrun swift test --parallel --verbose
+      -Xswiftc "-sdk" -Xswiftc $(xcrun --sdk macosx --show-sdk-path)
+      -Xswiftc "-target" -Xswiftc "x86_64-apple-macosx10.15"
     after_success:
       - bash <(curl -s https://codecov.io/bash) -J SimpleMDM
 
   - name: "iOS 13.0"
-    xcode_sdk: iphoneos13.0
-    xcode_destination: platform=iOS Simulator,OS=13.0,name=iPhone 11
+    script: >-
+      xcrun swift test --parallel --verbose
+      -Xswiftc "-sdk" -Xswiftc $(xcrun --sdk iphonesimulator --show-sdk-path)
+      -Xswiftc "-target" -Xswiftc "x86_64-apple-ios13.0-simulator"
 
   - name: "tvOS 13.0"
-    xcode_sdk: appletvos13.0
-    xcode_destination: platform=tvOS Simulator,OS=13.0,name=Apple TV 4K
+    script: >-
+      xcrun swift test --parallel --verbose
+      -Xswiftc "-sdk" -Xswiftc $(xcrun --sdk appletvsimulator --show-sdk-path)
+      -Xswiftc "-target" -Xswiftc "x86_64-apple-tvos13.0-simulator"
 
   - name: "watchOS 6.0"
-    xcode_sdk: watchos6.0
-    xcode_destination: platform=watchOS Simulator,OS=6.0,name=Apple Watch Series 5 - 40mm
     # We can't run tests for watchOS, just ensure the project builds fine
-    script: set -o pipefail && xcodebuild -project SimpleMDM-Swift.xcodeproj -scheme SimpleMDM -sdk watchos6.0 build | xcpretty
+    script: >-
+      xcrun swift build --verbose
+      -Xswiftc "-sdk" -Xswiftc $(xcrun --sdk watchsimulator --show-sdk-path)
+      -Xswiftc "-target" -Xswiftc "i386-apple-watchos6.0-simulator"
 
   - name: "linting"
     script:
