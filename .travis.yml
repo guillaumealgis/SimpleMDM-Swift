@@ -14,12 +14,14 @@ matrix:
   - name: "macOS 10.12"
     script: >-
       xcrun swift test --parallel --verbose
+      -Xswiftc "-warnings-as-errors"
       -Xswiftc "-sdk" -Xswiftc $(xcrun --sdk macosx --show-sdk-path)
       -Xswiftc "-target" -Xswiftc "x86_64-apple-macosx10.12"
 
   - name: "macOS 10.15"
     script: >-
       xcrun swift test --parallel --verbose
+      -Xswiftc "-warnings-as-errors"
       -Xswiftc "-sdk" -Xswiftc $(xcrun --sdk macosx --show-sdk-path)
       -Xswiftc "-target" -Xswiftc "x86_64-apple-macosx10.15"
     after_success:
@@ -28,12 +30,14 @@ matrix:
   - name: "iOS 13.0"
     script: >-
       xcrun swift test --parallel --verbose
+      -Xswiftc "-warnings-as-errors"
       -Xswiftc "-sdk" -Xswiftc $(xcrun --sdk iphonesimulator --show-sdk-path)
       -Xswiftc "-target" -Xswiftc "x86_64-apple-ios13.0-simulator"
 
   - name: "tvOS 13.0"
     script: >-
       xcrun swift test --parallel --verbose
+      -Xswiftc "-warnings-as-errors"
       -Xswiftc "-sdk" -Xswiftc $(xcrun --sdk appletvsimulator --show-sdk-path)
       -Xswiftc "-target" -Xswiftc "x86_64-apple-tvos13.0-simulator"
 
@@ -41,6 +45,7 @@ matrix:
     # We can't run tests for watchOS, just ensure the project builds fine
     script: >-
       xcrun swift build --verbose
+      -Xswiftc "-warnings-as-errors"
       -Xswiftc "-sdk" -Xswiftc $(xcrun --sdk watchsimulator --show-sdk-path)
       -Xswiftc "-target" -Xswiftc "i386-apple-watchos6.0-simulator"
 
