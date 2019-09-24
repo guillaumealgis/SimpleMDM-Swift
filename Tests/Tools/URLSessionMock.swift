@@ -38,7 +38,7 @@ internal class URLSessionMock: URLSessionProtocol {
         self.init(routes: routes)
     }
 
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
         guard let response = matchingResponseForRequest(request) else {
             completionHandler(nil, nil, URLSessionMockError.noMatchingRoute(request.url))
             return URLSessionDataTaskMock()
@@ -93,8 +93,6 @@ internal class URLSessionMock: URLSessionProtocol {
     }
 }
 
-internal class URLSessionDataTaskMock: URLSessionDataTask {
-    override func cancel() {}
-    override func suspend() {}
-    override func resume() {}
+internal class URLSessionDataTaskMock: URLSessionDataTaskProtocol {
+    func resume() {}
 }
