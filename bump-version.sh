@@ -10,7 +10,7 @@ major="${version_array[0]}"
 minor="${version_array[1]}"
 bugfix="${version_array[2]}"
 
-action="$1"
+action="${1:-0}"
 if [[ "$action" == "major" ]]; then
     major=$((major + 1))
 elif [[ "$action" == "minor" ]]; then
@@ -26,8 +26,7 @@ fi
 trap 'git reset HEAD . > /dev/null && git checkout HEAD . > /dev/null' INT TERM HUP EXIT
 
 new_version="$major.$minor.$bugfix"
-new_build="$(git rev-list HEAD --count)"
-echo "Bumping version to $new_version (build $new_build)"
+echo "Bumping version to $new_version"
 
 files=(
     "VERSION"
@@ -43,10 +42,6 @@ for file in "${files[@]}"; do
 done
 
 echo
-xcrun agvtool new-version -all "$new_build"
-xcrun agvtool new-marketing-version "$new_version"
-
-echo
 echo "Updating documentation..."
 jazzy
 
@@ -54,7 +49,7 @@ echo
 echo "Committing changes..."
 git add .
 git commit -m "Bump version $current_version -> $new_version"
-git tag -m "$new_version ($new_build)" "$new_version"
+git tag -m "$new_version" "$new_version"
 git --no-pager show --summary
 
 echo
