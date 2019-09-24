@@ -13,7 +13,7 @@
     <a title="SimpleMDM  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">SimpleMDM 0.6.0 Docs</a> (100% documented)</p>
+        <p><a href="index.html">SimpleMDM 0.7.0 Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/guillaumealgis/simplemdm-swift"><img src="img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fguillaumealgis%2Egithub%2Eio%2Fdocsets%2FSimpleMDM%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -78,13 +78,13 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Resources Types.html">Resources Types</a>
+            <a href="Resources%20Types.html">Resources Types</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Protocols/UniqueResource.html">UniqueResource</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/IdentifiableResource.html">IdentifiableResource</a>
+                <a href="Resources%20Types.html#/s:9SimpleMDM20IdentifiableResourceP">IdentifiableResource</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/GettableResource.html">GettableResource</a>
@@ -95,7 +95,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Fields Types.html">Fields Types</a>
+            <a href="Fields%20Types.html">Fields Types</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Structs/Version.html">Version</a>
@@ -159,7 +159,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Other Classes.html">Other Classes</a>
+            <a href="Other%20Classes.html">Other Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Classes/SearchCursor.html">SearchCursor</a>
@@ -167,10 +167,13 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Other Protocols.html">Other Protocols</a>
+            <a href="Other%20Protocols.html">Other Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Other Protocols.html#/s:9SimpleMDM18SearchableResourceP">SearchableResource</a>
+                <a href="Protocols/Identifiable.html">Identifiable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other%20Protocols.html#/s:9SimpleMDM18SearchableResourceP">SearchableResource</a>
               </li>
             </ul>
           </li>
@@ -245,7 +248,7 @@
 <span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'12.0'</span>
 
 <span class="n">target</span> <span class="s1">'&lt;Your Target Name&gt;'</span> <span class="k">do</span>
-    <span class="n">pod</span> <span class="s1">'SimpleMDM-Swift'</span><span class="p">,</span> <span class="s1">'~&gt; 0.6.0'</span>
+    <span class="n">pod</span> <span class="s1">'SimpleMDM-Swift'</span><span class="p">,</span> <span class="s1">'~&gt; 0.7.0'</span>
 <span class="k">end</span>
 </code></pre>
 
@@ -261,6 +264,18 @@
 <p><code>github &quot;guillaumealgis/SimpleMDM-Swift&quot;</code></p>
 
 <p>Run <code>carthage update</code> to build the framework and drag the built SimpleMDM-Swift.framework into your Xcode project and update your run scripts as appropriate. For additional support, please visit the Carthage <a href="https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos">documentation</a>.</p>
+
+<hr>
+<h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
+
+<p>The <a href="https://swift.org/package-manager/">Swift Package Manager</a> is a tool for automating the distribution of Swift code and is integrated into the <code>swift</code> compiler. It is in early development, but SimpleMDM-Swift does support its use on supported platforms.</p>
+
+<p>Once you have your Swift package set up, adding SimpleMDM-Swift as a dependency is as easy as adding it to the <code>dependencies</code> value of your <code>Package.swift</code>.</p>
+<h4 id='swift-4' class='heading'>Swift 4</h4>
+<pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/guillaumealgis/SimpleMDM-Swift.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"0.1.0"</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre>
 <h2 id='apps-using-simplemdm-swift' class='heading'>Apps using SimpleMDM-Swift</h2>
 
 <p>I&rsquo;d love to hear what you have used SimpleMDM-Swift for, if you would like your app displayed here, please send a pull request!</p>
@@ -283,8 +298,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="http://twitter.com/guillaumealgis" target="_blank" rel="external">Guillaume Algis</a>. All rights reserved. (Last updated: 2019-08-18)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="http://twitter.com/guillaumealgis" target="_blank" rel="external">Guillaume Algis</a>. All rights reserved. (Last updated: 2019-09-24)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
