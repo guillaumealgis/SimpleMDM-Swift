@@ -25,8 +25,8 @@ SimpleMDM-Swift is a cross-platform (iOS, macOS, tvOS, watchOS) SDK to access th
 ##### System requirements
 
 + Deployment target of iOS 10.0+ / macOS 10.12+ / tvOS 10.0+ / watchOS 3.0+
-+ Xcode 10.2+
-+ Swift 5.0.1+
++ Xcode 11+
++ Swift 5.0+
 
 ## Usage
 
@@ -59,6 +59,22 @@ DeviceGroup.getAll { result in
 
 ## Installation
 
+### Swift Package Manager
+
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler and Xcode (starting at version 11).
+
+Adding SimpleMDM-Swift as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/guillaumealgis/SimpleMDM-Swift.git", .upToNextMajor(from: "0.7.0"))
+]
+```
+
+Or you can use [Xcode's menu](https://wwdcbysundell.com/2019/xcode-swiftpm-first-look/) in File > Swift Packages > Add Package Dependency.
+
+----------
+
 ### CocoaPods
 
 To integrate SimpleMDM-Swift into your Xcode project using [CocoaPods](https://cocoapods.org), specify it in your `Podfile`:
@@ -78,31 +94,17 @@ Then, run the following command:
 $ pod install
 ```
 
-----
+----------
 
 ### Carthage
 
 To integrate SimpleMDM-Swift into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your Cartfile:
 
-`github "guillaumealgis/SimpleMDM-Swift"`
+```python
+github "guillaumealgis/SimpleMDM-Swift" == 0.7.0
+```
 
 Run `carthage update` to build the framework and drag the built SimpleMDM-Swift.framework into your Xcode project and update your run scripts as appropriate. For additional support, please visit the Carthage [documentation](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
-
-----
-
-### Swift Package Manager
-
-The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler. It is in early development, but SimpleMDM-Swift does support its use on supported platforms.
-
-Once you have your Swift package set up, adding SimpleMDM-Swift as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
-
-#### Swift 4
-
-```swift
-dependencies: [
-    .package(url: "https://github.com/guillaumealgis/SimpleMDM-Swift.git", from: "0.1.0")
-]
-```
 
 ## Apps using SimpleMDM-Swift
 
