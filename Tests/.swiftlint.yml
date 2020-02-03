@@ -1,2 +1,5 @@
+# Allow extra long test files / classes and short variables names.
 disabled_rules:
+  - file_length
+  - type_body_length
   - identifier_name

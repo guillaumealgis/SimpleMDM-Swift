@@ -116,16 +116,15 @@ opt_in_rules:
 
 # configurable rules
 identifier_name:
-  excluded:
-    - id
-    - i
+  excluded: [i, id]
 type_name:
-  excluded:
-    - ID
+  excluded: [ID]
 number_separator:
   minimum_length: 5
 modifier_order:
   preferred_modifier_order: [acl, override]
+implicit_return:
+  included: [getter, closure]
 
 excluded:
   - Package.swift

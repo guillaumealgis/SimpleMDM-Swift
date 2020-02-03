@@ -24,7 +24,7 @@ internal extension Resource {
 extension Account: Resource {
     /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
-        return "account"
+        "account"
     }
 }
 
@@ -62,7 +62,7 @@ extension Account: Decodable {
 extension App: Resource {
     /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
-        return "apps"
+        "apps"
     }
 }
 
@@ -111,7 +111,7 @@ extension App: Decodable {
 extension App.ManagedConfig: Resource {
     /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
-        return "managed_configs"
+        "managed_configs"
     }
 }
 
@@ -154,7 +154,7 @@ extension App.ManagedConfig: Decodable {
 extension AppGroup: Resource {
     /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
-        return "app_groups"
+        "app_groups"
     }
 }
 
@@ -207,7 +207,7 @@ extension AppGroup: Decodable {
 extension CustomAttribute: Resource {
     /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
-        return "custom_attributes"
+        "custom_attributes"
     }
 }
 
@@ -246,7 +246,7 @@ extension CustomAttribute: Decodable {
 extension CustomConfigurationProfile: Resource {
     /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
-        return "custom_configuration_profiles"
+        "custom_configuration_profiles"
     }
 }
 
@@ -293,7 +293,7 @@ extension CustomConfigurationProfile: Decodable {
 extension Device: Resource {
     /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
-        return "devices"
+        "devices"
     }
 }
 
@@ -453,7 +453,7 @@ extension Device: Decodable {
 extension Device.CustomAttributeValue: Resource {
     /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
-        return "custom_attribute_values"
+        "custom_attribute_values"
     }
 }
 
@@ -492,7 +492,7 @@ extension Device.CustomAttributeValue: Decodable {
 extension DeviceGroup: Resource {
     /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
-        return "device_groups"
+        "device_groups"
     }
 }
 
@@ -531,7 +531,7 @@ extension DeviceGroup: Decodable {
 extension InstalledApp: Resource {
     /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
-        return "installed_apps"
+        "installed_apps"
     }
 }
 
@@ -583,7 +583,7 @@ extension InstalledApp: Decodable {
 extension PushCertificate: Resource {
     /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
-        return "push_certificate"
+        "push_certificate"
     }
 }
 

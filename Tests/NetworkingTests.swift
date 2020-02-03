@@ -142,7 +142,7 @@ internal class NetworkingTests: XCTestCase {
     // swiftlint:disable nesting
     func testMalformedUniqueResourceURL() {
         struct FakeResource: UniqueResource {
-            static var endpointName: String { return "💩" }
+            static var endpointName: String { "💩" }
         }
 
         let session = URLSessionMock()
@@ -165,7 +165,7 @@ internal class NetworkingTests: XCTestCase {
             typealias ID = String
 
             var id: ID
-            static var endpointName: String { return "💩" }
+            static var endpointName: String { "💩" }
         }
 
         let session = URLSessionMock()
@@ -188,7 +188,7 @@ internal class NetworkingTests: XCTestCase {
             typealias ID = String
 
             var id: ID
-            static var endpointName: String { return "💩" }
+            static var endpointName: String { "💩" }
         }
 
         let session = URLSessionMock()
@@ -211,7 +211,7 @@ internal class NetworkingTests: XCTestCase {
             typealias ID = String
 
             var id: ID
-            static var endpointName: String { return "💩" }
+            static var endpointName: String { "💩" }
         }
 
         let session = URLSessionMock()
@@ -235,14 +235,14 @@ internal class NetworkingTests: XCTestCase {
             typealias ID = String
 
             var id: ID
-            static var endpointName: String { return "fake_endpoint" }
+            static var endpointName: String { "fake_endpoint" }
         }
 
         struct FakeNestedResource: IdentifiableResource {
             typealias ID = String
 
             var id: ID
-            static var endpointName: String { return "💩" }
+            static var endpointName: String { "💩" }
         }
 
         let nestedResources = RelatedToManyNested<FakeResource, FakeNestedResource>(parentId: "fakeId")
@@ -267,14 +267,14 @@ internal class NetworkingTests: XCTestCase {
             typealias ID = String
 
             var id: ID
-            static var endpointName: String { return "💩" }
+            static var endpointName: String { "💩" }
         }
 
         struct FakeNestedResource: ListableResource {
             typealias ID = String
 
             var id: ID
-            static var endpointName: String { return "nested_endpoint" }
+            static var endpointName: String { "nested_endpoint" }
         }
 
         let nestedResources = NestedResourceCursor<FakeResource, FakeNestedResource>(parentId: "fakeId")
@@ -299,14 +299,14 @@ internal class NetworkingTests: XCTestCase {
             typealias ID = String
 
             var id: ID
-            static var endpointName: String { return "fake_endpoint" }
+            static var endpointName: String { "fake_endpoint" }
         }
 
         struct FakeNestedResource: ListableResource {
             typealias ID = String
 
             var id: ID
-            static var endpointName: String { return "💩" }
+            static var endpointName: String { "💩" }
         }
 
         let nestedResources = NestedResourceCursor<FakeResource, FakeNestedResource>(parentId: "fakeId")

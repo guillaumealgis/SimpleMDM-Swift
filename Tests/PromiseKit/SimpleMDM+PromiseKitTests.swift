@@ -7,10 +7,7 @@ import PromiseKit
 @testable import SimpleMDM
 import XCTest
 
-// swiftlint:disable file_length
-
 /// This class tests the PromiseKit bindings of the resources.
-// swiftlint:disable:next type_body_length
 internal class SimpleMDMPromiseKitTests: XCTestCase {
     let error404Json = """
       {

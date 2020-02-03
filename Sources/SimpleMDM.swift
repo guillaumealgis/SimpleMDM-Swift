@@ -24,7 +24,7 @@ public class SimpleMDM: NSObject {
     /// Your API key can be found in your SimpleMDM account, under Settings > API > Secret Access Key.
     public static var apiKey: String? {
         get {
-            return SimpleMDM.shared.networking.apiKey
+            SimpleMDM.shared.networking.apiKey
         }
         set {
             SimpleMDM.shared.networking.apiKey = newValue

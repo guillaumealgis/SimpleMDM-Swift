@@ -64,7 +64,7 @@ public struct RelatedToOne<T: GettableResource>: Relationship {
     /// Accessing this property does not make a network request, so it can be used in some cases to optimize
     /// your application if you don't need the full related resource content.
     public var relatedId: T.ID {
-        return relation.id
+        relation.id
     }
 
     /// Creates a new instance by decoding from the given decoder.
@@ -110,7 +110,7 @@ public struct RelatedToMany<Element: GettableResource>: Relationship, RemoteColl
     /// Accessing this property does not make a network request, so it can be used in some cases to optimize
     /// your application if you don't need the full related resources content.
     public var relatedIds: [Element.ID] {
-        return relations.map { $0.id }
+        relations.map { $0.id }
     }
 
     /// Creates a new instance by decoding from the given decoder.

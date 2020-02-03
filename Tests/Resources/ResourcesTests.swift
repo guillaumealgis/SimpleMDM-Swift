@@ -6,7 +6,6 @@
 @testable import SimpleMDM
 import XCTest
 
-// swiftlint:disable:next type_body_length
 internal class ResourcesTests: XCTestCase {
     func testUniqueResourceEndpointIsSingular() {
         XCTAssertEqual(Account.endpointName, "account")

@@ -22,7 +22,7 @@ public struct Version: Codable, Comparable, LosslessStringConvertible {
 
     /// A textual representation of this version number.
     public var description: String {
-        return "\(major).\(minor).\(patch)"
+        "\(major).\(minor).\(patch)"
     }
 
     /// Memberwise initializer.
