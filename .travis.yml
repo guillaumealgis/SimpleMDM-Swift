@@ -20,12 +20,12 @@ matrix:
 
   - name: "macOS 10.15"
     script: >-
-      xcrun swift test --parallel --verbose
+      xcrun swift test --parallel --verbose --enable-code-coverage
       -Xswiftc "-warnings-as-errors"
       -Xswiftc "-sdk" -Xswiftc $(xcrun --sdk macosx --show-sdk-path)
       -Xswiftc "-target" -Xswiftc "x86_64-apple-macosx10.15"
     after_success:
-      - bash <(curl -s https://codecov.io/bash) -J SimpleMDM
+      - bash <(curl -s https://codecov.io/bash) -J '^SimpleMDM$'
 
   - name: "iOS 13.0"
     script: >-
