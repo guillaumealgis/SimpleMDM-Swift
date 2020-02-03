@@ -25,6 +25,7 @@ matrix:
       -Xswiftc "-sdk" -Xswiftc $(xcrun --sdk macosx --show-sdk-path)
       -Xswiftc "-target" -Xswiftc "x86_64-apple-macosx10.15"
     after_success:
+      - xcrun llvm-cov export -format="lcov" $(find . -name 'SimpleMDM-SwiftPackageTests.xctest')/Contents/MacOS/SimpleMDM-SwiftPackageTests -instr-profile $(find . -name 'default.profdata') > info.lcov
       - bash <(curl -s https://codecov.io/bash) -J '^SimpleMDM$'
 
   - name: "iOS 13.0"
