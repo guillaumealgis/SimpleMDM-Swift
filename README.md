@@ -106,6 +106,18 @@ github "guillaumealgis/SimpleMDM-Swift" == 0.7.0
 
 Run `carthage update` to build the framework and drag the built SimpleMDM-Swift.framework into your Xcode project and update your run scripts as appropriate. For additional support, please visit the Carthage [documentation](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
 
+## Contributing
+### Getting Started
+
+To start contributing to SimpleMDM-Swift, you need the last version of Xcode on your machine.
+After clonning the project, run the following command to generate the project's .xcodeproj:
+
+```shell
+swift package generate-xcodeproj
+```
+
+You can then start working on the project by opening the newly created `SimpleMDM-Swift.xcodeproj` file.
+
 ## Apps using SimpleMDM-Swift
 
 I'd love to hear what you have used SimpleMDM-Swift for, if you would like your app displayed here, please send a pull request!
