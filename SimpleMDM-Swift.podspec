@@ -27,7 +27,7 @@ Please Note: This library is not officially supported by SimpleMDM. It does not 
 
   s.swift_versions = [
     '5.0',
-    '5.0.1'
+    '5.1'
   ]
 
   s.ios.deployment_target = '11.0'
