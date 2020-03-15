@@ -3,6 +3,10 @@
 --commas inline
 --decimalgrouping 3,5
 
+# I'd like to keep the return statement in functions. SwiftLint will take care
+# of the other cases.
+--disable redundantReturn
+
 --exclude **/*.generated.swift
 --exclude Carthage/**/*
 --exclude .build/**/*
