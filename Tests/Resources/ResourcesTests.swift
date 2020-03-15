@@ -240,14 +240,14 @@ internal class ResourcesTests: XCTestCase {
         waitForExpectations(timeout: 0.3, handler: nil)
     }
 
-    func testInvalidDateFormat() {
+    func testInvalidDateFormatISO8601() {
         let json = """
           {
             "data": {
-              "type": "unique_resource_mock",
+              "type": "resource_with_date_mock",
               "id": 1,
               "attributes": {
-                "date": "2019-05-22T15:12:23.344+00:00"
+                "date": "2019-05-22T15:12:23+00:00"
               }
             }
           }
@@ -267,7 +267,41 @@ internal class ResourcesTests: XCTestCase {
             guard case let .dataCorrupted(context) = decodingError else {
                 return XCTFail("Expected .dataCorrupted, got \(decodingError)")
             }
-            XCTAssertEqual(context.debugDescription, "Date string does not match any expected format")
+            XCTAssertTrue(context.debugDescription.contains("Date is not of expected RFC3339 format"))
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 0.3, handler: nil)
+    }
+
+    func testInvalidDateOldSimpleMDMFormat() {
+        let json = """
+          {
+            "data": {
+              "type": "resource_with_date_mock",
+              "id": 1,
+              "attributes": {
+                "date": "2019-05-22 15:12:23 Z"
+              }
+            }
+          }
+        """.data(using: .utf8)
+        let session = URLSessionMock(data: json, responseCode: 200)
+        let s = SimpleMDM(sessionMock: session)
+
+        let expectation = self.expectation(description: "Callback called")
+
+        ResourceWithDateMock.get(s.networking, id: 1) { result in
+            guard case let .rejected(error) = result else {
+                return XCTFail("Expected .error, got \(result)")
+            }
+            guard let decodingError = error as? DecodingError else {
+                return XCTFail("Expected error to be a DecodingError, got \(error)")
+            }
+            guard case let .dataCorrupted(context) = decodingError else {
+                return XCTFail("Expected .dataCorrupted, got \(decodingError)")
+            }
+            XCTAssertTrue(context.debugDescription.contains("Date is not of expected RFC3339 format"))
             expectation.fulfill()
         }
 

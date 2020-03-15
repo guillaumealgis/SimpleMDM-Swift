@@ -13,7 +13,22 @@ internal class Decoding {
 
     init() {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .custom(decodeSimpleMDMDate)
+        decoder.dateDecodingStrategy = .custom(decodeRFC3339Date)
+    }
+
+    // MARK: - Decoding dates
+
+    private func decodeRFC3339Date(decoder: Decoder) throws -> Date {
+        let container = try decoder.singleValueContainer()
+        let dateString = try container.decode(String.self)
+
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        if let date = formatter.date(from: dateString) {
+            return date
+        }
+
+        throw DecodingError.dataCorruptedError(in: container, debugDescription: "Date is not of expected RFC3339 format '5.6. Internet Date/Time' (with milliseconds)")
     }
 
     // MARK: - Decoding the response
