@@ -13,7 +13,7 @@
     <a title="SimpleMDM  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">SimpleMDM 0.7.0 Docs</a> (100% documented)</p>
+        <p><a href="index.html">SimpleMDM 0.8.0 Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/guillaumealgis/simplemdm-swift"><img src="img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fguillaumealgis%2Egithub%2Eio%2Fdocsets%2FSimpleMDM%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -211,8 +211,8 @@
 
 <ul>
 <li>Deployment target of iOS 10.0+ / macOS 10.12+ / tvOS 10.0+ / watchOS 3.0+</li>
-<li>Xcode 10.2+</li>
-<li>Swift 5.0.1+</li>
+<li>Xcode 11+</li>
+<li>Swift 5.0+</li>
 </ul>
 <h2 id='usage' class='heading'>Usage</h2>
 
@@ -241,6 +241,19 @@
 <span class="p">}</span>
 </code></pre>
 <h2 id='installation' class='heading'>Installation</h2>
+<h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
+
+<p>The <a href="https://swift.org/package-manager/">Swift Package Manager</a> is a tool for automating the distribution of Swift code and is integrated into the <code>swift</code> compiler and Xcode (starting at version 11).</p>
+
+<p>Adding SimpleMDM-Swift as a dependency is as easy as adding it to the <code>dependencies</code> value of your <code>Package.swift</code>:</p>
+<pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/guillaumealgis/SimpleMDM-Swift.git"</span><span class="p">,</span> <span class="o">.</span><span class="nf">upToNextMajor</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="s">"0.8.0"</span><span class="p">))</span>
+<span class="p">]</span>
+</code></pre>
+
+<p>Or you can use <a href="https://wwdcbysundell.com/2019/xcode-swiftpm-first-look/">Xcode&rsquo;s menu</a> in File &gt; Swift Packages &gt; Add Package Dependency.</p>
+
+<hr>
 <h3 id='cocoapods' class='heading'>CocoaPods</h3>
 
 <p>To integrate SimpleMDM-Swift into your Xcode project using <a href="https://cocoapods.org">CocoaPods</a>, specify it in your <code>Podfile</code>:</p>
@@ -248,7 +261,7 @@
 <span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'12.0'</span>
 
 <span class="n">target</span> <span class="s1">'&lt;Your Target Name&gt;'</span> <span class="k">do</span>
-    <span class="n">pod</span> <span class="s1">'SimpleMDM-Swift'</span><span class="p">,</span> <span class="s1">'~&gt; 0.7.0'</span>
+    <span class="n">pod</span> <span class="s1">'SimpleMDM-Swift'</span><span class="p">,</span> <span class="s1">'~&gt; 0.8.0'</span>
 <span class="k">end</span>
 </code></pre>
 
@@ -260,22 +273,19 @@
 <h3 id='carthage' class='heading'>Carthage</h3>
 
 <p>To integrate SimpleMDM-Swift into your Xcode project using <a href="https://github.com/Carthage/Carthage">Carthage</a>, specify it in your Cartfile:</p>
-
-<p><code>github &quot;guillaumealgis/SimpleMDM-Swift&quot;</code></p>
+<pre class="highlight python"><code><span class="n">github</span> <span class="s">"guillaumealgis/SimpleMDM-Swift"</span> <span class="o">==</span> <span class="mf">0.8.0</span>
+</code></pre>
 
 <p>Run <code>carthage update</code> to build the framework and drag the built SimpleMDM-Swift.framework into your Xcode project and update your run scripts as appropriate. For additional support, please visit the Carthage <a href="https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos">documentation</a>.</p>
+<h2 id='contributing' class='heading'>Contributing</h2>
+<h3 id='getting-started' class='heading'>Getting Started</h3>
 
-<hr>
-<h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
-
-<p>The <a href="https://swift.org/package-manager/">Swift Package Manager</a> is a tool for automating the distribution of Swift code and is integrated into the <code>swift</code> compiler. It is in early development, but SimpleMDM-Swift does support its use on supported platforms.</p>
-
-<p>Once you have your Swift package set up, adding SimpleMDM-Swift as a dependency is as easy as adding it to the <code>dependencies</code> value of your <code>Package.swift</code>.</p>
-<h4 id='swift-4' class='heading'>Swift 4</h4>
-<pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
-    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/guillaumealgis/SimpleMDM-Swift.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"0.1.0"</span><span class="p">)</span>
-<span class="p">]</span>
+<p>To start contributing to SimpleMDM-Swift, you need the last version of Xcode on your machine.
+After clonning the project, run the following command to generate the project&rsquo;s .xcodeproj:</p>
+<pre class="highlight shell"><code>swift package generate-xcodeproj
 </code></pre>
+
+<p>You can then start working on the project by opening the newly created <code>SimpleMDM-Swift.xcodeproj</code> file.</p>
 <h2 id='apps-using-simplemdm-swift' class='heading'>Apps using SimpleMDM-Swift</h2>
 
 <p>I&rsquo;d love to hear what you have used SimpleMDM-Swift for, if you would like your app displayed here, please send a pull request!</p>
@@ -298,8 +308,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="http://twitter.com/guillaumealgis" target="_blank" rel="external">Guillaume Algis</a>. All rights reserved. (Last updated: 2019-09-24)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="http://twitter.com/guillaumealgis" target="_blank" rel="external">Guillaume Algis</a>. All rights reserved. (Last updated: 2020-03-16)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
