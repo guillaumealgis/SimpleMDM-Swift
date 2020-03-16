@@ -110,7 +110,7 @@ Run `carthage update` to build the framework and drag the built SimpleMDM-Swift.
 ### Getting Started
 
 To start contributing to SimpleMDM-Swift, you need the last version of Xcode on your machine.
-After clonning the project, run the following command to generate the project's .xcodeproj:
+After cloning the project, run the following command to generate the project's .xcodeproj:
 
 ```shell
 swift package generate-xcodeproj
