@@ -11,12 +11,12 @@ addons:
 matrix:
   include:
 
-  - name: "macOS 10.12"
+  - name: "macOS 10.13"
     script: >-
       xcrun swift test --parallel --verbose
       -Xswiftc "-warnings-as-errors"
       -Xswiftc "-sdk" -Xswiftc $(xcrun --sdk macosx --show-sdk-path)
-      -Xswiftc "-target" -Xswiftc "x86_64-apple-macosx10.12"
+      -Xswiftc "-target" -Xswiftc "x86_64-apple-macosx10.13"
 
   - name: "macOS 10.15"
     script: >-
