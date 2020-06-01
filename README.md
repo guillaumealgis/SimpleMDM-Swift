@@ -24,7 +24,7 @@ SimpleMDM-Swift is a cross-platform (iOS, macOS, tvOS, watchOS) SDK to access th
 
 ##### System requirements
 
-+ Deployment target of iOS 10.0+ / macOS 10.12+ / tvOS 10.0+ / watchOS 3.0+
++ Deployment target of iOS 11.0+ / macOS 10.13+ / tvOS 11.0+ / watchOS 4.0+
 + Xcode 11+
 + Swift 5.0+
 
