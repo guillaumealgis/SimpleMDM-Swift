@@ -9,12 +9,12 @@ import Foundation
 
 /// An empty unique resource used when testing.
 internal struct UniqueResourceMock: UniqueResource {
-    static let endpointName = "unique_resource_mock"
-
     private enum CodingKeys: String, CodingKey {
         case type
         case attributes
     }
+
+    static let endpointName = "unique_resource_mock"
 
     init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
@@ -26,16 +26,15 @@ internal struct UniqueResourceMock: UniqueResource {
 /// An empty listable resource used when testing.
 internal struct ResourceMock: ListableResource {
     typealias ID = Int
-
-    static let endpointName = "resource_mock"
-
-    let id: ID
-
     private enum CodingKeys: String, CodingKey {
         case type
         case id
         case attributes
     }
+
+    static let endpointName = "resource_mock"
+
+    let id: ID
 
     init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
@@ -50,11 +49,6 @@ internal struct ResourceMock: ListableResource {
 internal struct ResourceWithDateMock: ListableResource {
     typealias ID = Int
 
-    static let endpointName = "resource_with_date_mock"
-
-    let id: ID
-    let date: Date
-
     private enum CodingKeys: String, CodingKey {
         case type
         case id
@@ -64,6 +58,11 @@ internal struct ResourceWithDateMock: ListableResource {
     private enum AttributesKeys: String, CodingKey {
         case date
     }
+
+    static let endpointName = "resource_with_date_mock"
+
+    let id: ID
+    let date: Date
 
     init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)
@@ -81,13 +80,6 @@ internal struct ResourceWithDateMock: ListableResource {
 internal struct ResourceWithRelationsMock: ListableResource {
     typealias ID = Int
 
-    static let endpointName = "resource_with_relations_mock"
-
-    let id: ID
-    let toOne: RelatedToOne<ResourceMock>
-    let toMany: RelatedToMany<ResourceMock>
-    let toManyNested: RelatedToManyNested<ResourceWithRelationsMock, ResourceMock>
-
     private enum CodingKeys: String, CodingKey {
         case type
         case id
@@ -99,6 +91,13 @@ internal struct ResourceWithRelationsMock: ListableResource {
         case toOne
         case toMany
     }
+
+    static let endpointName = "resource_with_relations_mock"
+
+    let id: ID
+    let toOne: RelatedToOne<ResourceMock>
+    let toMany: RelatedToMany<ResourceMock>
+    let toManyNested: RelatedToManyNested<ResourceWithRelationsMock, ResourceMock>
 
     init(from decoder: Decoder) throws {
         let payload = try decoder.container(keyedBy: CodingKeys.self)

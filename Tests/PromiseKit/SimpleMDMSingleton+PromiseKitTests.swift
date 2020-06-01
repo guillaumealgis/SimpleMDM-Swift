@@ -33,9 +33,11 @@ internal class SimpleMDMSingletonPromiseKitTests: XCTestCase {
 
         firstly {
             UniqueResourceMock.get()
-        }.done { _ in
+        }
+        .done { _ in
             XCTFail("Expected an error, SimpleMDM singleton probably wasn't used")
-        }.catch { error in
+        }
+        .catch { error in
             self.assertUsingSingleton(error: error)
             expectation.fulfill()
         }
@@ -48,9 +50,11 @@ internal class SimpleMDMSingletonPromiseKitTests: XCTestCase {
 
         firstly {
             ResourceMock.getAll()
-        }.done { _ in
+        }
+        .done { _ in
             XCTFail("Expected an error, SimpleMDM singleton probably wasn't used")
-        }.catch { error in
+        }
+        .catch { error in
             self.assertUsingSingleton(error: error)
             expectation.fulfill()
         }
@@ -63,9 +67,11 @@ internal class SimpleMDMSingletonPromiseKitTests: XCTestCase {
 
         firstly {
             ResourceMock.get(id: 37)
-        }.done { _ in
+        }
+        .done { _ in
             XCTFail("Expected an error, SimpleMDM singleton probably wasn't used")
-        }.catch { error in
+        }
+        .catch { error in
             self.assertUsingSingleton(error: error)
             expectation.fulfill()
         }
@@ -88,9 +94,11 @@ internal class SimpleMDMSingletonPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<ResourceMock> in
             XCTAssertEqual(resource.id, 42)
             return resource.toOne.get()
-        }.done { _ in
+        }
+        .done { _ in
             XCTFail("Expected an error, SimpleMDM singleton probably wasn't used")
-        }.catch { error in
+        }
+        .catch { error in
             self.assertUsingSingleton(error: error)
             expectation.fulfill()
         }
@@ -111,9 +119,11 @@ internal class SimpleMDMSingletonPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<ResourceMock> in
             XCTAssertEqual(resource.id, 42)
             return resource.toOne.get()
-        }.done { _ in
+        }
+        .done { _ in
             XCTFail("Expected an error, SimpleMDM singleton probably wasn't used")
-        }.catch { error in
+        }
+        .catch { error in
             self.assertUsingSingleton(error: error)
             expectation.fulfill()
         }
@@ -134,9 +144,11 @@ internal class SimpleMDMSingletonPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<[ResourceMock]> in
             XCTAssertEqual(resource.id, 42)
             return resource.toMany.getAll()
-        }.done { _ in
+        }
+        .done { _ in
             XCTFail("Expected an error, SimpleMDM singleton probably wasn't used")
-        }.catch { error in
+        }
+        .catch { error in
             self.assertUsingSingleton(error: error)
             expectation.fulfill()
         }
@@ -157,9 +169,11 @@ internal class SimpleMDMSingletonPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<ResourceMock> in
             XCTAssertEqual(resource.id, 42)
             return resource.toMany.get(at: 1)
-        }.done { _ in
+        }
+        .done { _ in
             XCTFail("Expected an error, SimpleMDM singleton probably wasn't used")
-        }.catch { error in
+        }
+        .catch { error in
             self.assertUsingSingleton(error: error)
             expectation.fulfill()
         }
@@ -180,9 +194,11 @@ internal class SimpleMDMSingletonPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<ResourceMock> in
             XCTAssertEqual(resource.id, 42)
             return resource.toMany.get(id: 326)
-        }.done { _ in
+        }
+        .done { _ in
             XCTFail("Expected an error, SimpleMDM singleton probably wasn't used")
-        }.catch { error in
+        }
+        .catch { error in
             self.assertUsingSingleton(error: error)
             expectation.fulfill()
         }
@@ -203,9 +219,11 @@ internal class SimpleMDMSingletonPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<[ResourceMock]> in
             XCTAssertEqual(resource.id, 42)
             return resource.toManyNested.getAll()
-        }.done { _ in
+        }
+        .done { _ in
             XCTFail("Expected an error, SimpleMDM singleton probably wasn't used")
-        }.catch { error in
+        }
+        .catch { error in
             self.assertUsingSingleton(error: error)
             expectation.fulfill()
         }
@@ -226,9 +244,11 @@ internal class SimpleMDMSingletonPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<[ResourceMock]> in
             XCTAssertEqual(resource.id, 42)
             return resource.toManyNested.getAll()
-        }.done { _ in
+        }
+        .done { _ in
             XCTFail("Expected an error, SimpleMDM singleton probably wasn't used")
-        }.catch { error in
+        }
+        .catch { error in
             self.assertUsingSingleton(error: error)
             expectation.fulfill()
         }
@@ -249,9 +269,11 @@ internal class SimpleMDMSingletonPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<ResourceMock> in
             XCTAssertEqual(resource.id, 42)
             return resource.toManyNested.get(id: 8762)
-        }.done { _ in
+        }
+        .done { _ in
             XCTFail("Expected an error, SimpleMDM singleton probably wasn't used")
-        }.catch { error in
+        }
+        .catch { error in
             self.assertUsingSingleton(error: error)
             expectation.fulfill()
         }
@@ -265,9 +287,11 @@ internal class SimpleMDMSingletonPromiseKitTests: XCTestCase {
         let cursor = Cursor<ResourceMock>()
         firstly {
             cursor.next()
-        }.done { _ in
+        }
+        .done { _ in
             XCTFail("Expected an error, SimpleMDM singleton probably wasn't used")
-        }.catch { error in
+        }
+        .catch { error in
             self.assertUsingSingleton(error: error)
             expectation.fulfill()
         }
@@ -281,9 +305,11 @@ internal class SimpleMDMSingletonPromiseKitTests: XCTestCase {
         let cursor = Cursor<ResourceMock>()
         firstly {
             cursor.next(1)
-        }.done { _ in
+        }
+        .done { _ in
             XCTFail("Expected an error, SimpleMDM singleton probably wasn't used")
-        }.catch { error in
+        }
+        .catch { error in
             self.assertUsingSingleton(error: error)
             expectation.fulfill()
         }

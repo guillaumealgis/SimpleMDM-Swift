@@ -35,7 +35,9 @@ public class SimpleMDM: NSObject {
 
     // MARK: - Instance properties
 
-    internal override init() {}
-
     internal var networking = Networking()
+
+    // MARK: - Private initializer
+
+    override internal init() {}
 }

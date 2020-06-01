@@ -36,9 +36,11 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
 
         firstly {
             UniqueResourceMock.get(s.networking)
-        }.done { _ in
+        }
+        .done { _ in
             expectation.fulfill()
-        }.catch { error in
+        }
+        .catch { error in
             XCTFail("Expected .fulfilled, got \(error)")
         }
 
@@ -53,9 +55,11 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
 
         firstly {
             UniqueResourceMock.get(s.networking)
-        }.done { resource in
+        }
+        .done { resource in
             XCTFail("Expected .error, got \(resource)")
-        }.catch { error in
+        }
+        .catch { error in
             self.assert404(error: error)
             expectation.fulfill()
         }
@@ -72,10 +76,12 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
 
         firstly {
             ResourceMock.getAll(s.networking)
-        }.done { resources in
+        }
+        .done { resources in
             XCTAssertEqual(resources.count, 5)
             expectation.fulfill()
-        }.catch { error in
+        }
+        .catch { error in
             XCTFail("Expected .fulfilled, got \(error)")
         }
 
@@ -90,9 +96,11 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
 
         firstly {
             ResourceMock.getAll(s.networking)
-        }.done { resources in
+        }
+        .done { resources in
             XCTFail("Expected .error, got \(resources)")
-        }.catch { error in
+        }
+        .catch { error in
             self.assert404(error: error)
             expectation.fulfill()
         }
@@ -109,10 +117,12 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
 
         firstly {
             ResourceMock.get(s.networking, id: 37)
-        }.done { resource in
+        }
+        .done { resource in
             XCTAssertEqual(resource.id, 37)
             expectation.fulfill()
-        }.catch { error in
+        }
+        .catch { error in
             XCTFail("Expected .fulfilled, got \(error)")
         }
 
@@ -127,9 +137,11 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
 
         firstly {
             ResourceMock.get(s.networking, id: 37)
-        }.done { resources in
+        }
+        .done { resources in
             XCTFail("Expected .error, got \(resources)")
-        }.catch { error in
+        }
+        .catch { error in
             self.assert404(error: error)
             expectation.fulfill()
         }
@@ -152,10 +164,12 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<ResourceMock> in
             XCTAssertEqual(resource.id, 42)
             return resource.toOne.get(s.networking)
-        }.done { relatedResource in
+        }
+        .done { relatedResource in
             XCTAssertEqual(relatedResource.id, 37)
             expectation.fulfill()
-        }.catch { error in
+        }
+        .catch { error in
             XCTFail("Expected .fulfilled, got \(error)")
         }
 
@@ -177,9 +191,11 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<ResourceMock> in
             XCTAssertEqual(resource.id, 42)
             return resource.toOne.get(s.networking)
-        }.done { relatedResource in
+        }
+        .done { relatedResource in
             XCTFail("Expected .error, got \(relatedResource)")
-        }.catch { error in
+        }
+        .catch { error in
             self.assert404(error: error)
             expectation.fulfill()
         }
@@ -203,10 +219,12 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<[ResourceMock]> in
             XCTAssertEqual(resource.id, 42)
             return resource.toMany.getAll(s.networking)
-        }.done { relatedResources in
+        }
+        .done { relatedResources in
             XCTAssertEqual(relatedResources.map { $0.id }, [326, 78])
             expectation.fulfill()
-        }.catch { error in
+        }
+        .catch { error in
             XCTFail("Expected .fulfilled, got \(error)")
         }
 
@@ -229,9 +247,11 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<[ResourceMock]> in
             XCTAssertEqual(resource.id, 42)
             return resource.toMany.getAll(s.networking)
-        }.done { resources in
+        }
+        .done { resources in
             XCTFail("Expected .error, got \(resources)")
-        }.catch { error in
+        }
+        .catch { error in
             self.assert404(error: error)
             expectation.fulfill()
         }
@@ -255,9 +275,11 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<[ResourceMock]> in
             XCTAssertEqual(resource.id, 42)
             return resource.toMany.getAll(s.networking)
-        }.done { resources in
+        }
+        .done { resources in
             XCTFail("Expected .error, got \(resources)")
-        }.catch { error in
+        }
+        .catch { error in
             self.assert404(error: error)
             expectation.fulfill()
         }
@@ -280,10 +302,12 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<ResourceMock> in
             XCTAssertEqual(resource.id, 42)
             return resource.toMany.get(s.networking, at: 1)
-        }.done { relatedResource in
+        }
+        .done { relatedResource in
             XCTAssertEqual(relatedResource.id, 78)
             expectation.fulfill()
-        }.catch { error in
+        }
+        .catch { error in
             XCTFail("Expected .fulfilled, got \(error)")
         }
 
@@ -305,10 +329,12 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<ResourceMock> in
             XCTAssertEqual(resource.id, 42)
             return resource.toMany.get(s.networking, id: 326)
-        }.done { relatedResource in
+        }
+        .done { relatedResource in
             XCTAssertEqual(relatedResource.id, 326)
             expectation.fulfill()
-        }.catch { error in
+        }
+        .catch { error in
             XCTFail("Expected .fulfilled, got \(error)")
         }
 
@@ -330,10 +356,12 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<[ResourceMock]> in
             XCTAssertEqual(resource.id, 42)
             return resource.toManyNested.getAll(s.networking)
-        }.done { relatedResources in
+        }
+        .done { relatedResources in
             XCTAssertEqual(relatedResources.map { $0.id }, [923, 345, 8762, 3, 9021])
             expectation.fulfill()
-        }.catch { error in
+        }
+        .catch { error in
             XCTFail("Expected .fulfilled, got \(error)")
         }
 
@@ -355,9 +383,11 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<[ResourceMock]> in
             XCTAssertEqual(resource.id, 42)
             return resource.toManyNested.getAll(s.networking)
-        }.done { resources in
+        }
+        .done { resources in
             XCTFail("Expected .error, got \(resources)")
-        }.catch { error in
+        }
+        .catch { error in
             self.assert404(error: error)
             expectation.fulfill()
         }
@@ -380,10 +410,12 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
         .then { (resource: ResourceWithRelationsMock) -> Promise<ResourceMock> in
             XCTAssertEqual(resource.id, 42)
             return resource.toManyNested.get(s.networking, id: 8762)
-        }.done { relatedResource in
+        }
+        .done { relatedResource in
             XCTAssertEqual(relatedResource.id, 8762)
             expectation.fulfill()
-        }.catch { error in
+        }
+        .catch { error in
             XCTFail("Expected .fulfilled, got \(error)")
         }
 
@@ -405,7 +437,8 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
             XCTAssertEqual(resources.count, 5)
             XCTAssertFalse(cursor.hasMore)
             expectation.fulfill()
-        }.catch { error in
+        }
+        .catch { error in
             XCTFail("Expected .fulfilled, got \(error)")
         }
 
@@ -439,7 +472,8 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
             XCTAssertEqual(resources.count, 1)
             XCTAssertTrue(cursor.hasMore)
             expectation.fulfill()
-        }.catch { error in
+        }
+        .catch { error in
             XCTFail("Expected .fulfilled, got \(error)")
         }
 
