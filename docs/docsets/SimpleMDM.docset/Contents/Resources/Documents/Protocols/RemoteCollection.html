@@ -14,9 +14,9 @@
     <a title="RemoteCollection Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">SimpleMDM 0.8.0 Docs</a> (100% documented)</p>
+        <p><a href="../index.html">SimpleMDM 0.8.0 Docs</a> (0% documented)</p>
         <p class="header-right"><a href="https://github.com/guillaumealgis/simplemdm-swift"><img src="../img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fguillaumealgis%2Egithub%2Eio%2Fdocsets%2FSimpleMDM%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fguillaumealgis.github.io%2FSimpleMDM-Swift%2Fdocsets%2FSimpleMDM.xml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -85,7 +85,7 @@
                 <a href="../Protocols/UniqueResource.html">UniqueResource</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Resources%20Types.html#/s:9SimpleMDM20IdentifiableResourceP">IdentifiableResource</a>
+                <a href="../Resources%20Types.html#/IdentifiableResource">IdentifiableResource</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/GettableResource.html">GettableResource</a>
@@ -124,7 +124,7 @@
                 <a href="../Classes/Cursor.html">Cursor</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Cursor.html#/s:9SimpleMDM20NestedResourceCursorC">NestedResourceCursor</a>
+                <a href="../Cursor.html#/NestedResourceCursor">NestedResourceCursor</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/CursorLimit.html">CursorLimit</a>
@@ -149,10 +149,10 @@
             <a href="../Misc.html">Misc</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Misc.html#/s:9SimpleMDM6Resulta">Result</a>
+                <a href="../Misc.html#/Result">Result</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Misc.html#/s:9SimpleMDM17CompletionClosurea">CompletionClosure</a>
+                <a href="../Misc.html#/CompletionClosure">CompletionClosure</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/RemoteCollection.html">RemoteCollection</a>
@@ -174,7 +174,7 @@
                 <a href="../Protocols/Identifiable.html">Identifiable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Other%20Protocols.html#/s:9SimpleMDM18SearchableResourceP">SearchableResource</a>
+                <a href="../Other%20Protocols.html#/SearchableResource">SearchableResource</a>
               </li>
             </ul>
           </li>
@@ -184,12 +184,6 @@
         <section>
           <section class="section">
             <h1>RemoteCollection</h1>
-              <div class="declaration">
-                <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RemoteCollection</span></code></pre>
-
-                </div>
-              </div>
             <p>A type defining methods to fetch all collection of objects from a remote server.</p>
 
           </section>
@@ -199,9 +193,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9SimpleMDM16RemoteCollectionP7ElementQa"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Alias/Element" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9SimpleMDM16RemoteCollectionP7ElementQa">Element</a>
+                    <a class="token" href="#/">Element</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -212,26 +206,15 @@
                         <p>The type of the elements contained in the collection.</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">Element</span> <span class="p">:</span> <span class="kt"><a href="../Resources%20Types.html#/s:9SimpleMDM20IdentifiableResourceP">IdentifiableResource</a></span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.8.0/Sources/Relationship.swift#L17">Show on GitHub</a>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9SimpleMDM16RemoteCollectionP3get2id10completiony7Element_2IDQZ_y10PromiseKit6ResultOyAGQzGctF"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/get(id:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9SimpleMDM16RemoteCollectionP3get2id10completiony7Element_2IDQZ_y10PromiseKit6ResultOyAGQzGctF">get(id:completion:)</a>
+                    <a class="token" href="#/">get(id:<wbr>completion:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -241,51 +224,9 @@
                       <div class="abstract">
                         <p>Fetch one of the remote resources from the collection by id.</p>
 
-<p>If no object in the collection has the identifier <code>id</code>, a <code><a href="../Enums/SimpleMDMError.html#/s:9SimpleMDM0A8MDMErrorO20unexpectedResourceIdyA2CmF">SimpleMDMError.unexpectedResourceId</a></code> error is
+<p>If no object in the collection has the identifier <code>id</code>, a <code><a href="../Enums/SimpleMDMError.html#/unexpectedResourceId">SimpleMDMError.unexpectedResourceId</a></code> error is
 returned in the completion block instead of a resource.</p>
 
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RemoteCollection.html#/s:9SimpleMDM16RemoteCollectionP7ElementQa">Element</a></span><span class="o">.</span><span class="kt">ID</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Misc.html#/s:9SimpleMDM17CompletionClosurea">CompletionClosure</a></span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/RemoteCollection.html#/s:9SimpleMDM16RemoteCollectionP7ElementQa">Element</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>id</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The identifier of the resource to fetch.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>completion</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A completion handler called with the fetched resource, or an error.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.8.0/Sources/Relationship.swift#L27">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -293,9 +234,9 @@ returned in the completion block instead of a resource.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9SimpleMDM16RemoteCollectionP6getAll10completionyy10PromiseKit6ResultOySay7ElementQzGGc_tF"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/getAll(completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9SimpleMDM16RemoteCollectionP6getAll10completionyy10PromiseKit6ResultOySay7ElementQzGGc_tF">getAll(completion:)</a>
+                    <a class="token" href="#/">getAll(completion:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -306,36 +247,6 @@ returned in the completion block instead of a resource.</p>
                         <p>Fetch all remote resources in the collection.</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getAll</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Misc.html#/s:9SimpleMDM17CompletionClosurea">CompletionClosure</a></span><span class="o">&lt;</span><span class="p">[</span><span class="kt"><a href="../Protocols/RemoteCollection.html#/s:9SimpleMDM16RemoteCollectionP7ElementQa">Element</a></span><span class="p">]</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>completion</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A completion handler called with an array of the fetched resources, or an error.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.8.0/Sources/Relationship.swift#L32">Show on GitHub</a>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -344,8 +255,8 @@ returned in the completion block instead of a resource.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="http://twitter.com/guillaumealgis" target="_blank" rel="external">Guillaume Algis</a>. All rights reserved. (Last updated: 2020-03-16)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="http://twitter.com/guillaumealgis" target="_blank" rel="external">Guillaume Algis</a>. All rights reserved. (Last updated: 2020-06-01)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

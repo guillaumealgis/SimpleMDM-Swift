@@ -16,5 +16,7 @@
       <true/>
     <key>DashDocSetFamily</key>
       <string>dashtoc</string>
+    <key>DashDocSetFallbackURL</key>
+      <string>https://guillaumealgis.github.io/SimpleMDM-Swift/</string>
   </dict>
 </plist>

@@ -14,9 +14,9 @@
     <a title="Relationships  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">SimpleMDM 0.8.0 Docs</a> (100% documented)</p>
+        <p><a href="index.html">SimpleMDM 0.8.0 Docs</a> (0% documented)</p>
         <p class="header-right"><a href="https://github.com/guillaumealgis/simplemdm-swift"><img src="img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fguillaumealgis%2Egithub%2Eio%2Fdocsets%2FSimpleMDM%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fguillaumealgis.github.io%2FSimpleMDM-Swift%2Fdocsets%2FSimpleMDM.xml"><img src="img/dash.png"/>Install in Dash</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -85,7 +85,7 @@
                 <a href="Protocols/UniqueResource.html">UniqueResource</a>
               </li>
               <li class="nav-group-task">
-                <a href="Resources%20Types.html#/s:9SimpleMDM20IdentifiableResourceP">IdentifiableResource</a>
+                <a href="Resources%20Types.html#/IdentifiableResource">IdentifiableResource</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/GettableResource.html">GettableResource</a>
@@ -124,7 +124,7 @@
                 <a href="Classes/Cursor.html">Cursor</a>
               </li>
               <li class="nav-group-task">
-                <a href="Cursor.html#/s:9SimpleMDM20NestedResourceCursorC">NestedResourceCursor</a>
+                <a href="Cursor.html#/NestedResourceCursor">NestedResourceCursor</a>
               </li>
               <li class="nav-group-task">
                 <a href="Enums/CursorLimit.html">CursorLimit</a>
@@ -149,10 +149,10 @@
             <a href="Misc.html">Misc</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Misc.html#/s:9SimpleMDM6Resulta">Result</a>
+                <a href="Misc.html#/Result">Result</a>
               </li>
               <li class="nav-group-task">
-                <a href="Misc.html#/s:9SimpleMDM17CompletionClosurea">CompletionClosure</a>
+                <a href="Misc.html#/CompletionClosure">CompletionClosure</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/RemoteCollection.html">RemoteCollection</a>
@@ -174,7 +174,7 @@
                 <a href="Protocols/Identifiable.html">Identifiable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Other%20Protocols.html#/s:9SimpleMDM18SearchableResourceP">SearchableResource</a>
+                <a href="Other%20Protocols.html#/SearchableResource">SearchableResource</a>
               </li>
             </ul>
           </li>
@@ -201,9 +201,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9SimpleMDM12RelatedToOneV"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Struct/RelatedToOne" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9SimpleMDM12RelatedToOneV">RelatedToOne</a>
+                    <a class="token" href="#/">RelatedToOne</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -216,17 +216,6 @@
 <p>The related resouce can be retrieved from the server using <code>get(completion:)</code>.</p>
 
                         <a href="Structs/RelatedToOne.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">RelatedToOne</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">Relationship</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="Protocols/GettableResource.html">GettableResource</a></span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.8.0/Sources/Relationship.swift#L54-L93">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -247,9 +236,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9SimpleMDM13RelatedToManyV"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Struct/RelatedToMany" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9SimpleMDM13RelatedToManyV">RelatedToMany</a>
+                    <a class="token" href="#/">RelatedToMany</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -262,17 +251,6 @@
 <p>The related resouces can be retrieved from the server either by id, by index, or by fetching the entire collection.</p>
 
                         <a href="Structs/RelatedToMany.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">RelatedToMany</span><span class="o">&lt;</span><span class="kt">Element</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">Relationship</span><span class="p">,</span> <span class="kt"><a href="Protocols/RemoteCollection.html">RemoteCollection</a></span> <span class="k">where</span> <span class="kt">Element</span> <span class="p">:</span> <span class="kt"><a href="Protocols/GettableResource.html">GettableResource</a></span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.8.0/Sources/Relationship.swift#L100-L213">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -293,9 +271,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9SimpleMDM19RelatedToManyNestedV"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Struct/RelatedToManyNested" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9SimpleMDM19RelatedToManyNestedV">RelatedToManyNested</a>
+                    <a class="token" href="#/">RelatedToManyNested</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -317,17 +295,6 @@ ids ahead of time, so this object does not exposes a <code>relatedIds</code> pro
 
                         <a href="Structs/RelatedToManyNested.html" class="slightly-smaller">See more</a>
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">RelatedToManyNested</span><span class="o">&lt;</span><span class="kt">Parent</span><span class="p">,</span> <span class="kt">Element</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">RelatedToResource</span><span class="p">,</span> <span class="kt">NestedResourceAttribute</span><span class="p">,</span> <span class="kt"><a href="Protocols/RemoteCollection.html">RemoteCollection</a></span> <span class="k">where</span> <span class="kt">Parent</span> <span class="p">:</span> <span class="kt"><a href="Resources%20Types.html#/s:9SimpleMDM20IdentifiableResourceP">IdentifiableResource</a></span><span class="p">,</span> <span class="kt">Element</span> <span class="p">:</span> <span class="kt"><a href="Resources%20Types.html#/s:9SimpleMDM20IdentifiableResourceP">IdentifiableResource</a></span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.8.0/Sources/Relationship.swift#L239-L287">Show on GitHub</a>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -336,8 +303,8 @@ ids ahead of time, so this object does not exposes a <code>relatedIds</code> pro
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="http://twitter.com/guillaumealgis" target="_blank" rel="external">Guillaume Algis</a>. All rights reserved. (Last updated: 2020-03-16)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="http://twitter.com/guillaumealgis" target="_blank" rel="external">Guillaume Algis</a>. All rights reserved. (Last updated: 2020-06-01)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

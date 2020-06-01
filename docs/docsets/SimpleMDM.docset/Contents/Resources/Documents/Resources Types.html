@@ -14,9 +14,9 @@
     <a title="Resources Types  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">SimpleMDM 0.8.0 Docs</a> (100% documented)</p>
+        <p><a href="index.html">SimpleMDM 0.8.0 Docs</a> (0% documented)</p>
         <p class="header-right"><a href="https://github.com/guillaumealgis/simplemdm-swift"><img src="img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fguillaumealgis%2Egithub%2Eio%2Fdocsets%2FSimpleMDM%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fguillaumealgis.github.io%2FSimpleMDM-Swift%2Fdocsets%2FSimpleMDM.xml"><img src="img/dash.png"/>Install in Dash</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -85,7 +85,7 @@
                 <a href="Protocols/UniqueResource.html">UniqueResource</a>
               </li>
               <li class="nav-group-task">
-                <a href="Resources%20Types.html#/s:9SimpleMDM20IdentifiableResourceP">IdentifiableResource</a>
+                <a href="Resources%20Types.html#/IdentifiableResource">IdentifiableResource</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/GettableResource.html">GettableResource</a>
@@ -124,7 +124,7 @@
                 <a href="Classes/Cursor.html">Cursor</a>
               </li>
               <li class="nav-group-task">
-                <a href="Cursor.html#/s:9SimpleMDM20NestedResourceCursorC">NestedResourceCursor</a>
+                <a href="Cursor.html#/NestedResourceCursor">NestedResourceCursor</a>
               </li>
               <li class="nav-group-task">
                 <a href="Enums/CursorLimit.html">CursorLimit</a>
@@ -149,10 +149,10 @@
             <a href="Misc.html">Misc</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Misc.html#/s:9SimpleMDM6Resulta">Result</a>
+                <a href="Misc.html#/Result">Result</a>
               </li>
               <li class="nav-group-task">
-                <a href="Misc.html#/s:9SimpleMDM17CompletionClosurea">CompletionClosure</a>
+                <a href="Misc.html#/CompletionClosure">CompletionClosure</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/RemoteCollection.html">RemoteCollection</a>
@@ -174,7 +174,7 @@
                 <a href="Protocols/Identifiable.html">Identifiable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Other%20Protocols.html#/s:9SimpleMDM18SearchableResourceP">SearchableResource</a>
+                <a href="Other%20Protocols.html#/SearchableResource">SearchableResource</a>
               </li>
             </ul>
           </li>
@@ -201,9 +201,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9SimpleMDM14UniqueResourceP"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Protocol/UniqueResource" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9SimpleMDM14UniqueResourceP">UniqueResource</a>
+                    <a class="token" href="#/">UniqueResource</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -215,17 +215,6 @@
 listed.</p>
 
                         <a href="Protocols/UniqueResource.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">UniqueResource</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Resource.html">Resource</a></span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.8.0/Sources/Resources/Resource.swift#L23-L28">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -246,9 +235,9 @@ listed.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9SimpleMDM20IdentifiableResourceP"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Protocol/IdentifiableResource" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9SimpleMDM20IdentifiableResourceP">IdentifiableResource</a>
+                    <a class="token" href="#/">IdentifiableResource</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -260,26 +249,15 @@ listed.</p>
 which is unique per instance of the resource.</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">IdentifiableResource</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Identifiable.html">Identifiable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Resource.html">Resource</a></span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ID</span> <span class="p">:</span> <span class="kt">Comparable</span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ID</span> <span class="p">:</span> <span class="kt">Decodable</span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ID</span> <span class="p">:</span> <span class="kt">LosslessStringConvertible</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.8.0/Sources/Resources/Resource.swift#L68">Show on GitHub</a>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9SimpleMDM16GettableResourceP"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Protocol/GettableResource" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9SimpleMDM16GettableResourceP">GettableResource</a>
+                    <a class="token" href="#/">GettableResource</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -288,20 +266,9 @@ which is unique per instance of the resource.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>A protocol describing resource types that can be fetched independently, using their unique identifier
-(these resources adopt the <code><a href="Resources%20Types.html#/s:9SimpleMDM20IdentifiableResourceP">IdentifiableResource</a></code> protocol).</p>
+(these resources adopt the <code><a href="Resources%20Types.html#/IdentifiableResource">IdentifiableResource</a></code> protocol).</p>
 
                         <a href="Protocols/GettableResource.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">GettableResource</span> <span class="p">:</span> <span class="kt"><a href="Resources%20Types.html#/s:9SimpleMDM20IdentifiableResourceP">IdentifiableResource</a></span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.8.0/Sources/Resources/Resource.swift#L78-L83">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -322,9 +289,9 @@ which is unique per instance of the resource.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9SimpleMDM16ListableResourceP"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Protocol/ListableResource" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9SimpleMDM16ListableResourceP">ListableResource</a>
+                    <a class="token" href="#/">ListableResource</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -336,17 +303,6 @@ which is unique per instance of the resource.</p>
 
                         <a href="Protocols/ListableResource.html" class="slightly-smaller">See more</a>
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ListableResource</span> <span class="p">:</span> <span class="kt"><a href="Protocols/GettableResource.html">GettableResource</a></span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/guillaumealgis/simplemdm-swift/tree/0.8.0/Sources/Resources/Resource.swift#L114-L119">Show on GitHub</a>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -355,8 +311,8 @@ which is unique per instance of the resource.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="http://twitter.com/guillaumealgis" target="_blank" rel="external">Guillaume Algis</a>. All rights reserved. (Last updated: 2020-03-16)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="http://twitter.com/guillaumealgis" target="_blank" rel="external">Guillaume Algis</a>. All rights reserved. (Last updated: 2020-06-01)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
