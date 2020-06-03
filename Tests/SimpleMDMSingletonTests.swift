@@ -6,7 +6,7 @@
 @testable import SimpleMDM
 import XCTest
 
-/// This class tests weither the exposed API using the SimpleMDM singleton calls to the right Networking instance.
+/// This class tests whether the exposed API using the SimpleMDM singleton calls to the right Networking instance.
 /// We do this by using a networking mock which returns a nonsensical HTTP code, and check in the callback we got
 /// this code as expected.
 internal class SimpleMDMSingletonTests: XCTestCase {

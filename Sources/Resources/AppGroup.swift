@@ -15,7 +15,7 @@ public struct AppGroup: ListableResource {
 
     /// The name of the group.
     public let name: String
-    /// Weither the apps in this group are deployed automatically to the devices in this group.
+    /// Whether the apps in this group are deployed automatically to the devices in this group.
     public let autoDeploy: Bool
 
     // MARK: - Relations

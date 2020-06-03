@@ -24,7 +24,7 @@ public struct InstalledApp: GettableResource {
     public let bundleSize: Int
     /// The size of the installed app ???, in bytes.
     public let dynamicSize: Int
-    /// Weither the app is managed by SimpleMDM.
+    /// Whether the app is managed by SimpleMDM.
     public let managed: Bool
     /// The date at which the app was discovered by SimpleMDM on the device.
     public let discoveredAt: Date

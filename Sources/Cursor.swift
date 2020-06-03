@@ -35,7 +35,7 @@ public enum CursorLimit: Int {
 ///         }
 ///     }
 public class Cursor<T: ListableResource> {
-    /// Weither the server has more resources available to be fetched.
+    /// Whether the server has more resources available to be fetched.
     public private(set) var hasMore: Bool = true
 
     /// The identifier of the last resource of the last fetched page.

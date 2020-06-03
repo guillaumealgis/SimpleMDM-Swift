@@ -93,11 +93,11 @@ public struct Device: ListableResource, SearchableResource {
     public let phoneNumber: String?
     /// The cellular technology of the device. Signification of the value isn't documented by SimpleMDM.
     public let cellularTechnology: Int?
-    /// Weither the device allows roaming for voice.
+    /// Whether the device allows roaming for voice.
     public let voiceRoamingEnabled: Bool?
-    /// Weither the device allows roaming for data.
+    /// Whether the device allows roaming for data.
     public let dataRoamingEnabled: Bool?
-    /// Weither the device is currently roaming.
+    /// Whether the device is currently roaming.
     public let isRoaming: Bool?
 
     // MARK: - MCC & MNC
@@ -119,42 +119,42 @@ public struct Device: ListableResource, SearchableResource {
 
     /// Not documented by SimpleMDM.
     public let hardwareEncryptionCaps: Int?
-    /// Weither the device is passcode protected.
+    /// Whether the device is passcode protected.
     public let passcodePresent: Bool?
-    /// Weither the device's passcode is compliant with your global passcode policy.
+    /// Whether the device's passcode is compliant with your global passcode policy.
     public let passcodeCompliant: Bool?
-    /// Weither the device's passcode is compliant with the passcode policy defined in your profiles.
+    /// Whether the device's passcode is compliant with the passcode policy defined in your profiles.
     public let passcodeCompliantWithProfiles: Bool?
-    /// Weither Filevault (disk encryption) is enabled on the device (macOS only).
+    /// Whether Filevault (disk encryption) is enabled on the device (macOS only).
     public let filevaultEnabled: Bool
     /// The Filevault recovery key (macOS only).
     public let filevaultRecoveryKey: String?
-    /// Weither the firmware of the device is password protected (macOS only?).
+    /// Whether the firmware of the device is password protected (macOS only?).
     public let firmwarePasswordEnabled: Bool
     /// The firmware password (macOS only?).
     public let firmwarePassword: String?
 
     // MARK: - MDM
 
-    /// Weither the device is supervised.
+    /// Whether the device is supervised.
     public let isSupervised: Bool?
-    /// Weither the device is enrolled in Apple's Device Enrollment Program (DEP).
+    /// Whether the device is enrolled in Apple's Device Enrollment Program (DEP).
     public let isDepEnrollment: Bool
-    /// Weither the device can be enrolled by the user (?).
+    /// Whether the device can be enrolled by the user (?).
     public let isUserApprovedEnrollment: Bool?
-    /// Weither the device locator service (Find my Mac / Find my iPhone) is enabled.
+    /// Whether the device locator service (Find my Mac / Find my iPhone) is enabled.
     public let isDeviceLocatorServiceEnabled: Bool?
-    /// Weither the device is currently in Do Not Disturb mode.
+    /// Whether the device is currently in Do Not Disturb mode.
     public let isDoNotDisturbInEffect: Bool?
-    /// Weither the device's personal hotspot functionnality is enabled.
+    /// Whether the device's personal hotspot functionnality is enabled.
     public let personalHotspotEnabled: Bool?
-    /// Weither the device's iTunes Store account is active.
+    /// Whether the device's iTunes Store account is active.
     public let itunesStoreAccountIsActive: Bool?
     /// The date of the last iCloud backup of the device.
     public let lastCloudBackupDate: Date?
-    /// Weither Activation Lock is enabled on the device.
+    /// Whether Activation Lock is enabled on the device.
     public let isActivationLockEnabled: Bool
-    /// Weither backing up to iCloud is enabled.
+    /// Whether backing up to iCloud is enabled.
     public let isCloudBackupEnabled: Bool
 
     // MARK: - Location
