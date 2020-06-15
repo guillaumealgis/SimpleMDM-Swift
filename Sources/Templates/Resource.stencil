@@ -21,8 +21,10 @@ internal extension Resource {
 // MARK: - {{ type.name }}
 {% if type.implements.IdentifiableResource %}
 // sourcery:inline:auto:{{ type.name }}.Identifiable
+    typealias ID = {{ type.annotations.identifierType|default:"Int" }}
+
     /// The unique identifier of this resource.
-    public let id: {{ type.annotations.identifierType|default:"Int" }}
+    public let id: ID
 // sourcery:end
 {% endif %}
 extension {{ type.name }}: Resource {

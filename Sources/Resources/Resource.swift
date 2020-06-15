@@ -65,11 +65,17 @@ public protocol Identifiable {
 
 /// A protocol describing resource types of which multiple instances of can exists. These resources have an identifier
 /// which is unique per instance of the resource.
-public protocol IdentifiableResource: Resource, Identifiable where ID: LosslessStringConvertible & Comparable & Decodable {}
+public protocol IdentifiableResource: Resource, Identifiable, Hashable where ID: LosslessStringConvertible & Comparable & Decodable {}
 
 extension Equatable where Self: IdentifiableResource {
-    static func == (lhs: Self, rhs: Self) -> Bool {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.id == rhs.id
+    }
+}
+
+extension Hashable where Self: IdentifiableResource {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
 
