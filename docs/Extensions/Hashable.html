@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Cursor Class Reference</title>
+    <title>Hashable Extension Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/Cursor" class="dashAnchor"></a>
-    <a title="Cursor Class Reference"></a>
+    <a name="//apple_ref/swift/Extension/Hashable" class="dashAnchor"></a>
+    <a title="Hashable Extension Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">SimpleMDM 0.9.0 Docs</a> (0% documented)</p>
@@ -23,7 +23,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">SimpleMDM Reference</a>
         <img id="carat" src="../img/carat.png" />
-        Cursor Class Reference
+        Hashable Extension Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -194,24 +194,8 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Cursor</h1>
-            <p>A class used to fetch paginated lists of resources.</p>
-
-<p>A cursor represents a position in the global list of all resources of one type, and encapsulate methods to move
-forward in the list, fetching resources page by page.</p>
-
-<p>Usage:</p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">cursor</span> <span class="o">=</span> <span class="kt">Cursor</span><span class="o">&lt;</span><span class="kt">Device</span><span class="o">&gt;</span><span class="p">()</span>
-<span class="n">cursor</span><span class="o">.</span><span class="n">next</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
-    <span class="k">switch</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">fulfilled</span><span class="p">(</span><span class="n">devices</span><span class="p">):</span>
-        <span class="c1">// Do something with the devices</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">rejected</span><span class="p">(</span><span class="n">error</span><span class="p">):</span>
-        <span class="c1">// Handle the error</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-
+            <h1>Hashable</h1>
+            
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -220,8 +204,8 @@ forward in the list, fetching resources page by page.</p>
                   <div>
                     <code>
                     <a name="/"></a>
-                    <a name="//apple_ref/swift/Property/hasMore" class="dashAnchor"></a>
-                    <a class="token" href="#/">hasMore</a>
+                    <a name="//apple_ref/swift/Method/hash(into:)" class="dashAnchor"></a>
+                    <a class="token" href="#/">hash(into:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -229,27 +213,7 @@ forward in the list, fetching resources page by page.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Whether the server has more resources available to be fetched.</p>
-
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/next(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">next(_:<wbr>)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Fetch the next page of resources.</p>
-
+                        
                       </div>
                     </section>
                   </div>

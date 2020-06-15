@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Cursor  Reference</title>
+    <title>Other Extensions  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Section/Cursor" class="dashAnchor"></a>
-    <a title="Cursor  Reference"></a>
+    <a name="//apple_ref/swift/Section/Other Extensions" class="dashAnchor"></a>
+    <a title="Other Extensions  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html">SimpleMDM 0.9.0 Docs</a> (0% documented)</p>
@@ -23,7 +23,7 @@
       <p id="breadcrumbs">
         <a href="index.html">SimpleMDM Reference</a>
         <img id="carat" src="img/carat.png" />
-        Cursor  Reference
+        Other Extensions  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -194,17 +194,18 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Cursor</h1>
-            
+            <h1>Other Extensions</h1>
+            <p>The following extensions are available globally.</p>
+
           </section>
           <section class="section task-group-section">
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Cursor"></a>
-                <a name="//apple_ref/swift/Section/Cursor" class="dashAnchor"></a>
+                <a name="/Identifiable%20Resource"></a>
+                <a name="//apple_ref/swift/Section/Identifiable Resource" class="dashAnchor"></a>
                 <div class="section-name-container">
-                  <a class="section-name-link" href="#/Cursor"></a>
-                  <h3 class="section-name"><p>Cursor</p>
+                  <a class="section-name-link" href="#/Identifiable%20Resource"></a>
+                  <h3 class="section-name"><p>Identifiable Resource</p>
 </h3>
                 </div>
               </div>
@@ -213,8 +214,8 @@
                   <div>
                     <code>
                     <a name="/"></a>
-                    <a name="//apple_ref/swift/Class/Cursor" class="dashAnchor"></a>
-                    <a class="token" href="#/">Cursor</a>
+                    <a name="//apple_ref/swift/Extension/Equatable" class="dashAnchor"></a>
+                    <a class="token" href="#/">Equatable</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -222,58 +223,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A class used to fetch paginated lists of resources.</p>
-
-<p>A cursor represents a position in the global list of all resources of one type, and encapsulate methods to move
-forward in the list, fetching resources page by page.</p>
-
-<p>Usage:</p>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">cursor</span> <span class="o">=</span> <span class="kt">Cursor</span><span class="o">&lt;</span><span class="kt">Device</span><span class="o">&gt;</span><span class="p">()</span>
-<span class="n">cursor</span><span class="o">.</span><span class="n">next</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
-    <span class="k">switch</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">fulfilled</span><span class="p">(</span><span class="n">devices</span><span class="p">):</span>
-        <span class="c1">// Do something with the devices</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">rejected</span><span class="p">(</span><span class="n">error</span><span class="p">):</span>
-        <span class="c1">// Handle the error</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-
-                        <a href="Classes/Cursor.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/NestedResourceCursor"></a>
-                <a name="//apple_ref/swift/Section/NestedResourceCursor" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/NestedResourceCursor"></a>
-                  <h3 class="section-name"><p>NestedResourceCursor</p>
-</h3>
-                </div>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Class/NestedResourceCursor" class="dashAnchor"></a>
-                    <a class="token" href="#/">NestedResourceCursor</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A specific Cursor for fetching resources nested in another resource type.</p>
-
-<p>This is an implementation detail, and this class can be used like a regular <code><a href="Classes/Cursor.html">Cursor</a></code> instance.</p>
-
+                        
+                        <a href="Extensions/Equatable.html" class="slightly-smaller">See more</a>
                       </div>
                     </section>
                   </div>
@@ -282,8 +233,8 @@ forward in the list, fetching resources page by page.</p>
                   <div>
                     <code>
                     <a name="/"></a>
-                    <a name="//apple_ref/swift/Enum/CursorLimit" class="dashAnchor"></a>
-                    <a class="token" href="#/">CursorLimit</a>
+                    <a name="//apple_ref/swift/Extension/Hashable" class="dashAnchor"></a>
+                    <a class="token" href="#/">Hashable</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -291,12 +242,8 @@ forward in the list, fetching resources page by page.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The bounds of the number of elements one can get when requesting a paginated list of resources.</p>
-
-<p>These values are from the <a href="https://simplemdm.com/docs/api/#pagination">Pagination documentation</a> and may be subject
-to change.</p>
-
-                        <a href="Enums/CursorLimit.html" class="slightly-smaller">See more</a>
+                        
+                        <a href="Extensions/Hashable.html" class="slightly-smaller">See more</a>
                       </div>
                     </section>
                   </div>
