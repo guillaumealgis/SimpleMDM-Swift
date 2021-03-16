@@ -15,18 +15,18 @@ SimpleMDM-Swift is a cross-platform (iOS, macOS, tvOS, watchOS) SDK to access th
 
 ## Features
 
-* Read-only access to all exposed resources (Device, App, etc.) of the REST API
-* Supports the pagination API introduced August 15, 2018
-* Type-safe
-* Asynchronous API, relying on [Result type](https://www.swiftbysundell.com/posts/the-power-of-result-types-in-swift), and [Promises](https://github.com/promisekit) (optional API)
-* High test coverage
-* 100% documented
+- Read-only access to all exposed resources (Device, App, etc.) of the REST API
+- Supports the pagination API introduced August 15, 2018
+- Type-safe
+- Asynchronous API, relying on [Result type](https://www.swiftbysundell.com/posts/the-power-of-result-types-in-swift), and [Promises](https://github.com/promisekit) (optional API)
+- High test coverage
+- 100% documented
 
 ##### System requirements
 
-+ Deployment target of iOS 11.0+ / macOS 10.13+ / tvOS 11.0+ / watchOS 4.0+
-+ Xcode 11+
-+ Swift 5.0+
+- Deployment target of iOS 11.0+ / macOS 10.13+ / tvOS 11.0+ / watchOS 4.0+
+- Xcode 11+
+- Swift 5.0+
 
 ## Usage
 
@@ -73,7 +73,7 @@ dependencies: [
 
 Or you can use [Xcode's menu](https://wwdcbysundell.com/2019/xcode-swiftpm-first-look/) in File > Swift Packages > Add Package Dependency.
 
-----------
+---
 
 ### CocoaPods
 
@@ -94,7 +94,7 @@ Then, run the following command:
 $ pod install
 ```
 
-----------
+---
 
 ### Carthage
 
@@ -107,9 +107,14 @@ github "guillaumealgis/SimpleMDM-Swift" == 0.9.0
 Run `carthage update` to build the framework and drag the built SimpleMDM-Swift.framework into your Xcode project and update your run scripts as appropriate. For additional support, please visit the Carthage [documentation](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
 
 ## Contributing
+
+If you wish to contribute to SimpleMDM-Swift please fork the repository and send a pull request. Contributions and feature requests are always welcome, please do not hesitate to raise an issue!
+
+Contributors and any people interacting on this project are expected to adhere to its code of conduct. See CODE_OF_CONDUCT.md for details.
+
 ### Getting Started
 
-To start contributing to SimpleMDM-Swift, you need the last version of Xcode on your machine.
+To start contributing to SimpleMDM-Swift, you need the latest version of Xcode on your machine.
 After cloning the project, run the following command to generate the project's .xcodeproj:
 
 ```shell
@@ -121,12 +126,6 @@ You can then start working on the project by opening the newly created `SimpleMD
 ## Apps using SimpleMDM-Swift
 
 I'd love to hear what you have used SimpleMDM-Swift for, if you would like your app displayed here, please send a pull request!
-
-## Contributing
-
-If you wish to contribute to SimpleMDM-Swift please fork the repository and send a pull request. Contributions and feature requests are always welcome, please do not hesitate to raise an issue!
-
-Contributors and any people interacting on this project are expected to adhere to its code of conduct. See CODE\_OF\_CONDUCT.md for details.
 
 ## License
 
