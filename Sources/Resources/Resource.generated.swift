@@ -1,6 +1,5 @@
-// Generated using Sourcery 0.17.0 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 1.4.2 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
-
 //
 //  Copyright 2018 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.

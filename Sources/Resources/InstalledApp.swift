@@ -8,8 +8,10 @@ import Foundation
 /// A representation of an app installation on a device.
 public struct InstalledApp: GettableResource {
     // sourcery:inline:auto:InstalledApp.Identifiable
+    public typealias ID = Int
+
     /// The unique identifier of this resource.
-    public let id: Int
+    public let id: ID
     // sourcery:end
 
     /// The name of the installed app.

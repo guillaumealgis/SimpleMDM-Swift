@@ -8,8 +8,10 @@ import Foundation
 /// A device registered in your SimpleMDM account.
 public struct Device: ListableResource, SearchableResource {
     // sourcery:inline:auto:Device.Identifiable
+    public typealias ID = Int
+
     /// The unique identifier of this resource.
-    public let id: Int
+    public let id: ID
     // sourcery:end
 
     // MARK: - Identifiers

@@ -21,7 +21,7 @@ internal extension Resource {
 // MARK: - {{ type.name }}
 {% if type.implements.IdentifiableResource %}
 // sourcery:inline:auto:{{ type.name }}.Identifiable
-    typealias ID = {{ type.annotations.identifierType|default:"Int" }}
+    public typealias ID = {{ type.annotations.identifierType|default:"Int" }}
 
     /// The unique identifier of this resource.
     public let id: ID
@@ -30,7 +30,7 @@ internal extension Resource {
 extension {{ type.name }}: Resource {
     /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
-        return "{{ type.localName|camelToSnakeCase }}{% ifnot type.implements.UniqueResource %}s{% endif %}"
+        "{{ type.localName|camelToSnakeCase }}{% ifnot type.implements.UniqueResource %}s{% endif %}"
     }
 }
 

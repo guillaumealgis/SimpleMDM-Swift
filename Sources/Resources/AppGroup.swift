@@ -9,8 +9,10 @@ import Foundation
 /// to devices.
 public struct AppGroup: ListableResource {
     // sourcery:inline:auto:AppGroup.Identifiable
+    public typealias ID = Int
+
     /// The unique identifier of this resource.
-    public let id: Int
+    public let id: ID
     // sourcery:end
 
     /// The name of the group.

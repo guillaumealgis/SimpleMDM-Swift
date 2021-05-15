@@ -11,8 +11,10 @@ import Foundation
 /// See `CustomAttributeValue` for the values of these attributes associated to devices.
 public struct CustomAttribute: ListableResource {
     // sourcery:inline:auto:CustomAttribute.Identifiable
+    public typealias ID = String
+
     /// The unique identifier of this resource.
-    public let id: String
+    public let id: ID
     // sourcery:end
 
     /// The name of the attribute.

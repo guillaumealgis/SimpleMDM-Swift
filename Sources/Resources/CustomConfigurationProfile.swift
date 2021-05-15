@@ -8,8 +8,10 @@ import Foundation
 /// A custom configuration profile created with AppleConfiguration and applied to devices.
 public struct CustomConfigurationProfile: ListableResource {
     // sourcery:inline:auto:CustomConfigurationProfile.Identifiable
+    public typealias ID = Int
+
     /// The unique identifier of this resource.
-    public let id: Int
+    public let id: ID
     // sourcery:end
 
     /// The name of the configuration profile.

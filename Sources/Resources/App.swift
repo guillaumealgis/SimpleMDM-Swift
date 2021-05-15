@@ -8,8 +8,10 @@ import Foundation
 /// An `App` represents an app in your app catalog. You can use `AppGroup` to install apps to your devices.
 public struct App: ListableResource {
     // sourcery:inline:auto:App.Identifiable
+    public typealias ID = Int
+
     /// The unique identifier of this resource.
-    public let id: Int
+    public let id: ID
     // sourcery:end
 
     /// The name of the app.
