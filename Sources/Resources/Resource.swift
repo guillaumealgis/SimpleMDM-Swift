@@ -68,12 +68,14 @@ public protocol Identifiable {
 public protocol IdentifiableResource: Resource, Identifiable, Hashable where ID: LosslessStringConvertible & Comparable & Decodable {}
 
 public extension Equatable where Self: IdentifiableResource {
+    /// Returns a Boolean value indicating whether two resources are equal.
     static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.id == rhs.id
     }
 }
 
 public extension Hashable where Self: IdentifiableResource {
+    /// Hashes id of this resource by feeding them into the given hasher.
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }

@@ -4,6 +4,7 @@ included:
 
 disabled_rules:
   - line_length
+  - nesting # https://stackoverflow.com/questions/42996275/nested-types-in-swift-what-is-the-good-practice
 
 analyzer_rules:
   - explicit_self
