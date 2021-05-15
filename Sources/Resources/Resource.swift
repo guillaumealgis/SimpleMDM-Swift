@@ -1,5 +1,5 @@
 //
-//  Copyright 2020 Guillaume Algis.
+//  Copyright 2021 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -67,14 +67,14 @@ public protocol Identifiable {
 /// which is unique per instance of the resource.
 public protocol IdentifiableResource: Resource, Identifiable, Hashable where ID: LosslessStringConvertible & Comparable & Decodable {}
 
-extension Equatable where Self: IdentifiableResource {
-    public static func == (lhs: Self, rhs: Self) -> Bool {
+public extension Equatable where Self: IdentifiableResource {
+    static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.id == rhs.id
     }
 }
 
-extension Hashable where Self: IdentifiableResource {
-    public func hash(into hasher: inout Hasher) {
+public extension Hashable where Self: IdentifiableResource {
+    func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
 }
