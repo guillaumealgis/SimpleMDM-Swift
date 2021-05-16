@@ -8,6 +8,7 @@ import Foundation
 /// A group of device, used to assign apps and profiles to devices.
 public struct DeviceGroup: ListableResource {
     // sourcery:inline:auto:DeviceGroup.Identifiable
+    /// The type of the unique identifier of this resource.
     public typealias ID = Int
 
     /// The unique identifier of this resource.

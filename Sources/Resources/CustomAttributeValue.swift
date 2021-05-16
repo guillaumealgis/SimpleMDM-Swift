@@ -11,6 +11,7 @@ public extension Device {
     /// A custom attribute value assigned to a device.
     struct CustomAttributeValue: IdentifiableResource {
         // sourcery:inline:auto:Device.CustomAttributeValue.Identifiable
+        /// The type of the unique identifier of this resource.
         public typealias ID = String
 
         /// The unique identifier of this resource.

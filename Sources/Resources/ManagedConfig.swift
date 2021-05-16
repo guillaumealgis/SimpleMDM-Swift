@@ -11,6 +11,7 @@ public extension App {
     /// A managed app configuration (a key-value pair) associated with an `App`.
     struct ManagedConfig: ListableResource {
         // sourcery:inline:auto:App.ManagedConfig.Identifiable
+        /// The type of the unique identifier of this resource.
         public typealias ID = Int
 
         /// The unique identifier of this resource.
