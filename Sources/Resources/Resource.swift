@@ -86,7 +86,9 @@ public extension Hashable where Self: IdentifiableResource {
 public protocol GettableResource: IdentifiableResource {
     /// Get the instance of this resource with the identifier `id`.
     ///
-    /// - Parameter completion: A completion handler called with the resource, or an error.
+    /// - Parameters:
+    ///   - id: The unique identifier of the resource to get.
+    ///   - completion: A completion handler called with the resource, or an error.
     static func get(id: ID, completion: @escaping CompletionClosure<Self>)
 }
 

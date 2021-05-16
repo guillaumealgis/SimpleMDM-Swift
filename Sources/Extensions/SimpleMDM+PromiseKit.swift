@@ -26,6 +26,7 @@ public extension UniqueResource {
 public extension GettableResource {
     /// Fetch the resource from the server.
     ///
+    /// - Parameter id: The unique identifier of the resource to get.
     /// - Returns: A promise that fulfills with the resource.
     static func get(id: ID) -> Promise<Self> {
         return get(SimpleMDM.shared.networking, id: id)
@@ -79,7 +80,7 @@ public extension RelatedToMany {
 
     /// Fetch the related resource with the identifier `id` in the collection from the server.
     ///
-    /// - Parameter index: The index of the resource to fetch in the collection.
+    /// - Parameter id: The unique identifier of the resource to get.
     /// - Returns: A promise that fulfills with the resource.
     func get(id: Element.ID) -> Promise<Element> {
         return get(SimpleMDM.shared.networking, id: id)
@@ -118,7 +119,7 @@ public extension RelatedToMany {
 public extension RelatedToManyNested {
     /// Fetch the related resource with the identifier `id` in the collection from the server.
     ///
-    /// - Parameter index: The index of the resource to fetch in the collection.
+    /// - Parameter id: The unique identifier of the resource to get.
     /// - Returns: A promise that fulfills with the resource.
     func get(id: Element.ID) -> Promise<Element> {
         return get(SimpleMDM.shared.networking, id: id)
@@ -148,7 +149,7 @@ public extension RelatedToManyNested {
 public extension Cursor {
     /// Fetch the next page of resources.
     ///
-    /// - Parameter The number of resources to fetch in this page. If not provided a default number of resources will
+    /// - Parameter limit: The number of resources to fetch in this page. If not provided a default number of resources will
     ///     be returned by the SimpleMDM API.
     /// - Returns: A promise that fulfills with a list of resource.
     func next(_ limit: Int? = nil) -> Promise<[T]> {
