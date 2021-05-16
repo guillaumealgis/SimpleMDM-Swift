@@ -40,25 +40,15 @@ Because whitespace management in .stencil templates can be a bit complicated, ge
 sourcery; swiftformat Sources
 ```
 
-## Re-generating documentation
+## Previewing documentation
 
-The documentation is generated using [`swift-doc`](https://github.com/SwiftDocOrg/swift-doc). To re-generate the documentation after making a change, use:
-
-```shell
-swift doc generate Sources --module-name SimpleMDM-Swift --format html --output docs --base-url https://guillaumealgis.github.io/SimpleMDM-Swift/
-```
-
-### Previewing the documentation locally
-
-You can preview the changes made to the documentation locally before pushing to the repository by running this command instead:
+The documentation is generated using [`swift-doc`](https://github.com/SwiftDocOrg/swift-doc). To re-generate the documentation after making a change, and preview it locally use:
 
 ```shell
 swift doc generate Sources --module-name SimpleMDM-Swift --format html --base-url http://localhost:9000
 ```
 
-The documentation will be generated in `.build/documentation/` (you should not generate the local documentation within `docs/` to prevent pushing it to the repository with a local base URL by mistake).
-
-You'll need some webserver running locally on port 9000 to view the documentation. If you have no preference, python has a built-in webserver and is shipped with macOS:
+The documentation will be generated in `.build/documentation/`. You will need some webserver running locally on port 9000 to view the documentation. If you have no preference, python has a built-in webserver and is shipped with macOS:
 
 ```shell
 cd .build/documentation/
