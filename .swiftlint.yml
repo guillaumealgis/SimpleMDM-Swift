@@ -6,7 +6,28 @@ disabled_rules:
   - line_length
   - nesting # https://stackoverflow.com/questions/42996275/nested-types-in-swift-what-is-the-good-practice
 
+  # The following are opt-in rules that we don't want to enable, but that we're
+  # keeping here to be able to know which rules are new to SwiftLint when it
+  # is updated:
+  - balanced_xctest_lifecycle
+  - explicit_acl
+  - explicit_enum_raw_value
+  - explicit_top_level_acl
+  - explicit_type_interface
+  - file_header # Handled by SwiftFormat
+  - file_name
+  - file_types_order # Good rule, but in practice very hard to please
+  - indentation_width # Handled by SwiftFormat
+  - multiline_arguments_brackets
+  - no_extension_access_modifier
+  - nslocalizedstring_key
+  - nslocalizedstring_require_bundle
+  - prefer_nimble
+  - required_deinit
+  - vertical_whitespace_between_cases
+
 analyzer_rules:
+  - capture_variable
   - explicit_self
   - unused_declaration
   - unused_import
@@ -25,6 +46,8 @@ opt_in_rules:
   - contains_over_first_not_nil
   - contains_over_range_nil_comparison
   - convenience_type
+  - discarded_notification_center_observer
+  - discouraged_assert
   - discouraged_object_literal
   - discouraged_optional_boolean
   - discouraged_optional_collection
@@ -44,12 +67,14 @@ opt_in_rules:
   - flatmap_over_map_reduce
   - force_unwrapping
   - function_default_parameter_at_end
+  - ibinspectable_in_extension
   - identical_operands
   - implicit_return
   - implicitly_unwrapped_optional
   - joined_default_parameter
   - last_where
   - legacy_multiple
+  - legacy_objc_type
   - legacy_random
   - let_var_whitespace
   - literal_expression_end_indentation
@@ -73,13 +98,17 @@ opt_in_rules:
   - override_in_extension
   - pattern_matching_keywords
   - prefer_self_type_over_type_of_self
+  - prefer_zero_over_explicit_init
   - prefixed_toplevel_constant
   - private_action
   - private_outlet
+  - private_subject
+  - prohibited_interface_builder
   - prohibited_super_call
   - quick_discouraged_call
   - quick_discouraged_focused_test
   - quick_discouraged_pending_test
+  - raw_value_for_camel_cased_codable_enum
   - reduce_into
   - redundant_nil_coalescing
   - redundant_type_annotation
@@ -91,6 +120,7 @@ opt_in_rules:
   - strict_fileprivate
   - strong_iboutlet
   - switch_case_on_newline
+  - test_case_accessibility
   - toggle_bool
   - trailing_closure
   - type_contents_order

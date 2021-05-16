@@ -18,7 +18,7 @@ internal class SimpleMDMSingletonPromiseKitTests: XCTestCase {
         SimpleMDM.shared.networking = networking
     }
 
-    func assertUsingSingleton(error: Error) {
+    private func assertUsingSingleton(error: Error) {
         guard let simpleMDMError = error as? SimpleMDMError else {
             return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
         }

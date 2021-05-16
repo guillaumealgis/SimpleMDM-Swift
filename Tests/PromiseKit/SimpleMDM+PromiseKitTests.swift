@@ -9,7 +9,7 @@ import XCTest
 
 /// This class tests the PromiseKit bindings of the resources.
 internal class SimpleMDMPromiseKitTests: XCTestCase {
-    let error404Json = """
+    private let error404Json = """
       {
         "errors": [
           {
@@ -19,7 +19,7 @@ internal class SimpleMDMPromiseKitTests: XCTestCase {
       }
     """.data(using: .utf8)
 
-    func assert404(error: Error) {
+    private func assert404(error: Error) {
         guard let simpleMDMError = error as? SimpleMDMError else {
             return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
         }
