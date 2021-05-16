@@ -101,6 +101,30 @@
             }
           }
         }
+      },
+      "swift-doc": {
+        "version": "1.0.0-beta.6",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://github.com/SwiftDocOrg/swift-doc/releases/download/1.0.0-beta.6",
+          "files": {
+            "big_sur": {
+              "cellar": ":any",
+              "url": "https://github.com/SwiftDocOrg/swift-doc/releases/download/1.0.0-beta.6/swift-doc-1.0.0-beta.6.big_sur.bottle.tar.gz",
+              "sha256": "8136c33316600b12b7c388a2055cb20875b3817d185a820100e0228916419987"
+            },
+            "catalina": {
+              "cellar": ":any",
+              "url": "https://github.com/SwiftDocOrg/swift-doc/releases/download/1.0.0-beta.6/swift-doc-1.0.0-beta.6.catalina.bottle.tar.gz",
+              "sha256": "bdd665bf19fbe86a96dbbd7dd7f1f8ec0878991e81b3ee05bb12e66fca53f903"
+            }
+          }
+        }
+      }
+    },
+    "tap": {
+      "swiftdocorg/formulae": {
+        "revision": "3de7225b0d35a4d38f989701f7674e62154baea2"
       }
     }
   },
@@ -109,9 +133,9 @@
       "big_sur": {
         "HOMEBREW_VERSION": "3.1.7",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "39abf9e1e6512dd54c434e8150441526f37d3275",
+        "Homebrew/homebrew-core": "cf0929309763e13dee545a5c16d88c8e244904e1",
         "CLT": "12.5.0.22.9",
-        "Xcode": "12.4",
+        "Xcode": "12.5",
         "macOS": "11.3"
       }
     }

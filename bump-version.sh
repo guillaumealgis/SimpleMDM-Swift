@@ -32,7 +32,6 @@ files=(
     "VERSION"
     "README.md"
     "SimpleMDM-Swift.podspec"
-    ".jazzy.yaml"
 )
 
 echo
@@ -43,7 +42,7 @@ done
 
 echo
 echo "Updating documentation..."
-jazzy
+swift doc generate Sources --module-name SimpleMDM-Swift --format html --output docs --base-url https://guillaumealgis.github.io/SimpleMDM-Swift/
 
 echo
 echo "Committing changes..."

@@ -1,329 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>SimpleMDM  Reference</title>
-    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
-    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
-    <meta charset='utf-8'>
-    <script src="js/jquery.min.js" defer></script>
-    <script src="js/jazzy.js" defer></script>
-    
-  </head>
-  <body>
-    <a title="SimpleMDM  Reference"></a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleMDM-Swift - SimpleMDM-Swift</title>
+    <link rel="stylesheet" type="text/css" href="http://localhost:9000/all.css" media="all" />
+</head>
+<body>
     <header>
-      <div class="content-wrapper">
-        <p><a href="index.html">SimpleMDM 0.9.0 Docs</a> (0% documented)</p>
-        <p class="header-right"><a href="https://github.com/guillaumealgis/simplemdm-swift"><img src="img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fguillaumealgis.github.io%2FSimpleMDM-Swift%2Fdocsets%2FSimpleMDM.xml"><img src="img/dash.png"/>Install in Dash</a></p>
-      </div>
+        <a href="http://localhost:9000/">
+            <strong>
+                SimpleMDM-Swift
+            </strong>
+            <span>Documentation</span>
+        </a>
+        <sup>Beta</sup>
     </header>
-    <div class="content-wrapper">
-      <p id="breadcrumbs">
-        <a href="index.html">SimpleMDM Reference</a>
-        <img id="carat" src="img/carat.png" />
-        SimpleMDM  Reference
-      </p>
-    </div>
-    <div class="content-wrapper">
-      <nav class="sidebar">
-        <ul class="nav-groups">
-          <li class="nav-group-name">
-            <a href="SimpleMDM.html">SimpleMDM</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Classes/SimpleMDM.html">SimpleMDM</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Resources.html">Resources</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Structs/Account.html">Account</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/App.html">App</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/App/ManagedConfig.html">– ManagedConfig</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/AppGroup.html">AppGroup</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CustomAttribute.html">CustomAttribute</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/CustomConfigurationProfile.html">CustomConfigurationProfile</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Device.html">Device</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/Device/CustomAttributeValue.html">– CustomAttributeValue</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/DeviceGroup.html">DeviceGroup</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/InstalledApp.html">InstalledApp</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/PushCertificate.html">PushCertificate</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/Resource.html">Resource</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Resources%20Types.html">Resources Types</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Protocols/UniqueResource.html">UniqueResource</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Resources%20Types.html#/IdentifiableResource">IdentifiableResource</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/GettableResource.html">GettableResource</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/ListableResource.html">ListableResource</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Fields%20Types.html">Fields Types</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Structs/Version.html">Version</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Relationships.html">Relationships</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Structs/RelatedToOne.html">RelatedToOne</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/RelatedToMany.html">RelatedToMany</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/RelatedToManyNested.html">RelatedToManyNested</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Cursor.html">Cursor</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Classes/Cursor.html">Cursor</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Cursor.html#/NestedResourceCursor">NestedResourceCursor</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/CursorLimit.html">CursorLimit</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Errors.html">Errors</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Enums/InternalError.html">InternalError</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/NetworkError.html">NetworkError</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/SimpleMDMError.html">SimpleMDMError</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Misc.html">Misc</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Misc.html#/Result">Result</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Misc.html#/CompletionClosure">CompletionClosure</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/RemoteCollection.html">RemoteCollection</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Other%20Classes.html">Other Classes</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Classes/SearchCursor.html">SearchCursor</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Other%20Extensions.html">Other Extensions</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Extensions/Equatable.html">Equatable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions/Hashable.html">Hashable</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Other%20Protocols.html">Other Protocols</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Protocols/Identifiable.html">Identifiable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Other%20Protocols.html#/SearchableResource">SearchableResource</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <article class="main-content">
-        <section>
-          <section class="section">
-            
-            <h1 id='simplemdm-swift' class='heading'>SimpleMDM-Swift</h1>
 
-<p><a href="https://tldrlegal.com/license/mit-license"><img src="https://img.shields.io/github/license/guillaumealgis/SimpleMDM-Swift.svg" alt="MIT"></a>
-<a href="https://travis-ci.org/guillaumealgis/SimpleMDM-Swift"><img src="https://img.shields.io/travis/guillaumealgis/SimpleMDM-Swift/master.svg" alt="Build Status"></a>
-<a href="https://codecov.io/gh/guillaumealgis/SimpleMDM-Swift"><img src="https://img.shields.io/codecov/c/github/guillaumealgis/SimpleMDM-Swift/master.svg" alt="Codecov"></a>
-<a href="https://cocoapods.org/pods/SimpleMDM-Swift"><img src="https://img.shields.io/cocoapods/v/SimpleMDM-Swift.svg" alt="CocoaPods Compatible"></a>
-<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-blue.svg" alt="Carthage Compatible"></a>
-<a href="https://alamofire.github.io/Alamofire"><img src="https://img.shields.io/cocoapods/p/SimpleMDM-Swift.svg" alt="Platform"></a>
-<img src="https://img.shields.io/badge/swift-5.0-orange.svg" alt="Swift version">
-<a href="https://twitter.com/guillaumealgis"><img src="https://img.shields.io/badge/twitter-@guillaumealgis-00aced.svg" alt="Twitter"></a></p>
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
 
-<p>SimpleMDM-Swift is a cross-platform (iOS, macOS, tvOS, watchOS) SDK to access the SimpleMDM API written in Swift.</p>
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#classes">Classes</a></li><li><a href="#structures">Structures</a></li><li><a href="#enumerations">Enumerations</a></li><li><a href="#protocols">Protocols</a></li><li><a href="#typealiases">Typealiases</a></li><li><a href="#extensions">Extensions</a></li></ol>
+        </div>
+    </nav>
 
-<p><strong>Please Note</strong>: This library is not officially supported by SimpleMDM. It does not currently wrap the complete functionality of the SimpleMDM API. Use at your own risk.</p>
-<h2 id='features' class='heading'>Features</h2>
+    <main>
+        <article>
+                <section id="classes">
+        <h2>Classes</h2>
+        <dl>
+            <dt class="class">
+    <a href="http://localhost:9000/Cursor" title="class - Cursor">
+        Cursor
+    </a>
+</dt>
+<dd>
+    <p>A class used to fetch paginated lists of resources.</p>
 
-<ul>
-<li>Read-only access to all exposed resources (Device, App, etc.) of the REST API</li>
-<li>Supports the pagination API introduced August 15, 2018</li>
-<li>Type-safe</li>
-<li>Asynchronous API, relying on <a href="https://www.swiftbysundell.com/posts/the-power-of-result-types-in-swift">Result type</a>, and <a href="https://github.com/promisekit">Promises</a> (optional API)</li>
-<li>High test coverage</li>
-<li>100% documented</li>
-</ul>
-<h5 id='system-requirements' class='heading'>System requirements</h5>
+</dd>
+<dt class="class">
+    <a href="http://localhost:9000/SearchCursor" title="class - SearchCursor">
+        Search​Cursor
+    </a>
+</dt>
+<dd>
+    <p>A specific Cursor for fetching resources matching a passed string.</p>
 
-<ul>
-<li>Deployment target of iOS 11.0+ / macOS 10.13+ / tvOS 11.0+ / watchOS 4.0+</li>
-<li>Xcode 11+</li>
-<li>Swift 5.0+</li>
-</ul>
-<h2 id='usage' class='heading'>Usage</h2>
+</dd>
+<dt class="class">
+    <a href="http://localhost:9000/NestedResourceCursor" title="class - NestedResourceCursor">
+        Nested​Resource​Cursor
+    </a>
+</dt>
+<dd>
+    <p>A specific Cursor for fetching resources nested in another resource type.</p>
 
-<p>📘 Full documentation is available here: <a href="https://guillaumealgis.github.io/SimpleMDM-Swift/">https://guillaumealgis.github.io/SimpleMDM-Swift/</a></p>
-<pre class="highlight swift"><code><span class="c1">// Just set this once in your applicationDidBecomeActive method</span>
-<span class="kt">SimpleMDM</span><span class="o">.</span><span class="kt">APIKey</span> <span class="o">=</span> <span class="s">"233b7a3058694652ae6f62acfcba8be7"</span>
+</dd>
+<dt class="class">
+    <a href="http://localhost:9000/SimpleMDM" title="class - SimpleMDM">
+        Simple​MDM
+    </a>
+</dt>
+<dd>
+    <p>The main static object representing the SimpleMDM API. Use this to set your private API key.</p>
 
-<span class="c1">// Get the device with id 42</span>
-<span class="kt">Device</span><span class="o">.</span><span class="nf">get</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="mi">42</span><span class="p">)</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
-    <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="n">error</span><span class="p">):</span>
-        <span class="nf">print</span><span class="p">(</span><span class="s">"Could not get device: </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="n">device</span><span class="p">):</span>
-        <span class="nf">print</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+</dd>
+        </dl>
+    </section>
+    <section id="structures">
+        <h2>Structures</h2>
+        <dl>
+            <dt class="structure">
+    <a href="http://localhost:9000/Version" title="structure - Version">
+        Version
+    </a>
+</dt>
+<dd>
+    <p>A struct representing a &quot;semantic versioning&quot; version number.</p>
 
-<span class="c1">// Get all device groups</span>
-<span class="kt">DeviceGroup</span><span class="o">.</span><span class="n">getAll</span> <span class="p">{</span> <span class="n">result</span> <span class="k">in</span>
-    <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="n">error</span><span class="p">):</span>
-        <span class="nf">print</span><span class="p">(</span><span class="s">"Could not get device groups: </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="n">deviceGroups</span><span class="p">):</span>
-        <span class="nf">print</span><span class="p">(</span><span class="n">deviceGroups</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="nv">$0</span><span class="o">.</span><span class="n">name</span> <span class="p">})</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-<h2 id='installation' class='heading'>Installation</h2>
-<h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
+</dd>
+<dt class="structure">
+    <a href="http://localhost:9000/RelatedToOne" title="structure - RelatedToOne">
+        Related​ToOne
+    </a>
+</dt>
+<dd>
+    <p>A relation to another resource.</p>
 
-<p>The <a href="https://swift.org/package-manager/">Swift Package Manager</a> is a tool for automating the distribution of Swift code and is integrated into the <code>swift</code> compiler and Xcode (starting at version 11).</p>
+</dd>
+<dt class="structure">
+    <a href="http://localhost:9000/RelatedToMany" title="structure - RelatedToMany">
+        Related​ToMany
+    </a>
+</dt>
+<dd>
+    <p>A relation to a group of remote resources.</p>
 
-<p>Adding SimpleMDM-Swift as a dependency is as easy as adding it to the <code>dependencies</code> value of your <code>Package.swift</code>:</p>
-<pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
-    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/guillaumealgis/SimpleMDM-Swift.git"</span><span class="p">,</span> <span class="o">.</span><span class="nf">upToNextMajor</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="s">"0.9.0"</span><span class="p">))</span>
-<span class="p">]</span>
-</code></pre>
+</dd>
+<dt class="structure">
+    <a href="http://localhost:9000/RelatedToManyNested" title="structure - RelatedToManyNested">
+        Related​ToMany​Nested
+    </a>
+</dt>
+<dd>
+    <p>A special kind of relation to a group of remote resources, where the related resources are &quot;children&quot; resources of
+another resource.</p>
 
-<p>Or you can use <a href="https://wwdcbysundell.com/2019/xcode-swiftpm-first-look/">Xcode&rsquo;s menu</a> in File &gt; Swift Packages &gt; Add Package Dependency.</p>
+</dd>
+<dt class="structure">
+    <a href="http://localhost:9000/Account" title="structure - Account">
+        Account
+    </a>
+</dt>
+<dd>
+    <p>Your SimpleMDM account.</p>
 
-<hr>
-<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+</dd>
+<dt class="structure">
+    <a href="http://localhost:9000/App" title="structure - App">
+        App
+    </a>
+</dt>
+<dd>
+    <p>An <code>App</code> represents an app in your app catalog. You can use <code>AppGroup</code> to install apps to your devices.</p>
 
-<p>To integrate SimpleMDM-Swift into your Xcode project using <a href="https://cocoapods.org">CocoaPods</a>, specify it in your <code>Podfile</code>:</p>
-<pre class="highlight ruby"><code><span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
-<span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'12.0'</span>
+</dd>
+<dt class="structure">
+    <a href="http://localhost:9000/AppGroup" title="structure - AppGroup">
+        App​Group
+    </a>
+</dt>
+<dd>
+    <p>An app group is an object that pairs <code>App</code> resources with <code>DeviceGroup</code> resources for the purpose of pushing apps
+to devices.</p>
 
-<span class="n">target</span> <span class="s1">'&lt;Your Target Name&gt;'</span> <span class="k">do</span>
-    <span class="n">pod</span> <span class="s1">'SimpleMDM-Swift'</span><span class="p">,</span> <span class="s1">'~&gt; 0.9.0'</span>
-<span class="k">end</span>
-</code></pre>
+</dd>
+<dt class="structure">
+    <a href="http://localhost:9000/CustomAttribute" title="structure - CustomAttribute">
+        Custom​Attribute
+    </a>
+</dt>
+<dd>
+    <p>Custom attributes defined in your account.</p>
 
-<p>Then, run the following command:</p>
-<pre class="highlight shell"><code><span class="nv">$ </span>pod <span class="nb">install</span>
-</code></pre>
+</dd>
+<dt class="structure">
+    <a href="http://localhost:9000/Device_CustomAttributeValue" title="structure - Device.CustomAttributeValue">
+        Device.​Custom​Attribute​Value
+    </a>
+</dt>
+<dd>
+    <p>A custom attribute value assigned to a device.</p>
 
-<hr>
-<h3 id='carthage' class='heading'>Carthage</h3>
+</dd>
+<dt class="structure">
+    <a href="http://localhost:9000/CustomConfigurationProfile" title="structure - CustomConfigurationProfile">
+        Custom​Configuration​Profile
+    </a>
+</dt>
+<dd>
+    <p>A custom configuration profile created with AppleConfiguration and applied to devices.</p>
 
-<p>To integrate SimpleMDM-Swift into your Xcode project using <a href="https://github.com/Carthage/Carthage">Carthage</a>, specify it in your Cartfile:</p>
-<pre class="highlight python"><code><span class="n">github</span> <span class="s">"guillaumealgis/SimpleMDM-Swift"</span> <span class="o">==</span> <span class="mf">0.9</span><span class="p">.</span><span class="mi">0</span>
-</code></pre>
+</dd>
+<dt class="structure">
+    <a href="http://localhost:9000/Device" title="structure - Device">
+        Device
+    </a>
+</dt>
+<dd>
+    <p>A device registered in your SimpleMDM account.</p>
 
-<p>Run <code>carthage update</code> to build the framework and drag the built SimpleMDM-Swift.framework into your Xcode project and update your run scripts as appropriate. For additional support, please visit the Carthage <a href="https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos">documentation</a>.</p>
-<h2 id='contributing' class='heading'>Contributing</h2>
-<h3 id='getting-started' class='heading'>Getting Started</h3>
+</dd>
+<dt class="structure">
+    <a href="http://localhost:9000/DeviceGroup" title="structure - DeviceGroup">
+        Device​Group
+    </a>
+</dt>
+<dd>
+    <p>A group of device, used to assign apps and profiles to devices.</p>
 
-<p>To start contributing to SimpleMDM-Swift, you need the last version of Xcode on your machine.
-After cloning the project, run the following command to generate the project&rsquo;s .xcodeproj:</p>
-<pre class="highlight shell"><code>swift package generate-xcodeproj
-</code></pre>
+</dd>
+<dt class="structure">
+    <a href="http://localhost:9000/InstalledApp" title="structure - InstalledApp">
+        Installed​App
+    </a>
+</dt>
+<dd>
+    <p>A representation of an app installation on a device.</p>
 
-<p>You can then start working on the project by opening the newly created <code>SimpleMDM-Swift.xcodeproj</code> file.</p>
-<h2 id='apps-using-simplemdm-swift' class='heading'>Apps using SimpleMDM-Swift</h2>
+</dd>
+<dt class="structure">
+    <a href="http://localhost:9000/App_ManagedConfig" title="structure - App.ManagedConfig">
+        App.​Managed​Config
+    </a>
+</dt>
+<dd>
+    <p>A managed app configuration (a key-value pair) associated with an <code>App</code>.</p>
 
-<p>I&rsquo;d love to hear what you have used SimpleMDM-Swift for, if you would like your app displayed here, please send a pull request!</p>
-<h2 id='contributing' class='heading'>Contributing</h2>
+</dd>
+<dt class="structure">
+    <a href="http://localhost:9000/PushCertificate" title="structure - PushCertificate">
+        Push​Certificate
+    </a>
+</dt>
+<dd>
+    <p>The Apple push certificate used by SimpleMDM to push configuration update to your devices.</p>
 
-<p>If you wish to contribute to SimpleMDM-Swift please fork the repository and send a pull request. Contributions and feature requests are always welcome, please do not hesitate to raise an issue!</p>
+</dd>
+        </dl>
+    </section>
+    <section id="enumerations">
+        <h2>Enumerations</h2>
+        <dl>
+            <dt class="enumeration">
+    <a href="http://localhost:9000/CursorLimit" title="enumeration - CursorLimit">
+        Cursor​Limit
+    </a>
+</dt>
+<dd>
+    <p>The bounds of the number of elements one can get when requesting a paginated list of resources.</p>
 
-<p>Contributors and any people interacting on this project are expected to adhere to its code of conduct. See CODE_OF_CONDUCT.md for details.</p>
-<h2 id='license' class='heading'>License</h2>
+</dd>
+<dt class="enumeration">
+    <a href="http://localhost:9000/InternalError" title="enumeration - InternalError">
+        Internal​Error
+    </a>
+</dt>
+<dd>
+    <p>Internal errors of the SimpleMDM-Swift library.</p>
 
-<p>SimpleMDM-Swift is released under the MIT license. See LICENSE.md for details.</p>
-<h2 id='related-projects' class='heading'>Related Projects</h2>
+</dd>
+<dt class="enumeration">
+    <a href="http://localhost:9000/NetworkError" title="enumeration - NetworkError">
+        Network​Error
+    </a>
+</dt>
+<dd>
+    <p>Errors occuring during the transport and decoding the HTTP response.</p>
 
-<ul>
-<li><a href="https://simplemdm.com/docs/api/">The SimpleMDM REST API documentation</a></li>
-<li><a href="https://github.com/SimpleMDM/simplemdm-ruby">SimpleMDM/simplemdm-ruby</a> - Ruby library</li>
-<li><a href="https://github.com/SteveKueng/simpleMDMpy">SteveKueng/simpleMDMpy</a> - Python library</li>
-</ul>
+</dd>
+<dt class="enumeration">
+    <a href="http://localhost:9000/SimpleMDMError" title="enumeration - SimpleMDMError">
+        Simple​MDMError
+    </a>
+</dt>
+<dd>
+    <p>Errors returned when misusing the SimpleMDM API.</p>
 
-          </section>
-        </section>
-        <section id="footer">
-          <p>&copy; 2020 <a class="link" href="http://twitter.com/guillaumealgis" target="_blank" rel="external">Guillaume Algis</a>. All rights reserved. (Last updated: 2020-06-15)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
-        </section>
-      </article>
-    </div>
-  </body>
-</div>
+</dd>
+        </dl>
+    </section>
+    <section id="protocols">
+        <h2>Protocols</h2>
+        <dl>
+            <dt class="protocol">
+    <a href="http://localhost:9000/RemoteCollection" title="protocol - RemoteCollection">
+        Remote​Collection
+    </a>
+</dt>
+<dd>
+    <p>A type defining methods to fetch all collection of objects from a remote server.</p>
+
+</dd>
+<dt class="protocol">
+    <a href="http://localhost:9000/Resource" title="protocol - Resource">
+        Resource
+    </a>
+</dt>
+<dd>
+    <p>A protocol adopted by all resources types of the library.</p>
+
+</dd>
+<dt class="protocol">
+    <a href="http://localhost:9000/UniqueResource" title="protocol - UniqueResource">
+        Unique​Resource
+    </a>
+</dt>
+<dd>
+    <p>A protocol describing resource types of which only one instance exists. Such resources have not id and cannot be
+listed.</p>
+
+</dd>
+<dt class="protocol">
+    <a href="http://localhost:9000/Identifiable" title="protocol - Identifiable">
+        Identifiable
+    </a>
+</dt>
+<dd>
+    <p>A class of types whose instances hold the value of an entity with stable identity.</p>
+
+</dd>
+<dt class="protocol">
+    <a href="http://localhost:9000/IdentifiableResource" title="protocol - IdentifiableResource">
+        Identifiable​Resource
+    </a>
+</dt>
+<dd>
+    <p>A protocol describing resource types of which multiple instances of can exists. These resources have an identifier
+which is unique per instance of the resource.</p>
+
+</dd>
+<dt class="protocol">
+    <a href="http://localhost:9000/GettableResource" title="protocol - GettableResource">
+        Gettable​Resource
+    </a>
+</dt>
+<dd>
+    <p>A protocol describing resource types that can be fetched independently, using their unique identifier
+(these resources adopt the <code>IdentifiableResource</code> protocol).</p>
+
+</dd>
+<dt class="protocol">
+    <a href="http://localhost:9000/ListableResource" title="protocol - ListableResource">
+        Listable​Resource
+    </a>
+</dt>
+<dd>
+    <p>A protocol describing resource types that we can get a list of.</p>
+
+</dd>
+<dt class="protocol">
+    <a href="http://localhost:9000/SearchableResource" title="protocol - SearchableResource">
+        Searchable​Resource
+    </a>
+</dt>
+<dd>
+    <p>A protocol describing resource types for which we can get instances without knowing their identifier, by searching
+for value in their properties.
+Which properties are defined by the SimpleMDM implementation server-side. See the online SimpleMDM documentation.</p>
+
+</dd>
+        </dl>
+    </section>
+    <section id="typealiases">
+        <h2>Typealiases</h2>
+        <dl>
+            <dt class="typealias">
+    <a href="http://localhost:9000/CompletionClosure" title="typealias - CompletionClosure">
+        Completion​Closure
+    </a>
+</dt>
+<dd>
+    <p>A completion clusure used to return a Result type asynchronously.</p>
+
+</dd>
+<dt class="typealias">
+    <a href="http://localhost:9000/Result" title="typealias - Result">
+        Result
+    </a>
+</dt>
+<dd>
+    <p>Alias Result to PromiseKit.Result to prevent a mixup when compiling with Swift 5.</p>
+
+</dd>
+        </dl>
+    </section>
+<section id="extensions">
+    <h2>Extensions</h2>
+    <dl>
+    <dt class="extension">
+    <a href="http://localhost:9000/Equatable">Equatable</a>
+</dt>
+<dd></dd>
+<dt class="extension">
+    <a href="http://localhost:9000/Hashable">Hashable</a>
+</dt>
+<dd></dd>
+    </dl>
+<section>
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2021-05-16T14:57:19+0200">16 mai 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-beta.6</span>.
+</p>
+    </footer>
+</body>
 </html>
