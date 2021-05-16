@@ -67,7 +67,7 @@ Adding SimpleMDM-Swift as a dependency is as easy as adding it to the `dependenc
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/guillaumealgis/SimpleMDM-Swift.git", .upToNextMajor(from: "0.9.0"))
+    .package(url: "https://github.com/guillaumealgis/SimpleMDM-Swift.git", .upToNextMajor(from: "0.10.0"))
 ]
 ```
 
@@ -84,7 +84,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '12.0'
 
 target '<Your Target Name>' do
-    pod 'SimpleMDM-Swift', '~> 0.9.0'
+    pod 'SimpleMDM-Swift', '~> 0.10.0'
 end
 ```
 
@@ -101,7 +101,7 @@ $ pod install
 To integrate SimpleMDM-Swift into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your Cartfile:
 
 ```python
-github "guillaumealgis/SimpleMDM-Swift" == 0.9.0
+github "guillaumealgis/SimpleMDM-Swift" == 0.10.0
 ```
 
 Run `carthage update` to build the framework and drag the built SimpleMDM-Swift.framework into your Xcode project and update your run scripts as appropriate. For additional support, please visit the Carthage [documentation](https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos).
