@@ -1,6 +1,12 @@
 name: Documentation
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - .github/workflows/documentation.yml
+      - Sources/**.swift
 
 jobs:
   build:
@@ -14,12 +20,15 @@ jobs:
           inputs: 'Sources'
           format: 'html'
           module-name: 'SimpleMDM-Swift'
+          base-url: 'https://guillaumealgis.github.io/SimpleMDM-Swift/'
           output: 'Documentation'
+      - name: Fix permissions
+        run: sudo chown --recursive $USER Documentation
       - name: Deploy to GitHub Pages
         if: success()
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
-          build_dir: .build/documentation
+          build_dir: Documentation
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
