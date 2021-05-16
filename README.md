@@ -1,8 +1,8 @@
 # SimpleMDM-Swift
 
 [![MIT](https://img.shields.io/github/license/guillaumealgis/SimpleMDM-Swift.svg)](https://tldrlegal.com/license/mit-license)
-[![Build Status](https://img.shields.io/travis/guillaumealgis/SimpleMDM-Swift/master.svg)](https://travis-ci.org/guillaumealgis/SimpleMDM-Swift)
-[![Codecov](https://img.shields.io/codecov/c/github/guillaumealgis/SimpleMDM-Swift/master.svg)](https://codecov.io/gh/guillaumealgis/SimpleMDM-Swift)
+[![Build Status](https://img.shields.io/travis/guillaumealgis/SimpleMDM-Swift/main.svg)](https://travis-ci.org/guillaumealgis/SimpleMDM-Swift)
+[![Codecov](https://img.shields.io/codecov/c/github/guillaumealgis/SimpleMDM-Swift/main.svg)](https://codecov.io/gh/guillaumealgis/SimpleMDM-Swift)
 
 [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-Compatible-orange.svg)](https://swift.org/package-manager/)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/SimpleMDM-Swift.svg)](https://cocoapods.org/pods/SimpleMDM-Swift)
