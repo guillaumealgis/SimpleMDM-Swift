@@ -3,11 +3,13 @@
 [![MIT](https://img.shields.io/github/license/guillaumealgis/SimpleMDM-Swift.svg)](https://tldrlegal.com/license/mit-license)
 [![Build Status](https://img.shields.io/travis/guillaumealgis/SimpleMDM-Swift/master.svg)](https://travis-ci.org/guillaumealgis/SimpleMDM-Swift)
 [![Codecov](https://img.shields.io/codecov/c/github/guillaumealgis/SimpleMDM-Swift/master.svg)](https://codecov.io/gh/guillaumealgis/SimpleMDM-Swift)
+
+[![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-Compatible-orange.svg)](https://swift.org/package-manager/)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/SimpleMDM-Swift.svg)](https://cocoapods.org/pods/SimpleMDM-Swift)
-[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-blue.svg)](https://github.com/Carthage/Carthage)
-[![Platform](https://img.shields.io/cocoapods/p/SimpleMDM-Swift.svg)](https://alamofire.github.io/Alamofire)
-![Swift version](https://img.shields.io/badge/swift-5.0-orange.svg)
-[![Twitter](https://img.shields.io/badge/twitter-@guillaumealgis-00aced.svg)](https://twitter.com/guillaumealgis)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-Compatible-orange.svg)](https://github.com/Carthage/Carthage)
+
+[![Platform Compatibility](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fguillaumealgis%2FSimpleMDM-Swift%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/guillaumealgis/SimpleMDM-Swift)
+[![Swift Compatibility](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fguillaumealgis%2FSimpleMDM-Swift%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/guillaumealgis/SimpleMDM-Swift)
 
 SimpleMDM-Swift is a cross-platform (iOS, macOS, tvOS, watchOS) SDK to access the SimpleMDM API written in Swift.
 
@@ -119,3 +121,7 @@ SimpleMDM-Swift is released under the MIT license. See LICENSE.md for details.
 - [The SimpleMDM REST API documentation](https://simplemdm.com/docs/api/)
 - [SimpleMDM/simplemdm-ruby](https://github.com/SimpleMDM/simplemdm-ruby) - Ruby library
 - [SteveKueng/simpleMDMpy](https://github.com/SteveKueng/simpleMDMpy) - Python library
+
+## Contact
+
+Guillaume Algis ([@guillaumealgis](https://twitter.com/guillaumealgis))
