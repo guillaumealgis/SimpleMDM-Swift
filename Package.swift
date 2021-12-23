@@ -1,14 +1,14 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.5
 
 import PackageDescription
 
 let package = Package(
     name: "SimpleMDM-Swift",
     platforms: [
-        .iOS(.v11),
-        .macOS(.v10_13),
-        .tvOS(.v11),
-        .watchOS(.v4)
+        .iOS(.v15),
+        .macOS(.v12),
+        .tvOS(.v15),
+        .watchOS(.v8)
     ],
     products: [
         .library(name: "SimpleMDM",targets: ["SimpleMDM"])
