@@ -7,19 +7,18 @@ Contributors and any people interacting on this project are expected to adhere t
 ## Getting Started
 
 To start contributing to SimpleMDM-Swift, you need the latest version of Xcode on your machine.
-After cloning the project, run the following command to generate the project's .xcodeproj:
+
+After cloning the project, open the Swift package in Xcode:
 
 ```shell
-swift package generate-xcodeproj
+open /path/to/SimpleMDM-Swift/Package.swift
 ```
-
-You can then start working on the project by opening the newly created `SimpleMDM-Swift.xcodeproj` file.
 
 ## Tools needed
 
 All tools and non-library dependencies are listed in the Brewfile at the root of the project.
 
-To install them on your machine, you need to have [Homebrew](https://brew.sh) installed on your machine, and then run:
+To install them, you need to have [Homebrew](https://brew.sh) installed on your machine, and then run:
 
 ```shell
 brew bundle
