@@ -11,14 +11,14 @@ let package = Package(
         .watchOS(.v8)
     ],
     products: [
-        .library(name: "SimpleMDM",targets: ["SimpleMDM"])
+        .library(name: "SimpleMDM", targets: ["SimpleMDM"])
     ],
     dependencies: [
         .package(url: "https://github.com/mxcl/PromiseKit.git", .upToNextMajor(from: "6.8.0"))
     ],
     targets: [
-        .target(name: "SimpleMDM", dependencies: ["PromiseKit"], path: "Sources"),
-        .testTarget(name: "SimpleMDM-Tests", dependencies: ["SimpleMDM"], path: "Tests")
+        .target(name: "SimpleMDM", dependencies: ["PromiseKit"], path: "Sources", exclude: ["Templates"]),
+        .testTarget(name: "SimpleMDM-Tests", dependencies: ["SimpleMDM"], path: "Tests", resources: [.process("Fixtures")])
     ],
     swiftLanguageVersions: [.v5]
 )
