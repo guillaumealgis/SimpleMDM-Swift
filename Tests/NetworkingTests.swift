@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -7,47 +7,44 @@
 import XCTest
 
 internal class NetworkingTests: XCTestCase {
-    func testReturnUnknownErrorIfRequestFails() {
-        let session = URLSessionMock(data: nil)
-        let networking = Networking(urlSession: session)
+    func testReturnUnknownErrorIfRequestFails() async throws {
+        let sessionMock = URLSessionMock(data: nil, responseCode: 500)
+        let networking = Networking(urlSession: sessionMock)
         networking.apiKey = "AVeryRandomTestAPIKey"
 
-        networking.getDataForResources(ofType: ResourceMock.self) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
+        await XCTAssertAsyncThrowsError({
+            try await networking.getDataForResources(ofType: ResourceMock.self)
+        }) { error in
+            guard let networkError = error as? SimpleMDMError else {
+                return XCTFail("Expected error to be a SimpleMDMError, got \(error)")
             }
-            guard let networkError = error as? NetworkError else {
-                return XCTFail("Expected error to be a NetworkError, got \(error)")
-            }
-            XCTAssertEqual(networkError, NetworkError.unknown)
+            XCTAssertEqual(networkError, SimpleMDMError.unknown(httpCode: 500))
         }
     }
 
-    func testUnknownErrorHasHumanReadableDescription() {
-        let session = URLSessionMock(data: nil)
-        let networking = Networking(urlSession: session)
+    func testUnknownErrorHasHumanReadableDescription() async throws {
+        let sessionMock = URLSessionMock(data: nil, responseCode: 500)
+        let networking = Networking(urlSession: sessionMock)
         networking.apiKey = "AVeryRandomTestAPIKey"
 
-        networking.getDataForResources(ofType: ResourceMock.self) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
+        await XCTAssertAsyncThrowsError({
+            try await networking.getDataForResources(ofType: ResourceMock.self)
+        }) { error in
+            guard let networkError = error as? SimpleMDMError else {
+                return XCTFail("Expected error to be a SimpleMDMError, got \(error)")
             }
-            guard let networkError = error as? NetworkError else {
-                return XCTFail("Expected error to be a NetworkError, got \(error)")
-            }
-            XCTAssertEqual(networkError.localizedDescription, "Unknown network error")
+            XCTAssertTrue(networkError.localizedDescription.starts(with: "Unknown API error"))
         }
     }
 
-    func testReturnNoHTTPResponseIfNoResponseReturned() {
-        let session = URLSessionMock()
-        let networking = Networking(urlSession: session)
+    func testReturnNoHTTPResponseIfNoResponseReturned() async throws {
+        let sessionMock = URLSessionMock(data: nil)
+        let networking = Networking(urlSession: sessionMock)
         networking.apiKey = "AVeryRandomTestAPIKey"
 
-        networking.getDataForResources(ofType: ResourceMock.self) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
-            }
+        await XCTAssertAsyncThrowsError({
+            try await networking.getDataForResources(ofType: ResourceMock.self)
+        }) { error in
             guard let networkError = error as? NetworkError else {
                 return XCTFail("Expected error to be a NetworkError, got \(error)")
             }
@@ -55,15 +52,14 @@ internal class NetworkingTests: XCTestCase {
         }
     }
 
-    func testNoHTTPResponseErrorHasHumanReadableDescription() {
-        let session = URLSessionMock()
-        let networking = Networking(urlSession: session)
+    func testNoHTTPResponseErrorHasHumanReadableDescription() async throws {
+        let sessionMock = URLSessionMock(data: nil)
+        let networking = Networking(urlSession: sessionMock)
         networking.apiKey = "AVeryRandomTestAPIKey"
 
-        networking.getDataForResources(ofType: ResourceMock.self) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
-            }
+        await XCTAssertAsyncThrowsError({
+            try await networking.getDataForResources(ofType: ResourceMock.self)
+        }) { error in
             guard let networkError = error as? NetworkError else {
                 return XCTFail("Expected error to be a NetworkError, got \(error)")
             }
@@ -71,16 +67,15 @@ internal class NetworkingTests: XCTestCase {
         }
     }
 
-    func testReturnErrorForHTMLMimeType() {
+    func testReturnErrorForHTMLMimeType() async throws {
         let mimeType = "text/html"
-        let session = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
-        let networking = Networking(urlSession: session)
+        let sessionMock = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
+        let networking = Networking(urlSession: sessionMock)
         networking.apiKey = "AVeryRandomTestAPIKey"
 
-        networking.getDataForResources(ofType: ResourceMock.self) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
-            }
+        await XCTAssertAsyncThrowsError({
+            try await networking.getDataForResources(ofType: ResourceMock.self)
+        }) { error in
             guard let networkError = error as? NetworkError else {
                 return XCTFail("Expected error to be a NetworkError, got \(error)")
             }
@@ -88,16 +83,15 @@ internal class NetworkingTests: XCTestCase {
         }
     }
 
-    func testReturnErrorForNullMimeType() {
+    func testReturnErrorForNullMimeType() async throws {
         let mimeType: String? = nil
-        let session = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
-        let networking = Networking(urlSession: session)
+        let sessionMock = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
+        let networking = Networking(urlSession: sessionMock)
         networking.apiKey = "AVeryRandomTestAPIKey"
 
-        networking.getDataForResources(ofType: ResourceMock.self) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
-            }
+        await XCTAssertAsyncThrowsError({
+            try await networking.getDataForResources(ofType: ResourceMock.self)
+        }) { error in
             guard let networkError = error as? NetworkError else {
                 return XCTFail("Expected error to be a NetworkError, got \(error)")
             }
@@ -105,16 +99,15 @@ internal class NetworkingTests: XCTestCase {
         }
     }
 
-    func testInvalidMimeTypeErrorHasHumanReadableDescription() {
+    func testInvalidMimeTypeErrorHasHumanReadableDescription() async throws {
         let mimeType = "text/html"
-        let session = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
-        let networking = Networking(urlSession: session)
+        let sessionMock = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
+        let networking = Networking(urlSession: sessionMock)
         networking.apiKey = "AVeryRandomTestAPIKey"
 
-        networking.getDataForResources(ofType: ResourceMock.self) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
-            }
+        await XCTAssertAsyncThrowsError({
+            try await networking.getDataForResources(ofType: ResourceMock.self)
+        }) { error in
             guard let networkError = error as? NetworkError else {
                 return XCTFail("Expected error to be a NetworkError, got \(error)")
             }
@@ -122,16 +115,15 @@ internal class NetworkingTests: XCTestCase {
         }
     }
 
-    func testNullMimeTypeErrorHasHumanReadableDescription() {
+    func testNullMimeTypeErrorHasHumanReadableDescription() async throws {
         let mimeType: String? = nil
-        let session = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
-        let networking = Networking(urlSession: session)
+        let sessionMock = URLSessionMock(responseCode: 200, responseMimeType: mimeType)
+        let networking = Networking(urlSession: sessionMock)
         networking.apiKey = "AVeryRandomTestAPIKey"
 
-        networking.getDataForResources(ofType: ResourceMock.self) { result in
-            guard case let .failure(error) = result else {
-                return XCTFail("Expected .failure, got \(result)")
-            }
+        await XCTAssertAsyncThrowsError({
+            try await networking.getDataForResources(ofType: ResourceMock.self)
+        }) { error in
             guard let networkError = error as? NetworkError else {
                 return XCTFail("Expected error to be a NetworkError, got \(error)")
             }
@@ -140,18 +132,17 @@ internal class NetworkingTests: XCTestCase {
     }
 
     // swiftlint:disable nesting
-    func testMalformedUniqueResourceURL() {
+    func testMalformedUniqueResourceURL() async throws {
         struct FakeResource: UniqueResource {
             static var endpointName: String { "💩" }
         }
 
-        let session = URLSessionMock()
-        let s = SimpleMDM(sessionMock: session)
+        let sessionMock = URLSessionMock()
+        SimpleMDM.shared.replaceNetworkingSession(sessionMock)
 
-        FakeResource.get(s.networking) { result in
-            guard case let .rejected(error) = result else {
-                return XCTFail("Expected .rejected, got \(result)")
-            }
+        await XCTAssertAsyncThrowsError({
+            try await FakeResource.get()
+        }) { error in
             guard let internalError = error as? InternalError else {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
             }
@@ -160,21 +151,20 @@ internal class NetworkingTests: XCTestCase {
         }
     }
 
-    func testMalformedResourceListURL() {
-        struct FakeResource: ListableResource {
+    func testMalformedResourceListURL() async throws {
+        struct FakeResource: FetchableListableResource {
             typealias ID = String
 
             var id: ID
             static var endpointName: String { "💩" }
         }
 
-        let session = URLSessionMock()
-        let s = SimpleMDM(sessionMock: session)
+        let sessionMock = URLSessionMock()
+        SimpleMDM.shared.replaceNetworkingSession(sessionMock)
 
-        FakeResource.getAll(s.networking) { result in
-            guard case let .rejected(error) = result else {
-                return XCTFail("Expected .rejected, got \(result)")
-            }
+        await XCTAssertAsyncThrowsError({
+            _ = try await FakeResource.all.collect()
+        }) { error in
             guard let internalError = error as? InternalError else {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
             }
@@ -183,7 +173,7 @@ internal class NetworkingTests: XCTestCase {
         }
     }
 
-    func testMalformedResourceWithIdURL() {
+    func testMalformedResourceWithIdURL() async throws {
         struct FakeResource: GettableResource {
             typealias ID = String
 
@@ -191,13 +181,12 @@ internal class NetworkingTests: XCTestCase {
             static var endpointName: String { "💩" }
         }
 
-        let session = URLSessionMock()
-        let s = SimpleMDM(sessionMock: session)
+        let sessionMock = URLSessionMock()
+        SimpleMDM.shared.replaceNetworkingSession(sessionMock)
 
-        FakeResource.get(s.networking, id: "anID") { result in
-            guard case let .rejected(error) = result else {
-                return XCTFail("Expected .rejected, got \(result)")
-            }
+        await XCTAssertAsyncThrowsError({
+            try await FakeResource.get(id: "anID")
+        }) { error in
             guard let internalError = error as? InternalError else {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
             }
@@ -206,7 +195,7 @@ internal class NetworkingTests: XCTestCase {
         }
     }
 
-    func testMalformedResourceSearchURL() {
+    func testMalformedResourceSearchURL() async throws {
         struct FakeResource: SearchableResource {
             typealias ID = String
 
@@ -214,14 +203,13 @@ internal class NetworkingTests: XCTestCase {
             static var endpointName: String { "💩" }
         }
 
-        let session = URLSessionMock()
-        let s = SimpleMDM(sessionMock: session)
+        let sessionMock = URLSessionMock()
+        SimpleMDM.shared.replaceNetworkingSession(sessionMock)
 
-        let cursor = SearchCursor<FakeResource>(searchString: "Foobar")
-        cursor.next(s.networking) { result in
-            guard case let .rejected(error) = result else {
-                return XCTFail("Expected .rejected, got \(result)")
-            }
+        await XCTAssertAsyncThrowsError({
+            let results = try await FakeResource.search("Foobar")
+            _ = try await results.collect()
+        }) { error in
             guard let internalError = error as? InternalError else {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
             }
@@ -230,7 +218,7 @@ internal class NetworkingTests: XCTestCase {
         }
     }
 
-    func testMalformedNestedResourceURL() {
+    func testMalformedNestedResourceURL() async throws {
         struct FakeResource: IdentifiableResource {
             typealias ID = String
 
@@ -238,7 +226,7 @@ internal class NetworkingTests: XCTestCase {
             static var endpointName: String { "fake_endpoint" }
         }
 
-        struct FakeNestedResource: IdentifiableResource {
+        struct FakeNestedResource: ListableResource {
             typealias ID = String
 
             var id: ID
@@ -247,13 +235,12 @@ internal class NetworkingTests: XCTestCase {
 
         let nestedResources = RelatedToManyNested<FakeResource, FakeNestedResource>(parentId: "fakeId")
 
-        let session = URLSessionMock()
-        let s = SimpleMDM(sessionMock: session)
+        let sessionMock = URLSessionMock()
+        SimpleMDM.shared.replaceNetworkingSession(sessionMock)
 
-        nestedResources.getAll(s.networking) { result in
-            guard case let .rejected(error) = result else {
-                return XCTFail("Expected .rejected, got \(result)")
-            }
+        await XCTAssertAsyncThrowsError({
+            _ = try await nestedResources.collect()
+        }) { error in
             guard let internalError = error as? InternalError else {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
             }
@@ -262,7 +249,7 @@ internal class NetworkingTests: XCTestCase {
         }
     }
 
-    func testNestedListableResourceWithMalformedParentResourceURL() {
+    func testNestedListableResourceWithMalformedParentResourceURL() async throws {
         struct FakeResource: IdentifiableResource {
             typealias ID = String
 
@@ -277,15 +264,14 @@ internal class NetworkingTests: XCTestCase {
             static var endpointName: String { "nested_endpoint" }
         }
 
-        let nestedResources = NestedResourceCursor<FakeResource, FakeNestedResource>(parentId: "fakeId")
+        let nestedResources = RelatedToManyNested<FakeResource, FakeNestedResource>(parentId: "fakeId")
 
-        let session = URLSessionMock()
-        let s = SimpleMDM(sessionMock: session)
+        let sessionMock = URLSessionMock()
+        SimpleMDM.shared.replaceNetworkingSession(sessionMock)
 
-        nestedResources.next(s.networking) { result in
-            guard case let .rejected(error) = result else {
-                return XCTFail("Expected .rejected, got \(result)")
-            }
+        await XCTAssertAsyncThrowsError({
+            _ = try await nestedResources.collect()
+        }) { error in
             guard let internalError = error as? InternalError else {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
             }
@@ -294,7 +280,7 @@ internal class NetworkingTests: XCTestCase {
         }
     }
 
-    func testMalformedNestedListableResourceURL() {
+    func testMalformedNestedListableResourceURL() async throws {
         struct FakeResource: IdentifiableResource {
             typealias ID = String
 
@@ -309,15 +295,14 @@ internal class NetworkingTests: XCTestCase {
             static var endpointName: String { "💩" }
         }
 
-        let nestedResources = NestedResourceCursor<FakeResource, FakeNestedResource>(parentId: "fakeId")
+        let nestedResources = RelatedToManyNested<FakeResource, FakeNestedResource>(parentId: "fakeId")
 
-        let session = URLSessionMock()
-        let s = SimpleMDM(sessionMock: session)
+        let sessionMock = URLSessionMock()
+        SimpleMDM.shared.replaceNetworkingSession(sessionMock)
 
-        nestedResources.next(s.networking) { result in
-            guard case let .rejected(error) = result else {
-                return XCTFail("Expected .rejected, got \(result)")
-            }
+        await XCTAssertAsyncThrowsError({
+            try await nestedResources.collect()
+        }) { error in
             guard let internalError = error as? InternalError else {
                 return XCTFail("Expected error to be a InternalError, got \(error)")
             }

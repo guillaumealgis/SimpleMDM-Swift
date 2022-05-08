@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -33,51 +33,41 @@ internal class Decoding {
 
     // MARK: - Decoding the response
 
-    /// Decodes the data fetched from the API, and return the full payload of the HTTP response (i.e. everything in
-    /// the JSON response).
+    /// Decodes the data fetched from the API, and returns the "content" (i.e. everything under the `"data"` key of the
+    /// JSON response) contained in the payload of the HTTP response
+    /// , as objects.
     ///
     /// - Parameters:
-    ///   - result: The request result to decode.
-    ///   - expectedPayloadType: The expected payload type.
-    /// - Returns: Either the decoded payload, or an error.
-    func decodeNetworkingResultPayload<P: Payload>(_ result: NetworkingResult, expectedPayloadType: P.Type) -> Result<P> {
-        switch result {
-        case let .success(data):
-            do {
-                return .fulfilled(try decodePayload(ofType: expectedPayloadType, from: data))
-            } catch {
-                return .rejected(error)
-            }
-        case let .decodableDataFailure(httpCode, data):
-            return .rejected(decodeError(from: data, httpCode: httpCode))
-        case let .failure(error):
-            return .rejected(error)
-        }
+    ///   - payloadType: The expected payload type.
+    ///   - data: The bytes of the HTTP response's body.
+    ///
+    /// - Returns: The decoded object(s).
+    func decodeContent<P: Payload>(containedInPayloadOfType payloadType: P.Type, from data: Data) throws -> P.DataType {
+        let payload = try decodePayload(ofType: payloadType, from: data)
+        return payload.data
     }
 
-    /// Decodes the data fetched from the API, and return the data contained in the payload of the HTTP response
-    /// (i.e. everything under the `"data"` key of the JSON response).
+    /// Decodes a non-error payload from the API.
     ///
     /// - Parameters:
-    ///   - result: The request result to decode.
-    ///   - expectedPayloadType: The expected payload type.
-    /// - Returns: Either the decoded data, or an error.
-    func decodeNetworkingResult<P: Payload>(_ result: NetworkingResult, expectedPayloadType: P.Type) -> Result<P.DataType> {
-        let payloadResult = decodeNetworkingResultPayload(result, expectedPayloadType: expectedPayloadType)
-        switch payloadResult {
-        case let .fulfilled(payload):
-            return .fulfilled(payload.data)
-        case let .rejected(error):
-            return .rejected(error)
-        }
-    }
-
-    private func decodePayload<P: Payload>(ofType type: P.Type, from data: Data) throws -> P {
-        let payload = try decoder.decode(type.self, from: data)
+    ///   - payloadType: The expected payload type.
+    ///   - data: The bytes of the HTTP response's body.
+    ///
+    /// - Returns: The decoded full JSON payload.
+    func decodePayload<P: Payload>(ofType payloadType: P.Type, from data: Data) throws -> P {
+        let payload = try decoder.decode(payloadType.self, from: data)
         return payload
     }
 
-    private func decodeError(from data: Data, httpCode: Int) -> Error {
+    /// Decodes an error payload from the API (i.e. a JSON document with a `"errors"` key), and returns it as a
+    /// throwable Swift Error.
+    ///
+    /// - Parameters:
+    ///   - data: The bytes of the HTTP response's body.
+    ///   - httpCode: The status code of the HTTP response.
+    ///
+    /// - Returns: The error decoded from the JSON payload.
+    func decodeError(from data: Data, httpCode: Int) -> Error {
         let payload: ErrorPayload
         do {
             payload = try decoder.decode(ErrorPayload.self, from: data)

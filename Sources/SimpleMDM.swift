@@ -1,24 +1,17 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
 import Foundation
 
-import PromiseKit
-
-/// Alias Result to PromiseKit.Result to prevent a mixup when compiling with Swift 5.
-///
-/// Once we migrate to PromiseKit 7 this should be removed.
-public typealias Result = PromiseKit.Result
-
 /// The main static object representing the SimpleMDM API. Use this to set your private API key.
-public class SimpleMDM: NSObject {
+public final class SimpleMDM {
     // MARK: - Type properties
 
     /// Your private SimpleMDM API key.
     ///
-    /// You **must** set this property to an non-empty string before using any other object of this library.
+    /// You **must** set this property to a non-empty string before using any other object of this library.
     /// Failure to do so will result in most methods returning a `SimpleMDMError.aPIKeyNotSet` error.
     ///
     /// Your API key can be found in your SimpleMDM account, under Settings > API > Secret Access Key.
@@ -31,13 +24,19 @@ public class SimpleMDM: NSObject {
         }
     }
 
-    internal static let shared = SimpleMDM()
+    // This is only kept mutable for tests so we can replace the shared instance with a custom one with mocked
+    // sub-components (e.g. Networking).
+    static var shared = SimpleMDM()
 
-    // MARK: - Instance properties
+    // MARK: - Sub-components
 
-    internal var networking = Networking()
+    var networking: Networking
+    var decoding: Decoding
 
     // MARK: - Private initializer
 
-    override internal init() {}
+    init(networking: Networking = Networking(), decoding: Decoding = Decoding()) {
+        self.networking = networking
+        self.decoding = decoding
+    }
 }

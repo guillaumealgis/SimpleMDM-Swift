@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -9,7 +9,7 @@ import Foundation
 public extension Device {
     // sourcery: identifierType = String
     /// A custom attribute value assigned to a device.
-    struct CustomAttributeValue: IdentifiableResource {
+    struct CustomAttributeValue: ListableResource {
         // sourcery:inline:auto:Device.CustomAttributeValue.Identifiable
         /// The type of the unique identifier of this resource.
         public typealias ID = String

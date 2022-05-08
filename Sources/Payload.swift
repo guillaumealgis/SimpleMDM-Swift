@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -40,4 +40,6 @@ internal struct ListPayload<R: Resource>: Payload {
 internal struct PaginatedListPayload<R: Resource>: Payload {
     let data: [R]
     let hasMore: Bool
+
+    #warning("FIXME: Guillaume: Nested resource custom_attribute_values of device seems to not include has_more when listed")
 }

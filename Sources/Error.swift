@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -25,22 +25,17 @@ public enum InternalError: BaseSimpleMDMError {
     }
 }
 
-/// Errors occuring during the transport and decoding the HTTP response.
+/// Errors occurring during the transport and decoding the HTTP response.
 public enum NetworkError: BaseSimpleMDMError {
-    /// An unknown network error was encountered.
-    case unknown
-
-    /// The server closed the connection without sending a response.
+    /// The session returned a non-HTTP response.
     case noHTTPResponse
 
-    /// The server responded with content of an unexpected MIME type, and could not be handled by this library.
+    /// The server responded with content of an unexpected MIME type.
     case unexpectedMimeType(String?)
 
     /// A localized message describing what error occurred.
     public var errorDescription: String? {
         switch self {
-        case .unknown:
-            return "Unknown network error"
         case .noHTTPResponse:
             return "Did not receive a HTTP response"
         case let .unexpectedMimeType(mimeType):
@@ -92,7 +87,7 @@ public enum SimpleMDMError: BaseSimpleMDMError {
         case .apiKeyInvalid:
             return "The SimpleMDM server rejected the API key"
         case let .unknown(httpCode):
-            return "Unknown API error (empty payload, HTTP response code was \(httpCode)"
+            return "Unknown API error (non-decodable payload, HTTP response code was \(httpCode)"
         case let .generic(httpCode, description):
             return "Unexpected API error (\(httpCode): \(description))"
         case .doesNotExist:
@@ -102,7 +97,7 @@ public enum SimpleMDMError: BaseSimpleMDMError {
         case .doesNotExpectMoreResources:
             return "No resource was fetched, but the server advertised for more resources"
         case let .invalidLimit(limit):
-            return "Limit \"\(limit)\" is invalid. Expected a number between \(CursorLimit.min) and \(CursorLimit.max)"
+            return "Limit \"\(limit)\" is invalid. Expected a number between \(PageLimit.min) and \(PageLimit.max)"
         }
     }
 }

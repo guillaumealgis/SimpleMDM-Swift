@@ -1,12 +1,12 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
 import Foundation
 
 /// An `App` represents an app in your app catalog. You can use `AppGroup` to install apps to your devices.
-public struct App: ListableResource {
+public struct App: FetchableListableResource {
     // sourcery:inline:auto:App.Identifiable
     /// The type of the unique identifier of this resource.
     public typealias ID = Int
@@ -29,5 +29,5 @@ public struct App: ListableResource {
     // MARK: - Relations
 
     /// Managed app configuration associated with the app.
-    public let managedConfigs: NestedResourceCursor<App, ManagedConfig>
+    public let managedConfigs: RelatedToManyNested<App, ManagedConfig>
 }

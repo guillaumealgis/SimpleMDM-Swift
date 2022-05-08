@@ -20,6 +20,7 @@ internal extension Resource {
 // swiftlint:disable file_length function_body_length
 
 // MARK: - Account
+
 extension Account: Resource {
     /// The remote API endpoint identifying this resource.
     public static var endpointName: String {
@@ -99,7 +100,7 @@ extension App: Decodable {
         bundleIdentifier = try attributes.decode(String.self, forKey: .bundleIdentifier)
         itunesStoreId = try attributes.decodeIfPresent(Int.self, forKey: .itunesStoreId)
         version = try attributes.decodeIfPresent(String.self, forKey: .version)
-        managedConfigs = NestedResourceCursor<App, ManagedConfig>(parentId: id)
+        managedConfigs = RelatedToManyNested<App, ManagedConfig>(parentId: id)
 
         try decodeAndValidateType(forKey: .type, in: payload, expecting: "app")
     }
@@ -579,6 +580,7 @@ extension InstalledApp: Decodable {
 }
 
 // MARK: - PushCertificate
+
 extension PushCertificate: Resource {
     /// The remote API endpoint identifying this resource.
     public static var endpointName: String {

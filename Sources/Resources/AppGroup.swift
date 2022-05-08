@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -7,7 +7,7 @@ import Foundation
 
 /// An app group is an object that pairs `App` resources with `DeviceGroup` resources for the purpose of pushing apps
 /// to devices.
-public struct AppGroup: ListableResource {
+public struct AppGroup: FetchableListableResource {
     // sourcery:inline:auto:AppGroup.Identifiable
     /// The type of the unique identifier of this resource.
     public typealias ID = Int

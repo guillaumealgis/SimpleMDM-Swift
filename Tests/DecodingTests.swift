@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -7,7 +7,7 @@
 import XCTest
 
 internal class DecodingTests: XCTestCase {
-    func testDecodeInvalidErrorPayload() {
+    func testDecodeInvalidErrorPayload() async throws {
         let json = Data("""
           {
             "unexpected_field": [
@@ -19,11 +19,7 @@ internal class DecodingTests: XCTestCase {
         """.utf8)
         let decoding = Decoding()
 
-        let networkingResult = NetworkingResult.decodableDataFailure(httpCode: 400, data: json)
-        let result = decoding.decodeNetworkingResult(networkingResult, expectedPayloadType: SinglePayload<Device>.self)
-        guard case let .rejected(error) = result else {
-            return XCTFail("Expected .rejected, got \(result)")
-        }
+        let error = decoding.decodeError(from: json, httpCode: 400)
         guard let decodingError = error as? DecodingError else {
             return XCTFail("Expected error to be a DecodingError, got \(error)")
         }
@@ -33,7 +29,7 @@ internal class DecodingTests: XCTestCase {
         XCTAssertEqual(codingKey.stringValue, "errors")
     }
 
-    func testDecodeErrorPayloadWithoutError() {
+    func testDecodeErrorPayloadWithoutError() async throws {
         let json = Data("""
         {
           "errors": []
@@ -41,18 +37,14 @@ internal class DecodingTests: XCTestCase {
         """.utf8)
         let decoding = Decoding()
 
-        let networkingResult = NetworkingResult.decodableDataFailure(httpCode: 400, data: json)
-        let result = decoding.decodeNetworkingResult(networkingResult, expectedPayloadType: SinglePayload<Device>.self)
-        guard case let .rejected(error) = result else {
-            return XCTFail("Expected .rejected, got \(result)")
-        }
+        let error = decoding.decodeError(from: json, httpCode: 400)
         guard let simpleMDMError = error as? SimpleMDMError else {
             return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
         }
         XCTAssertEqual(simpleMDMError, SimpleMDMError.unknown(httpCode: 400))
     }
 
-    func testDecodeErrorPayload() {
+    func testDecodeErrorPayload() async throws {
         let json = Data("""
           {
             "errors": [
@@ -64,18 +56,14 @@ internal class DecodingTests: XCTestCase {
         """.utf8)
         let decoding = Decoding()
 
-        let networkingResult = NetworkingResult.decodableDataFailure(httpCode: 400, data: json)
-        let result = decoding.decodeNetworkingResult(networkingResult, expectedPayloadType: SinglePayload<Device>.self)
-        guard case let .rejected(error) = result else {
-            return XCTFail("Expected .rejected, got \(result)")
-        }
+        let error = decoding.decodeError(from: json, httpCode: 400)
         guard let simpleMDMError = error as? SimpleMDMError else {
             return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
         }
         XCTAssertEqual(simpleMDMError, SimpleMDMError.generic(httpCode: 400, description: "this is a test error message"))
     }
 
-    func testDecodeErrorPayloadWithMultipleErrors() {
+    func testDecodeErrorPayloadWithMultipleErrors() async throws {
         let json = Data("""
         {
           "errors": [
@@ -90,11 +78,7 @@ internal class DecodingTests: XCTestCase {
         """.utf8)
         let decoding = Decoding()
 
-        let networkingResult = NetworkingResult.decodableDataFailure(httpCode: 400, data: json)
-        let result = decoding.decodeNetworkingResult(networkingResult, expectedPayloadType: SinglePayload<Device>.self)
-        guard case let .rejected(error) = result else {
-            return XCTFail("Expected .rejected, got \(result)")
-        }
+        let error = decoding.decodeError(from: json, httpCode: 400)
         guard let simpleMDMError = error as? SimpleMDMError else {
             return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
         }

@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -7,21 +7,12 @@
 import XCTest
 
 internal class PushCertificateTests: XCTestCase {
-    func testGetPushCertificate() {
+    func testGetPushCertificate() async throws {
         let json = loadFixture("PushCertificate")
-        let session = URLSessionMock(data: json, responseCode: 200)
-        let s = SimpleMDM(sessionMock: session)
+        let sessionMock = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.shared.replaceNetworkingSession(sessionMock)
 
-        let expectation = self.expectation(description: "Callback called")
-
-        PushCertificate.get(s.networking) { result in
-            guard case let .fulfilled(pushCertificate) = result else {
-                return XCTFail("Expected .fulfilled, got \(result)")
-            }
-            XCTAssertEqual(pushCertificate.appleId, "devops@example.org")
-            expectation.fulfill()
-        }
-
-        waitForExpectations(timeout: 0.3, handler: nil)
+        let pushCertificate = try await PushCertificate.get()
+        XCTAssertEqual(pushCertificate.appleId, "devops@example.org")
     }
 }

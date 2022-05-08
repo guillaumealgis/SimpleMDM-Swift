@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -7,102 +7,68 @@
 import XCTest
 
 internal class AppTests: XCTestCase {
-    func testGetAllApps() {
+    func testGetAllApps() async throws {
         let json = loadFixture("Apps")
-        let session = URLSessionMock(data: json, responseCode: 200)
-        let s = SimpleMDM(sessionMock: session)
+        let sessionMock = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.shared.replaceNetworkingSession(sessionMock)
 
-        let expectation = self.expectation(description: "Callback called")
-
-        App.getAll(s.networking) { result in
-            guard case let .fulfilled(apps) = result else {
-                return XCTFail("Expected .fulfilled, got \(result)")
-            }
-            XCTAssertEqual(apps.count, 5)
-            expectation.fulfill()
-        }
-
-        waitForExpectations(timeout: 0.3, handler: nil)
+        let apps = try await App.all.collect()
+        XCTAssertEqual(apps.count, 5)
     }
 
-    func testGetAnApp() {
+    func testGetAnApp() async throws {
         let json = loadFixture("App_SimpleMDM")
-        let session = URLSessionMock(data: json, responseCode: 200)
-        let s = SimpleMDM(sessionMock: session)
+        let sessionMock = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.shared.replaceNetworkingSession(sessionMock)
 
-        let expectation = self.expectation(description: "Callback called")
-
-        App.get(s.networking, id: 17_635) { result in
-            guard case let .fulfilled(app) = result else {
-                return XCTFail("Expected .fulfilled, got \(result)")
-            }
-            XCTAssertEqual(app.bundleIdentifier, "com.unwiredrev.DeviceLink.public")
-            expectation.fulfill()
-        }
-
-        waitForExpectations(timeout: 0.3, handler: nil)
+        let app = try await App.get(id: 17_635)
+        XCTAssertEqual(app.bundleIdentifier, "com.unwiredrev.DeviceLink.public")
     }
 
-    func testErrorWhileFetchingAnAppManagedConfigs() {
+    func testErrorWhileFetchingAnAppManagedConfigs() async throws {
         let json = """
           {
             "errors": []
           }
         """.data(using: .utf8)
 
-        let session = URLSessionMock(routes: [
+        let sessionMock = URLSessionMock(routes: [
             "/api/v1/apps/17635": Response(data: loadFixture("App_SimpleMDM")),
-            "/api/v1/apps/17635/managed_configs": Response(data: json, code: 500)
+            "/api/v1/apps/17635/managed_configs?limit=100": Response(data: json, code: 500)
         ])
-        let s = SimpleMDM(sessionMock: session)
+        SimpleMDM.shared.replaceNetworkingSession(sessionMock)
 
-        let expectation = self.expectation(description: "Callback called")
+        let app = try await App.get(id: 17_635)
 
-        App.get(s.networking, id: 17_635) { appResult in
-            guard case let .fulfilled(app) = appResult else {
-                return XCTFail("Expected .fulfilled, got \(appResult)")
+        await XCTAssertAsyncThrowsError({
+            _ = try await app.managedConfigs.collect()
+        }) { error in
+            guard let simpleMDMError = error as? SimpleMDMError else {
+                return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
             }
-
-            app.managedConfigs.next(s.networking) { managedConfigsResult in
-                guard case let .rejected(error) = managedConfigsResult else {
-                    return XCTFail("Expected .rejected, got \(managedConfigsResult)")
-                }
-                guard let simpleMDMError = error as? SimpleMDMError else {
-                    return XCTFail("Expected error to be an SimpleMDMError, got \(error)")
-                }
-                XCTAssertEqual(simpleMDMError, SimpleMDMError.unknown(httpCode: 500))
-                expectation.fulfill()
-            }
+            XCTAssertEqual(simpleMDMError, SimpleMDMError.unknown(httpCode: 500))
         }
-
-        waitForExpectations(timeout: 0.3, handler: nil)
     }
 
-    func testGetAnAppRelatedManagedConfigs() {
-        let session = URLSessionMock(routes: [
+    func testGetAnAppRelatedManagedConfigs() async throws {
+        let sessionMock = URLSessionMock(routes: [
             "/api/v1/apps/17635": Response(data: loadFixture("App_SimpleMDM")),
-            "/api/v1/apps/17635/managed_configs": Response(data: loadFixture("ManagedConfigs"))
+            "/api/v1/apps/17635/managed_configs?limit=100": Response(data: loadFixture("ManagedConfigs"))
         ])
-        let s = SimpleMDM(sessionMock: session)
+        SimpleMDM.shared.replaceNetworkingSession(sessionMock)
 
-        let expectation = self.expectation(description: "Callback called")
+        let expectedKeys = ["customer_name", "User IDs", "Device values"]
+        let expectedValues = ["ACME Inc.", "1,53,3", "\"$imei\",\"$udid\""]
+        let expectedValueTypes = ["string", "integer array", "string array"]
 
-        App.get(s.networking, id: 17_635) { appResult in
-            guard case let .fulfilled(app) = appResult else {
-                return XCTFail("Expected .fulfilled, got \(appResult)")
-            }
+        let app = try await App.get(id: 17_635)
 
-            app.managedConfigs.next(s.networking) { managedConfigsResult in
-                guard case let .fulfilled(managedConfigs) = managedConfigsResult else {
-                    return XCTFail("Expected .fulfilled, got \(managedConfigsResult)")
-                }
-                XCTAssertEqual(managedConfigs.map { $0.key }, ["customer_name", "User IDs", "Device values"])
-                XCTAssertEqual(managedConfigs.map { $0.value }, ["ACME Inc.", "1,53,3", "\"$imei\",\"$udid\""])
-                XCTAssertEqual(managedConfigs.map { $0.valueType }, ["string", "integer array", "string array"])
-                expectation.fulfill()
-            }
+        var i = 0
+        for try await managedConfig in app.managedConfigs {
+            XCTAssertEqual(managedConfig.key, expectedKeys[i])
+            XCTAssertEqual(managedConfig.value, expectedValues[i])
+            XCTAssertEqual(managedConfig.valueType, expectedValueTypes[i])
+            i += 1
         }
-
-        waitForExpectations(timeout: 0.3, handler: nil)
     }
 }

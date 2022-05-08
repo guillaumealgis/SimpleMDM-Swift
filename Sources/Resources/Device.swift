@@ -1,12 +1,12 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
 import Foundation
 
 /// A device registered in your SimpleMDM account.
-public struct Device: ListableResource, SearchableResource {
+public struct Device: SearchableResource {
     // sourcery:inline:auto:Device.Identifiable
     /// The type of the unique identifier of this resource.
     public typealias ID = Int
@@ -168,7 +168,7 @@ public struct Device: ListableResource, SearchableResource {
     public let locationLongitude: String?
     /// The accuracy of the device's location.
     public let locationAccuracy: Int?
-    /// The date at which the device's location has been udpated last.
+    /// The date at which the device's location has been updated last.
     public let locationUpdatedAt: Date?
 
     // MARK: - Relations

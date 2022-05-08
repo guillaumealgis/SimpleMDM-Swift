@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -9,21 +9,14 @@ import Foundation
 
 /// Internal protocol used to make the networking part of the library easier to inject.
 internal protocol URLSessionProtocol {
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Swift.Void) -> URLSessionDataTaskProtocol
+    func data(for request: URLRequest) async throws -> (Data, URLResponse)
+    func data(for request: URLRequest, delegate: URLSessionTaskDelegate?) async throws -> (Data, URLResponse)
 }
 
-extension URLSession: URLSessionProtocol {
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
-        let task: URLSessionDataTask = dataTask(with: request, completionHandler: completionHandler)
-        return task
+extension URLSessionProtocol {
+    func data(for request: URLRequest) async throws -> (Data, URLResponse) {
+        try await data(for: request, delegate: nil)
     }
 }
 
-// MARK: - URLSessionDataTaskProtocol
-
-/// Internal protocol used to make the networking part of the library easier to inject.
-internal protocol URLSessionDataTaskProtocol {
-    func resume()
-}
-
-extension URLSessionDataTask: URLSessionDataTaskProtocol {}
+extension URLSession: URLSessionProtocol {}

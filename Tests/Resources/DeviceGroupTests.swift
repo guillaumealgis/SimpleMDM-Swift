@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -7,39 +7,21 @@
 import XCTest
 
 internal class DeviceGroupTests: XCTestCase {
-    func testGetAllDeviceGroups() {
+    func testGetAllDeviceGroups() async throws {
         let json = loadFixture("DeviceGroups")
-        let session = URLSessionMock(data: json, responseCode: 200)
-        let s = SimpleMDM(sessionMock: session)
+        let sessionMock = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.shared.replaceNetworkingSession(sessionMock)
 
-        let expectation = self.expectation(description: "Callback called")
-
-        DeviceGroup.getAll(s.networking) { result in
-            guard case let .fulfilled(devices) = result else {
-                return XCTFail("Expected .fulfilled, got \(result)")
-            }
-            XCTAssertEqual(devices.count, 2)
-            expectation.fulfill()
-        }
-
-        waitForExpectations(timeout: 0.3, handler: nil)
+        let deviceGroups = try await DeviceGroup.all.collect()
+        XCTAssertEqual(deviceGroups.count, 2)
     }
 
-    func testGetADeviceGroup() {
+    func testGetADeviceGroup() async throws {
         let json = loadFixture("DeviceGroup_Executives")
-        let session = URLSessionMock(data: json, responseCode: 200)
-        let s = SimpleMDM(sessionMock: session)
+        let sessionMock = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.shared.replaceNetworkingSession(sessionMock)
 
-        let expectation = self.expectation(description: "Callback called")
-
-        DeviceGroup.get(s.networking, id: 38) { result in
-            guard case let .fulfilled(device) = result else {
-                return XCTFail("Expected .fulfilled, got \(result)")
-            }
-            XCTAssertEqual(device.name, "Executives")
-            expectation.fulfill()
-        }
-
-        waitForExpectations(timeout: 0.3, handler: nil)
+        let deviceGroup = try await DeviceGroup.get(id: 38)
+        XCTAssertEqual(deviceGroup.name, "Executives")
     }
 }

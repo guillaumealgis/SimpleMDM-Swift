@@ -1,12 +1,12 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
 import Foundation
 
 /// A custom configuration profile created with AppleConfiguration and applied to devices.
-public struct CustomConfigurationProfile: ListableResource {
+public struct CustomConfigurationProfile: FetchableListableResource {
     // sourcery:inline:auto:CustomConfigurationProfile.Identifiable
     /// The type of the unique identifier of this resource.
     public typealias ID = Int

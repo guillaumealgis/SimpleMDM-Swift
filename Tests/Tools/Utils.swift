@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -56,11 +56,8 @@ internal func url(forFileNamed filename: String, in directory: URL) -> URL? {
 }
 
 internal extension SimpleMDM {
-    convenience init(sessionMock: URLSessionMock) {
-        self.init()
-
-        let networking = Networking(urlSession: sessionMock)
+    func replaceNetworkingSession(_ sessionMock: URLSessionMock) {
+        networking = Networking(urlSession: sessionMock)
         networking.apiKey = "AVeryRandomAPIKey"
-        self.networking = networking
     }
 }

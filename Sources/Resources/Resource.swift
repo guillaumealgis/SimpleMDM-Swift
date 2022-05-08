@@ -1,12 +1,9 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
 import Foundation
-
-/// A completion clusure used to return a Result type asynchronously.
-public typealias CompletionClosure<Value> = (Result<Value>) -> Void
 
 /// A protocol adopted by all resources types of the library.
 public protocol Resource: Decodable {
@@ -23,42 +20,20 @@ public protocol Resource: Decodable {
 public protocol UniqueResource: Resource {
     /// Get the unique instance of this resource.
     ///
-    /// - Parameter completion: A completion handler called with the resource, or an error.
-    static func get(completion: @escaping CompletionClosure<Self>)
+    /// - Returns: The fetched resource.
+    static func get() async throws -> Self
 }
 
-/// An extension of `UniqueResource` providing a default implementation for `get(completion:)`.
+/// An extension of `UniqueResource` providing a default implementation for `get()`.
 public extension UniqueResource {
     /// Fetch the resource from the server.
     ///
-    /// - Parameter completion: A completion handler called with the resource, or an error.
-    static func get(completion: @escaping CompletionClosure<Self>) {
-        get(SimpleMDM.shared.networking, completion: completion)
+    /// - Returns: The fetched resource.
+    static func get() async throws -> Self {
+        let data = try await SimpleMDM.shared.networking.getDataForUniqueResource(ofType: Self.self)
+        let resource = try SimpleMDM.shared.decoding.decodeContent(containedInPayloadOfType: SinglePayload<Self>.self, from: data)
+        return resource
     }
-
-    /// Actual implementation of the `get(completion:)` static method, with a injectable `Networking` parameter.
-    internal static func get(_ networking: Networking, completion: @escaping CompletionClosure<Self>) {
-        networking.getDataForUniqueResource(ofType: Self.self) { networkResult in
-            let decoding = Decoding()
-            let result = decoding.decodeNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
-            completion(result)
-        }
-    }
-}
-
-// MARK: - Identifiable
-
-// Somehow, using the Swift Standard Library's Identifiable protocol on older OS versions crashes the application.
-// So until we update our minimal deployment target to OSX 10.15, iOS 13, tvOS 13, and watchOS 6, we need to keep
-// our own Identifiable protocol.
-
-/// A class of types whose instances hold the value of an entity with stable identity.
-public protocol Identifiable {
-    /// A type representing the stable identity of the entity associated with `self`.
-    associatedtype ID: Hashable
-
-    /// The stable identity of the entity associated with `self`.
-    var id: Self.ID { get }
 }
 
 // MARK: - Identifiable Resource
@@ -88,48 +63,45 @@ public protocol GettableResource: IdentifiableResource {
     ///
     /// - Parameters:
     ///   - id: The unique identifier of the resource to get.
-    ///   - completion: A completion handler called with the resource, or an error.
-    static func get(id: ID, completion: @escaping CompletionClosure<Self>)
+    ///
+    /// - Returns: The fetched resource.
+    static func get(id: ID) async throws -> Self
 }
 
-/// An extension of `GettableResource` providing a default implementation for `get(id:completion:)`.
+/// An extension of `GettableResource` providing a default implementation for `get(id:)`.
 public extension GettableResource {
     /// Fetch the resource identified by `id` from the server.
     ///
     /// - Parameters:
     ///   - id: The unique identifier of the resource to get.
-    ///   - completion: A completion handler called with the resource, or an error.
-    static func get(id: ID, completion: @escaping CompletionClosure<Self>) {
-        get(SimpleMDM.shared.networking, id: id, completion: completion)
-    }
-
-    /// Actual implementation of the `get(id:completion:)` method, with a injectable `Networking` parameter.
-    internal static func get(_ networking: Networking, id: ID, completion: @escaping CompletionClosure<Self>) {
-        networking.getDataForResource(ofType: Self.self, withId: id) { networkResult in
-            let decoding = Decoding()
-            let result = decoding.decodeNetworkingResult(networkResult, expectedPayloadType: SinglePayload<Self>.self)
-            if case let .fulfilled(resource) = result, resource.id != id {
-                completion(.rejected(SimpleMDMError.unexpectedResourceId))
-                return
-            } else {
-                completion(result)
-            }
+    ///
+    /// - Returns: The fetched resource.
+    static func get(id: ID) async throws -> Self {
+        let data = try await SimpleMDM.shared.networking.getDataForResource(ofType: Self.self, withId: id)
+        let resource = try SimpleMDM.shared.decoding.decodeContent(containedInPayloadOfType: SinglePayload<Self>.self, from: data)
+        guard resource.id == id else {
+            throw SimpleMDMError.unexpectedResourceId
         }
+        return resource
     }
 }
 
 // MARK: - Listable Resource
 
 /// A protocol describing resource types that we can get a list of.
-public protocol ListableResource: GettableResource {
+public protocol ListableResource: GettableResource {}
+
+/// A protocol describing resource types that we can get a list of and that can be fetched from the API independently
+/// of another resource.
+public protocol FetchableListableResource: ListableResource {
     /// Get a list of all resources of this type.
     ///
-    /// - Parameter completion: A completion handler called with a list of resources, or an error.
-    static func getAll(completion: @escaping CompletionClosure<[Self]>)
+    /// - Returns: An async sequence of resources.
+    static var all: AsyncResources<Self> { get }
 }
 
-/// An extension of `ListableResource` providing a default implementation for `getAll(completion:)`.
-public extension ListableResource {
+/// An extension of `RootListableResource` providing a default implementation for `all`.
+public extension FetchableListableResource {
     /// Fetch the list of all resources of this type.
     ///
     /// Because the SimpleMDM API enforces pagination when getting a list of resources, this method will fetch the
@@ -137,44 +109,9 @@ public extension ListableResource {
     /// resources fetched is high (more than a hundred of resources), calling this method may end up making multiple
     /// HTTP requests to the SimpleMDM API.
     ///
-    /// - Important: Prefer using the `Cursor` class over this convenience method when fetching large lists of
-    ///   resources (see Discussion).
-    ///
-    /// - Parameter completion: A completion handler called with a list of resources, or an error.
-    static func getAll(completion: @escaping CompletionClosure<[Self]>) {
-        getAll(SimpleMDM.shared.networking, completion: completion)
-    }
-
-    /// Actual implementation of the `getAll(completion:)` method, with a injectable `Networking` parameter.
-    internal static func getAll(_ networking: Networking, completion: @escaping CompletionClosure<[Self]>) {
-        let accumulator = [Self]()
-        let cursor = Cursor<Self>()
-        getNext(networking, accumulator: accumulator, cursor: cursor, completion: completion)
-    }
-
-    /// Recursive method fetching all resources of this type page by page.
-    ///
-    /// - Parameters:
-    ///   - networking: An injectable object used to perform the network requests.
-    ///   - accumulator: A list of all the resources fetched up to this point.
-    ///   - cursor: A cursor used to fetch the resources.
-    ///   - completion: A completion handler called with the content of `accumulator` once we arrive to the end of the
-    ///     list, or an error if one occurs.
-    private static func getNext(_ networking: Networking, accumulator: [Self], cursor: Cursor<Self>, completion: @escaping CompletionClosure<[Self]>) {
-        if !cursor.hasMore {
-            completion(.fulfilled(accumulator))
-            return
-        }
-
-        cursor.next(networking, CursorLimit.max.rawValue) { result in
-            switch result {
-            case let .rejected(error):
-                completion(.rejected(error))
-            case let .fulfilled(resources):
-                let accumulator = accumulator + resources
-                getNext(networking, accumulator: accumulator, cursor: cursor, completion: completion)
-            }
-        }
+    /// - Returns: An async sequence of resources.
+    static var all: AsyncResources<Self> {
+        AsyncResources<Self>()
     }
 }
 
@@ -185,4 +122,12 @@ public extension ListableResource {
 /// Which properties are defined by the SimpleMDM implementation server-side. See the online SimpleMDM documentation.
 ///
 /// - SeeAlso: `SearchCursor`.
-public protocol SearchableResource: ListableResource {}
+public protocol SearchableResource: FetchableListableResource {
+    static func search(_ searchString: String) async throws -> AsyncResources<Self>
+}
+
+public extension SearchableResource {
+    static func search(_: String) async throws -> AsyncResources<Self> {
+        AsyncResources<Self>()
+    }
+}

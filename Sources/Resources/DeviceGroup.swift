@@ -1,12 +1,12 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
 import Foundation
 
 /// A group of device, used to assign apps and profiles to devices.
-public struct DeviceGroup: ListableResource {
+public struct DeviceGroup: FetchableListableResource {
     // sourcery:inline:auto:DeviceGroup.Identifiable
     /// The type of the unique identifier of this resource.
     public typealias ID = Int

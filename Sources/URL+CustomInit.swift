@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -36,7 +36,7 @@ extension URL {
     ///   - matching: A string the fetched resources will match.
     ///   - startingAfter: The value for the 'startingAfter' parameter of the URL.
     ///   - limit: The value for the 'limit' parameter of the URL.
-    ///   - relativeTo: A base URL the new URL will be constructed uppon.
+    ///   - relativeTo: A base URL the new URL will be constructed upon.
     init?<R: ListableResource>(resourceType: R.Type, matching: String? = nil, startingAfter: R.ID? = nil, limit: Int? = nil, relativeTo baseURL: URL) {
         var urlComponents = URLComponents()
 
@@ -67,7 +67,7 @@ extension URL {
     ///   - parentType: The type of the parent resource.
     ///   - parentId: The identifier of the parent resource.
     ///   - relativeTo: A base URL the new URL will be constructed uppon.
-    init?<R: IdentifiableResource, P: IdentifiableResource>(resourceType: R.Type, inParent parentType: P.Type, withId parentId: P.ID, relativeTo baseURL: URL) {
+    init?<R: ListableResource, P: IdentifiableResource>(resourceType: R.Type, inParent parentType: P.Type, withId parentId: P.ID, relativeTo baseURL: URL) {
         let path = "\(parentType.endpointName)/\(parentId)/\(resourceType.endpointName)"
         self.init(string: path, relativeTo: baseURL)
     }

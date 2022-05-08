@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -7,7 +7,7 @@
 import XCTest
 
 internal class VersionTests: XCTestCase {
-    func testVersionDecoding() {
+    func testVersionDecoding() async throws {
         // JSONDecoder does not support decoding fragments yet, so we must wrap our version string in a JSON array.
         // See https://forums.swift.org/t/allowing-top-level-fragments-in-jsondecoder/11750/
         let data = Data("[\"4.54.16\"]".utf8)
@@ -26,7 +26,7 @@ internal class VersionTests: XCTestCase {
         }
     }
 
-    func testInvalidVersionDecoding() {
+    func testInvalidVersionDecoding() async throws {
         // JSONDecoder does not support decoding fragments yet, so we must wrap our version string in a JSON array.
         // See https://forums.swift.org/t/allowing-top-level-fragments-in-jsondecoder/11750/
         let data = Data("[\"4.54..16\"]".utf8)
@@ -35,7 +35,7 @@ internal class VersionTests: XCTestCase {
         XCTAssertThrowsError(try decoder.decode([Version].self, from: data))
     }
 
-    func testVersionEncoding() {
+    func testVersionEncoding() async throws {
         let version = Version(major: 1, minor: 2, patch: 3)
         let encoder = JSONEncoder()
 
@@ -49,21 +49,21 @@ internal class VersionTests: XCTestCase {
         }
     }
 
-    func testVersionMemberwiseInitializer() {
+    func testVersionMemberwiseInitializer() async throws {
         let version = Version(major: 4, minor: 2, patch: 7)
         XCTAssertEqual(version.major, 4)
         XCTAssertEqual(version.minor, 2)
         XCTAssertEqual(version.patch, 7)
     }
 
-    func testVersionMemberwiseInitializerWithZeros() {
+    func testVersionMemberwiseInitializerWithZeros() async throws {
         let version = Version(major: 2, minor: 0, patch: 0)
         XCTAssertEqual(version.major, 2)
         XCTAssertEqual(version.minor, 0)
         XCTAssertEqual(version.patch, 0)
     }
 
-    func testVersionInitWithStringLiteralSimple() {
+    func testVersionInitWithStringLiteralSimple() async throws {
         guard let version = Version("4.2.7") else {
             return XCTFail("Failed to parse version string")
         }
@@ -72,7 +72,7 @@ internal class VersionTests: XCTestCase {
         XCTAssertEqual(version.patch, 7)
     }
 
-    func testVersionInitWithStringLiteralNoPatch() {
+    func testVersionInitWithStringLiteralNoPatch() async throws {
         guard let version = Version("4.2") else {
             return XCTFail("Failed to parse version string")
         }
@@ -81,22 +81,22 @@ internal class VersionTests: XCTestCase {
         XCTAssertEqual(version.patch, 0)
     }
 
-    func testVersionInitWithStringLiteralMultipleDots() {
+    func testVersionInitWithStringLiteralMultipleDots() async throws {
         let version = Version("4..2.7")
         XCTAssertNil(version)
     }
 
-    func testVersionInitWithStringLiteralMoreThan3Parts() {
+    func testVersionInitWithStringLiteralMoreThan3Parts() async throws {
         let version = Version("4.2.7.9")
         XCTAssertNil(version)
     }
 
-    func testVersionInitWithStringLiteralLessThan2Parts() {
+    func testVersionInitWithStringLiteralLessThan2Parts() async throws {
         let version = Version("4")
         XCTAssertNil(version)
     }
 
-    func testVersionInitWithStringLiteralBigNumbers() {
+    func testVersionInitWithStringLiteralBigNumbers() async throws {
         guard let version = Version("4238640239684.20867913510.95346097204567") else {
             return XCTFail("Failed to parse version string")
         }
@@ -105,7 +105,7 @@ internal class VersionTests: XCTestCase {
         XCTAssertEqual(version.patch, 95_346_097_204_567)
     }
 
-    func testVersionInitWithStringLiteralWithZeros() {
+    func testVersionInitWithStringLiteralWithZeros() async throws {
         guard let version = Version("0.3.1") else {
             return XCTFail("Failed to parse version string")
         }
@@ -114,7 +114,7 @@ internal class VersionTests: XCTestCase {
         XCTAssertEqual(version.patch, 1)
     }
 
-    func testVersionInitWithStringLiteralLeadingZero() {
+    func testVersionInitWithStringLiteralLeadingZero() async throws {
         guard let version = Version("1.4.02") else {
             return XCTFail("Failed to parse version string")
         }
@@ -123,24 +123,24 @@ internal class VersionTests: XCTestCase {
         XCTAssertEqual(version.patch, 2)
     }
 
-    func testVersionComparisons() {
+    func testVersionComparisons() async throws {
         XCTAssertGreaterThan(Version(major: 1, minor: 0, patch: 0), Version(major: 0, minor: 9, patch: 9))
         XCTAssertGreaterThan(Version(major: 1, minor: 2, patch: 0), Version(major: 1, minor: 1, patch: 0))
         XCTAssertGreaterThan(Version(major: 1, minor: 1, patch: 2), Version(major: 1, minor: 1, patch: 1))
     }
 
-    func testVersionComparisonsIrreflexivity() {
+    func testVersionComparisonsIrreflexivity() async throws {
         XCTAssertFalse(Version(major: 1, minor: 0, patch: 0) < Version(major: 1, minor: 0, patch: 0))
     }
 
-    func testVersionComparisonsAsymmetry() {
+    func testVersionComparisonsAsymmetry() async throws {
         let a = Version(major: 1, minor: 2, patch: 3)
         let b = Version(major: 1, minor: 5, patch: 0)
         XCTAssertLessThan(a, b) // If
         XCTAssertFalse(b < a) // Then
     }
 
-    func testVersionComparisonsTransitivity() {
+    func testVersionComparisonsTransitivity() async throws {
         let a = Version(major: 1, minor: 2, patch: 3)
         let b = Version(major: 1, minor: 5, patch: 0)
         let c = Version(major: 4, minor: 8, patch: 34)
@@ -153,7 +153,7 @@ internal class VersionTests: XCTestCase {
         XCTAssertLessThan(a, c)
     }
 
-    func testVersionEquality() {
+    func testVersionEquality() async throws {
         XCTAssertEqual(Version(major: 5, minor: 43, patch: 25), Version(major: 5, minor: 43, patch: 25))
         XCTAssertEqual(Version(major: 1, minor: 7, patch: 0), Version("1.7.0"))
     }

@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -7,21 +7,12 @@
 import XCTest
 
 internal class InstalledAppsTests: XCTestCase {
-    func testGetAnInstalledApp() {
+    func testGetAnInstalledApp() async throws {
         let json = loadFixture("InstalledApp_Dropbox")
-        let session = URLSessionMock(data: json, responseCode: 200)
-        let s = SimpleMDM(sessionMock: session)
+        let sessionMock = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.shared.replaceNetworkingSession(sessionMock)
 
-        let expectation = self.expectation(description: "Callback called")
-
-        InstalledApp.get(s.networking, id: 10_446_659) { result in
-            guard case let .fulfilled(installedApp) = result else {
-                return XCTFail("Expected .fulfilled, got \(result)")
-            }
-            XCTAssertEqual(installedApp.name, "Dropbox")
-            expectation.fulfill()
-        }
-
-        waitForExpectations(timeout: 0.3, handler: nil)
+        let installedApp = try await InstalledApp.get(id: 10_446_659)
+        XCTAssertEqual(installedApp.name, "Dropbox")
     }
 }

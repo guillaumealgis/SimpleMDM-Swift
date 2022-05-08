@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -7,22 +7,13 @@
 import XCTest
 
 internal class AccountTests: XCTestCase {
-    func testGetAccount() {
+    func testGetAccount() async throws {
         let json = loadFixture("Account")
-        let session = URLSessionMock(data: json, responseCode: 200)
-        let s = SimpleMDM(sessionMock: session)
+        let sessionMock = URLSessionMock(data: json, responseCode: 200)
+        SimpleMDM.shared.replaceNetworkingSession(sessionMock)
 
-        let expectation = self.expectation(description: "Callback called")
-
-        Account.get(s.networking) { result in
-            guard case let .fulfilled(account) = result else {
-                return XCTFail("Expected .fulfilled, got \(result)")
-            }
-            XCTAssertEqual(account.name, "MyCompany")
-            XCTAssertEqual(account.appleStoreCountryCode, "US")
-            expectation.fulfill()
-        }
-
-        waitForExpectations(timeout: 0.3, handler: nil)
+        let account = try await Account.get()
+        XCTAssertEqual(account.name, "MyCompany")
+        XCTAssertEqual(account.appleStoreCountryCode, "US")
     }
 }

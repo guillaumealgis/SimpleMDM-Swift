@@ -20,7 +20,7 @@ SimpleMDM-Swift is a cross-platform (iOS, macOS, tvOS, watchOS) SDK to access th
 - Read-only access to all exposed resources (Device, App, etc.) of the REST API
 - Supports the pagination API introduced August 15, 2018
 - Type-safe
-- Asynchronous API, relying on [Result type](https://www.swiftbysundell.com/posts/the-power-of-result-types-in-swift), and [Promises](https://github.com/promisekit) (optional API)
+- Asynchronous API, relying on async / await
 - High test coverage
 - 100% documented
 

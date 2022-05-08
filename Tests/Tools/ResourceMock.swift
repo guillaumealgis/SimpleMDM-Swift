@@ -1,5 +1,5 @@
 //
-//  Copyright 2021 Guillaume Algis.
+//  Copyright 2022 Guillaume Algis.
 //  Licensed under the MIT License. See the LICENSE.md file in the project root for more information.
 //
 
@@ -24,7 +24,7 @@ internal struct UniqueResourceMock: UniqueResource {
 }
 
 /// An empty listable resource used when testing.
-internal struct ResourceMock: ListableResource {
+internal struct ResourceMock: FetchableListableResource {
     typealias ID = Int
     private enum CodingKeys: String, CodingKey {
         case type
@@ -46,7 +46,7 @@ internal struct ResourceMock: ListableResource {
 }
 
 /// An listable resource with a field of type `Date` used when testing.
-internal struct ResourceWithDateMock: ListableResource {
+internal struct ResourceWithDateMock: FetchableListableResource {
     typealias ID = Int
 
     private enum CodingKeys: String, CodingKey {
@@ -77,7 +77,7 @@ internal struct ResourceWithDateMock: ListableResource {
 }
 
 /// An listable resource with fields of type `RelatedToOne`, `RelatedToMany`, and `RelatedToManyNested` used when testing.
-internal struct ResourceWithRelationsMock: ListableResource {
+internal struct ResourceWithRelationsMock: FetchableListableResource {
     typealias ID = Int
 
     private enum CodingKeys: String, CodingKey {
