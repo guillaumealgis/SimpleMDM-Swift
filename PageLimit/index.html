@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleMDM-Swift - PageLimit</title>
+    <link rel="stylesheet" type="text/css" href="https://guillaumealgis.github.io/SimpleMDM-Swift/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="https://guillaumealgis.github.io/SimpleMDM-Swift/">
+            <strong>
+                SimpleMDM-Swift
+            </strong>
+            <span>Documentation</span>
+        </a>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#pagelimit.min">min</a></li><li class="variable"><a href="#pagelimit.max">max</a></li><li class="variable"><a href="#pagelimit.`default`">`default`</a></li></ul></li></ol>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Enumeration</small>
+    <code class="name">Page​Limit</code>
+</h1>
+
+<div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">enum</span> <span class="type">PageLimit</span>  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The bounds of the number of elements one can get when requesting a paginated list of resources.</p>
+
+</div>
+<div class="discussion">
+    <p>These values are from the <a href="https://simplemdm.com/docs/api/#pagination">Pagination documentation</a> and may be subject
+to change.</p>
+
+</div>
+
+    <section id="properties">
+        <h2>Properties</h2>
+
+        <div role="article" class="variable" id="pagelimit.min">
+    <h3>
+        <code><a href="#pagelimit.min">min</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">let</span> <span class="variable">min</span> = <span class="number literal">1</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The minimum number of resources one can request per page.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="pagelimit.max">
+    <h3>
+        <code><a href="#pagelimit.max">max</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">let</span> <span class="variable">max</span> = <span class="number literal">100</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The maximum number of resources one can request per page.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="pagelimit.`default`">
+    <h3>
+        <code><a href="#pagelimit.`default`">`default`</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">let</span> <span class="variable">`default`</span> = <span class="number literal">10</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The default number of resources requested per page if no limit is specified.</p>
+
+</div>
+<div class="discussion">
+    <p>Defined by SimpleMDM's online documentation at the time of writing.</p>
+
+</div>
+</div>
+    </section>
+
+
+
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2022-05-11T21:36:12+0000">May 11, 2022</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
+</p>
+    </footer>
+</body>
+</html>

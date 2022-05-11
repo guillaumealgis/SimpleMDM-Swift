@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleMDM-Swift - Device</title>
+    <link rel="stylesheet" type="text/css" href="https://guillaumealgis.github.io/SimpleMDM-Swift/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="https://guillaumealgis.github.io/SimpleMDM-Swift/">
+            <strong>
+                SimpleMDM-Swift
+            </strong>
+            <span>Documentation</span>
+        </a>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Nested Types</a></li><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#nested type aliases">Nested Type Aliases</a><ul><li class="typealias"><a href="#device.id">ID</a></li></ul></li><li><a href="#initializers">Initializers</a><ul><li class="initializer"><a href="#device.init(from:)">init(from:​)</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#device.id">id</a></li><li class="variable"><a href="#device.uniqueidentifier">unique​Identifier</a></li><li class="variable"><a href="#device.serialnumber">serial​Number</a></li><li class="variable"><a href="#device.imei">imei</a></li><li class="variable"><a href="#device.meid">meid</a></li><li class="variable"><a href="#device.iccid">iccid</a></li><li class="variable"><a href="#device.name">name</a></li><li class="variable"><a href="#device.devicename">device​Name</a></li><li class="variable"><a href="#device.lastseenat">last​Seen​At</a></li><li class="variable"><a href="#device.status">status</a></li><li class="variable"><a href="#device.modelname">model​Name</a></li><li class="variable"><a href="#device.model">model</a></li><li class="variable"><a href="#device.productname">product​Name</a></li><li class="variable"><a href="#device.osversion">os​Version</a></li><li class="variable"><a href="#device.buildversion">build​Version</a></li><li class="variable"><a href="#device.modemfirmwareversion">modem​Firmware​Version</a></li><li class="variable"><a href="#device.carriersettingsversion">carrier​Settings​Version</a></li><li class="variable"><a href="#device.devicecapacity">device​Capacity</a></li><li class="variable"><a href="#device.availabledevicecapacity">available​Device​Capacity</a></li><li class="variable"><a href="#device.batterylevel">battery​Level</a></li><li class="variable"><a href="#device.bluetoothmac">bluetooth​Mac</a></li><li class="variable"><a href="#device.wifimac">wifi​Mac</a></li><li class="variable"><a href="#device.currentcarriernetwork">current​Carrier​Network</a></li><li class="variable"><a href="#device.simcarriernetwork">sim​Carrier​Network</a></li><li class="variable"><a href="#device.subscribercarriernetwork">subscriber​Carrier​Network</a></li><li class="variable"><a href="#device.phonenumber">phone​Number</a></li><li class="variable"><a href="#device.cellulartechnology">cellular​Technology</a></li><li class="variable"><a href="#device.voiceroamingenabled">voice​Roaming​Enabled</a></li><li class="variable"><a href="#device.dataroamingenabled">data​Roaming​Enabled</a></li><li class="variable"><a href="#device.isroaming">is​Roaming</a></li><li class="variable"><a href="#device.subscribermcc">subscriber​Mcc</a></li><li class="variable"><a href="#device.subscribermnc">subscriber​Mnc</a></li><li class="variable"><a href="#device.simmcc">simmcc</a></li><li class="variable"><a href="#device.simmnc">simmnc</a></li><li class="variable"><a href="#device.currentmcc">current​Mcc</a></li><li class="variable"><a href="#device.currentmnc">current​Mnc</a></li><li class="variable"><a href="#device.hardwareencryptioncaps">hardware​Encryption​Caps</a></li><li class="variable"><a href="#device.passcodepresent">passcode​Present</a></li><li class="variable"><a href="#device.passcodecompliant">passcode​Compliant</a></li><li class="variable"><a href="#device.passcodecompliantwithprofiles">passcode​Compliant​With​Profiles</a></li><li class="variable"><a href="#device.filevaultenabled">filevault​Enabled</a></li><li class="variable"><a href="#device.filevaultrecoverykey">filevault​Recovery​Key</a></li><li class="variable"><a href="#device.firmwarepasswordenabled">firmware​Password​Enabled</a></li><li class="variable"><a href="#device.firmwarepassword">firmware​Password</a></li><li class="variable"><a href="#device.issupervised">is​Supervised</a></li><li class="variable"><a href="#device.isdepenrollment">is​Dep​Enrollment</a></li><li class="variable"><a href="#device.isuserapprovedenrollment">is​User​Approved​Enrollment</a></li><li class="variable"><a href="#device.isdevicelocatorserviceenabled">is​Device​Locator​Service​Enabled</a></li><li class="variable"><a href="#device.isdonotdisturbineffect">is​DoNot​Disturb​InEffect</a></li><li class="variable"><a href="#device.personalhotspotenabled">personal​Hotspot​Enabled</a></li><li class="variable"><a href="#device.itunesstoreaccountisactive">itunes​Store​Account​IsActive</a></li><li class="variable"><a href="#device.lastcloudbackupdate">last​Cloud​Backup​Date</a></li><li class="variable"><a href="#device.isactivationlockenabled">is​Activation​Lock​Enabled</a></li><li class="variable"><a href="#device.iscloudbackupenabled">is​Cloud​Backup​Enabled</a></li><li class="variable"><a href="#device.locationlatitude">location​Latitude</a></li><li class="variable"><a href="#device.locationlongitude">location​Longitude</a></li><li class="variable"><a href="#device.locationaccuracy">location​Accuracy</a></li><li class="variable"><a href="#device.locationupdatedat">location​Updated​At</a></li><li class="variable"><a href="#device.devicegroup">device​Group</a></li><li class="variable"><a href="#device.customattributes">custom​Attributes</a></li><li class="variable"><a href="#device.endpointname">endpoint​Name</a></li></ul></li></ol>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Structure</small>
+    <code class="name">Device</code>
+</h1>
+
+<div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">Device</span>: <span class="type">SearchableResource</span>  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>A device registered in your SimpleMDM account.</p>
+
+</div>
+<section id="relationships">
+    <h2 hidden>Relationships</h2>
+        <figure>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %7 Pages: 1 -->
+<svg width="1088pt" height="242pt"
+ viewBox="0.00 0.00 1087.98 241.73" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 237.7326)">
+<title>%7</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-237.7326 1083.9813,-237.7326 1083.9813,4 -4,4"/>
+<!-- Device -->
+<g id="node1" class="node structure current">
+<title>Device</title>
+<g id="a_node1"><a xlink:href="https://guillaumealgis.github.io/SimpleMDM-Swift/Device" xlink:title="Device">
+<path fill="none" stroke="#000000" stroke-width="3" d="M537.993,-143.6386C537.993,-143.6386 345.993,-143.6386 345.993,-143.6386 339.993,-143.6386 333.993,-137.6386 333.993,-131.6386 333.993,-131.6386 333.993,-119.6386 333.993,-119.6386 333.993,-113.6386 339.993,-107.6386 345.993,-107.6386 345.993,-107.6386 537.993,-107.6386 537.993,-107.6386 543.993,-107.6386 549.993,-113.6386 549.993,-119.6386 549.993,-119.6386 549.993,-131.6386 549.993,-131.6386 549.993,-137.6386 543.993,-143.6386 537.993,-143.6386"/>
+<text text-anchor="middle" x="441.993" y="-121.9386" font-family="Menlo" font-size="14.00" fill="#000000">Device</text>
+</a>
+</g>
+</g>
+<!-- Resource -->
+<g id="node2" class="node protocol">
+<title>Resource</title>
+<g id="a_node2"><a xlink:href="https://guillaumealgis.github.io/SimpleMDM-Swift/Resource" xlink:title="Resource">
+<path fill="none" stroke="#000000" d="M1067.9813,-161.3055C1067.9813,-161.3055 875.9813,-161.3055 875.9813,-161.3055 869.9813,-161.3055 863.9813,-155.3055 863.9813,-149.3055 863.9813,-149.3055 863.9813,-137.3055 863.9813,-137.3055 863.9813,-131.3055 869.9813,-125.3055 875.9813,-125.3055 875.9813,-125.3055 1067.9813,-125.3055 1067.9813,-125.3055 1073.9813,-125.3055 1079.9813,-131.3055 1079.9813,-137.3055 1079.9813,-137.3055 1079.9813,-149.3055 1079.9813,-149.3055 1079.9813,-155.3055 1073.9813,-161.3055 1067.9813,-161.3055"/>
+<text text-anchor="middle" x="971.9813" y="-139.6055" font-family="Menlo" font-size="14.00" fill="#000000">Resource</text>
+</a>
+</g>
+</g>
+<!-- Device&#45;&gt;Resource -->
+<g id="edge3" class="edge conformsTo">
+<title>Device&#45;&gt;Resource</title>
+<path fill="none" stroke="#000000" d="M550.2028,-129.2457C638.4756,-132.1882 762.9928,-136.339 853.8473,-139.3675"/>
+<polygon fill="#000000" stroke="#000000" points="853.8083,-142.8681 863.9194,-139.7033 854.0415,-135.872 853.8083,-142.8681"/>
+</g>
+<!-- SearchableResource -->
+<g id="node3" class="node unknown">
+<title>SearchableResource</title>
+<path fill="none" stroke="#000000" d="M347.5678,-36C347.5678,-36 155.5678,-36 155.5678,-36 149.5678,-36 143.5678,-30 143.5678,-24 143.5678,-24 143.5678,-12 143.5678,-12 143.5678,-6 149.5678,0 155.5678,0 155.5678,0 347.5678,0 347.5678,0 353.5678,0 359.5678,-6 359.5678,-12 359.5678,-12 359.5678,-24 359.5678,-24 359.5678,-30 353.5678,-36 347.5678,-36"/>
+<text text-anchor="middle" x="251.5678" y="-14.3" font-family="Menlo" font-size="14.00" fill="#000000">SearchableResource</text>
+</g>
+<!-- Device&#45;&gt;SearchableResource -->
+<g id="edge2" class="edge conformsTo">
+<title>Device&#45;&gt;SearchableResource</title>
+<path fill="none" stroke="#000000" d="M410.1201,-107.6223C377.8522,-89.3828 327.8211,-61.1025 292.6069,-41.1975"/>
+<polygon fill="#000000" stroke="#000000" points="293.9725,-37.949 283.5447,-36.0751 290.5279,-44.0428 293.9725,-37.949"/>
+</g>
+<!-- Decodable -->
+<g id="node4" class="node unknown">
+<title>Decodable</title>
+<path fill="none" stroke="#000000" d="M204,-233.7326C204,-233.7326 12,-233.7326 12,-233.7326 6,-233.7326 0,-227.7326 0,-221.7326 0,-221.7326 0,-209.7326 0,-209.7326 0,-203.7326 6,-197.7326 12,-197.7326 12,-197.7326 204,-197.7326 204,-197.7326 210,-197.7326 216,-203.7326 216,-209.7326 216,-209.7326 216,-221.7326 216,-221.7326 216,-227.7326 210,-233.7326 204,-233.7326"/>
+<text text-anchor="middle" x="108" y="-212.0326" font-family="Menlo" font-size="14.00" fill="#000000">Decodable</text>
+</g>
+<!-- Device&#45;&gt;Decodable -->
+<g id="edge1" class="edge conformsTo">
+<title>Device&#45;&gt;Decodable</title>
+<path fill="none" stroke="#000000" d="M375.2073,-143.6539C320.2308,-158.4837 242.2608,-179.516 184.7272,-195.0356"/>
+<polygon fill="#000000" stroke="#000000" points="183.6989,-191.6878 174.9556,-197.6715 185.5221,-198.4462 183.6989,-191.6878"/>
+</g>
+</g>
+</svg>
+
+
+    <figcaption hidden>Inheritance graph for Device.</figcaption>
+</figure>
+        <h3>Nested Types</h3>
+<dl>
+    <dt class="structure"><code><a href="https://guillaumealgis.github.io/SimpleMDM-Swift/Device_CustomAttributeValue">Device.CustomAttributeValue</a></code></dt>
+<dd><p>A custom attribute value assigned to a device.</p>
+</dd>
+</dl>
+<h3>Conforms To</h3>
+<dl>
+    <dt class="protocol"><code><a href="https://guillaumealgis.github.io/SimpleMDM-Swift/Resource">Resource</a></code></dt>
+<dd><p>A protocol adopted by all resources types of the library.</p>
+</dd>
+<dt class="unknown"><code>Decodable</code></dt>
+<dt class="unknown"><code>SearchableResource</code></dt>
+</dl>
+</section>
+    <section id="nested type aliases">
+        <h2>Nested Type Aliases</h2>
+
+        <div role="article" class="typealias" id="device.id">
+    <h3>
+        <code><a href="#device.id">ID</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">typealias</span> <span class="variable">ID</span> = <span class="type">Int</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The type of the unique identifier of this resource.</p>
+
+</div>
+</div>
+    </section>
+    <section id="initializers">
+        <h2>Initializers</h2>
+
+        <div role="article" class="initializer" id="device.init(from:)">
+    <h3>
+        <code><a href="#device.init(from:)">init(from:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">init</span>(<span class="variable">from</span> <span class="variable">decoder</span>: <span class="type">Decoder</span>) <span class="keyword">throws</span>  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Creates a new instance of the resource by decoding from the given decoder.</p>
+
+</div>
+<div class="discussion">
+    <p>This initializer throws an error if reading from the decoder fails, or if the data read is corrupted or
+otherwise invalid.</p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>decoder</th>
+    <td><code class="type">Decoder</code></td>
+    <td><p>The decoder to read data from.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+    </section>
+    <section id="properties">
+        <h2>Properties</h2>
+
+        <div role="article" class="variable" id="device.id">
+    <h3>
+        <code><a href="#device.id">id</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">id</span>: <span class="type">ID</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The unique identifier of this resource.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.uniqueidentifier">
+    <h3>
+        <code><a href="#device.uniqueidentifier">unique​Identifier</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">uniqueIdentifier</span>: <span class="type">String</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>An unique 40 characters long hash identifying the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.serialnumber">
+    <h3>
+        <code><a href="#device.serialnumber">serial​Number</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">serialNumber</span>: <span class="type">String</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The serial number of the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.imei">
+    <h3>
+        <code><a href="#device.imei">imei</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">imei</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The <a href="https://en.wikipedia.org/wiki/International_Mobile_Equipment_Identity">International Mobile Equipment Identity
+(IMEI)</a> number of the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.meid">
+    <h3>
+        <code><a href="#device.meid">meid</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">meid</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The <a href="https://en.wikipedia.org/wiki/Mobile_equipment_identifier">Mobile Equipment IDentifier (MEID)</a> number of
+the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.iccid">
+    <h3>
+        <code><a href="#device.iccid">iccid</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">iccid</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The <a href="https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID">Integrated Circuit Card IDentifier
+(ICCID)</a> number of the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.name">
+    <h3>
+        <code><a href="#device.name">name</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">name</span>: <span class="type">String</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The name you've given to the device in the SimpleMDM interface.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.devicename">
+    <h3>
+        <code><a href="#device.devicename">device​Name</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">deviceName</span>: <span class="type">String</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The name set in the device's settings.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.lastseenat">
+    <h3>
+        <code><a href="#device.lastseenat">last​Seen​At</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">lastSeenAt</span>: <span class="type">Date</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Date at which the device last communicated with SimpleMDM.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.status">
+    <h3>
+        <code><a href="#device.status">status</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">status</span>: <span class="type">String</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The current MDM status of the device (e.g. &quot;enrolled&quot;).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.modelname">
+    <h3>
+        <code><a href="#device.modelname">model​Name</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">modelName</span>: <span class="type">String</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The displayable model name of the device (e.g. &quot;iPad 9.7-Inch 6th Gen&quot;).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.model">
+    <h3>
+        <code><a href="#device.model">model</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">model</span>: <span class="type">String</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The Apple model identifier of the device (e.g. &quot;MR7F2NF&quot;).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.productname">
+    <h3>
+        <code><a href="#device.productname">product​Name</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">productName</span>: <span class="type">String</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The Apple product name of the device (e.g. &quot;iPad7,5&quot;).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.osversion">
+    <h3>
+        <code><a href="#device.osversion">os​Version</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">osVersion</span>: <a href="https://guillaumealgis.github.io/SimpleMDM-Swift/Version"><span class="type">Version</span></a></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The displayabled current OS version of the device (e.g. &quot;12.0.1&quot;).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.buildversion">
+    <h3>
+        <code><a href="#device.buildversion">build​Version</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">buildVersion</span>: <span class="type">String</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The current build version of the OS (e.g. &quot;16A404&quot;).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.modemfirmwareversion">
+    <h3>
+        <code><a href="#device.modemfirmwareversion">modem​Firmware​Version</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">modemFirmwareVersion</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The current modem firmware version of the device (e.g. &quot;6.60.00&quot;).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.carriersettingsversion">
+    <h3>
+        <code><a href="#device.carriersettingsversion">carrier​Settings​Version</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">carrierSettingsVersion</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The current version of the settings of the cell carrier (e.g. &quot;33.0&quot;).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.devicecapacity">
+    <h3>
+        <code><a href="#device.devicecapacity">device​Capacity</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">deviceCapacity</span>: <span class="type">Double</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The total device storage capacity, in GB.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.availabledevicecapacity">
+    <h3>
+        <code><a href="#device.availabledevicecapacity">available​Device​Capacity</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">availableDeviceCapacity</span>: <span class="type">Double</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The available device storage capacity, in GB.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.batterylevel">
+    <h3>
+        <code><a href="#device.batterylevel">battery​Level</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">batteryLevel</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The curreny battery level of the device, in percent (e.g. &quot;76%&quot;).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.bluetoothmac">
+    <h3>
+        <code><a href="#device.bluetoothmac">bluetooth​Mac</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">bluetoothMac</span>: <span class="type">String</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The bluetooth MAC address of the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.wifimac">
+    <h3>
+        <code><a href="#device.wifimac">wifi​Mac</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">wifiMac</span>: <span class="type">String</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The wifi MAC address of the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.currentcarriernetwork">
+    <h3>
+        <code><a href="#device.currentcarriernetwork">current​Carrier​Network</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">currentCarrierNetwork</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The current carrier network of the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.simcarriernetwork">
+    <h3>
+        <code><a href="#device.simcarriernetwork">sim​Carrier​Network</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">simCarrierNetwork</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The SIM carrier network of the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.subscribercarriernetwork">
+    <h3>
+        <code><a href="#device.subscribercarriernetwork">subscriber​Carrier​Network</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">subscriberCarrierNetwork</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The subscriber carrier network of the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.phonenumber">
+    <h3>
+        <code><a href="#device.phonenumber">phone​Number</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">phoneNumber</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The phone number</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.cellulartechnology">
+    <h3>
+        <code><a href="#device.cellulartechnology">cellular​Technology</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">cellularTechnology</span>: <span class="type">Int</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The cellular technology of the device. Signification of the value isn't documented by SimpleMDM.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.voiceroamingenabled">
+    <h3>
+        <code><a href="#device.voiceroamingenabled">voice​Roaming​Enabled</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">voiceRoamingEnabled</span>: <span class="type">Bool</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether the device allows roaming for voice.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.dataroamingenabled">
+    <h3>
+        <code><a href="#device.dataroamingenabled">data​Roaming​Enabled</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">dataRoamingEnabled</span>: <span class="type">Bool</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether the device allows roaming for data.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.isroaming">
+    <h3>
+        <code><a href="#device.isroaming">is​Roaming</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">isRoaming</span>: <span class="type">Bool</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether the device is currently roaming.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.subscribermcc">
+    <h3>
+        <code><a href="#device.subscribermcc">subscriber​Mcc</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">subscriberMcc</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The subscriber <a href="https://en.wikipedia.org/wiki/Mobile_country_code">Mobile Contry Code (MCC)</a> of the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.subscribermnc">
+    <h3>
+        <code><a href="#device.subscribermnc">subscriber​Mnc</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">subscriberMnc</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The subscriber <a href="https://en.wikipedia.org/wiki/Mobile_country_code">Mobile Network Code (MNC)</a> of the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.simmcc">
+    <h3>
+        <code><a href="#device.simmcc">simmcc</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">simmcc</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The SIM <a href="https://en.wikipedia.org/wiki/Mobile_country_code">Mobile Contry Code (MCC)</a> of the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.simmnc">
+    <h3>
+        <code><a href="#device.simmnc">simmnc</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">simmnc</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The SIM <a href="https://en.wikipedia.org/wiki/Mobile_country_code">Mobile Network Code (MNC)</a> of the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.currentmcc">
+    <h3>
+        <code><a href="#device.currentmcc">current​Mcc</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">currentMcc</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The current <a href="https://en.wikipedia.org/wiki/Mobile_country_code">Mobile Contry Code (MCC)</a> of the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.currentmnc">
+    <h3>
+        <code><a href="#device.currentmnc">current​Mnc</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">currentMnc</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The current <a href="https://en.wikipedia.org/wiki/Mobile_country_code">Mobile Network Code (MNC)</a> of the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.hardwareencryptioncaps">
+    <h3>
+        <code><a href="#device.hardwareencryptioncaps">hardware​Encryption​Caps</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">hardwareEncryptionCaps</span>: <span class="type">Int</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Not documented by SimpleMDM.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.passcodepresent">
+    <h3>
+        <code><a href="#device.passcodepresent">passcode​Present</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">passcodePresent</span>: <span class="type">Bool</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether the device is passcode protected.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.passcodecompliant">
+    <h3>
+        <code><a href="#device.passcodecompliant">passcode​Compliant</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">passcodeCompliant</span>: <span class="type">Bool</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether the device's passcode is compliant with your global passcode policy.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.passcodecompliantwithprofiles">
+    <h3>
+        <code><a href="#device.passcodecompliantwithprofiles">passcode​Compliant​With​Profiles</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">passcodeCompliantWithProfiles</span>: <span class="type">Bool</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether the device's passcode is compliant with the passcode policy defined in your profiles.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.filevaultenabled">
+    <h3>
+        <code><a href="#device.filevaultenabled">filevault​Enabled</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">filevaultEnabled</span>: <span class="type">Bool</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether Filevault (disk encryption) is enabled on the device (macOS only).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.filevaultrecoverykey">
+    <h3>
+        <code><a href="#device.filevaultrecoverykey">filevault​Recovery​Key</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">filevaultRecoveryKey</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The Filevault recovery key (macOS only).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.firmwarepasswordenabled">
+    <h3>
+        <code><a href="#device.firmwarepasswordenabled">firmware​Password​Enabled</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">firmwarePasswordEnabled</span>: <span class="type">Bool</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether the firmware of the device is password protected (macOS only?).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.firmwarepassword">
+    <h3>
+        <code><a href="#device.firmwarepassword">firmware​Password</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">firmwarePassword</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The firmware password (macOS only?).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.issupervised">
+    <h3>
+        <code><a href="#device.issupervised">is​Supervised</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">isSupervised</span>: <span class="type">Bool</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether the device is supervised.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.isdepenrollment">
+    <h3>
+        <code><a href="#device.isdepenrollment">is​Dep​Enrollment</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">isDepEnrollment</span>: <span class="type">Bool</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether the device is enrolled in Apple's Device Enrollment Program (DEP).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.isuserapprovedenrollment">
+    <h3>
+        <code><a href="#device.isuserapprovedenrollment">is​User​Approved​Enrollment</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">isUserApprovedEnrollment</span>: <span class="type">Bool</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether the device can be enrolled by the user (?).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.isdevicelocatorserviceenabled">
+    <h3>
+        <code><a href="#device.isdevicelocatorserviceenabled">is​Device​Locator​Service​Enabled</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">isDeviceLocatorServiceEnabled</span>: <span class="type">Bool</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether the device locator service (Find my Mac / Find my iPhone) is enabled.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.isdonotdisturbineffect">
+    <h3>
+        <code><a href="#device.isdonotdisturbineffect">is​DoNot​Disturb​InEffect</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">isDoNotDisturbInEffect</span>: <span class="type">Bool</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether the device is currently in Do Not Disturb mode.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.personalhotspotenabled">
+    <h3>
+        <code><a href="#device.personalhotspotenabled">personal​Hotspot​Enabled</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">personalHotspotEnabled</span>: <span class="type">Bool</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether the device's personal hotspot functionnality is enabled.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.itunesstoreaccountisactive">
+    <h3>
+        <code><a href="#device.itunesstoreaccountisactive">itunes​Store​Account​IsActive</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">itunesStoreAccountIsActive</span>: <span class="type">Bool</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether the device's iTunes Store account is active.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.lastcloudbackupdate">
+    <h3>
+        <code><a href="#device.lastcloudbackupdate">last​Cloud​Backup​Date</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">lastCloudBackupDate</span>: <span class="type">Date</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The date of the last iCloud backup of the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.isactivationlockenabled">
+    <h3>
+        <code><a href="#device.isactivationlockenabled">is​Activation​Lock​Enabled</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">isActivationLockEnabled</span>: <span class="type">Bool</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether Activation Lock is enabled on the device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.iscloudbackupenabled">
+    <h3>
+        <code><a href="#device.iscloudbackupenabled">is​Cloud​Backup​Enabled</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">isCloudBackupEnabled</span>: <span class="type">Bool</span></body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Whether backing up to iCloud is enabled.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.locationlatitude">
+    <h3>
+        <code><a href="#device.locationlatitude">location​Latitude</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">locationLatitude</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The latitude of the device's location (in degrees, e.g. &quot;46.23451120895299&quot;).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.locationlongitude">
+    <h3>
+        <code><a href="#device.locationlongitude">location​Longitude</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">locationLongitude</span>: <span class="type">String</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The longitude of the device's location (in degrees, e.g. &quot;4.273176170426797&quot;).</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.locationaccuracy">
+    <h3>
+        <code><a href="#device.locationaccuracy">location​Accuracy</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">locationAccuracy</span>: <span class="type">Int</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The accuracy of the device's location.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.locationupdatedat">
+    <h3>
+        <code><a href="#device.locationupdatedat">location​Updated​At</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">locationUpdatedAt</span>: <span class="type">Date</span>? </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The date at which the device's location has been updated last.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.devicegroup">
+    <h3>
+        <code><a href="#device.devicegroup">device​Group</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">deviceGroup</span>: <span class="type">RelatedToOne</span>&lt;<a href="https://guillaumealgis.github.io/SimpleMDM-Swift/DeviceGroup"><span class="type">DeviceGroup</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The groups the devices is a member of.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.customattributes">
+    <h3>
+        <code><a href="#device.customattributes">custom​Attributes</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">let</span> <span class="variable">customAttributes</span>: <a href="https://guillaumealgis.github.io/SimpleMDM-Swift/RelatedToManyNested"><span class="type">RelatedToManyNested</span></a>&lt;<a href="https://guillaumealgis.github.io/SimpleMDM-Swift/Device"><span class="type">Device</span></a>, <span class="type">CustomAttributeValue</span>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The custom attributes values set for this device.</p>
+
+</div>
+</div>
+<div role="article" class="variable" id="device.endpointname">
+    <h3>
+        <code><a href="#device.endpointname">endpoint​Name</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">var</span> <span class="variable">endpointName</span>: <span class="type">String</span>  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>The remote API endpoint identifying this resource.</p>
+
+</div>
+</div>
+    </section>
+
+
+
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2022-05-11T21:36:12+0000">May 11, 2022</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
+</p>
+    </footer>
+</body>
+</html>
